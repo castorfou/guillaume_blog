@@ -6,11 +6,11 @@
 # https://learn-the-web.algonquindesign.ca/topics/markdown-yaml-cheat-sheet/#yaml
 # https://learnxinyminutes.com/docs/yaml/
 
-title: fastpages
-description: An easy to use blogging platform with support for Jupyter Notebooks.
+title: Guillaume's blog
+description: Journey for a datascientist
 github_username: castorfou
 # you can comment the below line out if your repo name is not different than your baseurl
-github_repo: "blog"
+github_repo: "guillaume_blog"
 
 # OPTIONAL: override baseurl and url if using a custom domain
 # Note: leave out the trailing / from this value. 
@@ -39,17 +39,17 @@ baseurl: "/blog" # the subpath of your site, e.g. "/blog".
 # Github and twitter are optional:
 minima:
   social_links:
-    twitter: fastdotai
-    github: fastai
+    twitter: GuillaumeRamel1
+    github: castorfou
 
 # Set this to true to get LaTeX math equation support
-use_math: 
+use_math: true
 
 # Set this to true to display the summary of your blog post under your title on the Home page.
 show_description: true
 
 # Set this to true to display image previews on home page, if they exist
-show_image: false
+show_image: true
 
 # Set this to true to turn on annotations with hypothes.is (https://web.hypothes.is/)
 annotations: false
@@ -74,7 +74,6 @@ default_badges:
   github: true
   binder: true
   colab: true
-  deepnote: true
 
 # Escape HTML in post descriptions
 html_escape:
@@ -101,7 +100,7 @@ plugins:
 paginate: 15
 paginate_path: /page:num/
 
-remote_theme: jekyll/minima@6513ea8b9c1c4909b6aa79926d52a1f7d865c5e7
+remote_theme: jekyll/minima
 
 titles_from_headings:
   enabled:     true
@@ -117,10 +116,7 @@ kramdown:
   hard_wrap: false
   syntax_highlighter: rouge
 
-# to limit size of xml as it can grow quite large.
-feed:
-  posts_limit: 5 #default posts_limit: 10
-  excerpt_only: true
-  
-exclude:
-  - settings.ini
+# added feb/23 2021  
+# https://jekyllrb.com/docs/permalinks/
+# to have a consistent way of rendering _posts and _notebooks (useful to link images)
+permalink: /blog/:title:output_ext
