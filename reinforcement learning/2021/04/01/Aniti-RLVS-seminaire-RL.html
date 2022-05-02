@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="twitter:card" content="summary_large_image" /><!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>ANITI’s first Reinforcement Learning Virtual School | fastpages</title>
+<meta name="generator" content="Jekyll v4.1.1" />
+<meta property="og:title" content="ANITI’s first Reinforcement Learning Virtual School" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="My notes" />
+<meta property="og:description" content="My notes" />
+<link rel="canonical" href="https://castorfou.github.io/blog/reinforcement%20learning/2021/04/01/Aniti-RLVS-seminaire-RL.html" />
+<meta property="og:url" content="https://castorfou.github.io/blog/reinforcement%20learning/2021/04/01/Aniti-RLVS-seminaire-RL.html" />
+<meta property="og:site_name" content="fastpages" />
+<meta property="og:image" content="https://castorfou.github.io/blog/images/RL.png" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2021-04-01T00:00:00-05:00" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="https://castorfou.github.io/blog/images/RL.png" />
+<meta property="twitter:title" content="ANITI’s first Reinforcement Learning Virtual School" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2021-04-01T00:00:00-05:00","datePublished":"2021-04-01T00:00:00-05:00","description":"My notes","headline":"ANITI’s first Reinforcement Learning Virtual School","image":"https://castorfou.github.io/blog/images/RL.png","mainEntityOfPage":{"@type":"WebPage","@id":"https://castorfou.github.io/blog/reinforcement%20learning/2021/04/01/Aniti-RLVS-seminaire-RL.html"},"url":"https://castorfou.github.io/blog/reinforcement%20learning/2021/04/01/Aniti-RLVS-seminaire-RL.html"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/blog/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="https://castorfou.github.io/blog/feed.xml" title="fastpages" /><link rel="shortcut icon" type="image/x-icon" href="/blog/images/favicon.ico"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Primer/15.2.0/primer.css" integrity="sha512-xTz2ys4coGAOz8vuV1NcQBkgVmKhsSEtjbqyMJbBHRplFuvKIUo6xhLHpAyPt9mfR6twHJgn9OgVLuqOvjeBhg==" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" />
+
+<script>
+function wrap_img(fn) {
+    if (document.attachEvent ? document.readyState === "complete" : document.readyState !== "loading") {
+        var elements = document.querySelectorAll(".post img");
+        Array.prototype.forEach.call(elements, function(el, i) {
+            if (el.getAttribute("title") && (el.className != "emoji")) {
+                const caption = document.createElement('figcaption');
+                var node = document.createTextNode(el.getAttribute("title"));
+                caption.appendChild(node);
+                const wrapper = document.createElement('figure');
+                wrapper.className = 'image';
+                el.parentNode.insertBefore(wrapper, el);
+                el.parentNode.removeChild(el);
+                wrapper.appendChild(el);
+                wrapper.appendChild(caption);
+            }
+        });
+    } else { document.addEventListener('DOMContentLoaded', fn); }
+}
+window.onload = wrap_img;
+</script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function(){
+    // add link icon to anchor tags
+    var elem = document.querySelectorAll(".anchor-link")
+    elem.forEach(e => (e.innerHTML = '<i class="fas fa-link fa-xs"></i>'));
+    });
+</script>
+</head>
+<body><header class="site-header">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/blog/">fastpages</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/blog/about/">About Me</a><a class="page-link" href="/blog/search/">Search</a><a class="page-link" href="/blog/categories/">Tags</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">ANITI&#39;s first Reinforcement Learning Virtual School</h1><p class="page-description">My notes</p><p class="post-meta post-meta-title"><time class="dt-published" datetime="2021-04-01T00:00:00-05:00" itemprop="datePublished">
+        Apr 1, 2021
+      </time>
+       • <span class="read-time" title="Estimated read time">
+    
+    
+      5 min read
+    
+</span></p>
+
+    
+      <p class="category-tags"><i class="fas fa-tags category-tags-icon"></i></i> 
+      
+        <a class="category-tags-link" href="/blog/categories/#reinforcement learning">reinforcement learning</a>
+        
+      
+      </p>
+    
+
+    </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <ul id="toc" class="section-nav">
+<li class="toc-entry toc-h2"><a href="#rlvs-schedule">RLVS schedule</a></li>
+<li class="toc-entry toc-h2"><a href="#4121---deep-q-networks-and-its-variants">(4/1/21) - Deep Q-Networks and its variants</a></li>
+<li class="toc-entry toc-h2"><a href="#4221---from-policy-gradients-to-actor-critic-methods">(4/2/21) - From Policy Gradients to Actor Critic methods</a></li>
+<li class="toc-entry toc-h2"><a href="#4821---evolutionary-reinforcement-learning">(4/8/21) - Evolutionary Reinforcement Learning</a></li>
+<li class="toc-entry toc-h2"><a href="#4821---micro-data-policy-search">(4/8/21) - Micro-data Policy Search</a></li>
+<li class="toc-entry toc-h2"><a href="#4921---rl-in-practice-tips-and-tricks-and-practical-session-with-stable-baselines3">(4/9/21) - RL in Practice: Tips and Tricks and Practical Session With Stable-Baselines3</a>
+<ul>
+<li class="toc-entry toc-h4"><a href="#handson">handson</a></li>
+</ul>
+</li>
+</ul><p><img src="https://d1keuthy5s86c8.cloudfront.net/static/ems/upload/img/72947a097165dcd24a6f700e2f28d690.png" alt=""></p>
+
+<p><a href="https://rlvs.aniti.fr/">https://rlvs.aniti.fr/</a></p>
+
+<p>Schedule is</p>
+
+<h2 id="rlvs-schedule">
+<a class="anchor" href="#rlvs-schedule" aria-hidden="true"><span class="octicon octicon-link"></span></a>RLVS schedule</h2>
+
+<p>This condensed schedule does not include class breaks and social events. Times are Central European Summer Time (UTC+2).</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Schedule</th>
+      <th> </th>
+      <th> </th>
+      <th> </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>March 25th</td>
+      <td>9:00-9:10</td>
+      <td><a href="https://rl-vs.github.io/rlvs2021/opening.html">Opening remarks</a></td>
+      <td><a href="https://rl-vs.github.io/rlvs2021/sebastien-gerchinovitz.html">S. Gerchinovitz</a></td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>9:10-9:30</td>
+      <td><a href="https://rl-vs.github.io/rlvs2021/rlvs-overview.html">RLVS Overview</a></td>
+      <td><a href="https://rl-vs.github.io/rlvs2021/emmanuel-rachelson.html">E. Rachelson</a></td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>9:30-13:00</td>
+      <td><a href="https://rl-vs.github.io/rlvs2021/rl-fundamentals.html">RL fundamentals</a></td>
+      <td><a href="https://rl-vs.github.io/rlvs2021/emmanuel-rachelson.html">E. Rachelson</a></td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>14:00-16:00</td>
+      <td><a href="https://rl-vs.github.io/rlvs2021/deep-learning.html">Introduction to Deep Learning</a></td>
+      <td><a href="https://rl-vs.github.io/rlvs2021/dennis-wilson.html">D. Wilson</a></td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>16:30-17:30</td>
+      <td><a href="https://rl-vs.github.io/rlvs2021/human-behavioral-agents.html">Reward Processing Biases in Humans and RL Agents</a></td>
+      <td><a href="https://rl-vs.github.io/rlvs2021/irina-rish.html">I. Rish</a></td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>17:45-18:45</td>
+      <td><a href="https://rl-vs.github.io/rlvs2021/hierarchical.html">Introduction to Hierarchical Reinforcement Learning</a></td>
+      <td><a href="https://rl-vs.github.io/rlvs2021/doina-precup.html">D. Precup</a></td>
+    </tr>
+    <tr>
+      <td>March 26th</td>
+      <td>10:00-12:00</td>
+      <td><a href="https://rl-vs.github.io/rlvs2021/stochastic-bandits.html">Stochastic bandits</a></td>
+      <td><a href="https://rl-vs.github.io/rlvs2021/tor-lattimore.html">T. Lattimore</a></td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>14:00-16:00</td>
+      <td><a href="https://rl-vs.github.io/rlvs2021/mcts.html">Monte Carlo Tree Search</a></td>
+      <td><a href="https://rl-vs.github.io/rlvs2021/tor-lattimore.html">T. Lattimore</a></td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>16:30-17:30</td>
+      <td><a href="https://rl-vs.github.io/rlvs2021/clinical.html">Multi-armed bandits in clinical trials</a></td>
+      <td><a href="https://rl-vs.github.io/rlvs2021/donald-berry.html">D. A. Berry</a></td>
+    </tr>
+    <tr>
+      <td>April 1st</td>
+      <td>9:00-15:00</td>
+      <td><a href="https://rl-vs.github.io/rlvs2021/dqn.html">Deep Q-Networks and its variants</a></td>
+      <td>
+<a href="https://rl-vs.github.io/rlvs2021/bilal-piot.html">B. Piot</a>, <a href="https://rl-vs.github.io/rlvs2021/corentin-tallec.html">C. Tallec</a>
+</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>15:15-16:15</td>
+      <td><a href="https://rl-vs.github.io/rlvs2021/regularized-mdps.html">Regularized MDPs</a></td>
+      <td><a href="https://rl-vs.github.io/rlvs2021/matthieu-geist.html">M. Geist</a></td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>16:30-17:30</td>
+      <td><a href="https://rl-vs.github.io/rlvs2021/regret-bound.html">Regret bounds of model-based reinforcement learning</a></td>
+      <td><a href="https://rl-vs.github.io/rlvs2021/mengdi-wang.html">M. Wang</a></td>
+    </tr>
+    <tr>
+      <td>April 2nd</td>
+      <td>9:00-12:30</td>
+      <td><a href="https://rl-vs.github.io/rlvs2021/pg.html">Policy Gradients and Actor Critic methods</a></td>
+      <td><a href="https://rl-vs.github.io/rlvs2021/olivier-sigaud.html">O. Sigaud</a></td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>14:00-15:00</td>
+      <td><a href="https://rl-vs.github.io/rlvs2021/pg-pitfalls.html">Pitfalls in Policy Gradient methods</a></td>
+      <td><a href="https://rl-vs.github.io/rlvs2021/olivier-sigaud.html">O. Sigaud</a></td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>15:30-17:30</td>
+      <td><a href="https://rl-vs.github.io/rlvs2021/exploration.html">Exploration in Deep RL</a></td>
+      <td><a href="https://rl-vs.github.io/rlvs2021/matteo-pirotta.html">M. Pirotta</a></td>
+    </tr>
+    <tr>
+      <td>April 8th</td>
+      <td>9:00-11:00</td>
+      <td><a href="https://rl-vs.github.io/rlvs2021/evo-rl.html">Evolutionary Reinforcement Learning</a></td>
+      <td>
+<a href="https://rl-vs.github.io/rlvs2021/dennis-wilson.html">D. Wilson</a>, <a href="https://rl-vs.github.io/rlvs2021/jean-baptiste-mouret.html">J.-B. Mouret</a>
+</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>11:30-12:30</td>
+      <td><a href="https://rl-vs.github.io/rlvs2021/evolving-agents.html">Evolving Agents that Learn More Like Animals</a></td>
+      <td><a href="https://rl-vs.github.io/rlvs2021/sebastian-risi.html">S. Risi</a></td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>14:00-16:00</td>
+      <td><a href="https://rl-vs.github.io/rlvs2021/micro-data.html">Micro-data Policy Search</a></td>
+      <td>
+<a href="https://rl-vs.github.io/rlvs2021/konstantinos-chatzilygeroudis.html">K. Chatzilygeroudis</a>, <a href="https://rl-vs.github.io/rlvs2021/jean-baptiste-mouret.html">J.-B. Mouret</a>
+</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>16:30-17:30</td>
+      <td><a href="https://rl-vs.github.io/rlvs2021/efficient-motor.html">Efficient Motor Skills Learning in Robotics</a></td>
+      <td><a href="https://rl-vs.github.io/rlvs2021/dongheui-lee.html">D. Lee</a></td>
+    </tr>
+    <tr>
+      <td>April 9th</td>
+      <td>9:00-13:00</td>
+      <td><a href="https://rl-vs.github.io/rlvs2021/tips-and-tricks.html">RL tips and tricks</a></td>
+      <td><a href="https://rl-vs.github.io/rlvs2021/antonin-raffin.html">A. Raffin</a></td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>14:30-15:30</td>
+      <td><a href="https://rl-vs.github.io/rlvs2021/symbolic.html">Symbolic representations and reinforcement learning</a></td>
+      <td><a href="https://rl-vs.github.io/rlvs2021/marta-garnelo.html">M. Garnelo</a></td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>15:45-16:45</td>
+      <td><a href="https://rl-vs.github.io/rlvs2021/model-learning.html">Leveraging model-learning for extreme generalization</a></td>
+      <td><a href="https://rl-vs.github.io/rlvs2021/leslie-kaelbling.html">L. P. Kaelbling</a></td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>17:00-18:00</td>
+      <td>RLVS wrap-up</td>
+      <td><a href="https://rl-vs.github.io/rlvs2021/emmanuel-rachelson.html">E. Rachelson</a></td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="4121---deep-q-networks-and-its-variants">
+<a class="anchor" href="#4121---deep-q-networks-and-its-variants" aria-hidden="true"><span class="octicon octicon-link"></span></a>(4/1/21) - <a href="https://whova.com/embedded/session/rlstc_202011/1416824/?view=">Deep Q-Networks and its variants</a>
+</h2>
+
+<p>Speaker is Bilal Piot.</p>
+
+<p><strong>Deep Q network</strong> as a solution for a practicable control theory.</p>
+
+<p>Introduction of ALE (Atari Learning Environment)</p>
+
+<p>DQN is (almost) end-to-end: from raw observations to actions. Bilal explains the preprocessing part (from 160x210x3 to 84x84 + stacking 4 frames + downsampling to 15 Hz)</p>
+
+<p>Value Iteration (VI) algorithm: Recurrent algorithm to get Q. $Q_{k+1}=T^*Q$</p>
+
+<p>But it is not practical in a real-world case. What we can do is use interactions with real world. And estimate $Q^*$ using a regression.</p>
+
+<p>Would be interesting to have slides. I like the link between regression notations and VI notation.</p>
+
+<p>From neural Fitted-$Q$ to DQN. Main difference is data collection (in DQN you have updated interactions and it allows exploration, and size of architecture)</p>
+
+<p>With DQN we have acting part and learning part. Acting is the data collection. (using $\epsilon$-greedy policy)</p>
+
+<p><strong>hands-on based on DQN tutorial notebook.</strong></p>
+
+<p>had to  <code class="language-plaintext highlighter-rouge">export LD_LIBRARY_PATH=/home/explore/miniconda3/envs/aniti/lib/</code></p>
+
+<p>Nice introduction to JAX and haiku. Haiku is similar modules in pytorch and can turn NN into pure version. Which is useful for Jax.</p>
+
+<p><strong>overview of the literature</strong></p>
+
+<p><img src="https://kstatic.googleusercontent.com/files/f6b5f285173d4449285a8e812b8385f45c03f7104e1c41370a73e0c8558ff82d6a69e60962dd91c4972c444fd73bc4f98a06b5487eff5a037a37bc42f97cef3b" alt=""></p>
+
+<h2 id="4221---from-policy-gradients-to-actor-critic-methods">
+<a class="anchor" href="#4221---from-policy-gradients-to-actor-critic-methods" aria-hidden="true"><span class="octicon octicon-link"></span></a>(4/2/21) - <a href="https://whova.com/embedded/session/rlstc_202011/1416833/?view=">From Policy Gradients to Actor Critic methods</a>
+</h2>
+
+<p>Olivier Sigaud is the speaker.</p>
+
+<p>He has pre-recorded his lecture in videos. I have missed the start so I will have to watch them later.</p>
+
+<p><a href="https://whova.com/embedded/session/rlstc_202011/1416836/?view=">Policy Gradient in pratice</a></p>
+
+<p>Don’t become an alchemist ;)</p>
+
+<p>As stochastic policies, squashed gaussian is interesting because it allows continuous variable + bounds.</p>
+
+<p><a href="https://whova.com/embedded/session/rlstc_202011/1416838/?view=#">Exploration in Deep RL</a></p>
+
+<h2 id="4821---evolutionary-reinforcement-learning">
+<a class="anchor" href="#4821---evolutionary-reinforcement-learning" aria-hidden="true"><span class="octicon octicon-link"></span></a>(4/8/21) - <a href="https://whova.com/embedded/session/rlstc_202011/1416851/?view=">Evolutionary Reinforcement Learning</a>
+</h2>
+
+<p>pdf version of the slides are available <a href="https://rl-vs.github.io/rlvs2021/class-material/evolutionary/light-virtual_school_neat_hyperneat.pdf">here</a></p>
+
+<p>then <a href="https://whova.com/embedded/session/rlstc_202011/1416848/?view=">Evolving Agents that Learn More Like Animals</a></p>
+
+<p>This morning was more about what we can do when we have infinite calculation power and data.</p>
+
+<p>Afternoon will be the opposite.</p>
+
+<h2 id="4821---micro-data-policy-search">
+<a class="anchor" href="#4821---micro-data-policy-search" aria-hidden="true"><span class="octicon octicon-link"></span></a>(4/8/21) - <a href="https://whova.com/embedded/session/rlstc_202011/1416841/?view=">Micro-data Policy Search</a>
+</h2>
+
+<p>Most policy search algorithms require thousands of training episodes to  find an effective policy, which is often infeasible when experiments  takes time or are expensive (for instance, with physical robot or with  an aerodynamics simulator). This class focuses on the extreme other end  of the spectrum: how can an algorithm adapt a policy with only a handful of trials (a dozen) and a few minutes? By analogy with the word  “big-data”, we refer to this challenge as “micro-data reinforcement  learning”. We will describe two main strategies: (1) leverage prior  knowledge on the policy structure (e.g., dynamic movement primitives),  on the policy parameters (e.g., demonstrations), or on the dynamics  (e.g., simulators), and (2) create data-driven surrogate models of the  expected reward (e.g., Bayesian optimization) or the dynamical model  (e.g., model-based policy search), so that the policy optimizer queries  the model instead of the real system. Most of the examples will be about robotic systems, but the principle apply to any other expensive setup.</p>
+
+<p>all material: <a href="https://rl-vs.github.io/rlvs2021/micro-data.html">https://rl-vs.github.io/rlvs2021/micro-data.html</a></p>
+
+<h2 id="4921---rl-in-practice-tips-and-tricks-and-practical-session-with-stable-baselines3">
+<a class="anchor" href="#4921---rl-in-practice-tips-and-tricks-and-practical-session-with-stable-baselines3" aria-hidden="true"><span class="octicon octicon-link"></span></a>(4/9/21) - <a href="https://whova.com/embedded/session/rlstc_202011/1416855/?view=">RL in Practice: Tips and Tricks and Practical Session With Stable-Baselines3</a>
+</h2>
+
+<p>​                        <strong>Abstract:</strong>
+The aim of the session is to  help you do reinforcement learning experiments. The first part covers  general advice about RL, tips and tricks and details three examples  where RL was applied on real robots. The second part will be a practical session using the Stable-Baselines3 library.</p>
+
+<p><strong>Pre-requisites:</strong>
+Python programming, RL basics, (recommended: Google account for the practical session in order to use Google Colab).</p>
+
+<p><strong>Additional material:</strong>
+Website: <a href="https://github.com/DLR-RM/stable-baselines3">https://github.com/DLR-RM/stable-baselines3</a>
+Doc: <a href="https://stable-baselines3.readthedocs.io/en/master/">https://stable-baselines3.readthedocs.io/en/master/</a></p>
+
+<p><strong>Outline:</strong>
+Part I: RL Tips and Tricks / The Challenges of Applying RL to Real Robots</p>
+
+<ol>
+  <li>Introduction (3 minutes)</li>
+  <li>RL Tips and tricks (45 minutes)
+    <ol>
+      <li>General Nuts and Bolts of RL experimentation (10 minutes)</li>
+      <li>RL in practice on a custom task (custom environment) (30 minutes)</li>
+      <li>Questions? (5 minutes)</li>
+    </ol>
+  </li>
+  <li>The Challenges of Applying RL to Real Robots (45 minutes)
+    <ol>
+      <li>Learning to control an elastic robot - DLR David Neck Example (15 minutes)</li>
+      <li>Learning to drive in minutes and learning to race in hours - Virtual and real racing car (15 minutes)</li>
+      <li>Learning to walk with an elastic quadruped robot - DLR bert example (10 minutes)</li>
+      <li>Questions? (5 minutes+)</li>
+    </ol>
+  </li>
+</ol>
+
+<p>Part II: Practical Session with Stable-Baselines3</p>
+
+<ol>
+  <li>Stable-Baselines3 Overview (20 minutes)</li>
+  <li>Questions? (5 minutes)</li>
+  <li>Practical Session - Code along (1h+)</li>
+</ol>
+
+<p><em>action space</em></p>
+
+<p>When using continuous space, you need to normalize! (normalized action space -1, -1)</p>
+
+<p>there is a checker for that in stable baselines 3.</p>
+
+<p><em>reward</em></p>
+
+<p>start with reward shaping.</p>
+
+<p><em>termination condition</em></p>
+
+<p>early stopping makes learning faster (and safer for robots)</p>
+
+<p><img src="../images/aniti_rl_algo.png" alt=""></p>
+
+<p>for hyperparameter tuning, Antonin recommends Optuna.</p>
+
+<p>about the Henderson paper: <a href="https://arxiv.org/abs/1709.06560">Deep Reinforcement Learning that Matters</a></p>
+
+<p><img src="../images/aniti_rl_slr.png" alt=""></p>
+
+<p>and then the controller will use latent representation / current speed + history as observation space.</p>
+
+<p>Learning to drive takes then 10 min, and to race 2 hours.</p>
+
+<h4 id="handson">
+<a class="anchor" href="#handson" aria-hidden="true"><span class="octicon octicon-link"></span></a>handson</h4>
+
+<p>slides: <a href="https://araffin.github.io/slides/rlvs-sb3-handson/">https://araffin.github.io/slides/rlvs-sb3-handson/</a></p>
+
+<p>notebook: <a href="https://github.com/araffin/rl-handson-rlvs21">https://github.com/araffin/rl-handson-rlvs21</a></p>
+
+<p>RL zoo: <a href="https://github.com/DLR-RM/rl-baselines3-zoo">https://github.com/DLR-RM/rl-baselines3-zoo</a></p>
+
+<p>documentation for SB3 usefull for completing exercises: <a href="https://stable-baselines3.readthedocs.io/en/master/">https://stable-baselines3.readthedocs.io/en/master/</a></p>
+
+<p>https://excalidraw.com/</p>
+
+  </div><!-- from https://github.com/utterance/utterances -->
+<script src="https://utteranc.es/client.js"
+        repo="castorfou/blog"
+        issue-term="title"
+        label="blogpost-comment"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script><a class="u-url" href="/blog/reinforcement%20learning/2021/04/01/Aniti-RLVS-seminaire-RL.html" hidden></a>
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/blog/"></data>
+
+  <div class="wrapper">
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col">
+        <p class="feed-subscribe">
+          <a href="/blog/feed.xml">
+            <svg class="svg-icon orange">
+              <use xlink:href="/blog/assets/minima-social-icons.svg#rss"></use>
+            </svg><span>Subscribe</span>
+          </a>
+        </p>
+      </div>
+      <div class="footer-col">
+        <p>An easy to use blogging platform with support for Jupyter Notebooks.</p>
+      </div>
+    </div>
+
+    <div class="social-links"><ul class="social-media-list"><li><a rel="me" href="https://github.com/fastai" target="_blank" title="fastai"><svg class="svg-icon grey"><use xlink:href="/blog/assets/minima-social-icons.svg#github"></use></svg></a></li><li><a rel="me" href="https://twitter.com/fastdotai" target="_blank" title="fastdotai"><svg class="svg-icon grey"><use xlink:href="/blog/assets/minima-social-icons.svg#twitter"></use></svg></a></li></ul>
+</div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>

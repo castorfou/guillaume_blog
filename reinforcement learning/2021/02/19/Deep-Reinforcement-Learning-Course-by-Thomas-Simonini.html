@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="twitter:card" content="summary_large_image" /><!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Practicing: Deep Reinforcement Learning Course by Thomas Simonini | fastpages</title>
+<meta name="generator" content="Jekyll v4.1.1" />
+<meta property="og:title" content="Practicing: Deep Reinforcement Learning Course by Thomas Simonini" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="A Free course in Deep Reinforcement Learning from beginner to expert. My notes" />
+<meta property="og:description" content="A Free course in Deep Reinforcement Learning from beginner to expert. My notes" />
+<link rel="canonical" href="https://castorfou.github.io/blog/reinforcement%20learning/2021/02/19/Deep-Reinforcement-Learning-Course-by-Thomas-Simonini.html" />
+<meta property="og:url" content="https://castorfou.github.io/blog/reinforcement%20learning/2021/02/19/Deep-Reinforcement-Learning-Course-by-Thomas-Simonini.html" />
+<meta property="og:site_name" content="fastpages" />
+<meta property="og:image" content="https://castorfou.github.io/blog/images/RL.png" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2021-02-19T00:00:00-06:00" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="https://castorfou.github.io/blog/images/RL.png" />
+<meta property="twitter:title" content="Practicing: Deep Reinforcement Learning Course by Thomas Simonini" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2021-02-19T00:00:00-06:00","datePublished":"2021-02-19T00:00:00-06:00","description":"A Free course in Deep Reinforcement Learning from beginner to expert. My notes","headline":"Practicing: Deep Reinforcement Learning Course by Thomas Simonini","image":"https://castorfou.github.io/blog/images/RL.png","mainEntityOfPage":{"@type":"WebPage","@id":"https://castorfou.github.io/blog/reinforcement%20learning/2021/02/19/Deep-Reinforcement-Learning-Course-by-Thomas-Simonini.html"},"url":"https://castorfou.github.io/blog/reinforcement%20learning/2021/02/19/Deep-Reinforcement-Learning-Course-by-Thomas-Simonini.html"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/blog/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="https://castorfou.github.io/blog/feed.xml" title="fastpages" /><link rel="shortcut icon" type="image/x-icon" href="/blog/images/favicon.ico"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Primer/15.2.0/primer.css" integrity="sha512-xTz2ys4coGAOz8vuV1NcQBkgVmKhsSEtjbqyMJbBHRplFuvKIUo6xhLHpAyPt9mfR6twHJgn9OgVLuqOvjeBhg==" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" />
+
+<script>
+function wrap_img(fn) {
+    if (document.attachEvent ? document.readyState === "complete" : document.readyState !== "loading") {
+        var elements = document.querySelectorAll(".post img");
+        Array.prototype.forEach.call(elements, function(el, i) {
+            if (el.getAttribute("title") && (el.className != "emoji")) {
+                const caption = document.createElement('figcaption');
+                var node = document.createTextNode(el.getAttribute("title"));
+                caption.appendChild(node);
+                const wrapper = document.createElement('figure');
+                wrapper.className = 'image';
+                el.parentNode.insertBefore(wrapper, el);
+                el.parentNode.removeChild(el);
+                wrapper.appendChild(el);
+                wrapper.appendChild(caption);
+            }
+        });
+    } else { document.addEventListener('DOMContentLoaded', fn); }
+}
+window.onload = wrap_img;
+</script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function(){
+    // add link icon to anchor tags
+    var elem = document.querySelectorAll(".anchor-link")
+    elem.forEach(e => (e.innerHTML = '<i class="fas fa-link fa-xs"></i>'));
+    });
+</script>
+</head>
+<body><header class="site-header">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/blog/">fastpages</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/blog/about/">About Me</a><a class="page-link" href="/blog/search/">Search</a><a class="page-link" href="/blog/categories/">Tags</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">Practicing: Deep Reinforcement Learning Course by Thomas Simonini</h1><p class="page-description">A Free course in Deep Reinforcement Learning from beginner to expert. My notes</p><p class="post-meta post-meta-title"><time class="dt-published" datetime="2021-02-19T00:00:00-06:00" itemprop="datePublished">
+        Feb 19, 2021
+      </time>
+       • <span class="read-time" title="Estimated read time">
+    
+    
+      14 min read
+    
+</span></p>
+
+    
+      <p class="category-tags"><i class="fas fa-tags category-tags-icon"></i></i> 
+      
+        <a class="category-tags-link" href="/blog/categories/#reinforcement learning">reinforcement learning</a>
+        
+      
+      </p>
+    
+
+    </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <ul id="toc" class="section-nav">
+<li class="toc-entry toc-h2"><a href="#21921---chapter-1---an-introduction-to-deep-reinforcement-learning">(2/19/21) - Chapter 1 - An Introduction to Deep Reinforcement Learning?</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#three-approaches-to-reinforcement-learning">Three approaches to Reinforcement Learning</a>
+<ul>
+<li class="toc-entry toc-h4"><a href="#value-based">Value Based</a></li>
+<li class="toc-entry toc-h4"><a href="#policy-based">Policy Based</a></li>
+<li class="toc-entry toc-h4"><a href="#model-based">Model Based</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h3"><a href="#deep-reinforcement-learning">Deep Reinforcement Learning</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="#21921---chapter-2---part-1---q-learning-lets-create-an-autonomous-taxi">(2/19/21) - Chapter 2 - part 1 - Q-Learning, let’s create an autonomous Taxi</a>
+<ul>
+<li class="toc-entry toc-h4"><a href="#value-based-method">Value-based method</a></li>
+<li class="toc-entry toc-h4"><a href="#bellman-equation">Bellman equation</a></li>
+<li class="toc-entry toc-h4"><a href="#monte-carlo-vs-temporal-difference">Monte Carlo vs Temporal Difference</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="#22421---chapter-2---part-2---q-learning-lets-create-an-autonomous-taxi">(2/24/21) - Chapter 2 - part 2 - Q-Learning, let’s create an autonomous Taxi</a></li>
+<li class="toc-entry toc-h2"><a href="#3321---back-to-2018---chapter-3---deep-q-learning-with-doom">(3/3/21) - back to 2018 - Chapter 3 - Deep Q-learning with Doom</a></li>
+<li class="toc-entry toc-h2"><a href="#31021---chapter-4-improvements-in-deep-q-learning-v1">(3/10/21) - Chapter 4: Improvements in Deep Q Learning V1</a></li>
+<li class="toc-entry toc-h2"><a href="#31721---chapter-5-policy-gradients-v1">(3/17/21) - Chapter 5: Policy Gradients V1</a></li>
+<li class="toc-entry toc-h2"><a href="#31921---chapter-6-advantage-actor-critic-a2c-and-asynchronous-advantage-actor-critic-a3c-v1">(3/19/21) - Chapter 6: Advantage Actor Critic (A2C) and Asynchronous Advantage Actor Critic (A3C) V1</a>
+<ul>
+<li class="toc-entry toc-h4"><a href="#two-different-strategies-asynchronous-or-synchronous">Two different strategies: Asynchronous or Synchronous</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="#32421---chapter-7-proximal-policy-optimization-ppo-v1">(3/24/21) - Chapter 7: Proximal Policy Optimization PPO V1</a></li>
+</ul><p>A course by <a href="https://www.simoninithomas.com/">Thomas Simonini</a></p>
+
+<p><a href="https://simoninithomas.github.io/deep-rl-course/">Syllabus (from 2018)</a></p>
+
+<p><a href="https://medium.com/deep-reinforcement-learning-course/launching-deep-reinforcement-learning-course-v2-0-38fa3c24bcbc">Course introduction (from 2020)</a></p>
+
+<p>Everything available in <a href="https://github.com/simoninithomas/Deep_reinforcement_learning_Course">github</a></p>
+
+<p>I appreciate the effort to update examples, and some 2018 implementations became obsolete. Historical Atari VC2600 games are now Starcraft 2 or minecraft, and news series on building AI for video games in Unity and Unreal Engine..</p>
+
+<h2 id="21921---chapter-1---an-introduction-to-deep-reinforcement-learning">
+<a class="anchor" href="#21921---chapter-1---an-introduction-to-deep-reinforcement-learning" aria-hidden="true"><span class="octicon octicon-link"></span></a>(2/19/21) - <a href="https://thomassimonini.medium.com/an-introduction-to-deep-reinforcement-learning-17a565999c0c">Chapter 1</a> - An Introduction to Deep Reinforcement Learning?</h2>
+
+<p>Previous version from <a href="https://medium.freecodecamp.org/an-introduction-to-reinforcement-learning-4339519de419">2018: What is Deep Reinforcement Learning?</a> is quite interesting. With 3 parts:</p>
+
+<ul>
+  <li>What Reinforcement Learning is, and how rewards are the central idea</li>
+  <li>The three approaches of Reinforcement Learning</li>
+  <li>What the “Deep” in Deep Reinforcement Learning means</li>
+</ul>
+
+<p><img src="https://cdn-media-1.freecodecamp.org/images/1*aKYFRoEmmKkybqJOvLt2JQ.png" alt=""></p>
+
+<p>Rewards, long-term future reward, discount rate.</p>
+
+<p><img src="https://cdn-media-1.freecodecamp.org/images/1*zrzRTXt8rtWF5fX__kZ-yQ.png" alt=""></p>
+
+<p>Episodic (starting and ending point) vs Continuous (e.g. stock trading) tasks.</p>
+
+<p>Way of learning: Monte Carlo (MC: rewards collected at the end of an episode) vs Temporal Difference (TD: estimate rewards at each step)</p>
+
+<p><img src="https://cdn-media-1.freecodecamp.org/images/1*LLfj11fivpkKZkwQ8uPi3A.png" alt=""></p>
+
+<p>Exploration/Exploitation trade off. Will see later different ways to handle that trade-off.</p>
+
+<p><img src="https://cdn-media-1.freecodecamp.org/images/1*APLmZ8CVgu0oY3sQBVYIuw.png" alt=""></p>
+
+<h3 id="three-approaches-to-reinforcement-learning">
+<a class="anchor" href="#three-approaches-to-reinforcement-learning" aria-hidden="true"><span class="octicon octicon-link"></span></a>Three approaches to Reinforcement Learning</h3>
+
+<p>These are value-based, policy-based, and model-based.</p>
+
+<h4 id="value-based">
+<a class="anchor" href="#value-based" aria-hidden="true"><span class="octicon octicon-link"></span></a>Value Based</h4>
+
+<p>In value-based RL, the goal is to optimize the value function <em>V(s)</em>.</p>
+
+<p>The value function is a function that tells us the maximum expected future reward the agent will get at each state.</p>
+
+<p><img src="https://cdn-media-1.freecodecamp.org/images/1*2_JRk-4O523bcOcSy1u31g.png" alt=""></p>
+
+<h4 id="policy-based">
+<a class="anchor" href="#policy-based" aria-hidden="true"><span class="octicon octicon-link"></span></a>Policy Based</h4>
+
+<p>In policy-based RL, we want to directly optimize the policy function <em>π(s)</em> without using a value function.</p>
+
+<p>The policy is what defines the agent behavior at a given time.</p>
+
+<p>We have two types of policy:</p>
+
+<ul>
+  <li>Deterministic: a policy at a given state will always return the same action.</li>
+  <li>Stochastic: output a distribution probability over actions.</li>
+</ul>
+
+<p><img src="https://cdn-media-1.freecodecamp.org/images/1*fii7Z01laRGateAJDvloAQ.png" alt=""></p>
+
+<h4 id="model-based">
+<a class="anchor" href="#model-based" aria-hidden="true"><span class="octicon octicon-link"></span></a>Model Based</h4>
+
+<p>In model-based RL, we model the environment. This means we create a model of the behavior of the environment. Not addressed in this course.</p>
+
+<h3 id="deep-reinforcement-learning">
+<a class="anchor" href="#deep-reinforcement-learning" aria-hidden="true"><span class="octicon octicon-link"></span></a>Deep Reinforcement Learning</h3>
+
+<p>In Q-learning, we keep a table of actions to take for each state (based on reward). This can be huge.</p>
+
+<p>Deep Learning allows to approximate this Q function.</p>
+
+<p><img src="https://cdn-media-1.freecodecamp.org/images/1*w5GuxedZ9ivRYqM_MLUxOQ.png" alt=""></p>
+
+<p><a href="https://thomassimonini.medium.com/an-introduction-to-deep-reinforcement-learning-17a565999c0c">Updated version</a> from 2020 (and <a href="https://www.youtube.com/watch?v=q0BiUn5LiBc">video</a> version)</p>
+
+<p>This is a good starting point, well explained.</p>
+
+<p>Reinforcement Learning is just a <strong>computational approach of learning from action.</strong></p>
+
+<p><strong>A formal definition</strong></p>
+
+<blockquote>
+  <p>Reinforcement learning is a framework for solving control tasks (also called decision problems) by building agents that <strong>learn from the environment</strong> by <strong>interacting with it</strong> through trial and error and <strong>receiving rewards</strong> (positive or negative) <strong>as unique feedback.</strong></p>
+</blockquote>
+
+<p>Some explanations about <strong>observations</strong> (partial description) vs <strong>states</strong> (fully observed envt). Only differs in implementation, all theoretical background stays the same.</p>
+
+<p>Action space where we can distinguish <strong>discrete</strong> (e.g. fire, up) actions from <strong>continuous</strong> (e.g. turn 23deg) ones.</p>
+
+<p><strong>Reward</strong> part is the same as the one from 2018. With cheese, mouse, maze example.</p>
+
+<p><strong>Episodic</strong> and <strong>continuous</strong> tasks part is the same as the one from 2018.</p>
+
+<p><strong>Exploration/Exploitation trade-off</strong> is explained the same way + an additional example taken from <a href="http://rail.eecs.berkeley.edu/deeprlcourse-fa18/">berkley - CS 294-112</a> - Deep Reinforcement Learning course. I want to learn more about this course!</p>
+
+<p>About <strong>solving RL problems</strong>, it is now presented as 2 main approaches:</p>
+
+<ul>
+  <li>
+<strong>policy-based</strong> methods</li>
+  <li>
+<strong>value-based</strong> methods</li>
+</ul>
+
+<p><img src="https://miro.medium.com/max/700/1*Vujmmyswrg2wIjmpvSUBfg.png" alt=""></p>
+
+<p>And bedore to explain that, nice presentation of what is a <strong>policy $\pi$</strong>. Solving RL problem is to find that optimal policy: directly with policy-based method, indirectly (through value function) with value-based method.</p>
+
+<p>There is an explanation about different types of policy: <strong>deterministic</strong> and <strong>stochastic</strong>.</p>
+
+<p>And that we use deep neural networks to estimate the action to take (policy based) or to estimate the value of a state (value based). Thomas suggests to go further with deep learning with MIT 6.S191, which is the <a href="https://castorfou.github.io/guillaume_blog/deep%20learning/mit/tensorflow/2021/02/05/learning-MIT-6.S191-2021.html">one</a> (version 2021) I follow these days.</p>
+
+<h2 id="21921---chapter-2---part-1---q-learning-lets-create-an-autonomous-taxi">
+<a class="anchor" href="#21921---chapter-2---part-1---q-learning-lets-create-an-autonomous-taxi" aria-hidden="true"><span class="octicon octicon-link"></span></a>(2/19/21) - <a href="https://thomassimonini.medium.com/q-learning-lets-create-an-autonomous-taxi-part-1-2-3e8f5e764358">Chapter 2 - part 1</a> - Q-Learning, let’s create an autonomous Taxi</h2>
+
+<p>And in <a href="https://www.youtube.com/watch?v=230bR2DrbdE&amp;feature=emb_logo">video</a> (I like to read + watch the video at the same time)</p>
+
+<p>Here in Step 2 we focus on a value-based method: Q-learning. And what is seen in part 1 and 2:</p>
+
+<p><img src="https://miro.medium.com/max/700/1*2yYWVAXJh4FI2lpsL0ajwQ.png" alt=""></p>
+
+<h4 id="value-based-method">
+<a class="anchor" href="#value-based-method" aria-hidden="true"><span class="octicon octicon-link"></span></a>Value-based method</h4>
+
+<p>Remember what we mean in value-based method</p>
+
+<p><img src="https://miro.medium.com/max/700/1*jfUUaZuHUa1h61oD6O18KA.png" alt=""></p>
+
+<p>you don’t train your policy, you define a simple function such as greedy function to select the best association State-Action, so the best action.</p>
+
+<h4 id="bellman-equation">
+<a class="anchor" href="#bellman-equation" aria-hidden="true"><span class="octicon octicon-link"></span></a><strong>Bellman equation</strong>
+</h4>
+
+<p>each value as the sum of the expected return, <strong>which is a long process.</strong> This is equivalent <strong>to the sum of immediate reward + the discounted value of the state that follows.</strong></p>
+
+<p><img src="https://miro.medium.com/max/700/1*FMjoVEELvz0oKcIfmcvGPQ.png" alt=""></p>
+
+<h4 id="monte-carlo-vs-temporal-difference">
+<a class="anchor" href="#monte-carlo-vs-temporal-difference" aria-hidden="true"><span class="octicon octicon-link"></span></a>Monte Carlo vs Temporal Difference</h4>
+
+<p>And then an explanation about 2 types of method to learn a policy or a value-function:</p>
+
+<ul>
+  <li>
+<em>Monte Carlo</em>: learning at the end of the episode. With <em>Monte Carlo</em>, we update the value function from a complete episode and so we <strong>use the actual accurate discounted return of this episode.</strong>
+</li>
+  <li>
+<em>TD learning</em>: learning at each step. With <em>TD learning</em>, we update the value function from a step, so we replace Gt that we don’t have with <strong>an estimated return called TD target.</strong> (chich is the immediate reward + the discounted value of the next state)</li>
+</ul>
+
+<p><img src="https://miro.medium.com/max/700/1*c8nfnXRu8n1h78bWPEK5vg.png" alt=""></p>
+
+<p>It was not clear to me that these methods could be used for policy-based approach. It is now!</p>
+
+<h2 id="22421---chapter-2---part-2---q-learning-lets-create-an-autonomous-taxi">
+<a class="anchor" href="#22421---chapter-2---part-2---q-learning-lets-create-an-autonomous-taxi" aria-hidden="true"><span class="octicon octicon-link"></span></a>(2/24/21) - <a href="https://thomassimonini.medium.com/q-learning-lets-create-an-autonomous-taxi-part-2-2-8cbafa19d7f5">Chapter 2 - part 2</a> - Q-Learning, let’s create an autonomous Taxi</h2>
+
+<p>But the video is not yet available.</p>
+
+<p><strong>What is Q-Learning?</strong></p>
+
+<p>Q-Learning is an <strong>off-policy value-based method that uses a TD approach to train its action-value function:</strong></p>
+
+<ul>
+  <li>
+<em>“Off-policy”</em>: we’ll talk about that at the end of this chapter.</li>
+  <li>
+<em>“Value-based method”</em>: it means that it finds its optimal policy indirectly by training a  value-function or action-value function that will tell us what’s <strong>the value of each state or each state-action pair.</strong>
+</li>
+  <li>
+<em>“Uses a TD approach”</em>: <strong>updates its action-value function at each step.</strong>
+</li>
+</ul>
+
+<p>Q stands for quality (quality of action). After training we’ll get the optimal Q-function.</p>
+
+<p>When choosing an action, we have to balance between exploration and exploitation with <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ϵ</mi></mrow><annotation encoding="application/x-tex">\epsilon</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathnormal">ϵ</span></span></span></span> - greedy:</p>
+
+<p><img src="https://miro.medium.com/max/700/1*AYz65tJDERsWTg2DGEJ35g.png" alt=""></p>
+
+<p>But at beginning Q table is not trained yet so we have to increase exploitation. It is done with some decreasing <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ϵ</mi></mrow><annotation encoding="application/x-tex">\epsilon</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathnormal">ϵ</span></span></span></span>.</p>
+
+<p><img src="https://miro.medium.com/max/700/1*1J2lJN48gdjeuoRBqsO_CA.png" alt=""></p>
+
+<p>The Q-learning algorithm is a 4-step process:</p>
+
+<ul>
+  <li>step1: Q-Table init</li>
+  <li>step2: Choose action (<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ϵ</mi></mrow><annotation encoding="application/x-tex">\epsilon</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathnormal">ϵ</span></span></span></span> - greedy strategy)</li>
+  <li>step3: Perform action A<sub>t</sub> and get R<sub>t+1</sub> and S<sub>t+1</sub>
+</li>
+  <li>step4: Update Q(S<sub>t</sub>, A<sub>t</sub>)</li>
+</ul>
+
+<p><img src="https://miro.medium.com/max/700/1*teZ5KRfvYjMKZnmhaWTUXg.png" alt="Update Q(S&lt;sub&gt;t&lt;/sub&gt;, A&lt;sub&gt;t&lt;/sub&gt;)"></p>
+
+<p>Why it is called <strong>off-policy</strong>? Because we don’t have the same logic to select action (<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ϵ</mi></mrow><annotation encoding="application/x-tex">\epsilon</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathnormal">ϵ</span></span></span></span> - greedy) and update Q (greedy).</p>
+
+<p>With <em>On-policy:</em> we use the <strong>same policy for acting and updating.</strong> Sarsa is such an algorithm.</p>
+
+<p><img src="https://miro.medium.com/max/700/1*gVl6V-wbX_hOoNQATx081Q.png" alt=""></p>
+
+<p>Nice and simple manual example with mouse, cheese in a maze. We run Q-learning and make all calculation by hands.</p>
+
+<p><img src="https://miro.medium.com/max/500/1*GMuThIF7aNj-V_d6hTRN8A.png" alt=""></p>
+
+<todo> </todo>
+
+<div class="alert alert-info">implement with numpy+gym this algorithm should be a nice exercise.</div>
+
+<p>There is an exercise to implement a taxi, within this <a href="https://colab.research.google.com/gist/simoninithomas/466c81aa1c2a07dd14793240c6d033c5/q-learning-with-taxi-v3.ipynb#scrollTo=20tSdDbxxK_H">notebook</a> at colab google. Taxi V3 is an env from opengym.</p>
+
+<h2 id="3321---back-to-2018---chapter-3---deep-q-learning-with-doom">
+<a class="anchor" href="#3321---back-to-2018---chapter-3---deep-q-learning-with-doom" aria-hidden="true"><span class="octicon octicon-link"></span></a>(3/3/21) - back to 2018 - Chapter 3 - Deep Q-learning with Doom</h2>
+
+<p><a href="https://medium.freecodecamp.org/an-introduction-to-deep-q-learning-lets-play-doom-54d02d8017d8">Article</a>, <a href="https://github.com/simoninithomas/Deep_reinforcement_learning_Course/blob/master/Deep%20Q%20Learning/Doom/Deep%20Q%20learning%20with%20Doom.ipynb">Notebook</a>, <a href="https://youtu.be/gCJyVX98KJ4">Video</a></p>
+
+<p>We’ll create an agent that learns to play Doom. Doom is a big  environment with a gigantic state space (millions of different states).  Creating and updating a Q-table for that environment would not be  efficient at all.</p>
+
+<p>The best idea in this case is to create a <a href="http://neuralnetworksanddeeplearning.com/">neural network</a> that will approximate, given a state, the different Q-values for each action.</p>
+
+<p><img src="https://cdn-media-1.freecodecamp.org/images/1*w5GuxedZ9ivRYqM_MLUxOQ.png" alt=""></p>
+
+<p><img src="https://cdn-media-1.freecodecamp.org/images/1*LglEewHrVsuEGpBun8_KTg.png" alt=""></p>
+
+<p>Addresses pb of temporal limitation: get multiple frames to have sense of motion.</p>
+
+<p>Video is nice because it goes from start and follows closely all steps.</p>
+
+<p>I wil try to implement in my own by creating an environment and running under a clone of Deep_reinforcement_learning_Course <a href="https://github.com/simoninithomas/Deep_reinforcement_learning_Course">Thomas’s repo</a></p>
+
+<p>Here at <a href="https://github.com/castorfou/Deep_reinforcement_learning_Course/blob/master/Deep%20Q%20Learning/Doom/Deep%20Q%20learning%20with%20Doom.ipynb">Deep Q learning with Doom.ipynb</a></p>
+
+<p>I had to switch to tensorflow-gpu 1.13. Manage some cuda memory issue. But then was able to run it.</p>
+
+<p>However as Thomas says, I should do it step by step on my own.</p>
+
+<h2 id="31021---chapter-4-improvements-in-deep-q-learning-v1">
+<a class="anchor" href="#31021---chapter-4-improvements-in-deep-q-learning-v1" aria-hidden="true"><span class="octicon octicon-link"></span></a>(3/10/21) - Chapter 4: Improvements in Deep Q Learning V1</h2>
+
+<p><a href="https://medium.freecodecamp.org/improvements-in-deep-q-learning-dueling-double-dqn-prioritized-experience-replay-and-fixed-58b130cc5682">Article</a>, <a href="https://github.com/simoninithomas/Deep_reinforcement_learning_Course/blob/master/Dueling%20Double%20DQN%20with%20PER%20and%20fixed-q%20targets/Dueling%20Deep%20Q%20Learning%20with%20Doom%20(%2B%20double%20DQNs%20and%20Prioritized%20Experience%20Replay).ipynb">Notebook</a>, <a href="https://www.youtube.com/watch?v=-Ynjw0Vl3i4&amp;feature=emb_title">Video</a></p>
+
+<p>four strategies that improve — dramatically — the training and the results of our DQN agents:</p>
+
+<ul>
+  <li>fixed Q-targets</li>
+  <li>double DQNs</li>
+  <li>dueling DQN (aka DDQN)</li>
+  <li>Prioritized Experience Replay (aka PER)</li>
+</ul>
+
+<p><strong>fixed Q-targets</strong> to avoid chasing a moving target</p>
+
+<ul>
+  <li>Using a separate network with a fixed parameter (let’s call it w-) for estimating the TD target.</li>
+  <li>At every <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">T</mi></mrow><annotation encoding="application/x-tex">\Tau</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathrm">T</span></span></span></span> step, we copy the parameters from our DQN network to update the target network.</li>
+</ul>
+
+<p><img src="https://cdn-media-1.freecodecamp.org/images/1*D9i0I2EO7LKL2aAb2HLfTg.png" alt=""></p>
+
+<p><a href="https://www.freecodecamp.org/news/improvements-in-deep-q-learning-dueling-double-dqn-prioritized-experience-replay-and-fixed-58b130cc5682/">Improvements in Deep Q Learning: Dueling Double DQN, Prioritized Experience Replay, and fixed…</a></p>
+
+<p><em>Implementation</em></p>
+
+<p>Implementing fixed q-targets is pretty straightforward:</p>
+
+<ul>
+  <li>
+    <p>First, we create two networks (<code class="language-plaintext highlighter-rouge">DQNetwork</code>, <code class="language-plaintext highlighter-rouge">TargetNetwork</code>)</p>
+  </li>
+  <li>
+    <p>Then, we create a function that will take our <code class="language-plaintext highlighter-rouge">DQNetwork</code> parameters and copy them to our <code class="language-plaintext highlighter-rouge">TargetNetwork</code></p>
+  </li>
+  <li>
+    <p>Finally, during the training, we calculate the TD target using our target network. We update the target network with the <code class="language-plaintext highlighter-rouge">DQNetwork</code> every <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">T</mi></mrow><annotation encoding="application/x-tex">\Tau</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathrm">T</span></span></span></span> step (<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">T</mi></mrow><annotation encoding="application/x-tex">\Tau</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathrm">T</span></span></span></span> is an hyper-parameter that we define).</p>
+  </li>
+</ul>
+
+<p><strong>double DQNs</strong> to handle overestimating of Q-values (at the beginning of training, taking the maximum q value (which is noisy) as the best action to take can lead to false positives)</p>
+
+<p>we move from this TD target logic</p>
+
+<p><img src="https://cdn-media-1.freecodecamp.org/images/1*KsQ46R8zyTQlKGv91xi6ww.png" alt=""></p>
+
+<p>to the use of 2 networks</p>
+
+<ul>
+  <li>use our DQN network to select what is the best action to take for the next state (the action with the highest Q value).</li>
+  <li>use our target network to calculate the target Q value of taking that action at the next state.</li>
+</ul>
+
+<p><img src="https://cdn-media-1.freecodecamp.org/images/1*g5l4q162gDRZAAsFWtX7Nw.png" alt=""></p>
+
+<p><em>Implementation</em></p>
+
+<p><img src="https://cdn-media-1.freecodecamp.org/images/1*oyGR6gJ4WyqeKOfq0Cd8iQ.png" alt=""></p>
+
+<p><strong>Dueling DQN (aka DDQN)</strong></p>
+
+<p>based on this paper <a href="https://arxiv.org/pdf/1511.06581.pdf">Dueling Network Architectures for Deep Reinforcement Learning</a>.</p>
+
+<p>With DDQN, we want to separate the estimator of these two elements, using two new streams:</p>
+
+<ul>
+  <li>one that estimates the <strong>state value V(s)</strong>
+</li>
+  <li>one that estimates the <strong>advantage for each action A(s,a)</strong>
+</li>
+</ul>
+
+<p><img src="https://cdn-media-1.freecodecamp.org/images/1*FkHqwA2eSGixdS-3dvVoMA.png" alt=""></p>
+
+<p>and this can be combined with <strong>Prioritized experience replay</strong>.</p>
+
+<p>This is nicely explained in this <a href="https://jaromiru.com/2016/11/07/lets-make-a-dqn-double-learning-and-prioritized-experience-replay/">article</a>. DDQN explanation is clearer than Thomas’.</p>
+
+<p>The key here is to deal efficiently with experiences. When treating all samples the same,  we are not using the fact that we can learn more from some transitions than from others. Prioritized Experience Replay (PER) is one strategy that tries to leverage this fact by changing the sampling distribution.</p>
+
+<p>I guess there are several options to manage this prioritization (we would prefer transitions that do not fit well to our current estimate of Q function). And a key aspect is the performance of this selection. One implementation is SumTree.</p>
+
+<p>I have to see full implementation in the notebook to fully understand the logic.</p>
+
+<p>About the <strong>video</strong></p>
+
+<p>Thomas has insisted about the importance to master these architecture (DQN then DDQN, etc) before going further with state of the art architectures (Policy Gradient, PPO…)</p>
+
+<p>Approach in videos is now different. In previous videos it was about explaining articles. Now it is more turned to implementation details based on notebooks.</p>
+
+<p>Thomas has given a reference to Arthur Juliani who is a senior ML engineer at <a href="https://unity.com/fr/products/machine-learning-agents">Unity</a>. I would like to browse though this reference and see what can be done.</p>
+
+<p>Should follow video and run/update notebook in //.</p>
+
+<h2 id="31721---chapter-5-policy-gradients-v1">
+<a class="anchor" href="#31721---chapter-5-policy-gradients-v1" aria-hidden="true"><span class="octicon octicon-link"></span></a>(3/17/21) - Chapter 5: Policy Gradients V1</h2>
+
+<p><a href="https://www.freecodecamp.org/news/an-introduction-to-policy-gradients-with-cartpole-and-doom-495b5ef2207f/">Article</a>, <a href="https://github.com/simoninithomas/Deep_reinforcement_learning_Course/tree/master/Policy%20Gradients">Notebook</a>, <a href="https://www.youtube.com/watch?v=wLTQRuizVyE">Video</a></p>
+
+<p>In policy-based methods, instead of learning a value function that tells us what is the expected sum of rewards given a state and an action, we  learn directly the policy function that maps state to action (select  actions without using a value function).</p>
+
+<p>3 main advantages to use Policy Gradients vs Q learning:</p>
+
+<ul>
+  <li>convergence - have better convergence properties</li>
+  <li>effective in high dimension, or with continuous actions</li>
+  <li>stochastic policy - no need for exploration,/exploitation tradeoff</li>
+</ul>
+
+<p>But can be longer to train.</p>
+
+<p><strong>Policy search</strong></p>
+
+<p>We can dfine our policy as the probability distribution of actions (for a given state)</p>
+
+<p><img src="https://cdn-media-1.freecodecamp.org/images/0*354cfoILK19WFTWa." alt=""></p>
+
+<p>And how good is this policy? Measured with J(<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>θ</mi></mrow><annotation encoding="application/x-tex">\theta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">θ</span></span></span></span>)</p>
+
+<p><img src="https://cdn-media-1.freecodecamp.org/images/0*PfUAJaIGoEsvfbCG." alt=""></p>
+
+<p>We must find <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>θ</mi></mrow><annotation encoding="application/x-tex">\theta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">θ</span></span></span></span> to maximize J(<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>θ</mi></mrow><annotation encoding="application/x-tex">\theta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">θ</span></span></span></span>). How?</p>
+
+<p>2 steps:</p>
+
+<ul>
+  <li>Measure the quality of a π (policy) with a policy score function J(θ)</li>
+  <li>Use policy gradient ascent to find the best parameter θ that improves our π.</li>
+</ul>
+
+<p><strong>the Policy Score function J(θ)</strong></p>
+
+<p>3 ways (maybe more)</p>
+
+<p>Calculate the mean of the return from the first time step (G1). This is the cumulative discounted reward for the entire episode.</p>
+
+<p><img src="https://cdn-media-1.freecodecamp.org/images/1*tP4l4IrIG3aMLTrMt-1-HA.png" alt=""></p>
+
+<p>In a continuous environment, we can use the average value, because we can’t rely on a specific start state. Each state value is now weighted (because some happen more than others) by  the probability of the occurrence of the respected state.</p>
+
+<p><img src="https://cdn-media-1.freecodecamp.org/images/1*S-XLkrvPuVUqLrFW1hmIMg.png" alt=""></p>
+
+<p>Third, we can use the average reward per time step. The idea here is that we want to get the most reward per time step.</p>
+
+<p><img src="https://cdn-media-1.freecodecamp.org/images/1*3SejRRby6vAnThZ8c2UaQg.png" alt=""></p>
+
+<p><strong>Policy gradient ascent</strong></p>
+
+<p>because we want to maximize our Policy score function</p>
+
+<p><img src="https://cdn-media-1.freecodecamp.org/images/0*oh-lF13hYWt2Bd6V." alt=""></p>
+
+<p>The solution will be to use the Policy Gradient Theorem. This provides  an analytic expression for the gradient ∇ of J(θ) (performance) with  respect to policy θ that does not involve the differentiation of the  state distribution. (using <a href="http://blog.shakirm.com/2015/11/machine-learning-trick-of-the-day-5-log-derivative-trick/">likelihood ratio trick</a>)</p>
+
+<p><img src="https://cdn-media-1.freecodecamp.org/images/1*iKhO5anOAfc3oqJOM2i_8A.png" alt=""></p>
+
+<p>It gives</p>
+
+<p><img src="https://cdn-media-1.freecodecamp.org/images/1*zjEh737KfmDUzNECjW4e4w.png" alt=""></p>
+
+<p>R(<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>τ</mi></mrow><annotation encoding="application/x-tex">\tau</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.1132em;">τ</span></span></span></span>) is like a scalar value score.</p>
+
+<p><strong>Implementation</strong></p>
+
+<p>As with the previous section, this is good to watch the video at the same time.</p>
+
+<p>And now this is the implementation in</p>
+
+<p><a href="https://github.com/castorfou/Deep_reinforcement_learning_Course/blob/master/Policy%20Gradients/Doom%20Deathmatch/Doom-deathmatch%20REINFORCE%20Monte%20Carlo%20Policy%20gradients.ipynb">doom deathmatch notebook</a></p>
+
+<p><img src="https://github.com/castorfou/Deep_reinforcement_learning_Course/raw/master/Policy%20Gradients/Doom%20Deathmatch/assets/doomPG1.png" alt=""></p>
+
+<p>as with Pong, we <a href="https://danieltakeshi.github.io/2016/11/25/frame-skipping-and-preprocessing-for-deep-q-networks-on-atari-2600-games/">stack</a> frames to understand dynamic with deque.</p>
+
+<p>Even with GPU growth setup, I run an error after the 1st epoch.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>==========================================
+Epoch:  1 / 5000
+
+Number of training episodes: 15
+Total reward: 7.0
+Mean Reward of that batch 0.4666666666666667
+Average Reward of all training: 0.4666666666666667
+Max reward for a batch so far: 7.0
+</code></pre></div></div>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ResourceExhaustedError: OOM when allocating tensor with shape[5030,32,24,39] and <span class="nb">type </span>float on /job:localhost/replica:0/task:0/device:GPU:0 by allocator GPU_0_bfc
+	 <span class="o">[[]]</span>
+Hint: If you want to see a list of allocated tensors when OOM happens, add report_tensor_allocations_upon_oom to RunOptions <span class="k">for </span>current allocation info.
+</code></pre></div></div>
+
+<p>I have to reduce batch size (to 1000) to make it work.</p>
+
+<p>And I can monitor gpu memory consumption with <code class="language-plaintext highlighter-rouge">watch nvidia-smi</code></p>
+
+<p><img src="../images/watch_nvidia_smi.png" alt=""></p>
+
+<p>or we can use <code class="language-plaintext highlighter-rouge">gpustat -i 2</code></p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>[0] Quadro RTX 4000</td>
+      <td>59’C,  <strong>34 %</strong>,   39 W</td>
+      <td>7819 /  7982 MB</td>
+      <td>explore(6729M) gdm(162M) explore(388M) explore(282M) explore(86M) explore(89M) explore(3M)</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="31921---chapter-6-advantage-actor-critic-a2c-and-asynchronous-advantage-actor-critic-a3c-v1">
+<a class="anchor" href="#31921---chapter-6-advantage-actor-critic-a2c-and-asynchronous-advantage-actor-critic-a3c-v1" aria-hidden="true"><span class="octicon octicon-link"></span></a>(3/19/21) - Chapter 6: Advantage Actor Critic (A2C) and Asynchronous Advantage Actor Critic (A3C) V1</h2>
+
+<p><a href="https://www.freecodecamp.org/news/an-intro-to-advantage-actor-critic-methods-lets-play-sonic-the-hedgehog-86d6240171d/">Article</a>, <a href="https://github.com/simoninithomas/Deep_reinforcement_learning_Course/tree/master/A2C%20with%20Sonic%20the%20Hedgehog">Notebook</a>, <a href="https://www.youtube.com/watch?v=GCfUdkCL7FQ">Video</a></p>
+
+<p>“hybrid method”: <strong>Actor Critic</strong>. We’ll using two neural networks:</p>
+
+<ul>
+  <li>an <strong>Actor</strong> that controls how our agent behaves (policy-based)</li>
+  <li>a <strong>Critic</strong> that measures how good the action taken is (value-based)</li>
+</ul>
+
+<p><img src="https://cdn-media-1.freecodecamp.org/images/1*e1N-YzQmJt-5KwUkdUvAHg.png" alt=""></p>
+
+<p>Actor is using a <strong>policy</strong> function 
+<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>π</mi><mo stretchy="false">(</mo><mi>s</mi><mo separator="true">,</mo><mi>a</mi><mo separator="true">,</mo><mi>θ</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\pi(s, a, \theta)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">π</span><span class="mopen">(</span><span class="mord mathnormal">s</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathnormal">a</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">θ</span><span class="mclose">)</span></span></span></span>
+Critic is using a <strong>value</strong> function</p>
+
+<p><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover accent="true"><mi>q</mi><mo stretchy="true">undefined</mo></mover><mo stretchy="false">(</mo><mi>s</mi><mo separator="true">,</mo><mi>a</mi><mo separator="true">,</mo><mi>w</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\widehat{q}(s,a,w)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord accent"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.67056em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">q</span></span><span class="svg-align" style="width:calc(100% - 0.16668em);margin-left:0.16668em;top:-3.43056em;"><span class="pstrut" style="height:3em;"></span><span style="height:0.24em;"><svg width="100%" height="0.24em" viewbox="0 0 1062 239" preserveaspectratio="none"><path d="M529 0h5l519 115c5 1 9 5 9 10 0 1-1 2-1 3l-4 22
+c-1 5-5 9-11 9h-2L532 67 19 159h-2c-5 0-9-4-11-9l-5-22c-1-6 2-12 8-13z"></path></svg></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.19444em;"><span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathnormal">s</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathnormal">a</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathnormal" style="margin-right:0.02691em;">w</span><span class="mclose">)</span></span></span></span>
+Which means 2 sets of weights to be optimized separately <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>θ</mi></mrow><annotation encoding="application/x-tex">\theta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">θ</span></span></span></span> and w.</p>
+
+<p><img src="https://cdn-media-1.freecodecamp.org/images/1*KlX2-kNXRYLAYpdnI8VPiA.png" alt=""></p>
+
+<p>We can use advantage function to stabilize learning:</p>
+
+<p><img src="https://cdn-media-1.freecodecamp.org/images/1*SvSFYWx5-u5zf38baqBgyQ.png" alt=""></p>
+
+<h4 id="two-different-strategies-asynchronous-or-synchronous">
+<a class="anchor" href="#two-different-strategies-asynchronous-or-synchronous" aria-hidden="true"><span class="octicon octicon-link"></span></a>Two different strategies: Asynchronous or Synchronous</h4>
+
+<p>We have two different strategies to implement an Actor Critic agent:</p>
+
+<ul>
+  <li>A2C (aka Advantage Actor Critic)</li>
+  <li>A3C (aka Asynchronous Advantage Actor Critic)</li>
+</ul>
+
+<p>Here we focus on A2C.</p>
+
+<p><strong>(3/22/21) - Implementation and video</strong></p>
+
+<p>It is a little bit confusing. I won’t run it. I would have liked a more pregressive approach and to understand all steps Thomas did to get to that final implementation.</p>
+
+<h2 id="32421---chapter-7-proximal-policy-optimization-ppo-v1">
+<a class="anchor" href="#32421---chapter-7-proximal-policy-optimization-ppo-v1" aria-hidden="true"><span class="octicon octicon-link"></span></a>(3/24/21) - Chapter 7: Proximal Policy Optimization PPO V1</h2>
+
+<p><a href="https://towardsdatascience.com/proximal-policy-optimization-ppo-with-sonic-the-hedgehog-2-and-3-c9c21dbed5e">Article</a>, <a href="https://github.com/simoninithomas/Deep_reinforcement_learning_Course/tree/master/PPO%20with%20Sonic%20the%20Hedgehog">Notebook</a></p>
+
+<p>The central idea of Proximal Policy Optimization is to avoid having too large policy update. (we use a ratio that will tells us the difference between our new and old policy and clip this ratio from 0.8 to 1.2)</p>
+
+<p><strong>Clipped Surrogate Objective Function</strong></p>
+
+<p><img src="https://miro.medium.com/max/700/0*Ab-_UqHukYN6syxS" alt=""></p>
+
+<p>We will penalize changes that lead to a ratio that will away from 1 (in the paper ratio can only vary from 0.8 to 1.2). <strong>By doing that we’ll ensure that not having too large policy update because the new policy can’t be too different from the older one.</strong></p>
+
+<p>2 implementations are known TRPO (Trust Region Policy Optimization) and PPO clip. TRPO being complex and costly, we focus on PPO:</p>
+
+<p><img src="https://miro.medium.com/max/700/0*Dk8XFEOzI7yaSfLE" alt=""></p>
+
+<p>And the final loss will be:</p>
+
+<p><img src="https://miro.medium.com/max/700/1*T0D50EPz-oqGDn55uHv9IA.png" alt=""></p>
+
+<p><strong>Now the <a href="https://github.com/castorfou/Deep_reinforcement_learning_Course/tree/master/PPO%20with%20Sonic%20the%20Hedgehog">implementation</a></strong></p>
+
+<p>By looking at the implementation, I ran into <a href="https://github.com/DLR-RM/stable-baselines3">Stable baselines3</a>.</p>
+
+<p>This is a major update of Stable Baselines based on pytorch. It seems interesting!</p>
+
+<p>I like this comment from Stable Baselines3 in the <a href="https://araffin.github.io/post/sb3/">v1.0 blog post</a>:</p>
+
+<blockquote>
+  <p><strong>Motivation</strong></p>
+
+  <p>Deep reinforcement learning (RL) research has grown rapidly in recent years, yet results are often  <a href="https://arxiv.org/abs/1709.06560">difficult to reproduce</a>. A major challenge is that small implementation details can have a substantial effect on performance – often greater than the  <a href="https://iclr.cc/virtual_2020/poster_r1etN1rtPB.html">difference between algorithms</a>. It is particularly important that implementations used as experimental <em>baselines</em> are reliable; otherwise, novel algorithms compared to weak baselines lead to inflated estimates of performance improvements.</p>
+
+  <p>To help with this problem, we present Stable-Baselines3 (SB3), an  open-source framework implementing seven commonly used model-free deep  RL algorithms, relying on the  <a href="https://github.com/openai/gym">OpenAI Gym interface</a>.</p>
+</blockquote>
+
+<p>I will create a new blog entry about Stable Baselines3.</p>
+
+<p>as for previous notebook, I need to purchase Sonic2-3 to make it worked. Not for now maybe later.</p>
+
+  </div><!-- from https://github.com/utterance/utterances -->
+<script src="https://utteranc.es/client.js"
+        repo="castorfou/blog"
+        issue-term="title"
+        label="blogpost-comment"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script><a class="u-url" href="/blog/reinforcement%20learning/2021/02/19/Deep-Reinforcement-Learning-Course-by-Thomas-Simonini.html" hidden></a>
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/blog/"></data>
+
+  <div class="wrapper">
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col">
+        <p class="feed-subscribe">
+          <a href="/blog/feed.xml">
+            <svg class="svg-icon orange">
+              <use xlink:href="/blog/assets/minima-social-icons.svg#rss"></use>
+            </svg><span>Subscribe</span>
+          </a>
+        </p>
+      </div>
+      <div class="footer-col">
+        <p>An easy to use blogging platform with support for Jupyter Notebooks.</p>
+      </div>
+    </div>
+
+    <div class="social-links"><ul class="social-media-list"><li><a rel="me" href="https://github.com/fastai" target="_blank" title="fastai"><svg class="svg-icon grey"><use xlink:href="/blog/assets/minima-social-icons.svg#github"></use></svg></a></li><li><a rel="me" href="https://twitter.com/fastdotai" target="_blank" title="fastdotai"><svg class="svg-icon grey"><use xlink:href="/blog/assets/minima-social-icons.svg#twitter"></use></svg></a></li></ul>
+</div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>

@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="twitter:card" content="summary_large_image" /><!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Fast read Excel files with pandas | fastpages</title>
+<meta name="generator" content="Jekyll v4.1.1" />
+<meta property="og:title" content="Fast read Excel files with pandas" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="my way to fast read big Excel files with Pandas using cvs cache" />
+<meta property="og:description" content="my way to fast read big Excel files with Pandas using cvs cache" />
+<link rel="canonical" href="https://castorfou.github.io/blog/pandas/2020/09/14/fast-read-excel-pandas.html" />
+<meta property="og:url" content="https://castorfou.github.io/blog/pandas/2020/09/14/fast-read-excel-pandas.html" />
+<meta property="og:site_name" content="fastpages" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2020-09-14T00:00:00-05:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Fast read Excel files with pandas" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2020-09-14T00:00:00-05:00","datePublished":"2020-09-14T00:00:00-05:00","description":"my way to fast read big Excel files with Pandas using cvs cache","headline":"Fast read Excel files with pandas","mainEntityOfPage":{"@type":"WebPage","@id":"https://castorfou.github.io/blog/pandas/2020/09/14/fast-read-excel-pandas.html"},"url":"https://castorfou.github.io/blog/pandas/2020/09/14/fast-read-excel-pandas.html"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/blog/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="https://castorfou.github.io/blog/feed.xml" title="fastpages" /><link rel="shortcut icon" type="image/x-icon" href="/blog/images/favicon.ico"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Primer/15.2.0/primer.css" integrity="sha512-xTz2ys4coGAOz8vuV1NcQBkgVmKhsSEtjbqyMJbBHRplFuvKIUo6xhLHpAyPt9mfR6twHJgn9OgVLuqOvjeBhg==" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" />
+
+<script>
+function wrap_img(fn) {
+    if (document.attachEvent ? document.readyState === "complete" : document.readyState !== "loading") {
+        var elements = document.querySelectorAll(".post img");
+        Array.prototype.forEach.call(elements, function(el, i) {
+            if (el.getAttribute("title") && (el.className != "emoji")) {
+                const caption = document.createElement('figcaption');
+                var node = document.createTextNode(el.getAttribute("title"));
+                caption.appendChild(node);
+                const wrapper = document.createElement('figure');
+                wrapper.className = 'image';
+                el.parentNode.insertBefore(wrapper, el);
+                el.parentNode.removeChild(el);
+                wrapper.appendChild(el);
+                wrapper.appendChild(caption);
+            }
+        });
+    } else { document.addEventListener('DOMContentLoaded', fn); }
+}
+window.onload = wrap_img;
+</script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function(){
+    // add link icon to anchor tags
+    var elem = document.querySelectorAll(".anchor-link")
+    elem.forEach(e => (e.innerHTML = '<i class="fas fa-link fa-xs"></i>'));
+    });
+</script>
+</head>
+<body><header class="site-header">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/blog/">fastpages</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/blog/about/">About Me</a><a class="page-link" href="/blog/search/">Search</a><a class="page-link" href="/blog/categories/">Tags</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">Fast read Excel files with pandas</h1><p class="page-description">my way to fast read big Excel files with Pandas using cvs cache</p><p class="post-meta post-meta-title"><time class="dt-published" datetime="2020-09-14T00:00:00-05:00" itemprop="datePublished">
+        Sep 14, 2020
+      </time>
+       • <span class="read-time" title="Estimated read time">
+    
+    
+      2 min read
+    
+</span></p>
+
+    
+      <p class="category-tags"><i class="fas fa-tags category-tags-icon"></i></i> 
+      
+        <a class="category-tags-link" href="/blog/categories/#pandas">pandas</a>
+        
+      
+      </p>
+    
+
+    
+      </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <ul id="toc" class="section-nav">
+<li class="toc-entry toc-h2"><a href="#Problem-description">Problem description </a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#initial-settings">initial settings </a></li>
+<li class="toc-entry toc-h3"><a href="#measure_time-decorator">measure_time decorator </a></li>
+<li class="toc-entry toc-h3"><a href="#read-big-excel-file-with-pandas">read big excel file with pandas </a></li>
+<li class="toc-entry toc-h3"><a href="#read-converted-csv-file-(turned-to-csv-from-excel-using-excel)">read converted csv file (turned to csv from excel using excel) </a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="#Caching-library">Caching library </a></li>
+</ul><!--
+#################################################
+### THIS FILE WAS AUTOGENERATED! DO NOT EDIT! ###
+#################################################
+# file to edit: _notebooks/2020-09-14-fast-read-excel-pandas.ipynb
+-->
+
+<div class="container" id="notebook-container">
+        
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Problem-description">
+<a class="anchor" href="#Problem-description" aria-hidden="true"><span class="octicon octicon-link"></span></a>Problem description<a class="anchor-link" href="#Problem-description"> </a>
+</h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="initial-settings">
+<a class="anchor" href="#initial-settings" aria-hidden="true"><span class="octicon octicon-link"></span></a>initial settings<a class="anchor-link" href="#initial-settings"> </a>
+</h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="measure_time-decorator">
+<a class="anchor" href="#measure_time-decorator" aria-hidden="true"><span class="octicon octicon-link"></span></a>measure_time decorator<a class="anchor-link" href="#measure_time-decorator"> </a>
+</h3>
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="n">wraps</span>
+<span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">time</span>
+<span class="k">def</span> <span class="nf">measure_time</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
+    <span class="nd">@wraps</span><span class="p">(</span><span class="n">func</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">_time_it</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="n">start</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">time</span><span class="p">()</span> <span class="o">*</span> <span class="mi">1000</span><span class="p">))</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="k">finally</span><span class="p">:</span>
+            <span class="n">end_</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">time</span><span class="p">()</span> <span class="o">*</span> <span class="mi">1000</span><span class="p">))</span> <span class="o">-</span> <span class="n">start</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Total execution time: </span><span class="si">{</span><span class="n">end_</span> <span class="k">if</span> <span class="n">end_</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="k">else</span> <span class="mi">0</span><span class="si">}</span><span class="s2"> ms"</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">_time_it</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="read-big-excel-file-with-pandas">
+<a class="anchor" href="#read-big-excel-file-with-pandas" aria-hidden="true"><span class="octicon octicon-link"></span></a>read big excel file with pandas<a class="anchor-link" href="#read-big-excel-file-with-pandas"> </a>
+</h3>
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">big_excel_file</span> <span class="o">=</span> <span class="n">root_data</span><span class="o">+</span><span class="s1">'/pandas-caching/big_excel_file.xlsx'</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nd">@measure_time</span>
+<span class="k">def</span> <span class="nf">load_excel</span><span class="p">(</span><span class="n">file</span><span class="p">):</span>
+    <span class="n">dataframe</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="n">file</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">dataframe</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">dataframe</span> <span class="o">=</span> <span class="n">load_excel</span><span class="p">(</span><span class="n">big_excel_file</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Total execution time: 36196 ms
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p></p>
+<div class="Toast Toast--warning googoo">
+   <span class="Toast-icon"><svg class="octicon octicon-alert" viewbox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M8.22 1.754a.25.25 0 00-.44 0L1.698 13.132a.25.25 0 00.22.368h12.164a.25.25 0 00.22-.368L8.22 1.754zm-1.763-.707c.659-1.234 2.427-1.234 3.086 0l6.082 11.378A1.75 1.75 0 0114.082 15H1.918a1.75 1.75 0 01-1.543-2.575L6.457 1.047zM9 11a1 1 0 11-2 0 1 1 0 012 0zm-.25-5.25a.75.75 0 00-1.5 0v2.5a.75.75 0 001.5 0v-2.5z"></path></svg></span>
+   <span class="Toast-content">Waouh, 36 sec to read this file!</span>
+</div>
+
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="read-converted-csv-file-(turned-to-csv-from-excel-using-excel)">
+<a class="anchor" href="#read-converted-csv-file-(turned-to-csv-from-excel-using-excel)" aria-hidden="true"><span class="octicon octicon-link"></span></a>read converted csv file (turned to csv from excel using excel)<a class="anchor-link" href="#read-converted-csv-file-(turned-to-csv-from-excel-using-excel)"> </a>
+</h3>
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">csv_file</span> <span class="o">=</span> <span class="n">root_data</span><span class="o">+</span><span class="s1">'/pandas-caching/big_csv_file_turned_from_excel.csv'</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nd">@measure_time</span>
+<span class="k">def</span> <span class="nf">load_csv</span><span class="p">(</span><span class="n">file</span><span class="p">):</span>
+    <span class="n">dataframe</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">file</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s1">';'</span><span class="p">,</span> <span class="n">decimal</span><span class="o">=</span><span class="s1">','</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">dataframe</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_csv</span> <span class="o">=</span> <span class="n">load_csv</span><span class="p">(</span><span class="n">csv_file</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Total execution time: 836 ms
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p></p>
+<div class="Toast Toast--warning googoo">
+   <span class="Toast-icon"><svg class="octicon octicon-alert" viewbox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M8.22 1.754a.25.25 0 00-.44 0L1.698 13.132a.25.25 0 00.22.368h12.164a.25.25 0 00.22-.368L8.22 1.754zm-1.763-.707c.659-1.234 2.427-1.234 3.086 0l6.082 11.378A1.75 1.75 0 0114.082 15H1.918a1.75 1.75 0 01-1.543-2.575L6.457 1.047zM9 11a1 1 0 11-2 0 1 1 0 012 0zm-.25-5.25a.75.75 0 00-1.5 0v2.5a.75.75 0 001.5 0v-2.5z"></path></svg></span>
+   <span class="Toast-content">Much better, 0.8 sec!</span>
+</div>
+
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Caching-library">
+<a class="anchor" href="#Caching-library" aria-hidden="true"><span class="octicon octicon-link"></span></a>Caching library<a class="anchor-link" href="#Caching-library"> </a>
+</h2>
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+
+<span class="k">def</span> <span class="nf">read_CachedXLS</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">forceReload</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="o">**</span><span class="n">options</span><span class="p">):</span>
+    <span class="sd">"""</span>
+<span class="sd">    Part d'un fichier excel natif (filename).</span>
+<span class="sd">    Si le dataframe caché correspondant n'existe pas encore, alors sauve le dataframe caché au format csv dans le rep source.</span>
+<span class="sd">    (s'il existe et si forceReload==True, alors écrase le dataframe caché existant par une nouvelle version)</span>
+<span class="sd">    Lit le dataframe caché correspondant avec les **options et retourne le dataframe.</span>
+<span class="sd">    </span>
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    &gt;&gt;&gt; filename = '/mnt/z/data/Stam-CC/ExportData 25625.xlsx'</span>
+<span class="sd">        forceReload = False</span>
+<span class="sd">        option={'dayfirst':True, 'parse_dates':['Fecha de Medida', 'Fecha de Fabricacion'], 'sheetname':0}</span>
+<span class="sd">        getCachedXLSRaw(filename, forceRelead, **option).info()</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    filename : string</span>
+<span class="sd">        Emplacement du fichier XLS. Avec l'extension. Format complet</span>
+<span class="sd">        Ex: '/mnt/z/data/Stam-CC/ExportData 25625.xlsx'</span>
+<span class="sd">    forceReload : boolean, optional, default value = False</span>
+<span class="sd">        Si forceReload == True, le fichier sera relu et sauvé même s'il existe déjà en cache</span>
+<span class="sd">    options : **keyword args, optional</span>
+<span class="sd">        Arguments de lecture du fichier XLS :  https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.read_csv.html</span>
+<span class="sd">        Ex: sheetname=1</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    dataframe</span>
+<span class="sd">        Dataframe correspondant </span>
+<span class="sd">    """</span>
+    
+    <span class="c1">#split pour ne garder que le nom sans le chemin de filename : Stam-CC/ExportData 25625 --&gt; ExportData 25625</span>
+    <span class="n">dataframe_filename</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span><span class="o">+</span><span class="s1">'/'</span><span class="o">+</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span><span class="o">+</span><span class="s1">'.csv'</span>
+    <span class="c1">#bug de pandas.to_csv quand il y a des espaces ?</span>
+    <span class="n">dataframe_filename</span> <span class="o">=</span> <span class="n">dataframe_filename</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">" "</span><span class="p">,</span> <span class="s2">"_"</span><span class="p">)</span>
+
+    <span class="n">dataframe</span><span class="o">=</span><span class="p">[]</span>
+    <span class="n">xls_toget</span> <span class="o">=</span> <span class="kc">False</span>
+    
+    <span class="c1">#print(dataframe_filename)</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">forceReload</span> <span class="ow">and</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">dataframe_filename</span><span class="p">)):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">"Cached file "</span><span class="o">+</span><span class="n">dataframe_filename</span><span class="o">+</span><span class="s2">" déjà existant mais forceReload=True - FORCE RELOAD"</span><span class="p">)</span>
+        <span class="n">xls_toget</span> <span class="o">=</span> <span class="kc">True</span>
+        
+    <span class="k">if</span> <span class="p">(</span><span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">dataframe_filename</span><span class="p">)):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">"Cached file  "</span><span class="o">+</span><span class="n">dataframe_filename</span><span class="o">+</span><span class="s2">" inexistant - read_CachedXLS"</span><span class="p">)</span>
+        <span class="n">xls_toget</span> <span class="o">=</span> <span class="kc">True</span>
+        
+    <span class="k">if</span> <span class="p">(</span><span class="n">xls_toget</span><span class="p">):</span>
+        <span class="n">dataframe</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="o">**</span><span class="n">options</span><span class="p">)</span>
+        <span class="n">dataframe</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">dataframe_filename</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">"Cached file "</span><span class="o">+</span><span class="n">dataframe_filename</span><span class="o">+</span><span class="s2">" existe en cache, relecture"</span><span class="p">)</span>
+    
+    <span class="c1">#index_col pour ignorer les n° de lignes excel </span>
+    <span class="n">options</span><span class="p">[</span><span class="s1">'sep'</span><span class="p">]</span><span class="o">=</span><span class="s1">','</span>
+    <span class="n">options</span><span class="p">[</span><span class="s1">'decimal'</span><span class="p">]</span><span class="o">=</span><span class="s1">'.'</span>
+    <span class="n">options</span><span class="p">[</span><span class="s1">'skiprows'</span><span class="p">]</span><span class="o">=</span><span class="mi">0</span>
+    <span class="n">options</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">'sheet_name'</span><span class="p">)</span>
+    <span class="n">dataframe</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">dataframe_filename</span><span class="p">,</span><span class="o">**</span><span class="n">options</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">dataframe</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">option</span><span class="o">=</span><span class="p">{</span><span class="s1">'sheet_name'</span><span class="p">:</span><span class="mi">0</span><span class="p">}</span>
+<span class="n">read_CachedXLS</span><span class="p">(</span><span class="n">big_excel_file</span><span class="p">,</span> <span class="o">**</span><span class="n">option</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"et voila"</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Cached file /mnt/z/data//pandas-caching/big_excel_file.xlsx.csv existe en cache, relecture
+et voila
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+</div>
+
+
+
+  </div><!-- from https://github.com/utterance/utterances -->
+<script src="https://utteranc.es/client.js"
+        repo="castorfou/blog"
+        issue-term="title"
+        label="blogpost-comment"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script><a class="u-url" href="/blog/pandas/2020/09/14/fast-read-excel-pandas.html" hidden></a>
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/blog/"></data>
+
+  <div class="wrapper">
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col">
+        <p class="feed-subscribe">
+          <a href="/blog/feed.xml">
+            <svg class="svg-icon orange">
+              <use xlink:href="/blog/assets/minima-social-icons.svg#rss"></use>
+            </svg><span>Subscribe</span>
+          </a>
+        </p>
+      </div>
+      <div class="footer-col">
+        <p>An easy to use blogging platform with support for Jupyter Notebooks.</p>
+      </div>
+    </div>
+
+    <div class="social-links"><ul class="social-media-list"><li><a rel="me" href="https://github.com/fastai" target="_blank" title="fastai"><svg class="svg-icon grey"><use xlink:href="/blog/assets/minima-social-icons.svg#github"></use></svg></a></li><li><a rel="me" href="https://twitter.com/fastdotai" target="_blank" title="fastdotai"><svg class="svg-icon grey"><use xlink:href="/blog/assets/minima-social-icons.svg#twitter"></use></svg></a></li></ul>
+</div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>

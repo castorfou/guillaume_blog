@@ -1,0 +1,1045 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="twitter:card" content="summary_large_image" /><!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Hello nbdev | fastpages</title>
+<meta name="generator" content="Jekyll v4.1.1" />
+<meta property="og:title" content="Hello nbdev" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="walkthrough nbdev tutorial (from fastai team)" />
+<meta property="og:description" content="walkthrough nbdev tutorial (from fastai team)" />
+<link rel="canonical" href="https://castorfou.github.io/blog/fastai/nbdev/jupyter/2021/01/12/nbdev_tutorial.html" />
+<meta property="og:url" content="https://castorfou.github.io/blog/fastai/nbdev/jupyter/2021/01/12/nbdev_tutorial.html" />
+<meta property="og:site_name" content="fastpages" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2021-01-12T00:00:00-06:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Hello nbdev" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2021-01-12T00:00:00-06:00","datePublished":"2021-01-12T00:00:00-06:00","description":"walkthrough nbdev tutorial (from fastai team)","headline":"Hello nbdev","mainEntityOfPage":{"@type":"WebPage","@id":"https://castorfou.github.io/blog/fastai/nbdev/jupyter/2021/01/12/nbdev_tutorial.html"},"url":"https://castorfou.github.io/blog/fastai/nbdev/jupyter/2021/01/12/nbdev_tutorial.html"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/blog/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="https://castorfou.github.io/blog/feed.xml" title="fastpages" /><link rel="shortcut icon" type="image/x-icon" href="/blog/images/favicon.ico"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Primer/15.2.0/primer.css" integrity="sha512-xTz2ys4coGAOz8vuV1NcQBkgVmKhsSEtjbqyMJbBHRplFuvKIUo6xhLHpAyPt9mfR6twHJgn9OgVLuqOvjeBhg==" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" />
+
+<script>
+function wrap_img(fn) {
+    if (document.attachEvent ? document.readyState === "complete" : document.readyState !== "loading") {
+        var elements = document.querySelectorAll(".post img");
+        Array.prototype.forEach.call(elements, function(el, i) {
+            if (el.getAttribute("title") && (el.className != "emoji")) {
+                const caption = document.createElement('figcaption');
+                var node = document.createTextNode(el.getAttribute("title"));
+                caption.appendChild(node);
+                const wrapper = document.createElement('figure');
+                wrapper.className = 'image';
+                el.parentNode.insertBefore(wrapper, el);
+                el.parentNode.removeChild(el);
+                wrapper.appendChild(el);
+                wrapper.appendChild(caption);
+            }
+        });
+    } else { document.addEventListener('DOMContentLoaded', fn); }
+}
+window.onload = wrap_img;
+</script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function(){
+    // add link icon to anchor tags
+    var elem = document.querySelectorAll(".anchor-link")
+    elem.forEach(e => (e.innerHTML = '<i class="fas fa-link fa-xs"></i>'));
+    });
+</script>
+</head>
+<body><header class="site-header">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/blog/">fastpages</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/blog/about/">About Me</a><a class="page-link" href="/blog/search/">Search</a><a class="page-link" href="/blog/categories/">Tags</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">Hello nbdev</h1><p class="page-description">walkthrough nbdev tutorial (from fastai team)</p><p class="post-meta post-meta-title"><time class="dt-published" datetime="2021-01-12T00:00:00-06:00" itemprop="datePublished">
+        Jan 12, 2021
+      </time>
+       • <span class="read-time" title="Estimated read time">
+    
+    
+      6 min read
+    
+</span></p>
+
+    
+      <p class="category-tags"><i class="fas fa-tags category-tags-icon"></i></i> 
+      
+        <a class="category-tags-link" href="/blog/categories/#fastai">fastai</a>
+        &nbsp;
+      
+        <a class="category-tags-link" href="/blog/categories/#nbdev">nbdev</a>
+        &nbsp;
+      
+        <a class="category-tags-link" href="/blog/categories/#jupyter">jupyter</a>
+        
+      
+      </p>
+    
+
+    
+      </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <ul id="toc" class="section-nav">
+<li class="toc-entry toc-h1"><a href="#Resources">Resources </a></li>
+<li class="toc-entry toc-h1"><a href="#Walkthrough-tutorial">Walkthrough tutorial </a>
+<ul>
+<li class="toc-entry toc-h2"><a href="#repo-creation">repo creation </a></li>
+<li class="toc-entry toc-h2"><a href="#github-pages">github pages </a></li>
+<li class="toc-entry toc-h2"><a href="#Edit-settings.ini">Edit settings.ini </a></li>
+<li class="toc-entry toc-h2"><a href="#Clone-repo">Clone repo </a></li>
+<li class="toc-entry toc-h2"><a href="#Setup-nbdev-python-environment">Setup nbdev python environment </a></li>
+<li class="toc-entry toc-h2"><a href="#Install-git-hooks">Install git hooks </a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#deal-with-conflicts">deal with conflicts </a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="#Open-00_core.ipynb">Open 00_core.ipynb </a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#create-lib-(we-start-with-a-core-module)">create lib (we start with a core module) </a></li>
+<li class="toc-entry toc-h3"><a href="#build_lib">build_lib </a></li>
+<li class="toc-entry toc-h3"><a href="#Module-Documentation">Module Documentation </a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="#Library-documentation-into-index.ipynb">Library documentation into index.ipynb </a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#create-doc">create doc </a></li>
+<li class="toc-entry toc-h3"><a href="#build_docs">build_docs </a></li>
+<li class="toc-entry toc-h3"><a href="#commit-to-publish-docs">commit to publish docs </a>
+<ul>
+<li class="toc-entry toc-h4"><a href="#init.py">init.py </a></li>
+<li class="toc-entry toc-h4"><a href="#commit-and-push">commit and push </a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h3"><a href="#And-documentation-is-ready">And documentation is ready </a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-entry toc-h1"><a href="#Going-further">Going further </a>
+<ul>
+<li class="toc-entry toc-h2"><a href="#Classes">Classes </a></li>
+<li class="toc-entry toc-h2"><a href="#autoreload">autoreload </a></li>
+<li class="toc-entry toc-h2"><a href="#launch-nbdev-scripts-directly-from-jupyter">launch nbdev scripts directly from jupyter </a></li>
+<li class="toc-entry toc-h2"><a href="#run-tests-in-parallel">run tests in parallel </a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h1"><a href="#Jekyll-to-view-documentation-locally">Jekyll to view documentation locally </a>
+<ul>
+<li class="toc-entry toc-h2"><a href="#Installation-and-setup">Installation and setup </a></li>
+<li class="toc-entry toc-h2"><a href="#Setup-our-lib-to-use-Jekyll">Setup our lib to use Jekyll </a></li>
+<li class="toc-entry toc-h2"><a href="#Use-it">Use it </a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h1"><a href="#Skipped">Skipped </a></li>
+</ul><!--
+#################################################
+### THIS FILE WAS AUTOGENERATED! DO NOT EDIT! ###
+#################################################
+# file to edit: _notebooks/2021-01-12-nbdev_tutorial.ipynb
+-->
+
+<div class="container" id="notebook-container">
+        
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Resources">
+<a class="anchor" href="#Resources" aria-hidden="true"><span class="octicon octicon-link"></span></a>Resources<a class="anchor-link" href="#Resources"> </a>
+</h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Everything is under <a href="https://nbdev.fast.ai">nbdev</a> website.</p>
+<p>3 resources worth to be mentioning:</p>
+<ul>
+<li>nbdev <a href="https://www.youtube.com/watch?v=Hrs7iEYmRmg">tutorial video</a> on youtube; 1 year old but seems still valid</li>
+<li>nbdev <a href="https://nbdev.fast.ai/tutorial">tutorial page</a>
+</li>
+<li>nbdev <a href="https://github.com/fastai/nbdev">github repo</a>
+</li>
+</ul>
+<p>What I plan to do is to watch the video part, and keep note of my progress in this blog entry.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Walkthrough-tutorial">
+<a class="anchor" href="#Walkthrough-tutorial" aria-hidden="true"><span class="octicon octicon-link"></span></a>Walkthrough tutorial<a class="anchor-link" href="#Walkthrough-tutorial"> </a>
+</h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="repo-creation">
+<a class="anchor" href="#repo-creation" aria-hidden="true"><span class="octicon octicon-link"></span></a>repo creation<a class="anchor-link" href="#repo-creation"> </a>
+</h2>
+<p>As suggested by Jeremy, I start by creating a github repo named <code>hello_nbdev</code> from a nbdev template.</p>
+<p>It is just about clicking this link: <a href="https://github.com/fastai/nbdev_template/generate">https://github.com/fastai/nbdev_template/generate</a>. If I am logged in github it will show the proper page.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="github-pages">
+<a class="anchor" href="#github-pages" aria-hidden="true"><span class="octicon octicon-link"></span></a>github pages<a class="anchor-link" href="#github-pages"> </a>
+</h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Documentation will be hosted at github (can be hosted anywhere but github seems a straightforward option) and to do that we have to setup github pages:</p>
+<blockquote>
+<p>Settings &gt; Options &gt; Github pages &gt; Source &gt; Master (branch) &gt; /docs (folder) &gt; Save</p>
+</blockquote>
+<p>And when done
+<img src="/blog/images/copied_from_nb/../images/nbdev_pages.png" alt=""></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Now we can insert this doc url as our repo website setting:</p>
+<blockquote>
+<p>repo home &gt; &lt;&gt; code &gt; about (edit repo details) &gt; Website</p>
+</blockquote>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Edit-settings.ini">
+<a class="anchor" href="#Edit-settings.ini" aria-hidden="true"><span class="octicon octicon-link"></span></a>Edit settings.ini<a class="anchor-link" href="#Edit-settings.ini"> </a>
+</h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Everything is in this file.</p>
+<p>Just edit directly from github.</p>
+<div class="highlight"><pre><span></span>lib_name = nbdev_template
+# For Enterprise Git add variable repo_name and company name
+# repo_name = analytics
+# company_name = nike
+
+user = fastai
+# description = A description of your project
+# keywords = some keywords
+# author = Your Name
+# author_email = email@example.com
+# copyright = Your Name or Company Name
+</pre></div>
+<p>to</p>
+<div class="highlight"><pre><span></span>lib_name = hello_nbdev
+user = castorfou
+description = A tutorial walkthrough with nbdev
+keywords = fastai nbdev tutorial
+author = Guillaume Ramelet
+author_email = guillaume.ramelet@gmail.com
+copyright = Guillaume R.
+</pre></div>
+<p>and commit changes</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Clone-repo">
+<a class="anchor" href="#Clone-repo" aria-hidden="true"><span class="octicon octicon-link"></span></a>Clone repo<a class="anchor-link" href="#Clone-repo"> </a>
+</h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<div class="highlight"><pre><span></span>~/git/guillaume$ git clone git@github.com:castorfou/hello_nbdev.git
+Cloning into <span class="s1">'hello_nbdev'</span>...
+remote: Enumerating objects: <span class="m">106</span>, <span class="k">done</span>.
+remote: Counting objects: <span class="m">100</span>% <span class="o">(</span><span class="m">106</span>/106<span class="o">)</span>, <span class="k">done</span>.
+remote: Compressing objects: <span class="m">100</span>% <span class="o">(</span><span class="m">94</span>/94<span class="o">)</span>, <span class="k">done</span>.
+remote: Total <span class="m">106</span> <span class="o">(</span>delta <span class="m">7</span><span class="o">)</span>, reused <span class="m">81</span> <span class="o">(</span>delta <span class="m">4</span><span class="o">)</span>, pack-reused <span class="m">0</span>
+Receiving objects: <span class="m">100</span>% <span class="o">(</span><span class="m">106</span>/106<span class="o">)</span>, <span class="m">1</span>.02 MiB <span class="p">|</span> <span class="m">2</span>.45 MiB/s, <span class="k">done</span>.
+Resolving deltas: <span class="m">100</span>% <span class="o">(</span><span class="m">7</span>/7<span class="o">)</span>, <span class="k">done</span>.
+</pre></div>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Setup-nbdev-python-environment">
+<a class="anchor" href="#Setup-nbdev-python-environment" aria-hidden="true"><span class="octicon octicon-link"></span></a>Setup nbdev python environment<a class="anchor-link" href="#Setup-nbdev-python-environment"> </a>
+</h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>It is not specifically mentionned in the video. For this walkthrough I will use my existing <code>fastai</code> environment.</p>
+<div class="highlight"><pre><span></span>~/git/guillaume$ conda activate fastai
+~/git/guillaume$ nbdev_
+nbdev_build_docs         nbdev_diff_nbs           nbdev_test_nbs
+nbdev_build_lib          nbdev_fix_merge          nbdev_trust_nbs
+nbdev_bump_version       nbdev_install_git_hooks  nbdev_update_lib
+nbdev_clean_nbs          nbdev_nb2md              nbdev_upgrade
+nbdev_conda_package      nbdev_new                
+nbdev_detach             nbdev_read_nbs
+</pre></div>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>As expected nbdev is already integrated in it.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Otherwise my guess is that I have to run 
+<code>conda install -c fastai nbdev</code> under my python env.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Install-git-hooks">
+<a class="anchor" href="#Install-git-hooks" aria-hidden="true"><span class="octicon octicon-link"></span></a>Install git hooks<a class="anchor-link" href="#Install-git-hooks"> </a>
+</h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<div class="highlight"><pre><span></span><span class="o">(</span>fastai<span class="o">)</span> ~/git/guillaume/hello_nbdev$ nbdev_install_git_hooks 
+Executing: git config --local include.path ../.gitconfig
+Success: hooks are installed and repo<span class="err">'</span>s .gitconfig is now trusted
+</pre></div>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="deal-with-conflicts">
+<a class="anchor" href="#deal-with-conflicts" aria-hidden="true"><span class="octicon octicon-link"></span></a>deal with conflicts<a class="anchor-link" href="#deal-with-conflicts"> </a>
+</h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>If needed in case of conflict, Jeremy explains one can call <code>nbdev_fix_merge filename.ipynb</code> and it will use the standard conflict marker to help you identify and fix the conflict.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Open-00_core.ipynb">
+<a class="anchor" href="#Open-00_core.ipynb" aria-hidden="true"><span class="octicon octicon-link"></span></a>Open 00_core.ipynb<a class="anchor-link" href="#Open-00_core.ipynb"> </a>
+</h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="create-lib-(we-start-with-a-core-module)">
+<a class="anchor" href="#create-lib-(we-start-with-a-core-module)" aria-hidden="true"><span class="octicon octicon-link"></span></a>create lib (we start with a core module)<a class="anchor-link" href="#create-lib-(we-start-with-a-core-module)"> </a>
+</h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Just following Jeremy's instructions.</p>
+<ul>
+<li>Create say_hello function</li>
+<li>Use it (example)</li>
+<li>Test it (assert)</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="build_lib">
+<a class="anchor" href="#build_lib" aria-hidden="true"><span class="octicon octicon-link"></span></a>build_lib<a class="anchor-link" href="#build_lib"> </a>
+</h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We can call <code>nbdev_build_lib</code> from anywhere in the repo.</p>
+<div class="highlight"><pre><span></span><span class="o">(</span>fastai<span class="o">)</span> ~/git/guillaume/hello_nbdev$ nbdev_build_lib 
+Converted 00_core.ipynb.
+Converted index.ipynb.
+</pre></div>
+<p>and it creates files, under <code>hello_nbdev</code></p>
+<div class="highlight"><pre><span></span>hello_nbdev$ ls hello_nbdev/
+core.py  __init__.py  _nbdev.py  __pycache__
+</pre></div>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Module-Documentation">
+<a class="anchor" href="#Module-Documentation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Module Documentation<a class="anchor-link" href="#Module-Documentation"> </a>
+</h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>There are 2 levels of documentation. Documentation for your library that will be in <code>index.ipynb</code> and documentation for your modules that will be directly created from your code/notebooks <code>00_core.ipynb</code>, etc</p>
+<p>And to generate this documentation it will be just a matter of calling <code>nbdev_build_docs</code>.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Library-documentation-into-index.ipynb">
+<a class="anchor" href="#Library-documentation-into-index.ipynb" aria-hidden="true"><span class="octicon octicon-link"></span></a>Library documentation into index.ipynb<a class="anchor-link" href="#Library-documentation-into-index.ipynb"> </a>
+</h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="create-doc">
+<a class="anchor" href="#create-doc" aria-hidden="true"><span class="octicon octicon-link"></span></a>create doc<a class="anchor-link" href="#create-doc"> </a>
+</h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Documentation (what will be puclished) is in <code>index.ipynb</code>.</p>
+<p>This is an <strong>actual</strong> documentation. Documentation won't be written in markdown. It will be executed as code and rendered as such. How great is that.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>To make it happen we have to import our lib just freshly generated.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>And now we can use all the part of our lib to explain how it works and why it is great.</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">say_hello</span><span class="p">(</span><span class="s2">"Guillaume"</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>'Hello Guillaume!'</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="build_docs">
+<a class="anchor" href="#build_docs" aria-hidden="true"><span class="octicon octicon-link"></span></a>build_docs<a class="anchor-link" href="#build_docs"> </a>
+</h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We have to call <code>nbdev_build_docs</code> from our repo root.</p>
+<div class="highlight"><pre><span></span><span class="p">(</span><span class="n">fastai</span><span class="p">)</span> <span class="o">~/</span><span class="n">git</span><span class="o">/</span><span class="n">guillaume</span><span class="o">/</span><span class="n">hello_nbdev</span><span class="err">$</span> <span class="n">nbdev_build_docs</span> 
+<span class="n">converting</span><span class="p">:</span> <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">explore</span><span class="o">/</span><span class="n">git</span><span class="o">/</span><span class="n">guillaume</span><span class="o">/</span><span class="n">hello_nbdev</span><span class="o">/</span><span class="mi">00</span><span class="n">_core</span><span class="o">.</span><span class="n">ipynb</span>
+<span class="n">converting</span> <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">explore</span><span class="o">/</span><span class="n">git</span><span class="o">/</span><span class="n">guillaume</span><span class="o">/</span><span class="n">hello_nbdev</span><span class="o">/</span><span class="n">index</span><span class="o">.</span><span class="n">ipynb</span> <span class="n">to</span> <span class="n">README</span><span class="o">.</span><span class="n">md</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="commit-to-publish-docs">
+<a class="anchor" href="#commit-to-publish-docs" aria-hidden="true"><span class="octicon octicon-link"></span></a>commit to publish docs<a class="anchor-link" href="#commit-to-publish-docs"> </a>
+</h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Here is the list of files to be pushed:</p>
+<div class="highlight"><pre><span></span>git status
+
+Changes to be committed:
+    modified:   00_core.ipynb
+    new file:   00_core.py
+    new file:   Makefile
+    modified:   README.md
+    new file:   docs/_config.yml
+    modified:   docs/_data/sidebars/home_sidebar.yml
+    new file:   docs/_data/topnav.yml
+    new file:   docs/core.html
+    new file:   docs/index.html
+    modified:   docs/sidebar.json
+    new file:   hello_nbdev/__init__.py
+    new file:   hello_nbdev/_nbdev.py
+    new file:   hello_nbdev/core.py
+    modified:   index.ipynb
+    new file:   index.py
+</pre></div>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="init.py">
+<a class="anchor" href="#init.py" aria-hidden="true"><span class="octicon octicon-link"></span></a><strong>init</strong>.py<a class="anchor-link" href="#init.py"> </a>
+</h4>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Just add <code>from .core import *</code> to <code>__init__.py</code></p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>cat /home/explore/git/guillaume/hello_nbdev/hello_nbdev/__init__.py
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>__version__ = "0.0.1"
+from .core import *
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>So that we can easily use <code>hello_nbdev</code> without mentioning <code>core</code> module</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="commit-and-push">
+<a class="anchor" href="#commit-and-push" aria-hidden="true"><span class="octicon octicon-link"></span></a>commit and push<a class="anchor-link" href="#commit-and-push"> </a>
+</h4>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<div class="highlight"><pre><span></span><span class="o">(</span>fastai<span class="o">)</span> ~/git/guillaume/hello_nbdev$ git commit -m <span class="s1">'initial commit'</span>
+<span class="o">[</span>master 3484db7<span class="o">]</span> initial commit
+ <span class="m">15</span> files changed, <span class="m">520</span> insertions<span class="o">(</span>+<span class="o">)</span>, <span class="m">31</span> deletions<span class="o">(</span>-<span class="o">)</span>
+ create mode <span class="m">100644</span> 00_core.py
+ create mode <span class="m">100644</span> Makefile
+ create mode <span class="m">100644</span> docs/_config.yml
+ create mode <span class="m">100644</span> docs/_data/topnav.yml
+ create mode <span class="m">100644</span> docs/core.html
+ create mode <span class="m">100644</span> docs/index.html
+ create mode <span class="m">100644</span> hello_nbdev/__init__.py
+ create mode <span class="m">100644</span> hello_nbdev/_nbdev.py
+ create mode <span class="m">100644</span> hello_nbdev/core.py
+ create mode <span class="m">100644</span> index.py
+<span class="o">(</span>fastai<span class="o">)</span> ~/git/guillaume/hello_nbdev$ git push
+Enumerating objects: <span class="m">30</span>, <span class="k">done</span>.
+Counting objects: <span class="m">100</span>% <span class="o">(</span><span class="m">30</span>/30<span class="o">)</span>, <span class="k">done</span>.
+Delta compression using up to <span class="m">12</span> threads
+Compressing objects: <span class="m">100</span>% <span class="o">(</span><span class="m">19</span>/19<span class="o">)</span>, <span class="k">done</span>.
+Writing objects: <span class="m">100</span>% <span class="o">(</span><span class="m">21</span>/21<span class="o">)</span>, <span class="m">4</span>.87 KiB <span class="p">|</span> <span class="m">2</span>.44 MiB/s, <span class="k">done</span>.
+Total <span class="m">21</span> <span class="o">(</span>delta <span class="m">7</span><span class="o">)</span>, reused <span class="m">0</span> <span class="o">(</span>delta <span class="m">0</span><span class="o">)</span>
+remote: Resolving deltas: <span class="m">100</span>% <span class="o">(</span><span class="m">7</span>/7<span class="o">)</span>, completed with <span class="m">5</span> <span class="nb">local</span> objects.
+remote: 
+remote: GitHub found <span class="m">1</span> vulnerability on castorfou/hello_nbdev<span class="err">'</span>s default branch <span class="o">(</span><span class="m">1</span> low<span class="o">)</span>. To find out more, visit:
+remote:      https://github.com/castorfou/hello_nbdev/security/dependabot/docs/Gemfile.lock/nokogiri/open
+remote: 
+To github.com:castorfou/hello_nbdev.git
+   3aec9f4..3484db7  master -&gt; master
+</pre></div>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="And-documentation-is-ready">
+<a class="anchor" href="#And-documentation-is-ready" aria-hidden="true"><span class="octicon octicon-link"></span></a>And documentation is ready<a class="anchor-link" href="#And-documentation-is-ready"> </a>
+</h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><a href="https://castorfou.github.io/hello_nbdev/">https://castorfou.github.io/hello_nbdev/</a></p>
+<p><img src="/blog/images/copied_from_nb/../images/nbdev_docs.png" alt=""></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Going-further">
+<a class="anchor" href="#Going-further" aria-hidden="true"><span class="octicon octicon-link"></span></a>Going further<a class="anchor-link" href="#Going-further"> </a>
+</h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Now that we have a 1st simple example up and running, we can go further with:</p>
+<ul>
+<li>classes</li>
+<li>autoreload tip</li>
+<li>launch nbdev_build_lib from jupyter</li>
+<li>run tests in parallel</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Classes">
+<a class="anchor" href="#Classes" aria-hidden="true"><span class="octicon octicon-link"></span></a>Classes<a class="anchor-link" href="#Classes"> </a>
+</h2>
+<p>Following tutorial, we can create class <code>HelloSayer</code> and document our methods by calling <code>show_doc(HelloSayer.say)</code>.</p>
+<p>We can decide to add entries into <code>index.ipynb</code> if this is something worth having at the library level.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="autoreload">
+<a class="anchor" href="#autoreload" aria-hidden="true"><span class="octicon octicon-link"></span></a>autoreload<a class="anchor-link" href="#autoreload"> </a>
+</h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>By adding these lines</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%</span><span class="k">load_ext</span> autoreload
+<span class="o">%</span><span class="k">autoreload</span> 2
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>your notebook automatically reads in the new modules as soon as the python file changes</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="launch-nbdev-scripts-directly-from-jupyter">
+<a class="anchor" href="#launch-nbdev-scripts-directly-from-jupyter" aria-hidden="true"><span class="octicon octicon-link"></span></a>launch nbdev scripts directly from jupyter<a class="anchor-link" href="#launch-nbdev-scripts-directly-from-jupyter"> </a>
+</h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Make it your last cell</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">nbdev.export</span> <span class="kn">import</span> <span class="n">notebook2script</span><span class="p">;</span> <span class="n">notebook2script</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Converted 00_core.ipynb.
+Converted index.ipynb.
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="run-tests-in-parallel">
+<a class="anchor" href="#run-tests-in-parallel" aria-hidden="true"><span class="octicon octicon-link"></span></a>run tests in parallel<a class="anchor-link" href="#run-tests-in-parallel"> </a>
+</h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Just run <code>nbdev_test_nbs</code></p>
+<p>If your notebook  starts with _, it will be excluded from the test list.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Jekyll-to-view-documentation-locally">
+<a class="anchor" href="#Jekyll-to-view-documentation-locally" aria-hidden="true"><span class="octicon octicon-link"></span></a>Jekyll to view documentation locally<a class="anchor-link" href="#Jekyll-to-view-documentation-locally"> </a>
+</h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Jekyll is the web server to properly render documentation. This is what is used at github pages.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Installation-and-setup">
+<a class="anchor" href="#Installation-and-setup" aria-hidden="true"><span class="octicon octicon-link"></span></a>Installation and setup<a class="anchor-link" href="#Installation-and-setup"> </a>
+</h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>From <a href="https://jekyllrb.com/docs/installation/ubuntu/">https://jekyllrb.com/docs/installation/ubuntu/</a>,</p>
+<p><code>sudo apt-get install ruby-full build-essential zlib1g-dev</code></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Install variables to use gem:</p>
+<div class="highlight"><pre><span></span><span class="nb">echo</span> <span class="s1">'# Install Ruby Gems to ~/gems'</span> &gt;&gt; ~/.bashrc
+<span class="nb">echo</span> <span class="s1">'export GEM_HOME="$HOME/gems"'</span> &gt;&gt; ~/.bashrc
+<span class="nb">echo</span> <span class="s1">'export PATH="$HOME/gems/bin:$PATH"'</span> &gt;&gt; ~/.bashrc
+<span class="nb">source</span> ~/.bashrc
+</pre></div>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Install Jekyll and Builder:</p>
+<p><code>gem install jekyll bundler</code></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Setup-our-lib-to-use-Jekyll">
+<a class="anchor" href="#Setup-our-lib-to-use-Jekyll" aria-hidden="true"><span class="octicon octicon-link"></span></a>Setup our lib to use Jekyll<a class="anchor-link" href="#Setup-our-lib-to-use-Jekyll"> </a>
+</h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>From our <code>docs</code> folder, launch <code>bundle install</code></p>
+<div class="highlight"><pre><span></span><span class="o">(</span>fastai<span class="o">)</span> ~/git/guillaume/hello_nbdev/docs$ bundle install
+Fetching gem metadata from https://rubygems.org/.........
+Using concurrent-ruby <span class="m">1</span>.1.7
+....
+Bundle complete! <span class="m">4</span> Gemfile dependencies, <span class="m">90</span> gems now installed.
+Use <span class="sb">`</span>bundle info <span class="o">[</span>gemname<span class="o">]</span><span class="sb">`</span> to see where a bundled gem is installed.
+</pre></div>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Use-it">
+<a class="anchor" href="#Use-it" aria-hidden="true"><span class="octicon octicon-link"></span></a>Use it<a class="anchor-link" href="#Use-it"> </a>
+</h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>From repo root, launch <code>make docs_serve</code></p>
+<div class="highlight"><pre><span></span><span class="o">(</span>fastai<span class="o">)</span> ~/git/guillaume/hello_nbdev$ make docs_serve
+<span class="nb">cd</span> docs <span class="o">&amp;&amp;</span> bundle <span class="nb">exec</span> jekyll serve
+Configuration file: /home/explore/git/guillaume/hello_nbdev/docs/_config.yml
+            Source: /home/explore/git/guillaume/hello_nbdev/docs
+       Destination: /home/explore/git/guillaume/hello_nbdev/docs/_site
+ Incremental build: disabled. Enable with --incremental
+      Generating... 
+   GitHub Metadata: No GitHub API authentication could be found. Some fields may be missing or have incorrect data.
+                    <span class="k">done</span> in <span class="m">0</span>.098 seconds.
+/home/explore/gems/gems/pathutil-0.16.2/lib/pathutil.rb:502: warning: Using the last argument as keyword parameters is deprecated
+ Auto-regeneration: enabled <span class="k">for</span> <span class="s1">'/home/explore/git/guillaume/hello_nbdev/docs'</span>
+    Server address: http://127.0.0.1:4000/hello_nbdev//
+  Server running... press ctrl-c to stop.
+</pre></div>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>It is available locally at <a href="http://127.0.0.1:4000/hello_nbdev/">http://127.0.0.1:4000/hello_nbdev/</a></p>
+<p><img src="/blog/images/copied_from_nb/../images/nbdev_jekyll.png" alt=""></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Skipped">
+<a class="anchor" href="#Skipped" aria-hidden="true"><span class="octicon octicon-link"></span></a>Skipped<a class="anchor-link" href="#Skipped"> </a>
+</h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>I have not gone through pypi publication and console_scripts.</p>
+<p>I don't have the need for the moment, if I need that I will add an entry here.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+
+
+  </div><!-- from https://github.com/utterance/utterances -->
+<script src="https://utteranc.es/client.js"
+        repo="castorfou/blog"
+        issue-term="title"
+        label="blogpost-comment"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script><a class="u-url" href="/blog/fastai/nbdev/jupyter/2021/01/12/nbdev_tutorial.html" hidden></a>
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/blog/"></data>
+
+  <div class="wrapper">
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col">
+        <p class="feed-subscribe">
+          <a href="/blog/feed.xml">
+            <svg class="svg-icon orange">
+              <use xlink:href="/blog/assets/minima-social-icons.svg#rss"></use>
+            </svg><span>Subscribe</span>
+          </a>
+        </p>
+      </div>
+      <div class="footer-col">
+        <p>An easy to use blogging platform with support for Jupyter Notebooks.</p>
+      </div>
+    </div>
+
+    <div class="social-links"><ul class="social-media-list"><li><a rel="me" href="https://github.com/fastai" target="_blank" title="fastai"><svg class="svg-icon grey"><use xlink:href="/blog/assets/minima-social-icons.svg#github"></use></svg></a></li><li><a rel="me" href="https://twitter.com/fastdotai" target="_blank" title="fastdotai"><svg class="svg-icon grey"><use xlink:href="/blog/assets/minima-social-icons.svg#twitter"></use></svg></a></li></ul>
+</div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>

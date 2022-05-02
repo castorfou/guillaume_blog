@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="twitter:card" content="summary_large_image" /><!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Autogenerate documentation from custom python classes | fastpages</title>
+<meta name="generator" content="Jekyll v4.1.1" />
+<meta property="og:title" content="Autogenerate documentation from custom python classes" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="pdoc3 - installation, generation, browse documentation" />
+<meta property="og:description" content="pdoc3 - installation, generation, browse documentation" />
+<link rel="canonical" href="https://castorfou.github.io/blog/python/2021/06/30/documentation-python.html" />
+<meta property="og:url" content="https://castorfou.github.io/blog/python/2021/06/30/documentation-python.html" />
+<meta property="og:site_name" content="fastpages" />
+<meta property="og:image" content="https://pdoc3.github.io/pdoc/logo.png" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2021-06-30T00:00:00-05:00" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="https://pdoc3.github.io/pdoc/logo.png" />
+<meta property="twitter:title" content="Autogenerate documentation from custom python classes" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2021-06-30T00:00:00-05:00","datePublished":"2021-06-30T00:00:00-05:00","description":"pdoc3 - installation, generation, browse documentation","headline":"Autogenerate documentation from custom python classes","image":"https://pdoc3.github.io/pdoc/logo.png","mainEntityOfPage":{"@type":"WebPage","@id":"https://castorfou.github.io/blog/python/2021/06/30/documentation-python.html"},"url":"https://castorfou.github.io/blog/python/2021/06/30/documentation-python.html"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/blog/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="https://castorfou.github.io/blog/feed.xml" title="fastpages" /><link rel="shortcut icon" type="image/x-icon" href="/blog/images/favicon.ico"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Primer/15.2.0/primer.css" integrity="sha512-xTz2ys4coGAOz8vuV1NcQBkgVmKhsSEtjbqyMJbBHRplFuvKIUo6xhLHpAyPt9mfR6twHJgn9OgVLuqOvjeBhg==" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" />
+
+<script>
+function wrap_img(fn) {
+    if (document.attachEvent ? document.readyState === "complete" : document.readyState !== "loading") {
+        var elements = document.querySelectorAll(".post img");
+        Array.prototype.forEach.call(elements, function(el, i) {
+            if (el.getAttribute("title") && (el.className != "emoji")) {
+                const caption = document.createElement('figcaption');
+                var node = document.createTextNode(el.getAttribute("title"));
+                caption.appendChild(node);
+                const wrapper = document.createElement('figure');
+                wrapper.className = 'image';
+                el.parentNode.insertBefore(wrapper, el);
+                el.parentNode.removeChild(el);
+                wrapper.appendChild(el);
+                wrapper.appendChild(caption);
+            }
+        });
+    } else { document.addEventListener('DOMContentLoaded', fn); }
+}
+window.onload = wrap_img;
+</script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function(){
+    // add link icon to anchor tags
+    var elem = document.querySelectorAll(".anchor-link")
+    elem.forEach(e => (e.innerHTML = '<i class="fas fa-link fa-xs"></i>'));
+    });
+</script>
+</head>
+<body><header class="site-header">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/blog/">fastpages</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/blog/about/">About Me</a><a class="page-link" href="/blog/search/">Search</a><a class="page-link" href="/blog/categories/">Tags</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">Autogenerate documentation from custom python classes</h1><p class="page-description">pdoc3 - installation, generation, browse documentation</p><p class="post-meta post-meta-title"><time class="dt-published" datetime="2021-06-30T00:00:00-05:00" itemprop="datePublished">
+        Jun 30, 2021
+      </time>
+       • <span class="read-time" title="Estimated read time">
+    
+    
+      2 min read
+    
+</span></p>
+
+    
+      <p class="category-tags"><i class="fas fa-tags category-tags-icon"></i></i> 
+      
+        <a class="category-tags-link" href="/blog/categories/#python">python</a>
+        
+      
+      </p>
+    
+
+    
+      </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <ul id="toc" class="section-nav">
+<li class="toc-entry toc-h1"><a href="#Installation">Installation </a></li>
+<li class="toc-entry toc-h1"><a href="#Generate-documentation-from-.py-files">Generate documentation from .py files </a>
+<ul>
+<li class="toc-entry toc-h2"><a href="#force-refresh-of-doc">force refresh of doc </a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h1"><a href="#Example">Example </a></li>
+<li class="toc-entry toc-h1"><a href="#Proper-docstring-to-get-nice-output">Proper docstring to get nice output </a></li>
+</ul><!--
+#################################################
+### THIS FILE WAS AUTOGENERATED! DO NOT EDIT! ###
+#################################################
+# file to edit: _notebooks/2021-06-30-documentation-python.ipynb
+-->
+
+<div class="container" id="notebook-container">
+        
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Installation">
+<a class="anchor" href="#Installation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Installation<a class="anchor-link" href="#Installation"> </a>
+</h1>
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>conda env list
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre># conda environments:
+#
+base                     /home/explore/miniconda3
+aniti                    /home/explore/miniconda3/envs/aniti
+audioclass               /home/explore/miniconda3/envs/audioclass
+coursera_rl              /home/explore/miniconda3/envs/coursera_rl
+d059                  *  /home/explore/miniconda3/envs/d059
+datacamp                 /home/explore/miniconda3/envs/datacamp
+deeplearning_specialization     /home/explore/miniconda3/envs/deeplearning_specialization
+deeplearning_specialization_keras     /home/explore/miniconda3/envs/deeplearning_specialization_keras
+deeplearning_specialization_tf1     /home/explore/miniconda3/envs/deeplearning_specialization_tf1
+drl_handson              /home/explore/miniconda3/envs/drl_handson
+drl_simonini             /home/explore/miniconda3/envs/drl_simonini
+fastai                   /home/explore/miniconda3/envs/fastai
+fastaudio                /home/explore/miniconda3/envs/fastaudio
+gan                      /home/explore/miniconda3/envs/gan
+gan_tensorflow           /home/explore/miniconda3/envs/gan_tensorflow
+macos                    /home/explore/miniconda3/envs/macos
+minecraft                /home/explore/miniconda3/envs/minecraft
+mit_6002x                /home/explore/miniconda3/envs/mit_6002x
+mit_6S191                /home/explore/miniconda3/envs/mit_6S191
+pycaret                  /home/explore/miniconda3/envs/pycaret
+pytorch                  /home/explore/miniconda3/envs/pytorch
+scikit-learn-course      /home/explore/miniconda3/envs/scikit-learn-course
+shap                     /home/explore/miniconda3/envs/shap
+squeezebox               /home/explore/miniconda3/envs/squeezebox
+stablebaselines3         /home/explore/miniconda3/envs/stablebaselines3
+zoe                      /home/explore/miniconda3/envs/zoe
+
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
+<span class="o">!</span>conda install --yes --prefix <span class="o">{</span>sys.prefix<span class="o">}</span> pdoc3
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Collecting package metadata (current_repodata.json): done
+Solving environment: / 
+The environment is inconsistent, please check the package plan carefully
+The following packages are causing the inconsistency:
+
+  - defaults/linux-64::matplotlib==3.3.2=0
+  - defaults/linux-64::matplotlib-base==3.3.2=py38h817c723_0
+  - defaults/linux-64::spacy==2.3.2=py38hfd86e86_0
+  - pytorch/linux-64::torchvision==0.8.1=py38_cu110
+  - defaults/linux-64::numpy==1.19.2=py38h54aff64_0
+  - defaults/linux-64::thinc==7.4.1=py38hfd86e86_0
+  - defaults/linux-64::cython-blis==0.4.1=py38h7b6447c_1
+  - fastai/noarch::fastprogress==1.0.0=pyh39e3cac_0
+  - fastai/noarch::fastai==2.1.4=py_0
+  - defaults/linux-64::mkl_random==1.1.1=py38h0573a6f_0
+  - pytorch/linux-64::pytorch==1.7.0=py3.8_cuda11.0.221_cudnn8.0.3_0
+  - defaults/linux-64::pandas==1.1.3=py38he6710b0_0
+  - fastai/noarch::fastscript==1.0.0=0
+  - defaults/linux-64::scipy==1.5.2=py38h0b6359f_0
+  - defaults/linux-64::mkl_fft==1.2.0=py38h23d657b_0
+  - fastai/noarch::fastbook==0.0.14=py_0
+  - defaults/linux-64::scikit-learn==0.23.2=py38h0573a6f_0
+done
+
+## Package Plan ##
+
+  environment location: /home/explore/miniconda3/envs/d059
+
+  added / updated specs:
+    - pdoc3
+
+
+The following NEW packages will be INSTALLED:
+
+  mako               pkgs/main/noarch::mako-1.1.4-pyhd3eb1b0_0
+  markdown           pkgs/main/linux-64::markdown-3.3.4-py38h06a4308_0
+  pdoc3              pkgs/main/noarch::pdoc3-0.9.2-pyhd3eb1b0_0
+
+The following packages will be UPDATED:
+
+  ca-certificates                              2020.10.14-0 --&gt; 2021.5.25-h06a4308_1
+  certifi            pkgs/main/noarch::certifi-2020.6.20-p~ --&gt; pkgs/main/linux-64::certifi-2021.5.30-py38h06a4308_0
+  mkl_fft                              1.2.0-py38h23d657b_0 --&gt; 1.3.0-py38h54f3939_0
+  openssl                                 1.1.1h-h7b6447c_0 --&gt; 1.1.1k-h27cfd23_0
+  scipy                                1.5.2-py38h0b6359f_0 --&gt; 1.6.2-py38h91f5cce_0
+
+
+Preparing transaction: done
+Verifying transaction: done
+Executing transaction: done
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Generate-documentation-from-.py-files">
+<a class="anchor" href="#Generate-documentation-from-.py-files" aria-hidden="true"><span class="octicon octicon-link"></span></a>Generate documentation from .py files<a class="anchor-link" href="#Generate-documentation-from-.py-files"> </a>
+</h1>
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>pdoc --html --output-dir /home/explore/git/guillaume/d059/exp/html /home/explore/git/guillaume/d059/exp/init_D059.py
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>/home/explore/git/guillaume/d059/exp/html/init_D059.html
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>This is the way to generate doc:</p>
+<div class="highlight"><pre><span></span>pdoc --html --output-dir exp/html exp/my_classe.py
+</pre></div>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="force-refresh-of-doc">
+<a class="anchor" href="#force-refresh-of-doc" aria-hidden="true"><span class="octicon octicon-link"></span></a>force refresh of doc<a class="anchor-link" href="#force-refresh-of-doc"> </a>
+</h2>
+<p>in case of existing html file</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<div class="highlight"><pre><span></span>pdoc --html --output-dir exp/html --force exp/my_classe.py
+</pre></div>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Example">
+<a class="anchor" href="#Example" aria-hidden="true"><span class="octicon octicon-link"></span></a>Example<a class="anchor-link" href="#Example"> </a>
+</h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<iframe title="Doc" marginheight="0" src="https://castorfou.github.io/guillaume_blog/files/DateFab_NumTombee_Dataset.html" width="800" height="500" frameborder="0">
+</iframe>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Proper-docstring-to-get-nice-output">
+<a class="anchor" href="#Proper-docstring-to-get-nice-output" aria-hidden="true"><span class="octicon octicon-link"></span></a>Proper docstring to get nice output<a class="anchor-link" href="#Proper-docstring-to-get-nice-output"> </a>
+</h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Here is an example that gives good result:</p>
+<div class="highlight"><pre><span></span><span class="sd">"""</span>
+<span class="sd">    Un wrapper de lecture de contenu.</span>
+<span class="sd">    En fonction de la nature du fichier (extension), appelle le bon lecteur.</span>
+<span class="sd">    Les extensions supportées sont :</span>
+<span class="sd">        - .csv : pour appel à pd.read_csv. (Les colonnes Unnamed seront supprimées)</span>
+<span class="sd">        - .xls, .xlsx : pour appel à pd.read_excel</span>
+<span class="sd">        - .accdb : pour appel à pd.read_sql (disponible uniquement sous Windows)</span>
+<span class="sd">    Prend en parametre le nom complet du fichier csv, avec son extension. Et les options à passer.</span>
+<span class="sd">    Si un nom de colonne contient Date, le type datetime64 est appliqué.</span>
+<span class="sd">    Renvoie le dataframe correspondant.</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">&gt; &gt;&gt; getRawContent(root_data+'Stam-CC/MCCSC 25625.csv', sep=';', decimal=',', dayfirst=True)</span>
+<span class="sd">    &gt;&gt;&gt; getRawContent(root_data+'Stam-CC/ExportData 25625.xlsx', sheet_name='ExportData 25625 MCCS')</span>
+<span class="sd">    &gt;&gt;&gt; getRawContent(root_data +  '/accessDB/Datos 19_12.accdb', tablename='Datos_GR02_25625')</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    filename :string        Emplacement du fichier. Format complet avec l'extension</span>
+<span class="sd">        Ex: root_data+'Stam-CC/MCCSC 25625.csv'</span>
+<span class="sd">    options : **keyword args, optional</span>
+<span class="sd">        Arguments valides dans l'appel à pandas.read_csv, ou pandas.read_excel, ou pandas_read_sql : https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.read_csv.html</span>
+<span class="sd">        Ex: sep=';', decimal=',', dayfirst=True</span>
+<span class="sd">        Ex: **{'sep':';', 'decimal':',', 'dayfirst':True}</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    dataframe</span>
+<span class="sd">        Dataframe correspondant au filename avec les options de lecture associées.</span>
+<span class="sd">    """</span>
+</pre></div>
+<p>that results as</p>
+<p><img src="/blog/images/copied_from_nb/../images/pdoc_docstring.jpg" alt="pdoc docstring"></p>
+
+</div>
+</div>
+</div>
+</div>
+
+
+
+  </div><!-- from https://github.com/utterance/utterances -->
+<script src="https://utteranc.es/client.js"
+        repo="castorfou/blog"
+        issue-term="title"
+        label="blogpost-comment"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script><a class="u-url" href="/blog/python/2021/06/30/documentation-python.html" hidden></a>
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/blog/"></data>
+
+  <div class="wrapper">
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col">
+        <p class="feed-subscribe">
+          <a href="/blog/feed.xml">
+            <svg class="svg-icon orange">
+              <use xlink:href="/blog/assets/minima-social-icons.svg#rss"></use>
+            </svg><span>Subscribe</span>
+          </a>
+        </p>
+      </div>
+      <div class="footer-col">
+        <p>An easy to use blogging platform with support for Jupyter Notebooks.</p>
+      </div>
+    </div>
+
+    <div class="social-links"><ul class="social-media-list"><li><a rel="me" href="https://github.com/fastai" target="_blank" title="fastai"><svg class="svg-icon grey"><use xlink:href="/blog/assets/minima-social-icons.svg#github"></use></svg></a></li><li><a rel="me" href="https://twitter.com/fastdotai" target="_blank" title="fastdotai"><svg class="svg-icon grey"><use xlink:href="/blog/assets/minima-social-icons.svg#twitter"></use></svg></a></li></ul>
+</div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>

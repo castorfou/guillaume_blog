@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="twitter:card" content="summary_large_image" /><!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Headless raspberry pi: create a wifi to ethernet bridge | fastpages</title>
+<meta name="generator" content="Jekyll v4.1.1" />
+<meta property="og:title" content="Headless raspberry pi: create a wifi to ethernet bridge" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="setup headless raspberry pi to bridge wifi (tethering from phone) to ethernet (for my home wifi-router)" />
+<meta property="og:description" content="setup headless raspberry pi to bridge wifi (tethering from phone) to ethernet (for my home wifi-router)" />
+<link rel="canonical" href="https://castorfou.github.io/blog/raspberry%20pi/2021/03/25/headless-raspberry-pi-bridge-network.html" />
+<meta property="og:url" content="https://castorfou.github.io/blog/raspberry%20pi/2021/03/25/headless-raspberry-pi-bridge-network.html" />
+<meta property="og:site_name" content="fastpages" />
+<meta property="og:image" content="https://my.raspberrypi.org/favicon.ico" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2021-03-25T00:00:00-05:00" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="https://my.raspberrypi.org/favicon.ico" />
+<meta property="twitter:title" content="Headless raspberry pi: create a wifi to ethernet bridge" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2021-03-25T00:00:00-05:00","datePublished":"2021-03-25T00:00:00-05:00","description":"setup headless raspberry pi to bridge wifi (tethering from phone) to ethernet (for my home wifi-router)","headline":"Headless raspberry pi: create a wifi to ethernet bridge","image":"https://my.raspberrypi.org/favicon.ico","mainEntityOfPage":{"@type":"WebPage","@id":"https://castorfou.github.io/blog/raspberry%20pi/2021/03/25/headless-raspberry-pi-bridge-network.html"},"url":"https://castorfou.github.io/blog/raspberry%20pi/2021/03/25/headless-raspberry-pi-bridge-network.html"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/blog/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="https://castorfou.github.io/blog/feed.xml" title="fastpages" /><link rel="shortcut icon" type="image/x-icon" href="/blog/images/favicon.ico"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Primer/15.2.0/primer.css" integrity="sha512-xTz2ys4coGAOz8vuV1NcQBkgVmKhsSEtjbqyMJbBHRplFuvKIUo6xhLHpAyPt9mfR6twHJgn9OgVLuqOvjeBhg==" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" />
+
+<script>
+function wrap_img(fn) {
+    if (document.attachEvent ? document.readyState === "complete" : document.readyState !== "loading") {
+        var elements = document.querySelectorAll(".post img");
+        Array.prototype.forEach.call(elements, function(el, i) {
+            if (el.getAttribute("title") && (el.className != "emoji")) {
+                const caption = document.createElement('figcaption');
+                var node = document.createTextNode(el.getAttribute("title"));
+                caption.appendChild(node);
+                const wrapper = document.createElement('figure');
+                wrapper.className = 'image';
+                el.parentNode.insertBefore(wrapper, el);
+                el.parentNode.removeChild(el);
+                wrapper.appendChild(el);
+                wrapper.appendChild(caption);
+            }
+        });
+    } else { document.addEventListener('DOMContentLoaded', fn); }
+}
+window.onload = wrap_img;
+</script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function(){
+    // add link icon to anchor tags
+    var elem = document.querySelectorAll(".anchor-link")
+    elem.forEach(e => (e.innerHTML = '<i class="fas fa-link fa-xs"></i>'));
+    });
+</script>
+</head>
+<body><header class="site-header">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/blog/">fastpages</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/blog/about/">About Me</a><a class="page-link" href="/blog/search/">Search</a><a class="page-link" href="/blog/categories/">Tags</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">Headless raspberry pi: create a wifi to ethernet bridge</h1><p class="page-description">setup headless raspberry pi to bridge wifi (tethering from phone) to ethernet (for my home wifi-router)</p><p class="post-meta post-meta-title"><time class="dt-published" datetime="2021-03-25T00:00:00-05:00" itemprop="datePublished">
+        Mar 25, 2021
+      </time>
+       • <span class="read-time" title="Estimated read time">
+    
+    
+      3 min read
+    
+</span></p>
+
+    
+      <p class="category-tags"><i class="fas fa-tags category-tags-icon"></i></i> 
+      
+        <a class="category-tags-link" href="/blog/categories/#raspberry pi">raspberry pi</a>
+        
+      
+      </p>
+    
+
+    </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <ul id="toc" class="section-nav">
+<li class="toc-entry toc-h2"><a href="#headless-raspberry-pi">Headless raspberry pi</a></li>
+<li class="toc-entry toc-h2"><a href="#test-installation">Test installation</a></li>
+<li class="toc-entry toc-h2"><a href="#wifi-to-ethernet-bridge">Wifi to ethernet bridge</a></li>
+</ul><p>After my internet provider router stopped unexpectedly yesterday, I had to find a solution with internet access from phones and raspberry pi to broadcast internet to full home devices.</p>
+
+<h2 id="headless-raspberry-pi">
+<a class="anchor" href="#headless-raspberry-pi" aria-hidden="true"><span class="octicon octicon-link"></span></a>Headless raspberry pi</h2>
+
+<p><strong>Installation on SD from ubuntu</strong></p>
+
+<p>for a reason, <em>raspberry pi imager</em> snap doesn’t work (due to a bug linked to QT+wayland).</p>
+
+<p>I download deb ubuntu version (imager_1.6_amd64.deb) from <a href="https://www.raspberrypi.org/software">https://www.raspberrypi.org/software</a> and install with dpkg. (<code class="language-plaintext highlighter-rouge">sudo dpkg -i imager_1.6_amd64.deb</code>)</p>
+
+<p>With <code class="language-plaintext highlighter-rouge">rpi-imager</code>, I can install by selecting the default OS (raspberry Pi OS 32-bit), and SD card as storage.</p>
+
+<p><strong>Headless wifi</strong></p>
+
+<p>As explained in <a href="https://www.raspberrypi.org/documentation/configuration/wireless/headless.md">https://www.raspberrypi.org/documentation/configuration/wireless/headless.md</a></p>
+
+<p>Create (touch) <code class="language-plaintext highlighter-rouge">wpa_supplicant.conf</code> in <code class="language-plaintext highlighter-rouge">/boot</code> of SD card and paste this content:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
+update_config=1
+country=FR
+
+network={
+ ssid="AndroidAP"
+ psk="&lt;Password for your wireless LAN&gt;"
+}
+</code></pre></div></div>
+
+<p><strong>Headless ssh</strong></p>
+
+<p>As explained in <a href="https://www.raspberrypi.org/documentation/remote-access/ssh/README.md">https://www.raspberrypi.org/documentation/remote-access/ssh/README.md</a></p>
+
+<p>Create (touch) <code class="language-plaintext highlighter-rouge">ssh</code> in <code class="language-plaintext highlighter-rouge">/boot</code> of SD card</p>
+
+<p>If it is found, SSH is enabled and the file is deleted. The content of  the file does not matter; it could contain text, or nothing at all.</p>
+
+<h2 id="test-installation">
+<a class="anchor" href="#test-installation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Test installation</h2>
+
+<p>Boot. After a couple of minutes, I have a notification on phone saying a device is connected on my phone hotspot.</p>
+
+<p><img src="/home/explore/git/guillaume/blog/images/raspberrypi_hotspot.jpg" alt=""></p>
+
+<p>And ssh raspberry (default username/password are pi/raspberry)</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>ssh <span class="nt">-l</span> pi 192.168.43.179
+pi@192.168.43.179<span class="s1">'s password: 
+Linux raspberrypi 5.4.83-v7+ #1379 SMP Mon Dec 14 13:08:57 GMT 2020 armv7l
+
+The programs included with the Debian GNU/Linux system are free software;
+the exact distribution terms for each program are described in the
+individual files in /usr/share/doc/*/copyright.
+
+Debian GNU/Linux comes with ABSOLUTELY NO WARRANTY, to the extent
+permitted by applicable law.
+Last login: Thu Mar 25 06:23:17 2021
+
+SSH is enabled and the default password for the '</span>pi<span class="s1">' user has not been changed.
+This is a security risk - please login as the '</span>pi<span class="s1">' user and type '</span>passwd<span class="s1">' to set a new password.
+</span></code></pre></div></div>
+
+<p>Headless raspberry is ready to be used.</p>
+
+<h2 id="wifi-to-ethernet-bridge">
+<a class="anchor" href="#wifi-to-ethernet-bridge" aria-hidden="true"><span class="octicon octicon-link"></span></a>Wifi to ethernet bridge</h2>
+
+<p>I will use <a href="https://willhaley.com/blog/raspberry-pi-wifi-ethernet-bridge/">https://willhaley.com/blog/raspberry-pi-wifi-ethernet-bridge/</a></p>
+
+<p>The only  package that is needed is dnsmasq however from a clean install it is a  good idea to make sure everything is up-to-date:</p>
+
+<p><strong>get up-to-date system</strong></p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>apt-get update <span class="o">&amp;&amp;</span> <span class="nb">sudo </span>apt-get upgrade <span class="nt">-y</span> <span class="o">&amp;&amp;</span> <span class="nb">sudo </span>apt-get <span class="nb">install </span>rpi-update dnsmasq <span class="nt">-y</span>
+<span class="nb">sudo </span>rpi-update
+</code></pre></div></div>
+
+<p><strong>Option 1 - Same Subnet</strong></p>
+
+<p>Save this script as a <a href="/guillaume_blog/files/bridge.sh">file</a> named <code class="language-plaintext highlighter-rouge">bridge.sh</code> on your Pi.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">#!/usr/bin/env bash</span>
+
+<span class="nb">set</span> <span class="nt">-e</span>
+
+<span class="o">[</span> <span class="nv">$EUID</span> <span class="nt">-ne</span> 0 <span class="o">]</span> <span class="o">&amp;&amp;</span> <span class="nb">echo</span> <span class="s2">"run as root"</span> <span class="o">&gt;</span>&amp;2 <span class="o">&amp;&amp;</span> <span class="nb">exit </span>1
+
+<span class="c">##########################################################</span>
+<span class="c"># You should not need to update anything below this line #</span>
+<span class="c">##########################################################</span>
+
+<span class="c"># parprouted  - Proxy ARP IP bridging daemon</span>
+<span class="c"># dhcp-helper - DHCP/BOOTP relay agent</span>
+
+apt update <span class="o">&amp;&amp;</span> apt <span class="nb">install</span> <span class="nt">-y</span> parprouted dhcp-helper
+
+systemctl stop dhcp-helper
+systemctl <span class="nb">enable </span>dhcp-helper
+
+<span class="c"># Enable ipv4 forwarding.</span>
+<span class="nb">sed</span> <span class="nt">-i</span><span class="s1">''</span> s/#net.ipv4.ip_forward<span class="o">=</span>1/net.ipv4.ip_forward<span class="o">=</span>1/ /etc/sysctl.conf
+
+<span class="c"># Service configuration for standard WiFi connection. Connectivity will</span>
+<span class="c"># be lost if the username and password are incorrect.</span>
+systemctl restart wpa_supplicant.service
+
+<span class="c"># Enable IP forwarding for wlan0 if it's not already enabled.</span>
+<span class="nb">grep</span> <span class="s1">'^option ip-forwarding 1$'</span> /etc/dhcpcd.conf <span class="o">||</span> <span class="nb">printf</span> <span class="s2">"option ip-forwarding 1</span><span class="se">\n</span><span class="s2">"</span> <span class="o">&gt;&gt;</span> /etc/dhcpcd.conf
+
+<span class="c"># Disable dhcpcd control of eth0.</span>
+<span class="nb">grep</span> <span class="s1">'^denyinterfaces eth0$'</span> /etc/dhcpcd.conf <span class="o">||</span> <span class="nb">printf</span> <span class="s2">"denyinterfaces eth0</span><span class="se">\n</span><span class="s2">"</span> <span class="o">&gt;&gt;</span> /etc/dhcpcd.conf
+
+<span class="c"># Configure dhcp-helper.</span>
+<span class="nb">cat</span> <span class="o">&gt;</span> /etc/default/dhcp-helper <span class="o">&lt;&lt;</span><span class="no">EOF</span><span class="sh">
+DHCPHELPER_OPTS="-b wlan0"
+</span><span class="no">EOF
+
+</span><span class="c"># Enable avahi reflector if it's not already enabled.</span>
+<span class="nb">sed</span> <span class="nt">-i</span><span class="s1">''</span> <span class="s1">'s/#enable-reflector=no/enable-reflector=yes/'</span> /etc/avahi/avahi-daemon.conf
+<span class="nb">grep</span> <span class="s1">'^enable-reflector=yes$'</span> /etc/avahi/avahi-daemon.conf <span class="o">||</span> <span class="o">{</span>
+  <span class="nb">printf</span> <span class="s2">"something went wrong...</span><span class="se">\n\n</span><span class="s2">"</span>
+  <span class="nb">printf</span> <span class="s2">"Manually set 'enable-reflector=yes in /etc/avahi/avahi-daemon.conf'</span><span class="se">\n</span><span class="s2">"</span>
+<span class="o">}</span>
+
+<span class="c"># I have to admit, I do not understand ARP and IP forwarding enough to explain</span>
+<span class="c"># exactly what is happening here. I am building off the work of others. In short</span>
+<span class="c"># this is a service to forward traffic from WiFi to Ethernet.</span>
+<span class="nb">cat</span> <span class="o">&lt;&lt;</span><span class="sh">'</span><span class="no">EOF</span><span class="sh">' &gt;/usr/lib/systemd/system/parprouted.service
+[Unit]
+Description=proxy arp routing service
+Documentation=https://raspberrypi.stackexchange.com/q/88954/79866
+Requires=sys-subsystem-net-devices-wlan0.device dhcpcd.service
+After=sys-subsystem-net-devices-wlan0.device dhcpcd.service
+
+[Service]
+Type=forking
+# Restart until wlan0 gained carrier
+Restart=on-failure
+RestartSec=5
+TimeoutStartSec=30
+# clone the dhcp-allocated IP to eth0 so dhcp-helper will relay for the correct subnet
+ExecStartPre=/bin/bash -c '/sbin/ip addr add </span><span class="si">$(</span>/sbin/ip <span class="nt">-4</span> <span class="nt">-br</span> addr show wlan0 | /bin/grep <span class="nt">-Po</span> <span class="s2">"</span><span class="se">\\</span><span class="s2">d+</span><span class="se">\\</span><span class="s2">.</span><span class="se">\\</span><span class="s2">d+</span><span class="se">\\</span><span class="s2">.</span><span class="se">\\</span><span class="s2">d+</span><span class="se">\\</span><span class="s2">.</span><span class="se">\\</span><span class="s2">d+"</span><span class="si">)</span><span class="sh">/32 dev eth0'
+ExecStartPre=/sbin/ip link set dev eth0 up
+ExecStartPre=/sbin/ip link set wlan0 promisc on
+ExecStart=-/usr/sbin/parprouted eth0 wlan0
+ExecStopPost=/sbin/ip link set wlan0 promisc off
+ExecStopPost=/sbin/ip link set dev eth0 down
+ExecStopPost=/bin/bash -c '/sbin/ip addr del </span><span class="si">$(</span>/sbin/ip <span class="nt">-4</span> <span class="nt">-br</span> addr show wlan0 | /bin/grep <span class="nt">-Po</span> <span class="s2">"</span><span class="se">\\</span><span class="s2">d+</span><span class="se">\\</span><span class="s2">.</span><span class="se">\\</span><span class="s2">d+</span><span class="se">\\</span><span class="s2">.</span><span class="se">\\</span><span class="s2">d+</span><span class="se">\\</span><span class="s2">.</span><span class="se">\\</span><span class="s2">d+"</span><span class="si">)</span><span class="sh">/32 dev eth0'
+
+[Install]
+WantedBy=wpa_supplicant.service
+</span><span class="no">EOF
+
+</span>systemctl daemon-reload
+systemctl <span class="nb">enable </span>parprouted
+systemctl start parprouted dhcp-helper
+</code></pre></div></div>
+
+<p><strong>Step 2:</strong> Execute the script on your Pi like so.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>bash bridge.sh
+</code></pre></div></div>
+
+<p><strong>Step 3:</strong> Reboot.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>reboot
+</code></pre></div></div>
+
+<p><strong>Done!</strong></p>
+
+  </div><!-- from https://github.com/utterance/utterances -->
+<script src="https://utteranc.es/client.js"
+        repo="castorfou/blog"
+        issue-term="title"
+        label="blogpost-comment"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script><a class="u-url" href="/blog/raspberry%20pi/2021/03/25/headless-raspberry-pi-bridge-network.html" hidden></a>
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/blog/"></data>
+
+  <div class="wrapper">
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col">
+        <p class="feed-subscribe">
+          <a href="/blog/feed.xml">
+            <svg class="svg-icon orange">
+              <use xlink:href="/blog/assets/minima-social-icons.svg#rss"></use>
+            </svg><span>Subscribe</span>
+          </a>
+        </p>
+      </div>
+      <div class="footer-col">
+        <p>An easy to use blogging platform with support for Jupyter Notebooks.</p>
+      </div>
+    </div>
+
+    <div class="social-links"><ul class="social-media-list"><li><a rel="me" href="https://github.com/fastai" target="_blank" title="fastai"><svg class="svg-icon grey"><use xlink:href="/blog/assets/minima-social-icons.svg#github"></use></svg></a></li><li><a rel="me" href="https://twitter.com/fastdotai" target="_blank" title="fastdotai"><svg class="svg-icon grey"><use xlink:href="/blog/assets/minima-social-icons.svg#twitter"></use></svg></a></li></ul>
+</div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>

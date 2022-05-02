@@ -1,0 +1,885 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="twitter:card" content="summary_large_image" /><!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Machine learning in python with scikit-learn | fastpages</title>
+<meta name="generator" content="Jekyll v4.1.1" />
+<meta property="og:title" content="Machine learning in python with scikit-learn" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="by Inria team on fun mooc platform" />
+<meta property="og:description" content="by Inria team on fun mooc platform" />
+<link rel="canonical" href="https://castorfou.github.io/blog/machine%20learning/scikit-learn/2021/05/21/Machine-learning-in-python-with-scikit-learn.html" />
+<meta property="og:url" content="https://castorfou.github.io/blog/machine%20learning/scikit-learn/2021/05/21/Machine-learning-in-python-with-scikit-learn.html" />
+<meta property="og:site_name" content="fastpages" />
+<meta property="og:image" content="https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Scikit_learn_logo_small.svg/langfr-220px-Scikit_learn_logo_small.svg.png" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2021-05-21T00:00:00-05:00" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Scikit_learn_logo_small.svg/langfr-220px-Scikit_learn_logo_small.svg.png" />
+<meta property="twitter:title" content="Machine learning in python with scikit-learn" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2021-05-21T00:00:00-05:00","datePublished":"2021-05-21T00:00:00-05:00","description":"by Inria team on fun mooc platform","headline":"Machine learning in python with scikit-learn","image":"https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Scikit_learn_logo_small.svg/langfr-220px-Scikit_learn_logo_small.svg.png","mainEntityOfPage":{"@type":"WebPage","@id":"https://castorfou.github.io/blog/machine%20learning/scikit-learn/2021/05/21/Machine-learning-in-python-with-scikit-learn.html"},"url":"https://castorfou.github.io/blog/machine%20learning/scikit-learn/2021/05/21/Machine-learning-in-python-with-scikit-learn.html"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/blog/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="https://castorfou.github.io/blog/feed.xml" title="fastpages" /><link rel="shortcut icon" type="image/x-icon" href="/blog/images/favicon.ico"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Primer/15.2.0/primer.css" integrity="sha512-xTz2ys4coGAOz8vuV1NcQBkgVmKhsSEtjbqyMJbBHRplFuvKIUo6xhLHpAyPt9mfR6twHJgn9OgVLuqOvjeBhg==" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" />
+
+<script>
+function wrap_img(fn) {
+    if (document.attachEvent ? document.readyState === "complete" : document.readyState !== "loading") {
+        var elements = document.querySelectorAll(".post img");
+        Array.prototype.forEach.call(elements, function(el, i) {
+            if (el.getAttribute("title") && (el.className != "emoji")) {
+                const caption = document.createElement('figcaption');
+                var node = document.createTextNode(el.getAttribute("title"));
+                caption.appendChild(node);
+                const wrapper = document.createElement('figure');
+                wrapper.className = 'image';
+                el.parentNode.insertBefore(wrapper, el);
+                el.parentNode.removeChild(el);
+                wrapper.appendChild(el);
+                wrapper.appendChild(caption);
+            }
+        });
+    } else { document.addEventListener('DOMContentLoaded', fn); }
+}
+window.onload = wrap_img;
+</script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function(){
+    // add link icon to anchor tags
+    var elem = document.querySelectorAll(".anchor-link")
+    elem.forEach(e => (e.innerHTML = '<i class="fas fa-link fa-xs"></i>'));
+    });
+</script>
+</head>
+<body><header class="site-header">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/blog/">fastpages</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/blog/about/">About Me</a><a class="page-link" href="/blog/search/">Search</a><a class="page-link" href="/blog/categories/">Tags</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">Machine learning in python with scikit-learn</h1><p class="page-description">by Inria team on fun mooc platform</p><p class="post-meta post-meta-title"><time class="dt-published" datetime="2021-05-21T00:00:00-05:00" itemprop="datePublished">
+        May 21, 2021
+      </time>
+       • <span class="read-time" title="Estimated read time">
+    
+    
+      10 min read
+    
+</span></p>
+
+    
+      <p class="category-tags"><i class="fas fa-tags category-tags-icon"></i></i> 
+      
+        <a class="category-tags-link" href="/blog/categories/#machine learning">machine learning</a>
+        &nbsp;
+      
+        <a class="category-tags-link" href="/blog/categories/#scikit-learn">scikit-learn</a>
+        
+      
+      </p>
+    
+
+    </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <ul id="toc" class="section-nav">
+<li class="toc-entry toc-h2"><a href="#introduction---machine-learning-concepts">Introduction - Machine Learning concepts</a></li>
+<li class="toc-entry toc-h2"><a href="#module-1-the-predictive-modeling-pipeline">Module 1. The Predictive Modeling Pipeline</a>
+<ul>
+<li class="toc-entry toc-h6"><a href="#module-overview">Module overview</a></li>
+<li class="toc-entry toc-h6"><a href="#tabular-data-exploration">Tabular data exploration</a></li>
+<li class="toc-entry toc-h6"><a href="#fitting-a-scikit-learn-model-on-numerical-data">Fitting a scikit-learn model on numerical data</a></li>
+<li class="toc-entry toc-h6"><a href="#handling-categorical-data">Handling categorical data</a></li>
+<li class="toc-entry toc-h6"><a href="#wrap-up-quiz">Wrap-up quiz</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="#module-2-selecting-the-best-model">Module 2. Selecting the best model</a>
+<ul>
+<li class="toc-entry toc-h6"><a href="#module-overview-1">Module overview</a></li>
+<li class="toc-entry toc-h6"><a href="#overfitting-and-underfitting">Overfitting and Underfitting</a></li>
+<li class="toc-entry toc-h6"><a href="#validation-and-learning-curves">Validation and learning curves</a></li>
+<li class="toc-entry toc-h6"><a href="#bias-versus-variance-trade-off">Bias versus variance trade-off</a></li>
+<li class="toc-entry toc-h6"><a href="#wrap-up-quiz-1">Wrap-up quiz</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="#module-3-hyperparameter-tuning">Module 3. Hyperparameter tuning</a>
+<ul>
+<li class="toc-entry toc-h6"><a href="#module-overview-2">Module overview</a></li>
+<li class="toc-entry toc-h6"><a href="#manual-tuning">Manual tuning</a></li>
+<li class="toc-entry toc-h6"><a href="#automated-tuning">Automated tuning</a></li>
+<li class="toc-entry toc-h6"><a href="#wrap-up-quiz-2">Wrap-up quiz</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="#module-4-linear-models">Module 4. Linear models</a>
+<ul>
+<li class="toc-entry toc-h6"><a href="#module-overview-3">Module overview</a></li>
+<li class="toc-entry toc-h6"><a href="#intuitions-on-linear-models">Intuitions on linear models</a></li>
+<li class="toc-entry toc-h6"><a href="#linear-regression">Linear regression</a></li>
+<li class="toc-entry toc-h6"><a href="#modeling-non-linear-features-target-relationships">Modeling non-linear features-target relationships</a></li>
+<li class="toc-entry toc-h6"><a href="#regularization-in-linear-model">Regularization in linear model</a></li>
+<li class="toc-entry toc-h6"><a href="#linear-model-for-classification">Linear model for classification</a></li>
+<li class="toc-entry toc-h6"><a href="#wrap-up-quiz-3">Wrap-up quiz</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="#module-5-decision-tree-models">Module 5. Decision tree models</a>
+<ul>
+<li class="toc-entry toc-h6"><a href="#module-overview-4">Module overview</a></li>
+<li class="toc-entry toc-h6"><a href="#intuitions-on-tree-based-models">Intuitions on tree-based models</a></li>
+<li class="toc-entry toc-h6"><a href="#decision-tree-in-classification">Decision tree in classification</a></li>
+<li class="toc-entry toc-h6"><a href="#decision-tree-in-regression">Decision tree in regression</a></li>
+<li class="toc-entry toc-h6"><a href="#hyperparameters-of-decision-tree">Hyperparameters of decision tree</a></li>
+<li class="toc-entry toc-h6"><a href="#wrap-up-quiz-4">Wrap-up quiz</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="#module-6-ensemble-of-models">Module 6. Ensemble of models</a>
+<ul>
+<li class="toc-entry toc-h6"><a href="#module-overview-5">Module overview</a></li>
+<li class="toc-entry toc-h6"><a href="#intuitions-on-ensemble-of-tree-based-models">Intuitions on ensemble of tree-based models</a></li>
+<li class="toc-entry toc-h6"><a href="#ensemble-method-using-bootstrapping">Ensemble method using bootstrapping</a></li>
+<li class="toc-entry toc-h6"><a href="#ensemble-method-using-boosting">Ensemble method using boosting</a></li>
+<li class="toc-entry toc-h6"><a href="#hyperparameter-tuning-with-ensemble-methods">Hyperparameter tuning with ensemble methods</a></li>
+<li class="toc-entry toc-h6"><a href="#wrap-up-quiz-5">Wrap-up quiz</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="#module-7-evaluating-model-performance">Module 7. Evaluating model performance</a>
+<ul>
+<li class="toc-entry toc-h6"><a href="#module-overview-6">Module overview</a></li>
+<li class="toc-entry toc-h6"><a href="#comparing-a-model-with-simple-baselines">Comparing a model with simple baselines</a></li>
+<li class="toc-entry toc-h6"><a href="#choice-of-cross-validation">Choice of cross-validation</a></li>
+<li class="toc-entry toc-h6"><a href="#nested-cross-validation">Nested cross-validation</a></li>
+<li class="toc-entry toc-h6"><a href="#introduction-of-the-evaluation-metrics-classification-metrics">Introduction of the evaluation metrics: Classification metrics</a></li>
+<li class="toc-entry toc-h6"><a href="#introduction-of-the-evaluation-metrics-regression-metrics">Introduction of the evaluation metrics: Regression metrics</a></li>
+<li class="toc-entry toc-h6"><a href="#wrap-up-quiz-6">Wrap-up quiz</a></li>
+</ul>
+</li>
+</ul><p>This is a <a href="https://lms.fun-mooc.fr/courses/course-v1:inria+41026+session01/info">MOOC</a> by Inria team, in charge of scikit-learn.</p>
+
+<blockquote>
+  <p>After a fair amount of pedagogical and technical preparation work, we offer you today a practical course with:</p>
+
+  <ul>
+    <li>7 modules + 1 introductory module</li>
+    <li>9 video lessons to explain the main machine learning concepts</li>
+    <li>71 programming notebooks (you don’t have to install anything) to get hands-on skills</li>
+    <li>27 quizzes, 7 wrap-up quizzes and 23 exercises to train and deepen your practice</li>
+  </ul>
+</blockquote>
+
+<p><a href="https://lms.fun-mooc.fr/courses/course-v1:inria+41026+session01/496272d6f8444957a7014122a4646116/">Syllabus</a></p>
+
+<p>Introduction:  Machine Learning concepts, then</p>
+
+<p>Module 1. The Predictive Modeling Pipeline</p>
+
+<p>Module 2. Selecting the best model</p>
+
+<p>Module 3. Hyperparameter tuning</p>
+
+<p>Module 4. Linear Models</p>
+
+<p>Module 5. Decision tree models</p>
+
+<p>Module 6. Ensemble of models</p>
+
+<p>Module 7. Evaluating model performance</p>
+
+<p><a href="https://github.com/INRIA/scikit-learn-mooc">INRIA github</a> contains everything of this mooc: slides, datasets, notebooks (not videos)</p>
+
+<p>I have forked it, and I use local envt for assignments.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>~/git/guillaume<span class="nv">$ </span>git clone git@github.com:castorfou/scikit-learn-mooc.git
+~/git/guillaume<span class="nv">$ </span><span class="nb">cd </span>scikit-learn-mooc/
+~/git/guillaume/scikit-learn-mooc<span class="nv">$ </span>conda <span class="nb">env </span>create <span class="nt">-f</span> environment.yml
+conda activate scikit-learn-course
+</code></pre></div></div>
+
+<h2 id="introduction---machine-learning-concepts">
+<a class="anchor" href="#introduction---machine-learning-concepts" aria-hidden="true"><span class="octicon octicon-link"></span></a>Introduction - Machine Learning concepts</h2>
+
+<p><a href="https://inria.github.io/scikit-learn-mooc/slides/?file=ml_concepts.md#1">slides</a></p>
+
+<iframe title="Slides" marginheight="0" src="https://inria.github.io/scikit-learn-mooc/slides/?file=ml_concepts.md#1" width="800" height="500" frameborder="0">
+</iframe>
+
+<h2 id="module-1-the-predictive-modeling-pipeline">
+<a class="anchor" href="#module-1-the-predictive-modeling-pipeline" aria-hidden="true"><span class="octicon octicon-link"></span></a>Module 1. The Predictive Modeling Pipeline</h2>
+
+<h6 id="module-overview">
+<a class="anchor" href="#module-overview" aria-hidden="true"><span class="octicon octicon-link"></span></a>Module overview</h6>
+
+<blockquote>
+  <p>The objective in the module are the following:</p>
+
+  <ul>
+    <li>build intuitions regarding an unknown dataset;</li>
+    <li>identify and differentiate numerical and categorical features;</li>
+    <li>create an advanced predictive pipeline with scikit-learn.</li>
+  </ul>
+</blockquote>
+
+<h6 id="tabular-data-exploration">
+<a class="anchor" href="#tabular-data-exploration" aria-hidden="true"><span class="octicon octicon-link"></span></a>Tabular data exploration</h6>
+
+<p>exploration of data: <a href="https://github.com/castorfou/scikit-learn-mooc/blob/master/notebooks/01_tabular_data_exploration.ipynb">01_tabular_data_exploration.ipynb</a></p>
+
+<p>exercise M1.01: <a href="https://github.com/castorfou/scikit-learn-mooc/blob/master/notebooks/01_tabular_data_exploration_ex_01.ipynb">01_tabular_data_exploration_ex_01.ipynb</a></p>
+
+<h6 id="fitting-a-scikit-learn-model-on-numerical-data">
+<a class="anchor" href="#fitting-a-scikit-learn-model-on-numerical-data" aria-hidden="true"><span class="octicon octicon-link"></span></a>Fitting a scikit-learn model on numerical data</h6>
+
+<p>first model with scikit-learn: <a href="https://github.com/castorfou/scikit-learn-mooc/blob/master/notebooks/02_numerical_pipeline_introduction.ipynb">02_numerical_pipeline_introduction.ipynb</a></p>
+
+<p>exercise M1.02: <a href="https://github.com/castorfou/scikit-learn-mooc/blob/master/notebooks/02_numerical_pipeline_ex_00.ipynb">02_numerical_pipeline_ex_00.ipynb</a></p>
+
+<p>working with numerical data: <a href="https://github.com/castorfou/scikit-learn-mooc/blob/master/notebooks/02_numerical_pipeline_hands_on.ipynb">02_numerical_pipeline_hands_on.ipynb</a></p>
+
+<p>exercise M1.03: <a href="https://github.com/castorfou/scikit-learn-mooc/blob/master/notebooks/02_numerical_pipeline_ex_01.ipynb">02_numerical_pipeline_ex_01.ipynb</a></p>
+
+<p>preprocessing for numerical features: <a href="https://github.com/castorfou/scikit-learn-mooc/blob/master/notebooks/02_numerical_pipeline_scaling.ipynb">02_numerical_pipeline_scaling.ipynb</a></p>
+
+<h6 id="handling-categorical-data">
+<a class="anchor" href="#handling-categorical-data" aria-hidden="true"><span class="octicon octicon-link"></span></a>Handling categorical data</h6>
+
+<p>Encoding of categorical variables: <a href="https://github.com/castorfou/scikit-learn-mooc/blob/master/notebooks/03_categorical_pipeline.ipynb">03_categorical_pipeline.ipynb</a></p>
+
+<blockquote>
+  <p>Thus, in general <code class="language-plaintext highlighter-rouge">OneHotEncoder</code> is the encoding strategy used when the downstream models are <strong>linear models</strong> while <code class="language-plaintext highlighter-rouge">OrdinalEncoder</code> is used with <strong>tree-based models</strong>.</p>
+</blockquote>
+
+<p>Exercise M1.04: <a href="https://github.com/castorfou/scikit-learn-mooc/blob/master/notebooks/03_categorical_pipeline_ex_01.ipynb">03_categorical_pipeline_ex_01.ipynb</a></p>
+
+<p>Using numerical and categorical variables together: <a href="https://github.com/castorfou/scikit-learn-mooc/blob/master/notebooks/03_categorical_pipeline_column_transformer.ipynb">03_categorical_pipeline_column_transformer.ipynb</a></p>
+
+<p>Exercise M1.05: <a href="https://github.com/castorfou/scikit-learn-mooc/blob/master/notebooks/03_categorical_pipeline_ex_02.ipynb">03_categorical_pipeline_ex_02.ipynb</a></p>
+
+<h6 id="wrap-up-quiz">
+<a class="anchor" href="#wrap-up-quiz" aria-hidden="true"><span class="octicon octicon-link"></span></a>Wrap-up quiz</h6>
+
+<p><a href="https://github.com/castorfou/scikit-learn-mooc/blob/master/jupyter-book/predictive_modeling_pipeline/module%201%20-%20wrap-up%20quizz.ipynb">module 1 - wrap-up quizz.ipynb</a></p>
+
+<h2 id="module-2-selecting-the-best-model">
+<a class="anchor" href="#module-2-selecting-the-best-model" aria-hidden="true"><span class="octicon octicon-link"></span></a>Module 2. Selecting the best model</h2>
+
+<h6 id="module-overview-1">
+<a class="anchor" href="#module-overview-1" aria-hidden="true"><span class="octicon octicon-link"></span></a>Module overview</h6>
+
+<blockquote>
+  <p>The objective in the module are the following:</p>
+
+  <ul>
+    <li>understand the concept of overfitting and underfitting;</li>
+    <li>understand the concept of generalization;</li>
+    <li>understand the general cross-validation framework used to evaluate a model.</li>
+  </ul>
+</blockquote>
+
+<h6 id="overfitting-and-underfitting">
+<a class="anchor" href="#overfitting-and-underfitting" aria-hidden="true"><span class="octicon octicon-link"></span></a>Overfitting and Underfitting</h6>
+
+<p>video and <a href="https://inria.github.io/scikit-learn-mooc/slides/?file=overfitting_vs_underfitting.md#1">slides</a></p>
+
+<iframe title="Slides" marginheight="0" src="https://inria.github.io/scikit-learn-mooc/slides/?file=overfitting_vs_underfitting.md#1" width="800" height="500" frameborder="0">
+</iframe>
+
+<p>The framework and why do we need it: <a href="https://github.com/castorfou/scikit-learn-mooc/blob/master/notebooks/cross_validation_train_test.ipynb">cross_validation_train_test.ipynb</a></p>
+
+<h6 id="validation-and-learning-curves">
+<a class="anchor" href="#validation-and-learning-curves" aria-hidden="true"><span class="octicon octicon-link"></span></a>Validation and learning curves</h6>
+
+<p>video and <a href="https://inria.github.io/scikit-learn-mooc/slides/?file=learning_validation_curves.md#1">slides</a></p>
+
+<iframe title="Slides" marginheight="0" src="https://inria.github.io/scikit-learn-mooc/slides/?file=learning_validation_curves.md#1" width="800" height="500" frameborder="0">
+</iframe>
+
+<p>Overfit-generalization-underfit: <a href="https://github.com/castorfou/scikit-learn-mooc/blob/master/notebooks/cross_validation_validation_curve.ipynb">cross_validation_validation_curve.ipynb</a></p>
+
+<p>Effect of the sample size in cross-validation: <a href="https://github.com/castorfou/scikit-learn-mooc/blob/master/notebooks/cross_validation_learning_curve.ipynb">cross_validation_learning_curve.ipynb</a></p>
+
+<p>Exercise M2.01: <a href="https://github.com/castorfou/scikit-learn-mooc/blob/master/notebooks/cross_validation_ex_01.ipynb">cross_validation_ex_01.ipynb</a> <a href="https://github.com/castorfou/scikit-learn-mooc/blob/master/notebooks/cross_validation_sol_01.ipynb">solution</a></p>
+
+<h6 id="bias-versus-variance-trade-off">
+<a class="anchor" href="#bias-versus-variance-trade-off" aria-hidden="true"><span class="octicon octicon-link"></span></a>Bias versus variance trade-off</h6>
+
+<p>video and <a href="https://inria.github.io/scikit-learn-mooc/slides/?file=bias_vs_variance.md#1">slides</a></p>
+
+<iframe title="Slides" marginheight="0" src="https://inria.github.io/scikit-learn-mooc/slides/?file=bias_vs_variance.md#1" width="800" height="500" frameborder="0">
+</iframe>
+
+<p><img src="../images/sklearn_bias_variance.png" alt=""></p>
+
+<h6 id="wrap-up-quiz-1">
+<a class="anchor" href="#wrap-up-quiz-1" aria-hidden="true"><span class="octicon octicon-link"></span></a>Wrap-up quiz</h6>
+
+<p><a href="https://github.com/castorfou/scikit-learn-mooc/blob/master/jupyter-book/overfit/overfit_wrap_up_quiz.ipynb">module 2 - wrap-up quizz.ipynb</a></p>
+
+<blockquote>
+  <ul>
+    <li>
+<strong>Overfitting</strong> is caused by the <strong>limited size of the training set</strong>, the <strong>noise</strong> in the data, and the <strong>high flexibility</strong> of common machine learning models.</li>
+    <li>
+<strong>Underfitting</strong> happens when the learnt prediction functions suffer from <strong>systematic errors</strong>. This can be caused by a choice of model family and parameters, which leads to a <strong>lack of flexibility</strong> to capture the repeatable structure of the true data generating process.</li>
+    <li>For a fixed training set, the objective is to <strong>minimize the test error</strong> by adjusting the model family and its parameters to find the <strong>best trade-off between overfitting for underfitting</strong>.</li>
+    <li>For a given choice of model family and parameters, <strong>increasing the training set size will decrease overfitting</strong> but can also cause an increase of underfitting.</li>
+    <li>The test error of a model that is neither overfitting nor underfitting can still be high if the variations of the target variable cannot be fully determined by the input features. This irreducible error is caused by what we sometimes call label noise. In practice, this often happens when we do not have access to important features for one reason or another.</li>
+  </ul>
+</blockquote>
+
+<h2 id="module-3-hyperparameter-tuning">
+<a class="anchor" href="#module-3-hyperparameter-tuning" aria-hidden="true"><span class="octicon octicon-link"></span></a>Module 3. Hyperparameter tuning</h2>
+
+<h6 id="module-overview-2">
+<a class="anchor" href="#module-overview-2" aria-hidden="true"><span class="octicon octicon-link"></span></a>Module overview</h6>
+
+<blockquote>
+  <p>The objective in the module are the following:</p>
+
+  <ul>
+    <li>understand what is a model hyperparameter;</li>
+    <li>understand how to get and set the value an hyperparameter of a scikit-learn model;</li>
+    <li>be able to fine tune a full predictive modeling pipeline;</li>
+    <li>understand and visualize the combination of parameters that improves the performance of a model.</li>
+  </ul>
+</blockquote>
+
+<h6 id="manual-tuning">
+<a class="anchor" href="#manual-tuning" aria-hidden="true"><span class="octicon octicon-link"></span></a>Manual tuning</h6>
+
+<p>Set and get hyperparameters in scikit-learn: <a href="https://github.com/castorfou/scikit-learn-mooc/blob/master/notebooks/parameter_tuning_manual.ipynb">parameter_tuning_manual.ipynb</a></p>
+
+<p>Exercise M3.01: <a href="https://github.com/castorfou/scikit-learn-mooc/blob/master/notebooks/parameter_tuning_ex_02.ipynb">parameter_tuning_ex_02.ipynb</a></p>
+
+<h6 id="automated-tuning">
+<a class="anchor" href="#automated-tuning" aria-hidden="true"><span class="octicon octicon-link"></span></a>Automated tuning</h6>
+
+<p>Hyperparameter tuning by grid-search: <a href="https://github.com/castorfou/scikit-learn-mooc/blob/master/notebooks/parameter_tuning_grid_search.ipynb">parameter_tuning_grid_search.ipynb</a></p>
+
+<p>Hyperparameter tuning by randomized-search: <a href="https://github.com/castorfou/scikit-learn-mooc/blob/master/notebooks/parameter_tuning_randomized_search.ipynb">parameter_tuning_randomized_search.ipynb</a></p>
+
+<p>Cross-validation and hyperparameter tuning: <a href="https://github.com/castorfou/scikit-learn-mooc/blob/master/notebooks/parameter_tuning_nested.ipynb">parameter_tuning_nested.ipynb</a></p>
+
+<p>Exercise M3.01: <a href="https://github.com/castorfou/scikit-learn-mooc/blob/master/notebooks/parameter_tuning_ex_03.ipynb">parameter_tuning_ex_03.ipynb</a> <a href="https://github.com/castorfou/scikit-learn-mooc/blob/master/notebooks/parameter_tuning_sol_03.ipynb">solution</a></p>
+
+<p><img src="../images/sklearn_plotly_parallel_ccordinates.png" alt=""></p>
+
+<p>Nice to play with interactive plotly parallel_coordinates to identify best params.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="n">pd</span>
+<span class="kn">import</span> <span class="nn">plotly.express</span> <span class="k">as</span> <span class="n">px</span>
+<span class="k">def</span> <span class="nf">shorten_param</span><span class="p">(</span><span class="n">param_name</span><span class="p">):</span>
+    <span class="k">if</span> <span class="s">"__"</span> <span class="ow">in</span> <span class="n">param_name</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">param_name</span><span class="p">.</span><span class="n">rsplit</span><span class="p">(</span><span class="s">"__"</span><span class="p">,</span> <span class="mi">1</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">param_name</span>
+<span class="n">cv_results</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s">"../figures/randomized_search_results.csv"</span><span class="p">,</span>
+                         <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="p">.</span><span class="n">parallel_coordinates</span><span class="p">(</span>
+    <span class="n">cv_results</span><span class="p">.</span><span class="n">rename</span><span class="p">(</span><span class="n">shorten_param</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">).</span><span class="nb">apply</span><span class="p">({</span>
+        <span class="s">"learning_rate"</span><span class="p">:</span> <span class="n">np</span><span class="p">.</span><span class="n">log10</span><span class="p">,</span>
+        <span class="s">"max_leaf_nodes"</span><span class="p">:</span> <span class="n">np</span><span class="p">.</span><span class="n">log2</span><span class="p">,</span>
+        <span class="s">"max_bins"</span><span class="p">:</span> <span class="n">np</span><span class="p">.</span><span class="n">log2</span><span class="p">,</span>
+        <span class="s">"min_samples_leaf"</span><span class="p">:</span> <span class="n">np</span><span class="p">.</span><span class="n">log10</span><span class="p">,</span>
+        <span class="s">"l2_regularization"</span><span class="p">:</span> <span class="n">np</span><span class="p">.</span><span class="n">log10</span><span class="p">,</span>
+        <span class="s">"mean_test_score"</span><span class="p">:</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">}),</span>
+    <span class="n">color</span><span class="o">=</span><span class="s">"mean_test_score"</span><span class="p">,</span>
+    <span class="n">color_continuous_scale</span><span class="o">=</span><span class="n">px</span><span class="p">.</span><span class="n">colors</span><span class="p">.</span><span class="n">sequential</span><span class="p">.</span><span class="n">Viridis</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">fig</span><span class="p">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div></div>
+
+<h6 id="wrap-up-quiz-2">
+<a class="anchor" href="#wrap-up-quiz-2" aria-hidden="true"><span class="octicon octicon-link"></span></a>Wrap-up quiz</h6>
+
+<p><a href="https://github.com/castorfou/scikit-learn-mooc/blob/master/jupyter-book/tuning/tuning_questions.ipynb">module 3 - wrap-up quizz.ipynb</a></p>
+
+<blockquote>
+  <ul>
+    <li>Hyperparameters have an impact on the models’ performance and should be wisely chosen;</li>
+    <li>The search for the best hyperparameters can be automated with a grid-search approach or a randomized search approach;</li>
+    <li>A grid-search is expensive and does not scale when the number of hyperparameters to optimize increase. Besides, the combination are sampled only on a regular grid.</li>
+    <li>A randomized-search allows a search with a fixed budget even with an increasing number of hyperparameters. Besides, the combination are sampled on a non-regular grid.</li>
+  </ul>
+</blockquote>
+
+<h2 id="module-4-linear-models">
+<a class="anchor" href="#module-4-linear-models" aria-hidden="true"><span class="octicon octicon-link"></span></a>Module 4. Linear models</h2>
+
+<h6 id="module-overview-3">
+<a class="anchor" href="#module-overview-3" aria-hidden="true"><span class="octicon octicon-link"></span></a>Module overview</h6>
+
+<blockquote>
+  <p>In this module, your objectives are to:</p>
+
+  <ul>
+    <li>understand the linear models parametrization;</li>
+    <li>understand the implication of linear models in both regression and classification;</li>
+    <li>get intuitions of linear models applied in higher dimensional dataset;</li>
+    <li>understand the effect of regularization and how to set it;</li>
+    <li>understand how linear models can be used even with data showing non-linear relationship with the target to be predicted.</li>
+  </ul>
+</blockquote>
+
+<h6 id="intuitions-on-linear-models">
+<a class="anchor" href="#intuitions-on-linear-models" aria-hidden="true"><span class="octicon octicon-link"></span></a>Intuitions on linear models</h6>
+
+<p>video and <a href="https://inria.github.io/scikit-learn-mooc/slides/?file=linear_models.md#1">slides</a></p>
+
+<iframe title="Slides" marginheight="0" src="https://inria.github.io/scikit-learn-mooc/slides/?file=linear_models.md#1" width="800" height="500" frameborder="0">
+</iframe>
+
+<p>For regression: linear regression</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LinearRegression</span>
+<span class="n">linear_regression</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">()</span>
+<span class="n">linear_regression</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>For classification: logistic regression</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LogisticRegression</span>
+<span class="n">log_reg</span> <span class="o">=</span> <span class="n">LogisticRegression</span><span class="p">()</span>
+<span class="n">log_reg</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h6 id="linear-regression">
+<a class="anchor" href="#linear-regression" aria-hidden="true"><span class="octicon octicon-link"></span></a>Linear regression</h6>
+
+<p>Linear regression without scikit-learn: <a href="https://github.com/castorfou/scikit-learn-mooc/blob/master/notebooks/linear_regression_without_sklearn.ipynb">linear_regression_without_sklearn.ipynb</a></p>
+
+<p>Exercise M4.01: <a href="https://github.com/castorfou/scikit-learn-mooc/blob/master/notebooks/linear_models_ex_01.ipynb">linear_models_ex_01.ipynb</a> <a href="https://github.com/castorfou/scikit-learn-mooc/blob/master/notebooks/linear_models_sol_01.ipynb">solution</a></p>
+
+<p>usage of <code class="language-plaintext highlighter-rouge">np.ravel</code> in</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">goodness_fit_measure</span><span class="p">(</span><span class="n">true_values</span><span class="p">,</span> <span class="n">predictions</span><span class="p">):</span>
+    <span class="c1"># we compute the error between the true values and the predictions of our model
+</span>    <span class="n">errors</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">ravel</span><span class="p">(</span><span class="n">true_values</span><span class="p">)</span> <span class="o">-</span> <span class="n">np</span><span class="p">.</span><span class="n">ravel</span><span class="p">(</span><span class="n">predictions</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">np</span><span class="p">.</span><span class="n">mean</span><span class="p">(</span><span class="n">np</span><span class="p">.</span><span class="nb">abs</span><span class="p">(</span><span class="n">errors</span><span class="p">))</span>
+</code></pre></div></div>
+
+<p>Linear regression using scjkit-learn: <a href="https://github.com/castorfou/scikit-learn-mooc/blob/master/notebooks/linear_regression_in_sklearn.ipynb">linear_regression_in_sklearn.ipynb</a></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">mean_squared_error</span>
+<span class="n">inferred_body_mass</span> <span class="o">=</span> <span class="n">linear_regression</span><span class="p">.</span><span class="n">predict</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="n">model_error</span> <span class="o">=</span> <span class="n">mean_squared_error</span><span class="p">(</span><span class="n">target</span><span class="p">,</span> <span class="n">inferred_body_mass</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"The mean squared error of the optimal model is </span><span class="si">{</span><span class="n">model_error</span><span class="p">:.</span><span class="mi">2</span><span class="n">f</span><span class="si">}</span><span class="s">"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h6 id="modeling-non-linear-features-target-relationships">
+<a class="anchor" href="#modeling-non-linear-features-target-relationships" aria-hidden="true"><span class="octicon octicon-link"></span></a>Modeling non-linear features-target relationships</h6>
+
+<p>Exercise M4.02: <a href="https://github.com/castorfou/scikit-learn-mooc/blob/master/notebooks/linear_models_ex_02.ipynb">linear_models_ex_02.ipynb</a> <a href="https://github.com/castorfou/scikit-learn-mooc/blob/master/notebooks/linear_models_sol_02.ipynb">solution</a></p>
+
+<p>Linear regression with non-linear link between data and target: <a href="https://github.com/castorfou/scikit-learn-mooc/blob/master/notebooks/linear_regression_non_linear_link.ipynb">linear_regression_non_linear_link.ipynb</a></p>
+
+<p>Exercise M4.03: <a href="https://github.com/castorfou/scikit-learn-mooc/blob/master/notebooks/linear_models_ex_03.ipynb">linear_models_ex_03.ipynb</a> <a href="https://github.com/castorfou/scikit-learn-mooc/blob/master/notebooks/linear_models_sol_03.ipynb">solution</a></p>
+
+<h6 id="regularization-in-linear-model">
+<a class="anchor" href="#regularization-in-linear-model" aria-hidden="true"><span class="octicon octicon-link"></span></a>Regularization in linear model</h6>
+
+<p>video and <a href="https://inria.github.io/scikit-learn-mooc/slides/?file=regularized_linear_models.md#1">slides</a></p>
+
+<iframe title="Slides" marginheight="0" src="https://inria.github.io/scikit-learn-mooc/slides/?file=regularized_linear_models.md#1" width="800" height="500" frameborder="0">
+</iframe>
+
+<p>Ridge regression</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">Ridge</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">Ridge</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.01</span><span class="p">).</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>always use <code class="language-plaintext highlighter-rouge">Ridge</code> with a carefully tuned <code class="language-plaintext highlighter-rouge">alpha</code>!</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">RidgeCV</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">RidgeCV</span><span class="p">(</span> <span class="n">alphas</span><span class="o">=</span><span class="p">[</span><span class="mf">0.001</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">1000</span><span class="p">]</span> <span class="p">)</span>
+<span class="n">model</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">model</span><span class="p">.</span><span class="n">alpha_</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>Regularization of linear regression model: <a href="https://github.com/castorfou/scikit-learn-mooc/blob/master/notebooks/linear_models_regularization.ipynb">linear_models_regularization.ipynb</a></p>
+
+<p>Exercise M4.04: <a href="https://github.com/castorfou/scikit-learn-mooc/blob/master/notebooks/linear_models_ex_04.ipynb">linear_models_ex_04.ipynb</a> <a href="https://github.com/castorfou/scikit-learn-mooc/blob/master/notebooks/linear_models_sol_04.ipynb">solution</a></p>
+
+<h6 id="linear-model-for-classification">
+<a class="anchor" href="#linear-model-for-classification" aria-hidden="true"><span class="octicon octicon-link"></span></a>Linear model for classification</h6>
+
+<p>Linear model for classification: <a href="https://github.com/castorfou/scikit-learn-mooc/blob/master/notebooks/logistic_regression.ipynb">logistic_regression.ipynb</a></p>
+
+<p>Exercise M4.05: <a href="https://github.com/castorfou/scikit-learn-mooc/blob/master/notebooks/linear_models_ex_04.ipynb">linear_models_ex_05.ipynb</a> <a href="https://github.com/castorfou/scikit-learn-mooc/blob/master/notebooks/linear_models_sol_05.ipynb">solution</a></p>
+
+<p>Beyond linear separation in classification: <a href="https://github.com/castorfou/scikit-learn-mooc/blob/master/notebooks/logistic_regression_non_linear.ipynb">logistic_regression_non_linear.ipynb</a></p>
+
+<h6 id="wrap-up-quiz-3">
+<a class="anchor" href="#wrap-up-quiz-3" aria-hidden="true"><span class="octicon octicon-link"></span></a>Wrap-up quiz</h6>
+
+<p><a href="https://github.com/castorfou/scikit-learn-mooc/blob/master/jupyter-book/linear_models/module%204%20-%20wrap-up-quizz.ipynb">module 4 - wrap-up quizz.ipynb</a></p>
+
+<blockquote>
+  <p>In this module, we saw that:</p>
+
+  <ul>
+    <li>the predictions of a linear model depend on a weighted sum of the values of the input features added to an intercept parameter;</li>
+    <li>fitting a linear model consists in adjusting both the weight coefficients and the intercept to minimize the prediction errors on the training set;</li>
+    <li>to train linear models successfully it is often required to scale the input features approximately to the same dynamic range;</li>
+    <li>regularization can be used to reduce over-fitting: weight coefficients are constrained to stay small when fitting;</li>
+    <li>the regularization hyperparameter needs to be fine-tuned by cross-validation for each new machine learning problem and dataset;</li>
+    <li>linear models can be used on problems where the target variable is not linearly related to the input features but this requires extra feature engineering work to transform the data in order to avoid under-fitting.</li>
+  </ul>
+</blockquote>
+
+<h2 id="module-5-decision-tree-models">
+<a class="anchor" href="#module-5-decision-tree-models" aria-hidden="true"><span class="octicon octicon-link"></span></a>Module 5. Decision tree models</h2>
+
+<h6 id="module-overview-4">
+<a class="anchor" href="#module-overview-4" aria-hidden="true"><span class="octicon octicon-link"></span></a>Module overview</h6>
+
+<blockquote>
+  <p>The objective in the module are the following:</p>
+
+  <ul>
+    <li>understand how decision trees are working in classification and regression;</li>
+    <li>check which tree parameters are important and their influences.</li>
+  </ul>
+</blockquote>
+
+<h6 id="intuitions-on-tree-based-models">
+<a class="anchor" href="#intuitions-on-tree-based-models" aria-hidden="true"><span class="octicon octicon-link"></span></a>Intuitions on tree-based models</h6>
+
+<p>video and <a href="https://inria.github.io/scikit-learn-mooc/slides/?file=trees.md#1">slides</a></p>
+
+<iframe title="Slides" marginheight="0" src="https://inria.github.io/scikit-learn-mooc/slides/?file=trees.md#1" width="800" height="500" frameborder="0">
+</iframe>
+
+<h6 id="decision-tree-in-classification">
+<a class="anchor" href="#decision-tree-in-classification" aria-hidden="true"><span class="octicon octicon-link"></span></a>Decision tree in classification</h6>
+
+<p>Build a classification decision tree: <a href="https://github.com/castorfou/scikit-learn-mooc/blob/master/notebooks/trees_classification.ipynb">trees_classification.ipynb</a></p>
+
+<p>Exercise M5.01: <a href="https://github.com/castorfou/scikit-learn-mooc/blob/master/notebooks/trees_ex_01.ipynb">trees_ex_01.ipynb</a> <a href="https://github.com/castorfou/scikit-learn-mooc/blob/master/notebooks/trees_sol_01.ipynb">solution</a></p>
+
+<p>Fit and decision boundaries</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">sklearn.tree</span> <span class="kn">import</span> <span class="n">DecisionTreeClassifier</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="n">sns</span>
+
+<span class="c1"># create a palette to be used in the scatterplot
+</span><span class="n">palette</span> <span class="o">=</span> <span class="p">[</span><span class="s">"tab:red"</span><span class="p">,</span> <span class="s">"tab:blue"</span><span class="p">,</span> <span class="s">"black"</span><span class="p">]</span>
+
+<span class="n">tree</span> <span class="o">=</span> <span class="n">DecisionTreeClassifier</span><span class="p">(</span><span class="n">max_depth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">tree</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">data_train</span><span class="p">,</span> <span class="n">target_train</span><span class="p">)</span>
+
+<span class="n">ax</span> <span class="o">=</span> <span class="n">sns</span><span class="p">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">penguins</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">culmen_columns</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="n">culmen_columns</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
+                     <span class="n">hue</span><span class="o">=</span><span class="n">target_column</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="n">palette</span><span class="p">)</span>
+<span class="n">plot_decision_function</span><span class="p">(</span><span class="n">tree</span><span class="p">,</span> <span class="n">range_features</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">legend</span><span class="p">(</span><span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mf">1.05</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">loc</span><span class="o">=</span><span class="s">'upper left'</span><span class="p">)</span>
+<span class="n">_</span> <span class="o">=</span> <span class="n">plt</span><span class="p">.</span><span class="n">title</span><span class="p">(</span><span class="s">"Decision boundary using a decision tree"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>Decision tree</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">sklearn.tree</span> <span class="kn">import</span> <span class="n">plot_tree</span>
+
+<span class="n">_</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="p">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">17</span><span class="p">,</span> <span class="mi">12</span><span class="p">))</span>
+<span class="n">_</span> <span class="o">=</span> <span class="n">plot_tree</span><span class="p">(</span><span class="n">tree</span><span class="p">,</span> <span class="n">feature_names</span><span class="o">=</span><span class="n">culmen_columns</span><span class="p">,</span>
+              <span class="n">class_names</span><span class="o">=</span><span class="n">tree</span><span class="p">.</span><span class="n">classes_</span><span class="p">,</span> <span class="n">impurity</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>Accuracy</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">tree</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">data_train</span><span class="p">,</span> <span class="n">target_train</span><span class="p">)</span>
+<span class="n">test_score</span> <span class="o">=</span> <span class="n">tree</span><span class="p">.</span><span class="n">score</span><span class="p">(</span><span class="n">data_test</span><span class="p">,</span> <span class="n">target_test</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"Accuracy of the DecisionTreeClassifier: </span><span class="si">{</span><span class="n">test_score</span><span class="p">:.</span><span class="mi">2</span><span class="n">f</span><span class="si">}</span><span class="s">"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h6 id="decision-tree-in-regression">
+<a class="anchor" href="#decision-tree-in-regression" aria-hidden="true"><span class="octicon octicon-link"></span></a>Decision tree in regression</h6>
+
+<p>Decision tree for regression: <a href="https://github.com/castorfou/scikit-learn-mooc/blob/master/notebooks/trees_regression.ipynb">trees_regression.ipynb</a></p>
+
+<p>Exercise M5.02: <a href="https://github.com/castorfou/scikit-learn-mooc/blob/master/notebooks/trees_ex_02.ipynb">trees_ex_02.ipynb</a> <a href="https://github.com/castorfou/scikit-learn-mooc/blob/master/notebooks/trees_sol_02.ipynb">solution</a></p>
+
+<h6 id="hyperparameters-of-decision-tree">
+<a class="anchor" href="#hyperparameters-of-decision-tree" aria-hidden="true"><span class="octicon octicon-link"></span></a>Hyperparameters of decision tree</h6>
+
+<p>Importance of decision tree hyperparameters on generalization: <a href="https://github.com/castorfou/scikit-learn-mooc/blob/master/notebooks/trees_hyperparameters.ipynb">trees_hyperparameters.ipynb</a></p>
+
+<h6 id="wrap-up-quiz-4">
+<a class="anchor" href="#wrap-up-quiz-4" aria-hidden="true"><span class="octicon octicon-link"></span></a>Wrap-up quiz</h6>
+
+<p><a href="https://github.com/castorfou/scikit-learn-mooc/blob/master/jupyter-book/trees/module%205%20-%20wrap-up-quizz.ipynb">module 5 - wrap-up quizz.ipynb</a></p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>[Main take-away</td>
+      <td>Main take-away</td>
+      <td>41026 Courseware</td>
+      <td>FUN-MOOC](https://lms.fun-mooc.fr/courses/course-v1:inria+41026+session01/courseware/6565c007789a4812aea0debb1fb22e0f/0ab58cb806034cdba7bd49e8dd784202/)</td>
+    </tr>
+  </tbody>
+</table>
+
+<blockquote>
+  <p>In this module, we presented decision trees in details. We saw that they:</p>
+
+  <ul>
+    <li>are suited for both regression and classification problems;</li>
+    <li>are non-parametric models;</li>
+    <li>are not able to extrapolate;</li>
+    <li>are sensible to hyperparameter tuning.</li>
+  </ul>
+</blockquote>
+
+<h2 id="module-6-ensemble-of-models">
+<a class="anchor" href="#module-6-ensemble-of-models" aria-hidden="true"><span class="octicon octicon-link"></span></a>Module 6. Ensemble of models</h2>
+
+<h6 id="module-overview-5">
+<a class="anchor" href="#module-overview-5" aria-hidden="true"><span class="octicon octicon-link"></span></a>Module overview</h6>
+
+<blockquote>
+  <p>The objective in the module are the following:</p>
+
+  <ul>
+    <li>understanding the principles behind bootstrapping and boosting;</li>
+    <li>get intuitions with specific models such as random forest and gradient boosting;</li>
+    <li>identify the important hyperparameters of random forest and gradient boosting decision trees as well as their typical values.</li>
+  </ul>
+</blockquote>
+
+<h6 id="intuitions-on-ensemble-of-tree-based-models">
+<a class="anchor" href="#intuitions-on-ensemble-of-tree-based-models" aria-hidden="true"><span class="octicon octicon-link"></span></a>Intuitions on ensemble of tree-based models</h6>
+
+<p>video and <a href="https://inria.github.io/scikit-learn-mooc/slides/?file=ensemble.md#1">slides</a></p>
+
+<iframe title="Slides" marginheight="0" src="https://inria.github.io/scikit-learn-mooc/slides/?file=ensemble.md#p" width="800" height="500" frameborder="0">
+</iframe>
+<p>“Bagging” stands for Bootstrap AGGregatING. It uses bootstrap resampling (random sampling with replacement) to learn several models on random variations of the training set. At predict time, the predictions of each learner are aggregated to give the final predictions.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <span class="n">BaggingClassifier</span>
+<span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <span class="n">RandomForestClassifier</span>
+</code></pre></div></div>
+
+<p><strong>Random Forests</strong> are bagged <em>randomized</em> decision trees</p>
+
+<ul>
+  <li>At each split: a random subset of features are selected</li>
+  <li>The best split is taken among the restricted subset</li>
+  <li>Extra randomization decorrelates the prediction errors</li>
+  <li>Uncorrelated errors make bagging work better</li>
+</ul>
+
+<p><strong>Gradient Boosting</strong></p>
+
+<ul>
+  <li>Each base model predicts the <strong>negative error</strong> of previous models</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">sklearn</code> use decision trees as the base model</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <span class="n">GradientBoostingClassifier</span>
+</code></pre></div></div>
+
+<ul>
+  <li>Implementation of the traditional (exact) method</li>
+  <li>Fine for small data sets</li>
+  <li>Too slow for <code class="language-plaintext highlighter-rouge">n_samples</code> &gt; 10,000</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <span class="n">HistGradientBoostingClassifier</span>
+</code></pre></div></div>
+
+<ul>
+  <li>Discretize numerical features (256 levels)</li>
+  <li>Efficient multi core implementation</li>
+  <li>
+<strong>Much, much faster</strong> when <code class="language-plaintext highlighter-rouge">n_samples</code> is large</li>
+</ul>
+
+<p><strong>Take away</strong></p>
+
+<ul>
+  <li>
+<strong>Bagging</strong> and <strong>random forests</strong> fit trees <strong>independently</strong>
+    <ul>
+      <li>each <strong>deep tree overfits</strong> individually</li>
+      <li>averaging the tree predictions <strong>reduces overfitting</strong>
+</li>
+    </ul>
+  </li>
+  <li>(Gradient) <strong>boosting</strong> fits trees <strong>sequentially</strong>
+    <ul>
+      <li>each <strong>shallow tree underfits</strong> individually</li>
+      <li>sequentially adding trees <strong>reduces underfitting</strong>
+</li>
+    </ul>
+  </li>
+  <li>
+<strong>Gradient boosting</strong> tends to perform slightly better than <strong>bagging</strong> and <strong>random forest</strong> and furthermore shallow trees predict faster.</li>
+</ul>
+
+<p>Introductory example to ensemble models: <a href="https://github.com/castorfou/scikit-learn-mooc/blob/master/notebooks/ensemble_introduction.ipynb">ensemble_introduction.ipynb</a></p>
+
+<h6 id="ensemble-method-using-bootstrapping">
+<a class="anchor" href="#ensemble-method-using-bootstrapping" aria-hidden="true"><span class="octicon octicon-link"></span></a>Ensemble method using bootstrapping</h6>
+
+<p>Bagging: <a href="https://github.com/castorfou/scikit-learn-mooc/blob/master/notebooks/ensemble_bagging.ipynb">ensemble_bagging.ipynb</a></p>
+
+<p>Wikipedia reference to <a href="https://en.wikipedia.org/wiki/Bootstrapping_(statistics)">bootstrapping</a> in statistics.</p>
+
+<p>Exercise M6.01: <a href="https://github.com/castorfou/scikit-learn-mooc/blob/master/notebooks/ensemble_ex_01.ipynb">ensemble_ex_01.ipynb</a> (<a href="https://github.com/castorfou/scikit-learn-mooc/blob/master/notebooks/ensemble_sol_01.ipynb">solution</a>)</p>
+
+<p>Random Forest: <a href="https://github.com/castorfou/scikit-learn-mooc/blob/master/notebooks/ensemble_random_forest.ipynb">ensemble_random_forest.ipynb</a></p>
+
+<p>Exercise M6.01: <a href="https://github.com/castorfou/scikit-learn-mooc/blob/master/notebooks/ensemble_ex_02.ipynb">ensemble_ex_02.ipynb</a> (<a href="https://github.com/castorfou/scikit-learn-mooc/blob/master/notebooks/ensemble_sol_02.ipynb">solution</a>)</p>
+
+<h6 id="ensemble-method-using-boosting">
+<a class="anchor" href="#ensemble-method-using-boosting" aria-hidden="true"><span class="octicon octicon-link"></span></a>Ensemble method using boosting</h6>
+
+<p>Adaptive Boosting (AdaBoost): <a href="https://github.com/castorfou/scikit-learn-mooc/blob/master/notebooks/ensemble_adaboost.ipynb">ensemble_adaboost.ipynb</a></p>
+
+<p>Exercise M6.03: <a href="https://github.com/castorfou/scikit-learn-mooc/blob/master/notebooks/ensemble_ex_03.ipynb">ensemble_ex_03.ipynb</a> (<a href="https://github.com/castorfou/scikit-learn-mooc/blob/master/notebooks/ensemble_sol_03.ipynb">solution</a>)</p>
+
+<p>Gradient-boosting decision tree (GBDT): <a href="https://github.com/castorfou/scikit-learn-mooc/blob/master/notebooks/ensemble_gradient_boosting.ipynb">ensemble_gradient_boosting.ipynb</a></p>
+
+<p>Exercise M6.04: <a href="https://github.com/castorfou/scikit-learn-mooc/blob/master/notebooks/ensemble_ex_04.ipynb">ensemble_ex_04.ipynb</a> (<a href="https://github.com/castorfou/scikit-learn-mooc/blob/master/notebooks/ensemble_sol_04.ipynb">solution</a>)</p>
+
+<p>Speeding-up gradient-boosting:  <a href="https://github.com/castorfou/scikit-learn-mooc/blob/master/notebooks/ensemble_hist_gradient_boosting.ipynb">ensemble_hist_gradient_boosting.ipynb</a></p>
+
+<h6 id="hyperparameter-tuning-with-ensemble-methods">
+<a class="anchor" href="#hyperparameter-tuning-with-ensemble-methods" aria-hidden="true"><span class="octicon octicon-link"></span></a>Hyperparameter tuning with ensemble methods</h6>
+
+<p>Hyperparameter tuning: <a href="https://github.com/castorfou/scikit-learn-mooc/blob/master/notebooks/ensemble_hyperparameters.ipynb">ensemble_hyperparameters.ipynb</a></p>
+
+<p>Exercise M6.05: <a href="https://github.com/castorfou/scikit-learn-mooc/blob/master/notebooks/ensemble_ex_05.ipynb">ensemble_ex_05.ipynb</a> (<a href="https://github.com/castorfou/scikit-learn-mooc/blob/master/notebooks/ensemble_sol_05.ipynb">solution</a>)</p>
+
+<h6 id="wrap-up-quiz-5">
+<a class="anchor" href="#wrap-up-quiz-5" aria-hidden="true"><span class="octicon octicon-link"></span></a>Wrap-up quiz</h6>
+
+<p><a href="https://github.com/castorfou/scikit-learn-mooc/blob/master/jupyter-book/ensemble/module%206%20-%20wrap-up-quizz.ipynb">module 6 - wrap-up quizz.ipynb</a></p>
+
+<p>Use of <a href="https://imbalanced-learn.org/stable/">Imbalanced-learn</a> library relying on scikit-learn and provides methods to deal with classification with imbalanced classes.</p>
+
+<h2 id="module-7-evaluating-model-performance">
+<a class="anchor" href="#module-7-evaluating-model-performance" aria-hidden="true"><span class="octicon octicon-link"></span></a>Module 7. Evaluating model performance</h2>
+
+<h6 id="module-overview-6">
+<a class="anchor" href="#module-overview-6" aria-hidden="true"><span class="octicon octicon-link"></span></a>Module overview</h6>
+
+<blockquote>
+  <p>The objective in the module are the following:</p>
+
+  <ul>
+    <li>understand the necessity of using an appropriate cross-validation strategy depending on the data;</li>
+    <li>get the intuitions behind comparing a model with some basic models that can be used as baseline;</li>
+    <li>understand the principles behind using nested cross-validation when the model needs to be evaluated as well as optimized;</li>
+    <li>understand the differences between regression and classification metrics;</li>
+    <li>understand the differences between metrics.</li>
+  </ul>
+</blockquote>
+
+<h6 id="comparing-a-model-with-simple-baselines">
+<a class="anchor" href="#comparing-a-model-with-simple-baselines" aria-hidden="true"><span class="octicon octicon-link"></span></a>Comparing a model with simple baselines</h6>
+
+<p>Comparing results with baseline and chance level: <a href="https://github.com/castorfou/scikit-learn-mooc/blob/master/notebooks/cross_validation_baseline.ipynb">cross_validation_baseline.ipynb</a></p>
+
+<p>Exercise M7.01: <a href="https://github.com/castorfou/scikit-learn-mooc/blob/master/notebooks/cross_validation_ex_02.ipynb">cross_validation_ex_02.ipynb</a> (<a href="https://github.com/castorfou/scikit-learn-mooc/blob/master/notebooks/cross_validation_sol_02.ipynb">solution</a>)</p>
+
+<h6 id="choice-of-cross-validation">
+<a class="anchor" href="#choice-of-cross-validation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Choice of cross-validation</h6>
+
+<p>Introductory exercise regarding stratification: <a href="https://github.com/castorfou/scikit-learn-mooc/blob/master/notebooks/cross_validation_ex_03.ipynb">cross_validation_ex_03.ipynb</a></p>
+
+<p>Stratification: <a href="https://github.com/castorfou/scikit-learn-mooc/blob/master/notebooks/cross_validation_stratification.ipynb">cross_validation_stratification.ipynb</a></p>
+
+<p>Introductory exercise for sample grouping: <a href="https://github.com/castorfou/scikit-learn-mooc/blob/master/notebooks/cross_validation_ex_04.ipynb">cross_validation_ex_04.ipynb</a></p>
+
+<p>Sample grouping: <a href="https://github.com/castorfou/scikit-learn-mooc/blob/master/notebooks/cross_validation_grouping.ipynb">cross_validation_grouping.ipynb</a></p>
+
+<p>Introductory exercise for non i.i.d. data:  <a href="https://github.com/castorfou/scikit-learn-mooc/blob/master/notebooks/cross_validation_ex_05.ipynb">cross_validation_ex_05.ipynb</a></p>
+
+<p>Non i.i.d. data:  <a href="https://github.com/castorfou/scikit-learn-mooc/blob/master/notebooks/cross_validation_time.ipynb">cross_validation_time.ipynb</a></p>
+
+<h6 id="nested-cross-validation">
+<a class="anchor" href="#nested-cross-validation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Nested cross-validation</h6>
+
+<p>Nested cross-validation:  <a href="https://github.com/castorfou/scikit-learn-mooc/blob/master/notebooks/cross_validation_nested.ipynb">cross_validation_nested.ipynb</a></p>
+
+<h6 id="introduction-of-the-evaluation-metrics-classification-metrics">
+<a class="anchor" href="#introduction-of-the-evaluation-metrics-classification-metrics" aria-hidden="true"><span class="octicon octicon-link"></span></a>Introduction of the evaluation metrics: Classification metrics</h6>
+
+<p>Classification:  <a href="https://github.com/castorfou/scikit-learn-mooc/blob/master/notebooks/metrics_classification.ipynb">metrics_classification.ipynb</a></p>
+
+<p>Exercise M7.02: <a href="https://github.com/castorfou/scikit-learn-mooc/blob/master/notebooks/metrics_ex_01.ipynb">metrics_ex_01.ipynb</a> (<a href="https://github.com/castorfou/scikit-learn-mooc/blob/master/notebooks/metrics_sol_01.ipynb">solution</a>)</p>
+
+<h6 id="introduction-of-the-evaluation-metrics-regression-metrics">
+<a class="anchor" href="#introduction-of-the-evaluation-metrics-regression-metrics" aria-hidden="true"><span class="octicon octicon-link"></span></a>Introduction of the evaluation metrics: Regression metrics</h6>
+
+<p>Regression:  <a href="https://github.com/castorfou/scikit-learn-mooc/blob/master/notebooks/metrics_regression.ipynb">metrics_regression.ipynb</a></p>
+
+<p>Exercise M7.03: <a href="https://github.com/castorfou/scikit-learn-mooc/blob/master/notebooks/metrics_ex_02.ipynb">metrics_ex_02.ipynb</a> (<a href="https://github.com/castorfou/scikit-learn-mooc/blob/master/notebooks/metrics_sol_02.ipynb">solution</a>)</p>
+
+<h6 id="wrap-up-quiz-6">
+<a class="anchor" href="#wrap-up-quiz-6" aria-hidden="true"><span class="octicon octicon-link"></span></a>Wrap-up quiz</h6>
+
+<p><a href="https://github.com/castorfou/scikit-learn-mooc/blob/master/jupyter-book/evaluation/module%207%20-%20wrap-up-quizz.ipynb">module 7 - wrap-up quizz.ipynb</a></p>
+
+<p>And this completes the course</p>
+
+  </div><!-- from https://github.com/utterance/utterances -->
+<script src="https://utteranc.es/client.js"
+        repo="castorfou/blog"
+        issue-term="title"
+        label="blogpost-comment"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script><a class="u-url" href="/blog/machine%20learning/scikit-learn/2021/05/21/Machine-learning-in-python-with-scikit-learn.html" hidden></a>
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/blog/"></data>
+
+  <div class="wrapper">
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col">
+        <p class="feed-subscribe">
+          <a href="/blog/feed.xml">
+            <svg class="svg-icon orange">
+              <use xlink:href="/blog/assets/minima-social-icons.svg#rss"></use>
+            </svg><span>Subscribe</span>
+          </a>
+        </p>
+      </div>
+      <div class="footer-col">
+        <p>An easy to use blogging platform with support for Jupyter Notebooks.</p>
+      </div>
+    </div>
+
+    <div class="social-links"><ul class="social-media-list"><li><a rel="me" href="https://github.com/fastai" target="_blank" title="fastai"><svg class="svg-icon grey"><use xlink:href="/blog/assets/minima-social-icons.svg#github"></use></svg></a></li><li><a rel="me" href="https://twitter.com/fastdotai" target="_blank" title="fastdotai"><svg class="svg-icon grey"><use xlink:href="/blog/assets/minima-social-icons.svg#twitter"></use></svg></a></li></ul>
+</div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>

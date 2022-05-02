@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="twitter:card" content="summary_large_image" /><!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Reinforcement Learning Specialization - Coursera - course 4 - A Complete Reinforcement Learning System (Capstone) | fastpages</title>
+<meta name="generator" content="Jekyll v4.1.1" />
+<meta property="og:title" content="Reinforcement Learning Specialization - Coursera - course 4 - A Complete Reinforcement Learning System (Capstone)" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="From University of Alberta. My notes on course 4." />
+<meta property="og:description" content="From University of Alberta. My notes on course 4." />
+<link rel="canonical" href="https://castorfou.github.io/blog/reinforcement%20learning/deepmind/coursera/2021/06/14/reinforcement-learning-specialization-coursera-course4.html" />
+<meta property="og:url" content="https://castorfou.github.io/blog/reinforcement%20learning/deepmind/coursera/2021/06/14/reinforcement-learning-specialization-coursera-course4.html" />
+<meta property="og:site_name" content="fastpages" />
+<meta property="og:image" content="https://castorfou.github.io/blog/images/RL.png" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2021-06-14T00:00:00-05:00" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="https://castorfou.github.io/blog/images/RL.png" />
+<meta property="twitter:title" content="Reinforcement Learning Specialization - Coursera - course 4 - A Complete Reinforcement Learning System (Capstone)" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2021-06-14T00:00:00-05:00","datePublished":"2021-06-14T00:00:00-05:00","description":"From University of Alberta. My notes on course 4.","headline":"Reinforcement Learning Specialization - Coursera - course 4 - A Complete Reinforcement Learning System (Capstone)","image":"https://castorfou.github.io/blog/images/RL.png","mainEntityOfPage":{"@type":"WebPage","@id":"https://castorfou.github.io/blog/reinforcement%20learning/deepmind/coursera/2021/06/14/reinforcement-learning-specialization-coursera-course4.html"},"url":"https://castorfou.github.io/blog/reinforcement%20learning/deepmind/coursera/2021/06/14/reinforcement-learning-specialization-coursera-course4.html"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/blog/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="https://castorfou.github.io/blog/feed.xml" title="fastpages" /><link rel="shortcut icon" type="image/x-icon" href="/blog/images/favicon.ico"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Primer/15.2.0/primer.css" integrity="sha512-xTz2ys4coGAOz8vuV1NcQBkgVmKhsSEtjbqyMJbBHRplFuvKIUo6xhLHpAyPt9mfR6twHJgn9OgVLuqOvjeBhg==" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" />
+
+<script>
+function wrap_img(fn) {
+    if (document.attachEvent ? document.readyState === "complete" : document.readyState !== "loading") {
+        var elements = document.querySelectorAll(".post img");
+        Array.prototype.forEach.call(elements, function(el, i) {
+            if (el.getAttribute("title") && (el.className != "emoji")) {
+                const caption = document.createElement('figcaption');
+                var node = document.createTextNode(el.getAttribute("title"));
+                caption.appendChild(node);
+                const wrapper = document.createElement('figure');
+                wrapper.className = 'image';
+                el.parentNode.insertBefore(wrapper, el);
+                el.parentNode.removeChild(el);
+                wrapper.appendChild(el);
+                wrapper.appendChild(caption);
+            }
+        });
+    } else { document.addEventListener('DOMContentLoaded', fn); }
+}
+window.onload = wrap_img;
+</script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function(){
+    // add link icon to anchor tags
+    var elem = document.querySelectorAll(".anchor-link")
+    elem.forEach(e => (e.innerHTML = '<i class="fas fa-link fa-xs"></i>'));
+    });
+</script>
+</head>
+<body><header class="site-header">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/blog/">fastpages</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/blog/about/">About Me</a><a class="page-link" href="/blog/search/">Search</a><a class="page-link" href="/blog/categories/">Tags</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">Reinforcement Learning Specialization - Coursera - course 4 - A Complete Reinforcement Learning System (Capstone)</h1><p class="page-description">From University of Alberta. My notes on course 4.</p><p class="post-meta post-meta-title"><time class="dt-published" datetime="2021-06-14T00:00:00-05:00" itemprop="datePublished">
+        Jun 14, 2021
+      </time>
+       • <span class="read-time" title="Estimated read time">
+    
+    
+      7 min read
+    
+</span></p>
+
+    
+      <p class="category-tags"><i class="fas fa-tags category-tags-icon"></i></i> 
+      
+        <a class="category-tags-link" href="/blog/categories/#reinforcement learning">reinforcement learning</a>
+        &nbsp;
+      
+        <a class="category-tags-link" href="/blog/categories/#deepmind">deepmind</a>
+        &nbsp;
+      
+        <a class="category-tags-link" href="/blog/categories/#coursera">coursera</a>
+        
+      
+      </p>
+    
+
+    </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <ul id="toc" class="section-nav">
+<li class="toc-entry toc-h2"><a href="#course-4---week-2---formalize-word-problem-as-mdp">Course 4 - Week 2 - Formalize Word Problem as MDP</a>
+<ul>
+<li class="toc-entry toc-h6"><a href="#final-project-milestone-1">Final Project: Milestone 1</a></li>
+<li class="toc-entry toc-h6"><a href="#project-resources">Project Resources</a></li>
+<li class="toc-entry toc-h6"><a href="#assignment">Assignment</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="#course-4---week-3---choosing-the-right-algorithm">Course 4 - Week 3 - Choosing The Right Algorithm</a>
+<ul>
+<li class="toc-entry toc-h6"><a href="#weekly-learning-goals">Weekly Learning Goals</a></li>
+<li class="toc-entry toc-h6"><a href="#project-resources-1">Project Resources</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="#course-4---week-4---identify-key-performance-parameters">Course 4 - Week 4 - Identify Key Performance Parameters</a>
+<ul>
+<li class="toc-entry toc-h6"><a href="#weekly-learning-goals-1">Weekly Learning Goals</a></li>
+<li class="toc-entry toc-h6"><a href="#project-resources-2">Project Resources</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="#course-4---week-5---implement-your-agent">Course 4 - Week 5 - Implement your agent</a>
+<ul>
+<li class="toc-entry toc-h6"><a href="#weekly-learning-goals-2">Weekly Learning Goals</a></li>
+<li class="toc-entry toc-h6"><a href="#project-resources-3">Project Resources</a></li>
+<li class="toc-entry toc-h6"><a href="#assignment-1">Assignment</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="#course-4---week-6---submit-your-parameter-study">Course 4 - Week 6 - Submit your Parameter Study!</a>
+<ul>
+<li class="toc-entry toc-h6"><a href="#weekly-learning-goals-3">Weekly Learning Goals</a></li>
+<li class="toc-entry toc-h6"><a href="#project-resources-4">Project Resources</a></li>
+<li class="toc-entry toc-h6"><a href="#assignment-2">Assignment</a></li>
+<li class="toc-entry toc-h6"><a href="#congratulations">Congratulations!</a></li>
+</ul>
+</li>
+</ul><p>Coursera website:  <a href="https://www.coursera.org/learn/complete-reinforcement-learning-system?specialization=reinforcement-learning">course 4 - A Complete Reinforcement Learning System (Capstone)</a> of <a href="https://www.coursera.org/specializations/reinforcement-learning">Reinforcement Learning Specialization</a></p>
+
+<p>my notes on <a href="/guillaume_blog/blog/reinforcement-learning-specialization-coursera.html">course 1 - Fundamentals of Reinforcement Learning</a>, <a href="/guillaume_blog/blog/reinforcement-learning-specialization-coursera-course2.html">course 2 - Sample-based Learning Methods</a>, <a href="/guillaume_blog/blog/reinforcement-learning-specialization-coursera-course3.html">course 3 - Prediction and Control with Function Approximation</a></p>
+
+<p><strong>specialization roadmap</strong> - course 4 - <strong>A Complete Reinforcement Learning System (Capstone)</strong> <a href="https://github.com/castorfou/Reinforcement-Learning-specialization/blob/main/course%204%20-%20complete%20reinforcement%20learning%20system/A-Complete-Reinforcement-Learning-System-Capstone-_-Learning-Objectives.pdf">(syllabus)</a></p>
+
+<p>Week 1 - Welcome to the Course
+Week 2 - Formalize Word Problem as MDP
+Week 3 - Choosing The Right Algorithm
+Week 4 - Identify Key Performance Parameters
+Week 5 - Implement Your Agent
+Week 6 - Submit Your Parameter Study!</p>
+
+<h2 id="course-4---week-2---formalize-word-problem-as-mdp">
+<a class="anchor" href="#course-4---week-2---formalize-word-problem-as-mdp" aria-hidden="true"><span class="octicon octicon-link"></span></a>Course 4 - Week 2 - Formalize Word Problem as MDP</h2>
+
+<h6 id="final-project-milestone-1">
+<a class="anchor" href="#final-project-milestone-1" aria-hidden="true"><span class="octicon octicon-link"></span></a>Final Project: Milestone 1</h6>
+
+<p><strong>Video Initial Project Meeting with Martha: Formalizing the Problem</strong></p>
+
+<p><img src="../images/C4W2_reward_function.png" alt=""></p>
+
+<p><strong>Video Andy Barto on What are Eligibility Traces and Why are they so named?</strong></p>
+
+<p>By the end of this video, you’ll <em>understand</em> the <strong>origin</strong> of the idea of <strong>eligibility traces</strong> and you’ll actually <em>see</em> that you’ve been <strong>using a variant of eligibility traces</strong> all along.</p>
+
+<p><img src="../images/C4W2_actor_critic_architecture.png" alt=""></p>
+
+<h6 id="project-resources">
+<a class="anchor" href="#project-resources" aria-hidden="true"><span class="octicon octicon-link"></span></a>Project Resources</h6>
+
+<p><strong>Video Let’s Review: Markov Decision Processes</strong></p>
+
+<p>By the end of this video, you’ll be able to <em>understand</em> <strong>Markov decision processes or MDPs</strong> and <em>describe</em> how the <strong>dynamics of MDP</strong> are defined.</p>
+
+<p><strong>Video Let’s Review: Examples of Episodic and Continuing Tasks</strong></p>
+
+<p>By the end of this video, you will be able to <em>understand</em> when to formalize a task as <strong>episodic or continuing</strong>.</p>
+
+<h6 id="assignment">
+<a class="anchor" href="#assignment" aria-hidden="true"><span class="octicon octicon-link"></span></a>Assignment</h6>
+
+<p>MoonShot Technologies</p>
+
+<p>notebooks in <a href="https://github.com/castorfou/Reinforcement-Learning-specialization/tree/main/assignements/course%204%20week%202">github</a></p>
+
+<h2 id="course-4---week-3---choosing-the-right-algorithm">
+<a class="anchor" href="#course-4---week-3---choosing-the-right-algorithm" aria-hidden="true"><span class="octicon octicon-link"></span></a>Course 4 - Week 3 - Choosing The Right Algorithm</h2>
+
+<h6 id="weekly-learning-goals">
+<a class="anchor" href="#weekly-learning-goals" aria-hidden="true"><span class="octicon octicon-link"></span></a>Weekly Learning Goals</h6>
+
+<p><strong>Video Meeting with Niko: Choosing the Learning Algorithm</strong></p>
+
+<p><img src="../images/C4W3_expected_sarsa.png" alt=""></p>
+
+<h6 id="project-resources-1">
+<a class="anchor" href="#project-resources-1" aria-hidden="true"><span class="octicon octicon-link"></span></a>Project Resources</h6>
+
+<p><strong>Video Let’s Review: Expected Sarsa</strong></p>
+
+<p><img src="../images/C2W3_3_summary.png" alt=""></p>
+
+<p><strong>Video Let’s Review: What is Q-learning?</strong></p>
+
+<p><strong>Video Let’s Review: Average Reward- A New Way of Formulating Control Problems</strong></p>
+
+<p><strong>Video Let’s Review: Actor-Critic Algorithm</strong></p>
+
+<p><strong>Video Csaba Szepesvari on Problem Landscape</strong></p>
+
+<p><strong>Video Andy and Rich: Advice for Students</strong></p>
+
+<h2 id="course-4---week-4---identify-key-performance-parameters">
+<a class="anchor" href="#course-4---week-4---identify-key-performance-parameters" aria-hidden="true"><span class="octicon octicon-link"></span></a>Course 4 - Week 4 - Identify Key Performance Parameters</h2>
+
+<h6 id="weekly-learning-goals-1">
+<a class="anchor" href="#weekly-learning-goals-1" aria-hidden="true"><span class="octicon octicon-link"></span></a>Weekly Learning Goals</h6>
+
+<p><strong>Video Agent Architecture Meeting with Martha: Overview of Design Choices</strong></p>
+
+<p>Now, let’s discuss the meta parameter choices that you will have to make to fully implement the agent. This means we need to decide on the <strong>function approximator</strong>, choices in the optimizer for <strong>updating the action values</strong>, and how to <strong>do exploration</strong>.</p>
+
+<h6 id="project-resources-2">
+<a class="anchor" href="#project-resources-2" aria-hidden="true"><span class="octicon octicon-link"></span></a>Project Resources</h6>
+
+<p><strong>Video Let’s Review: Non-linear Approximation with Neural Networks</strong></p>
+
+<p>By the end of this video, you will <em>understand</em> how neural networks do <strong>feature construction</strong>, and you will <em>understand</em> how neural networks are a <strong>non-linear function</strong> of state.</p>
+
+<p><strong>Video Drew Bagnell on System ID + Optimal Control</strong></p>
+
+<p><strong>Video Susan Murphy on RL in Mobile Health</strong></p>
+
+<h2 id="course-4---week-5---implement-your-agent">
+<a class="anchor" href="#course-4---week-5---implement-your-agent" aria-hidden="true"><span class="octicon octicon-link"></span></a>Course 4 - Week 5 - Implement your agent</h2>
+
+<h6 id="weekly-learning-goals-2">
+<a class="anchor" href="#weekly-learning-goals-2" aria-hidden="true"><span class="octicon octicon-link"></span></a>Weekly Learning Goals</h6>
+
+<p><strong>Video Meeting with Adam: Getting the Agent Details Right</strong></p>
+
+<h6 id="project-resources-3">
+<a class="anchor" href="#project-resources-3" aria-hidden="true"><span class="octicon octicon-link"></span></a>Project Resources</h6>
+
+<p><strong>Video Let’s Review: Optimization Strategies for NNs</strong></p>
+
+<p>By the end of this video, you will be able to <em>understand</em> the importance of <strong>initialization</strong> for neural networks and <em>describe</em> <strong>optimization techniques</strong> for training neural networks.</p>
+
+<p>One simple yet effective initialization strategy, is to randomly sample the initial weights from a normal distribution with small variance. This way, each neuron has a different output from other neurons within its layer. This provides a more diverse set of potential features. By keeping the variants small, we ensure that the output of each neuron is within the same range as its neighbors. One downside to this strategy is that, as we add more inputs to a neuron, the variance of the output grows. We can get around this issue by scaling the variance of the weights, by one over the square root of the number of inputs.</p>
+
+<p><img src="../images/C4W4_weight_initialization.png" alt=""></p>
+
+<p>Here’s the stochastic gradient descent update rule and here’s the update modified to include momentum. Notice, it is similar to the regular stochastic gradient descent update plus an extra term called the momentum M. The momentum term summarizes the history of the gradients using a decaying sum of gradients with decay rate Lambda. If recent gradients have all been in similar directions, then we gained momentum in that direction. This means, we make a large step in that direction. If recent updates have conflicting directions, then it kills the momentum. The momentum term will have little impact on the update and we will make a regular gradient descent step. Momentum provably accelerates learning, meaning it gets to a stationary point more quickly.</p>
+
+<p><img src="../images/C4W4_update_momentum.png" alt=""></p>
+
+<p>So far, we have only talked about a global scalar step size. This is well-known to be problematic because this can result in updates that are too big for some weights and too small for other weights. Adapting the step sizes for each weight, based on statistics about the learning process in practice results in much better performance. Now, how does the update change? The change is very simple. Instead of updating with a scalar Alpha, there’s a vector of step sizes indexed by t to indicate that it can change on each time-step. Each dimension of the gradient, is scaled by its corresponding step size instead of the global step size. There are a variety of methods to adapt a vector of step sizes. You’ll get to implement one in your assignment.</p>
+
+<p><img src="../images/C4W4_vector_step_sizes.png" alt=""></p>
+
+<p><strong>Video Let’s Review: Expected Sarsa with Function Approximation</strong></p>
+
+<p>By the end of this video, you’ll be able to <em>explain</em> the update for <strong>expected Sarsa</strong> with <strong>function approximation</strong>, and <em>explain</em> the update for <strong>Q-learning</strong> with <strong>function approximation</strong>.</p>
+
+<p><img src="../images/C4W4_expected_sarsa_function_approximation.png" alt=""></p>
+
+<p><img src="../images/C4W4_q_learning_function_approximation.png" alt=""></p>
+
+<p><strong>Video Let’s Review: Dyna &amp; Q-learning in a Simple Maze</strong></p>
+
+<p>By the end of this video you will be able to <em>describe</em> how learning from both <strong>real</strong> and <strong>model</strong> experience impacts performance. You will also be able to <em>explain</em> how a model allows the agent to learn from <strong>fewer interactions with the environment</strong>.</p>
+
+<p><strong>Video Meeting with Martha: In-depth on Experience Replay</strong></p>
+
+<p>In Course 3, the agents you implemented update the value function or policy only once with each sample. But this is likely not the most sample efficient way to use our data. You have actually seen a smarter approach in Course 2 where we talked about Dyna as a way to be more sample efficient. But we only talked about Dyna for the tabular setting.</p>
+
+<p>In this video, we will talk about how to make your agent more sample efficient when using function approximation. We will discuss a simple method called <strong>experience replay</strong> and how it relates to Dyna. To get some intuition for experience replay, let’s first remember a method that we know well, Dyna-Q. The idea is to learn a model using sample experience. Then simulated experience can be obtained from this model to update the values. This procedure of using simulated experience to improve the value estimates is called planning.</p>
+
+<p>Experience replay is a simple method for trying to get the advantages of Dyna. The basic idea is to save a buffer of experience and let the data be the model. We sample experience from this buffer and update the value function with those samples similarly to how we sample from the model and update the values in Dyna.</p>
+
+<p><img src="../images/C4W4_experience_replay.png" alt=""></p>
+
+<p><strong>Video Martin Riedmiller on The ‘Collect and Infer’ framework for data-efficient RL</strong></p>
+
+<p>Martin Riedmiller, head of the control team at Deepmind has been working for more than 20 years on New Reinforcement Learning Agents for the control of dynamical systems.</p>
+
+<p>The control of dynamical systems is an attractive application area for reinforcement learning controllers. They all share the same principle feedback control structure, a controller gets the observation, computes an action and applies it to the environment. Classical control theory would first model the process as a set of differential equations for which then a control law must be analytically derived. A tedious job in particular if the systems are complex or highly nonlinear. Reinforcement learning in contrast promises to be able to learn the controller autonomously. If only the overall control goal is specified. This is typically done by defining the immediate reward. The RL controller optimizes the expected cumulated sum of rewards over time.</p>
+
+<p><img src="../images/C4W4_infer.png" alt=""></p>
+
+<p>These two steps together build the so-called collecting and infer framework of reinforcement learning. This perspective keeps us focused on the two main question of data efficient RL. Infer, which means squeezing out the most of a given set of transition data. And collect, which means sampling the most formative data from the environment.</p>
+
+<p><img src="../images/C4W4_collect_infer.png" alt=""></p>
+
+<p><img src="../images/C4W4_nfq_dqn.png" alt=""></p>
+
+<h6 id="assignment-1">
+<a class="anchor" href="#assignment-1" aria-hidden="true"><span class="octicon octicon-link"></span></a>Assignment</h6>
+
+<p>Implement your agent</p>
+
+<p>notebooks in <a href="https://github.com/castorfou/Reinforcement-Learning-specialization/tree/main/assignements/course%204%20week%205">github</a></p>
+
+<h2 id="course-4---week-6---submit-your-parameter-study">
+<a class="anchor" href="#course-4---week-6---submit-your-parameter-study" aria-hidden="true"><span class="octicon octicon-link"></span></a>Course 4 - Week 6 - Submit your Parameter Study!</h2>
+
+<h6 id="weekly-learning-goals-3">
+<a class="anchor" href="#weekly-learning-goals-3" aria-hidden="true"><span class="octicon octicon-link"></span></a>Weekly Learning Goals</h6>
+
+<p><strong>Video Meeting with Adam: Parameter Studies in RL</strong></p>
+
+<h6 id="project-resources-4">
+<a class="anchor" href="#project-resources-4" aria-hidden="true"><span class="octicon octicon-link"></span></a>Project Resources</h6>
+
+<p><strong>Video Let’s Review: Comparing TD and Monte Carlo</strong></p>
+
+<p><strong>Video Joelle Pineau about RL that Matters</strong></p>
+
+<h6 id="assignment-2">
+<a class="anchor" href="#assignment-2" aria-hidden="true"><span class="octicon octicon-link"></span></a>Assignment</h6>
+
+<p>Completing the parameter study</p>
+
+<p>notebooks in <a href="https://github.com/castorfou/Reinforcement-Learning-specialization/tree/main/assignements/course%204%20week%206">github</a></p>
+
+<h6 id="congratulations">
+<a class="anchor" href="#congratulations" aria-hidden="true"><span class="octicon octicon-link"></span></a>Congratulations!</h6>
+
+<p><strong>Video Meeting with Martha: Discussing Your Results</strong></p>
+
+<p><strong>Video Course Wrap-up</strong></p>
+
+<p><strong>Video Specialization Wrap-up</strong></p>
+
+
+  </div><!-- from https://github.com/utterance/utterances -->
+<script src="https://utteranc.es/client.js"
+        repo="castorfou/blog"
+        issue-term="title"
+        label="blogpost-comment"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script><a class="u-url" href="/blog/reinforcement%20learning/deepmind/coursera/2021/06/14/reinforcement-learning-specialization-coursera-course4.html" hidden></a>
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/blog/"></data>
+
+  <div class="wrapper">
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col">
+        <p class="feed-subscribe">
+          <a href="/blog/feed.xml">
+            <svg class="svg-icon orange">
+              <use xlink:href="/blog/assets/minima-social-icons.svg#rss"></use>
+            </svg><span>Subscribe</span>
+          </a>
+        </p>
+      </div>
+      <div class="footer-col">
+        <p>An easy to use blogging platform with support for Jupyter Notebooks.</p>
+      </div>
+    </div>
+
+    <div class="social-links"><ul class="social-media-list"><li><a rel="me" href="https://github.com/fastai" target="_blank" title="fastai"><svg class="svg-icon grey"><use xlink:href="/blog/assets/minima-social-icons.svg#github"></use></svg></a></li><li><a rel="me" href="https://twitter.com/fastdotai" target="_blank" title="fastdotai"><svg class="svg-icon grey"><use xlink:href="/blog/assets/minima-social-icons.svg#twitter"></use></svg></a></li></ul>
+</div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>

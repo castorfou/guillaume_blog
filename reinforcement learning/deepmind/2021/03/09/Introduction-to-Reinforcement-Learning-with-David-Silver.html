@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="twitter:card" content="summary_large_image" /><!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Introduction to Reinforcement Learning with David Silver | fastpages</title>
+<meta name="generator" content="Jekyll v4.1.1" />
+<meta property="og:title" content="Introduction to Reinforcement Learning with David Silver" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="From deepmind. My notes" />
+<meta property="og:description" content="From deepmind. My notes" />
+<link rel="canonical" href="https://castorfou.github.io/blog/reinforcement%20learning/deepmind/2021/03/09/Introduction-to-Reinforcement-Learning-with-David-Silver.html" />
+<meta property="og:url" content="https://castorfou.github.io/blog/reinforcement%20learning/deepmind/2021/03/09/Introduction-to-Reinforcement-Learning-with-David-Silver.html" />
+<meta property="og:site_name" content="fastpages" />
+<meta property="og:image" content="https://castorfou.github.io/blog/images/RL.png" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2021-03-09T00:00:00-06:00" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="https://castorfou.github.io/blog/images/RL.png" />
+<meta property="twitter:title" content="Introduction to Reinforcement Learning with David Silver" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2021-03-09T00:00:00-06:00","datePublished":"2021-03-09T00:00:00-06:00","description":"From deepmind. My notes","headline":"Introduction to Reinforcement Learning with David Silver","image":"https://castorfou.github.io/blog/images/RL.png","mainEntityOfPage":{"@type":"WebPage","@id":"https://castorfou.github.io/blog/reinforcement%20learning/deepmind/2021/03/09/Introduction-to-Reinforcement-Learning-with-David-Silver.html"},"url":"https://castorfou.github.io/blog/reinforcement%20learning/deepmind/2021/03/09/Introduction-to-Reinforcement-Learning-with-David-Silver.html"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/blog/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="https://castorfou.github.io/blog/feed.xml" title="fastpages" /><link rel="shortcut icon" type="image/x-icon" href="/blog/images/favicon.ico"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Primer/15.2.0/primer.css" integrity="sha512-xTz2ys4coGAOz8vuV1NcQBkgVmKhsSEtjbqyMJbBHRplFuvKIUo6xhLHpAyPt9mfR6twHJgn9OgVLuqOvjeBhg==" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" />
+
+<script>
+function wrap_img(fn) {
+    if (document.attachEvent ? document.readyState === "complete" : document.readyState !== "loading") {
+        var elements = document.querySelectorAll(".post img");
+        Array.prototype.forEach.call(elements, function(el, i) {
+            if (el.getAttribute("title") && (el.className != "emoji")) {
+                const caption = document.createElement('figcaption');
+                var node = document.createTextNode(el.getAttribute("title"));
+                caption.appendChild(node);
+                const wrapper = document.createElement('figure');
+                wrapper.className = 'image';
+                el.parentNode.insertBefore(wrapper, el);
+                el.parentNode.removeChild(el);
+                wrapper.appendChild(el);
+                wrapper.appendChild(caption);
+            }
+        });
+    } else { document.addEventListener('DOMContentLoaded', fn); }
+}
+window.onload = wrap_img;
+</script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function(){
+    // add link icon to anchor tags
+    var elem = document.querySelectorAll(".anchor-link")
+    elem.forEach(e => (e.innerHTML = '<i class="fas fa-link fa-xs"></i>'));
+    });
+</script>
+</head>
+<body><header class="site-header">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/blog/">fastpages</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/blog/about/">About Me</a><a class="page-link" href="/blog/search/">Search</a><a class="page-link" href="/blog/categories/">Tags</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">Introduction to Reinforcement Learning with David Silver</h1><p class="page-description">From deepmind. My notes</p><p class="post-meta post-meta-title"><time class="dt-published" datetime="2021-03-09T00:00:00-06:00" itemprop="datePublished">
+        Mar 9, 2021
+      </time>
+       • <span class="read-time" title="Estimated read time">
+    
+    
+      12 min read
+    
+</span></p>
+
+    
+      <p class="category-tags"><i class="fas fa-tags category-tags-icon"></i></i> 
+      
+        <a class="category-tags-link" href="/blog/categories/#reinforcement learning">reinforcement learning</a>
+        &nbsp;
+      
+        <a class="category-tags-link" href="/blog/categories/#deepmind">deepmind</a>
+        
+      
+      </p>
+    
+
+    </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <ul id="toc" class="section-nav">
+<li class="toc-entry toc-h2"><a href="#3921---lecture-1-introduction-to-reinforcement-learning">3/9/21 - Lecture 1: Introduction to Reinforcement Learning</a></li>
+<li class="toc-entry toc-h2"><a href="#31021---lecture-2-markov-decision-processes">3/10/21 - Lecture 2: Markov Decision Processes</a></li>
+<li class="toc-entry toc-h2"><a href="#31221---lecture-3-planning-by-dynamic-programming">3/12/21 - Lecture 3: Planning by Dynamic Programming</a></li>
+<li class="toc-entry toc-h2"><a href="#31521---lecture-4-model-free-prediction">3/15/21 - Lecture 4: Model-Free Prediction</a></li>
+<li class="toc-entry toc-h2"><a href="#31821---lecture-5-model-free-control">3/18/21 - Lecture 5: Model-Free Control</a></li>
+<li class="toc-entry toc-h2"><a href="#42721---lecture-6-value-function-approximation">4/27/21 - Lecture 6: Value Function Approximation</a></li>
+<li class="toc-entry toc-h2"><a href="#5421---lecture-7-policy-gradient-methods">5/4/21 - Lecture 7: Policy Gradient Methods</a></li>
+<li class="toc-entry toc-h2"><a href="#62121---lecture-8-integrating-learning-and-planning">6/21/21 - Lecture 8: Integrating Learning and Planning</a></li>
+<li class="toc-entry toc-h2"><a href="#7121---lecture-9-exploration-and-exploitation">7/1/21 - Lecture 9: Exploration and exploitation</a></li>
+</ul><p>This classic 10 part course, taught by Reinforcement Learning (RL) pioneer David Silver, was recorded in 2015 and remains a popular resource for anyone wanting to understand the fundamentals of RL.</p>
+
+<p><a href="https://deepmind.com/learning-resources/-introduction-reinforcement-learning-david-silver">Website with 10 lectures: videos and slides</a></p>
+
+<p><a href="https://github.com/castorfou/introduction-reinforcement-learning-david-silver">My repo with slides</a></p>
+
+<p><img src="../images/deepmind_sylabus.png" alt=""></p>
+
+<h2 id="3921---lecture-1-introduction-to-reinforcement-learning">
+<a class="anchor" href="#3921---lecture-1-introduction-to-reinforcement-learning" aria-hidden="true"><span class="octicon octicon-link"></span></a>3/9/21 - Lecture 1: Introduction to Reinforcement Learning</h2>
+
+<p>This introduction is essentially about giving examples of RL to have a good intuition about this field and to provide definitions or context:</p>
+
+<ul>
+  <li>Definitions: rewards, actions, agent, environment, state (and history)</li>
+  <li>Major components: policy, value function, model</li>
+  <li>Categorizing RL agents (taxonomy): value based, policy based, actor critic, model free, model based</li>
+  <li>Learning and planning</li>
+  <li>Prediction and control</li>
+</ul>
+
+<p>And David gives 2 references:</p>
+
+<ul>
+  <li>
+<a href="/guillaume_blog/blog/reinforcement-learning-readings.html">well known</a> Introduction to Reinforcement Learning, Sutton and Barto, 1998</li>
+  <li>Algorithms for Reinforcement Learning, Szepesvari. Available <a href="http://www.ualberta.ca/~szepesva/papers/RLAlgsInMDPs.pdf">online</a>.</li>
+</ul>
+
+<p>Policy <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>π</mi></mrow><annotation encoding="application/x-tex">\pi</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">π</span></span></span></span>(s): essentially a map from state to action. Can be deterministic <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>π</mi></mrow><annotation encoding="application/x-tex">\pi</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">π</span></span></span></span>(s) or stochastic <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>π</mi></mrow><annotation encoding="application/x-tex">\pi</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">π</span></span></span></span>(a|s).</p>
+
+<p>Value function v<sub>$\pi$</sub>(s): is a prediction of expected future reward.</p>
+
+<p>Model: it is not the environment itself but useful to predict what the environment will do next. 2 types of models: transitions model and rewards model. Transition model predicts the next state (e.g. based on dynamics). Reward model predicts the next immediate reward.</p>
+
+<p>A lot of algorithms are model-free and doesn’t require these models. It is a fundamental distinctions in RL.</p>
+
+<p><img src="../images/deepmind_lec1_taxonomy.png" alt=""></p>
+
+<p>And then David explains 2 fundamental different problems with Learning vs Planning.</p>
+
+<p>With Learning, environment is unknown, agent interacts directly with the environment and improves its policy.</p>
+
+<p>With Planning, a model of environment is known, and agent “plays” with this model and improves its policy.</p>
+
+<p>These 2 problems may be linked where you start to learn from the environment and apply planning then.</p>
+
+<p>2 examples based on atari games.</p>
+
+<p>Another topic is exploration vs exploitation then prediction and control.</p>
+
+<h2 id="31021---lecture-2-markov-decision-processes">
+<a class="anchor" href="#31021---lecture-2-markov-decision-processes" aria-hidden="true"><span class="octicon octicon-link"></span></a>3/10/21 - Lecture 2: Markov Decision Processes</h2>
+
+<p><strong><em>Markov decision processes</em></strong> formally describe an environment for reinforcement learning.</p>
+
+<p><strong><em>Markov property</em></strong>: the future is independent of the past given the present.</p>
+
+<p><strong><em>Markov Process</em></strong> (or <strong><em>Markov Chain</em></strong>) is the tuple (S, P)</p>
+
+<p><img src="../images/deepmind_lec2_markovchain.png" alt=""></p>
+
+<p>We can take sample episodes from this chain. (e.g. C1 FB FB C1 C2 C3 Pub C1 FB FB FB C1 C2 C3 Pub C2 Sleep)</p>
+
+<p>We can formalize the transition matrix from s to s’.</p>
+
+<p>When you add reward you get <strong><em>Markov reward process</em></strong> (S, P, R, <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>γ</mi></mrow><annotation encoding="application/x-tex">\gamma</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord mathnormal" style="margin-right:0.05556em;">γ</span></span></span></span>)</p>
+
+<p>Reward here is a function to map for each state the immediate reward.</p>
+
+<p><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>γ</mi></mrow><annotation encoding="application/x-tex">\gamma</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord mathnormal" style="margin-right:0.05556em;">γ</span></span></span></span> is the discounted factor, <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ϵ</mi></mrow><annotation encoding="application/x-tex">\epsilon</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathnormal">ϵ</span></span></span></span> [0,1]. David explains why we could need such discount.</p>
+
+<p><strong><em>Return</em></strong> Gt is the total discounted reward at time-step t for a given sample.</p>
+
+<p><img src="../images/deepmind_lec2_return.png" alt=""></p>
+
+<p><strong><em>Value function</em></strong> v(s) is really what we care about, it is the long-term value of state s.</p>
+
+<p><img src="../images/deepmind_lec2_valuefunction.png" alt=""></p>
+
+<p><strong><em>Bellman Equation for MRPs</em></strong></p>
+
+<p>The value function can be decomposed into two parts:</p>
+<ul>
+  <li>immediate reward R<sub>t+1</sub>
+</li>
+  <li>discounted value of next state <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>γ</mi></mrow><annotation encoding="application/x-tex">\gamma</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord mathnormal" style="margin-right:0.05556em;">γ</span></span></span></span>.v (S<sub>t+1</sub>)</li>
+</ul>
+
+<p><img src="../images/deepmind_lec2_bellman.png" alt=""></p>
+
+<p>We use that to calculate value function with <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>γ</mi></mrow><annotation encoding="application/x-tex">\gamma</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord mathnormal" style="margin-right:0.05556em;">γ</span></span></span></span> $\neq$ 0.</p>
+
+<p>And calculating value function can be seen as the resolution of this linear equation:</p>
+
+<p><img src="../images/deepmind_lec2_bellman_solving.png" alt=""></p>
+
+<p>And now we introduce actions and it gives <strong><em>Markov Decision Process</em></strong></p>
+
+<p><img src="../images/deepmind_lec2_mdp.png" alt=""></p>
+
+<p>And we introduce policy</p>
+
+<p><img src="../images/deepmind_lec2_policy.png" alt=""></p>
+
+<p>Then we can define the <em>state-value function</em> v<sub>$\pi$</sub>(s,a) for a given policy <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>π</mi></mrow><annotation encoding="application/x-tex">\pi</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">π</span></span></span></span></p>
+
+<p><img src="../images/deepmind_lec2_statevaluefunction.png" alt=""></p>
+
+<p>and <em>action-value function</em> q<sub>$\pi$</sub>(s,a) for a given policy <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>π</mi></mrow><annotation encoding="application/x-tex">\pi</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">π</span></span></span></span></p>
+
+<p><img src="../images/deepmind_lec2_actionvaluefunction.png" alt=""></p>
+
+<p>And impact on Bellman Equation ends like that:</p>
+
+<p><img src="../images/deepmind_lec2_bellman_mdp.png" alt=""></p>
+
+<p>v is giving us how good it is to be in a state. q is giving us how good is it to take an action.</p>
+
+<p>And then we have the Bellman equation expressed with v and q.</p>
+
+<p>We don’t care much about a given v<sub>$\pi$</sub>, we want to get the best policy. And ultimately to get q<sub>*</sub> which is the <strong>optimal action value function</strong>.</p>
+
+<p><img src="/home/explore/git/guillaume/blog/images/deepmind_lec2_optimal_value_function.png" alt=""></p>
+
+<p>The optimal value function specifies the best possible performance in the MDP.
+A MDP is “solved” when we know the optimal value function q<sub>*</sub>.</p>
+
+<p>What we really care about is <strong>optimal policy</strong> <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>π</mi></mrow><annotation encoding="application/x-tex">\pi</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">π</span></span></span></span><sub>*</sub>. There is a partial ordering about policies. And a theorem saying that for any MDP, there exists at least one optimal policy.</p>
+
+<p>So the optimal value function calculation is similar to what we did earlier when we averaged the value of the next state but now we take the max instead of average.</p>
+
+<p>So no we can write the <strong>Bellman Optimality Equation</strong>. Unfortunately this is non-linear.</p>
+
+<p>There are many approaches such as iterative ones.</p>
+
+<ul>
+  <li>Value Iteration</li>
+  <li>Policy Iteration</li>
+  <li>Q-learning</li>
+  <li>Sarsa</li>
+</ul>
+
+<h2 id="31221---lecture-3-planning-by-dynamic-programming">
+<a class="anchor" href="#31221---lecture-3-planning-by-dynamic-programming" aria-hidden="true"><span class="octicon octicon-link"></span></a>3/12/21 - Lecture 3: Planning by Dynamic Programming</h2>
+
+<p>Will discuss from the agent side: how to solve these MDP problems.</p>
+
+<p>David starts with general ideas on dynamic programming. (programming in a sense of policy)</p>
+
+<p>Value function is an important idea for RL because it sotres valuable information that you can later reuse (it embeds solutions). And Bellman equation gives the recursive decomposition.</p>
+
+<p><strong>Planning by Dynamic Programming</strong></p>
+
+<p>We assume full knowledge of the MDP. Dynamic programming is used for planning in an MDP. With 2 usages:</p>
+
+<ul>
+  <li>prediction: given MDP and policy <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>π</mi></mrow><annotation encoding="application/x-tex">\pi</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">π</span></span></span></span>, we predict the value of this policy v<sub>$\pi$</sub>.</li>
+  <li>control: given MDP, we get optimal value function v<sub>&amp;ast;</sub> and optimal policy $\pi$<sub>&amp;ast;</sub>.</li>
+</ul>
+
+<p>And by full MDP it would mean for an atari game to have access to internal code to calculate everything.</p>
+
+<p>We need the 2 aspects to solve MDP: prediction to value policy, and control to get the best one.</p>
+
+<p><strong>Policy Evaluation</strong></p>
+
+<p>Problem: evaluate a given policy π
+Solution: iterative application of Bellman expectation backup</p>
+
+<p>(Bellman expectation is used in prediction, Bellman optimality is used in control)</p>
+
+<p>David takes an example with a small grid-world and calculates iteratively (k=0, 1, 2, …) v(s) for a uniform random policy (north, south, east, west with prob 0.25) (left column). And then we follow policy greedily using v function. (right column)</p>
+
+<p><strong>Policy Iteration</strong></p>
+
+<p>In small grid-world example, just by evaluating the policy and act greedily were sufficient to get the optimal policy. This is not generally the case. In general, need more iterations of  evaluation (iterative policy evaluation) / improvement (greedy policy).
+But this process of policy iteration always converges to π∗</p>
+
+<p>David uses Jack’s Car Rental where it needs 4 steps to get the optimal policy.  And explains why acting greedy improves the policy.       And if improvement stops, Bellman optimality equation is satisfied, we have our optimal policy.</p>
+
+<p>Some question then about convergence of v<sub>$\pi$</sub> . Why not update policy at each step of evaluation -&gt; this is value iteration.</p>
+
+<p><strong>Value Iteration</strong></p>
+
+<p>Problem: find optimal policy π
+Solution: iterative application of Bellman optimality backup</p>
+
+<p><strong>Extensions to dynamic programming</strong></p>
+
+<p>DP uses full-width backups. It is effective for medium-sized problems. Curse of dimensionality for large problems. Even one backup can be too expensive.</p>
+
+<p>One solution is to <strong>sample backups</strong>.</p>
+
+<p>Advantages:
+Model-free: no advance knowledge of MDP required
+Breaks the curse of dimensionality through sampling
+Cost of backup is constant, independent of n = |S|</p>
+
+<h2 id="31521---lecture-4-model-free-prediction">
+<a class="anchor" href="#31521---lecture-4-model-free-prediction" aria-hidden="true"><span class="octicon octicon-link"></span></a>3/15/21 - Lecture 4: Model-Free Prediction</h2>
+
+<p>Model-Free: no-one gives us the MDP. And we still want to solve it.</p>
+
+<ul>
+  <li>
+    <p><strong>Monte-Carlo learning</strong>: basically methods which goes all the way to the end of trajectory and estimates value by looking at sample returns.</p>
+  </li>
+  <li>
+<strong>Temporal-Difference learning</strong>: goes one step ahead and estimates after one step</li>
+  <li>
+<strong>TD(<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>λ</mi></mrow><annotation encoding="application/x-tex">\lambda</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathnormal">λ</span></span></span></span>)</strong>: unify both approaches</li>
+</ul>
+
+<p>We give up the assumption giving how the environment works (which is highly unrealistic for interesting problems). We break it down in 2 pieces (as with previous lecture with planning):</p>
+
+<ul>
+  <li>policy evaluation case (this lecture) - how much reward we get from that policy (in model-free envt)</li>
+  <li>control (next lecture) - find the optimum value function and then optimum policy</li>
+</ul>
+
+<p><strong>Monte-Carlo Reinforcement Learning</strong></p>
+
+<p>We go all the way through the episodes and we take sample returns. So the estimated value function can be the average of all returns. You have to terminate to perform this mean.</p>
+
+<p>It means we use the <em>empirical mean return</em> in place of <em>expected return</em>. (by <em>law of large numbers</em>, this average returns will converge to value function as the number of episodes for that state tends to infinity)</p>
+
+<p><strong>Temporal-Difference Reinforcement Learning</strong></p>
+
+<p>TD learns from incomplete episodes, by bootstrapping</p>
+
+<p>David takes an example from Sutton about predicting time to commute home, comparing MC and TD.</p>
+
+<p>TD target (R<sub>t+1</sub>+<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>γ</mi></mrow><annotation encoding="application/x-tex">\gamma</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord mathnormal" style="margin-right:0.05556em;">γ</span></span></span></span>V<sub>t+1</sub>) is biased estimate of v<sub>$\pi$</sub>(S<sub>t</sub>), but has lower variance than the return G<sub>t</sub>.</p>
+
+<p>David compares perf of MC, TD(0), … using Random Walk example and different values of <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>α</mi></mrow><annotation encoding="application/x-tex">\alpha</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.0037em;">α</span></span></span></span>.</p>
+
+<h2 id="31821---lecture-5-model-free-control">
+<a class="anchor" href="#31821---lecture-5-model-free-control" aria-hidden="true"><span class="octicon octicon-link"></span></a>3/18/21 - Lecture 5: Model-Free Control</h2>
+
+<p>Distinction between on-policy (learning by doing the job) and off-policy (following someone else behavior)</p>
+
+<p><strong>on-policy</strong></p>
+
+<p>In Monte-Carlo approach, we have 2 issues. First is that we don’t have access to model so we should use Q(s, a) instead of v(s). Second is lack of exploration so we should use <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ϵ</mi></mrow><annotation encoding="application/x-tex">\epsilon</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathnormal">ϵ</span></span></span></span>-greedy policy.</p>
+
+<p>With GLIE (Greedy in the Limit with Infinite Exploration), we can update Q after each episodes.</p>
+
+<p>We will now use TD:</p>
+
+<p>Natural idea: use TD instead of MC in our control loop</p>
+
+<ul>
+  <li>Apply TD to Q(S, A)</li>
+  <li>Use <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ϵ</mi></mrow><annotation encoding="application/x-tex">\epsilon</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathnormal">ϵ</span></span></span></span>-greedy policy improvement</li>
+  <li>Update every time-step</li>
+</ul>
+
+<p>This is SARSA update. Every single time-step we update our diagram.</p>
+
+<p>A generalisation is n-step Sarsa. n=1 is standard Sarsa. n=<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">∞</mi></mrow><annotation encoding="application/x-tex">\infty</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord">∞</span></span></span></span> is MC.</p>
+
+<p>To get the best of both worlds, we consider Sarsa(<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>λ</mi></mrow><annotation encoding="application/x-tex">\lambda</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathnormal">λ</span></span></span></span>). We have a forward version</p>
+
+<p><img src="/home/explore/git/guillaume/blog/images/deepmind_lec5_sarsal.png" alt=""></p>
+
+<p>And a backward version which allows online experience. Thanks to eligibility traces.</p>
+
+<p><strong>off-policy</strong></p>
+
+<p>Why is this important?</p>
+
+<ul>
+  <li>Learn from observing humans or other agents</li>
+  <li>Re-use experience generated from old policies π 1 , π 2 , …, π t−1</li>
+  <li>Learn about optimal policy while following exploratory policy</li>
+  <li>Learn about multiple policies while following one policy</li>
+</ul>
+
+<p>We can apply it in importance sampling for off-policy. With Monte-Carlo it is however useless due to high variance. It is imperative to to TD.</p>
+
+<p>We can apply that to Q-learning. We can use greedy slection on target policy <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>π</mi></mrow><annotation encoding="application/x-tex">\pi</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">π</span></span></span></span> and <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ϵ</mi></mrow><annotation encoding="application/x-tex">\epsilon</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathnormal">ϵ</span></span></span></span> greedy on behaviour policy <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>μ</mi></mrow><annotation encoding="application/x-tex">\mu</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord mathnormal">μ</span></span></span></span>.</p>
+
+<h2 id="42721---lecture-6-value-function-approximation">
+<a class="anchor" href="#42721---lecture-6-value-function-approximation" aria-hidden="true"><span class="octicon octicon-link"></span></a>4/27/21 - Lecture 6: Value Function Approximation</h2>
+
+<p>How to scale up value function approach.</p>
+
+<p><strong>Value Function Approximation</strong></p>
+
+<p>So far we have represented value function by a lookup table
+Every state s has an entry V (s)
+Or every state-action pair s, a has an entry Q(s, a)</p>
+
+<p>Solution for large MDPs:
+Estimate value function with function approximation
+v̂ (s, w) ≈ v π (s)
+or q̂(s, a, w) ≈ q π (s, a)
+Generalise from seen states to unseen states
+Update parameter w using MC or TD learning</p>
+
+<p>There are many function approximators, e.g.</p>
+
+<ul>
+  <li><strong>Linear combinations of features</strong></li>
+  <li><strong>Neural network</strong></li>
+  <li>Decision tree</li>
+  <li>Nearest neighbour</li>
+  <li>Fourier / wavelet bases</li>
+</ul>
+
+<p>We focus on <strong>differentiable</strong> function approximators.</p>
+
+<h2 id="5421---lecture-7-policy-gradient-methods">
+<a class="anchor" href="#5421---lecture-7-policy-gradient-methods" aria-hidden="true"><span class="octicon octicon-link"></span></a>5/4/21 - Lecture 7: Policy Gradient Methods</h2>
+
+<p>3 methods:</p>
+
+<ul>
+  <li>finite difference</li>
+  <li>MC policy gradient</li>
+  <li>Actor-Critic Policy Gradient</li>
+</ul>
+
+<p>advantages of policy based RL vs value based RL:</p>
+
+<ul>
+  <li>convergence (w/o oscillation that one can see in value based)</li>
+  <li>effective in continuous action spaces (in some cases taking the max (of q value) can be quite expensive)</li>
+  <li>policy based RL can learn stochastic policies which can be beneficial in some cases (e.g. rock scissor paper) (usually where you don’t fall into MDP with perfect states representation but we get partially observed environments)</li>
+</ul>
+
+<p>Some examples of policy: softmax policy and gaussian policy.</p>
+
+<p>One-step MDP: terminating after 1 time-step. No sequence. In that case we have 
+<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>J</mi><mo stretchy="false">(</mo><mi>θ</mi><mo stretchy="false">)</mo><mo>=</mo><msub><mi mathvariant="double-struck">E</mi><msub><mi>π</mi><mi>θ</mi></msub></msub><mo stretchy="false">[</mo><mi>r</mi><mo stretchy="false">]</mo><mo>=</mo><msub><mo>∑</mo><mrow><mi>s</mi><mo>∈</mo><mi mathvariant="script">S</mi></mrow></msub><mi>d</mi><mo stretchy="false">(</mo><mi>s</mi><mo stretchy="false">)</mo><msub><mo>∑</mo><mrow><mi>a</mi><mo>∈</mo><mi mathvariant="script">A</mi></mrow></msub><msub><mi>π</mi><mi>θ</mi></msub><mo stretchy="false">(</mo><mi>s</mi><mo separator="true">,</mo><mi>a</mi><mo stretchy="false">)</mo><msub><mi mathvariant="script">R</mi><mrow><mi>s</mi><mo separator="true">,</mo><mi>a</mi></mrow></msub><mspace linebreak="newline"></mspace><mi>a</mi><mi>n</mi><mi>d</mi><mspace linebreak="newline"></mspace><msub><mi mathvariant="normal">∇</mi><mi>θ</mi></msub><mi>J</mi><mo stretchy="false">(</mo><mi>θ</mi><mo stretchy="false">)</mo><mo>=</mo><msub><mo>∑</mo><mrow><mi>s</mi><mo>∈</mo><mi mathvariant="script">S</mi></mrow></msub><mi>d</mi><mo stretchy="false">(</mo><mi>s</mi><mo stretchy="false">)</mo><msub><mo>∑</mo><mrow><mi>a</mi><mo>∈</mo><mi mathvariant="script">A</mi></mrow></msub><msub><mi>π</mi><mi>θ</mi></msub><mo stretchy="false">(</mo><mi>s</mi><mo separator="true">,</mo><mi>a</mi><mo stretchy="false">)</mo><msub><mi mathvariant="normal">∇</mi><mi>θ</mi></msub><mi>log</mi><mo>⁡</mo><msub><mi>π</mi><mi>θ</mi></msub><mo stretchy="false">(</mo><mi>s</mi><mo separator="true">,</mo><mi>a</mi><mo stretchy="false">)</mo><msub><mi mathvariant="script">R</mi><mrow><mi>s</mi><mo separator="true">,</mo><mi>a</mi></mrow></msub><mspace linebreak="newline"></mspace><msub><mi mathvariant="normal">∇</mi><mi>θ</mi></msub><mi>J</mi><mo stretchy="false">(</mo><mi>θ</mi><mo stretchy="false">)</mo><mo>=</mo><msub><mi mathvariant="double-struck">E</mi><msub><mi>π</mi><mi>θ</mi></msub></msub><mo stretchy="false">[</mo><msub><mi mathvariant="normal">∇</mi><mi>θ</mi></msub><mi>log</mi><mo>⁡</mo><msub><mi>π</mi><mi>θ</mi></msub><mo stretchy="false">(</mo><mi>s</mi><mo separator="true">,</mo><mi>a</mi><mo stretchy="false">)</mo><mi>r</mi><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">J(\theta)=\mathbb{E}_{\pi_\theta}[r]=\sum_{s \in \mathcal{S}}d(s)\sum_{a \in \mathcal{A}}\pi_\theta(s, a)\mathcal{R}_{s,a}
+\\
+and\\
+\nabla_\theta J(\theta) = \sum_{s \in \mathcal{S}}d(s)\sum_{a \in \mathcal{A}}\pi_\theta(s, a)\nabla_\theta \log\pi_\theta(s, a)\mathcal{R}_{s,a}
+\\
+\nabla_\theta J(\theta) = \mathbb{E}_{\pi_\theta}[\nabla_\theta \log\pi_\theta(s, a)r]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.09618em;">J</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.02778em;">θ</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1.00586em;vertical-align:-0.25586em;"></span><span class="mord"><span class="mord mathbb">E</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.15139199999999997em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.03588em;">π</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3448em;"><span style="top:-2.3487714285714287em;margin-left:-0.03588em;margin-right:0.07142857142857144em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mathnormal mtight" style="margin-right:0.02778em;">θ</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15122857142857138em;"><span></span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.25586em;"><span></span></span></span></span></span></span><span class="mopen">[</span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mclose">]</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1.07708em;vertical-align:-0.32708000000000004em;"></span><span class="mop"><span class="mop op-symbol small-op" style="position:relative;top:-0.0000050000000000050004em;">∑</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.17862099999999992em;"><span style="top:-2.40029em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">s</span><span class="mrel mtight">∈</span><span class="mord mathcal mtight" style="margin-right:0.075em;">S</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.32708000000000004em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathnormal">d</span><span class="mopen">(</span><span class="mord mathnormal">s</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mop"><span class="mop op-symbol small-op" style="position:relative;top:-0.0000050000000000050004em;">∑</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.17862099999999992em;"><span style="top:-2.40029em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">a</span><span class="mrel mtight">∈</span><span class="mord mathcal mtight">A</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.32708000000000004em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">π</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.33610799999999996em;"><span style="top:-2.5500000000000003em;margin-left:-0.03588em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.02778em;">θ</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathnormal">s</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathnormal">a</span><span class="mclose">)</span><span class="mord"><span class="mord mathcal">R</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.15139200000000003em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">s</span><span class="mpunct mtight">,</span><span class="mord mathnormal mtight">a</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"><span></span></span></span></span></span></span></span><span class="mspace newline"></span><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathnormal">an</span><span class="mord mathnormal">d</span></span><span class="mspace newline"></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord">∇</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.33610799999999996em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.02778em;">θ</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord mathnormal" style="margin-right:0.09618em;">J</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.02778em;">θ</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1.07708em;vertical-align:-0.32708000000000004em;"></span><span class="mop"><span class="mop op-symbol small-op" style="position:relative;top:-0.0000050000000000050004em;">∑</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.17862099999999992em;"><span style="top:-2.40029em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">s</span><span class="mrel mtight">∈</span><span class="mord mathcal mtight" style="margin-right:0.075em;">S</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.32708000000000004em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathnormal">d</span><span class="mopen">(</span><span class="mord mathnormal">s</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mop"><span class="mop op-symbol small-op" style="position:relative;top:-0.0000050000000000050004em;">∑</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.17862099999999992em;"><span style="top:-2.40029em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">a</span><span class="mrel mtight">∈</span><span class="mord mathcal mtight">A</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.32708000000000004em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">π</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.33610799999999996em;"><span style="top:-2.5500000000000003em;margin-left:-0.03588em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.02778em;">θ</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathnormal">s</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathnormal">a</span><span class="mclose">)</span><span class="mord"><span class="mord">∇</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.33610799999999996em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.02778em;">θ</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">π</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.33610799999999996em;"><span style="top:-2.5500000000000003em;margin-left:-0.03588em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.02778em;">θ</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathnormal">s</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathnormal">a</span><span class="mclose">)</span><span class="mord"><span class="mord mathcal">R</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.15139200000000003em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">s</span><span class="mpunct mtight">,</span><span class="mord mathnormal mtight">a</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"><span></span></span></span></span></span></span></span><span class="mspace newline"></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord">∇</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.33610799999999996em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.02778em;">θ</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord mathnormal" style="margin-right:0.09618em;">J</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.02778em;">θ</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1.00586em;vertical-align:-0.25586em;"></span><span class="mord"><span class="mord mathbb">E</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.15139199999999997em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.03588em;">π</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3448em;"><span style="top:-2.3487714285714287em;margin-left:-0.03588em;margin-right:0.07142857142857144em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mathnormal mtight" style="margin-right:0.02778em;">θ</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15122857142857138em;"><span></span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.25586em;"><span></span></span></span></span></span></span><span class="mopen">[</span><span class="mord"><span class="mord">∇</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.33610799999999996em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.02778em;">θ</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">π</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.33610799999999996em;"><span style="top:-2.5500000000000003em;margin-left:-0.03588em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.02778em;">θ</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathnormal">s</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathnormal">a</span><span class="mclose">)</span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mclose">]</span></span></span></span>
+Generalization is to replace instantaneous reward r with long-term value $Q_\pi(s,a)$</p>
+
+<p>1st algorithm is <strong>Monte-Carlo policy gradient</strong> (REINFORCE) - tend to be slow, very high variance</p>
+
+<p>Where we sample $Q_\pi(s,a)$ in $v_t$ and regularly update $\theta$.</p>
+
+<p>Reducing variance using a critic.</p>
+
+<p>We use a critic to estimate the action-value function, $Q_w (s, a) ≈ Q_{π_θ} (s, a)$
+Actor-critic algorithms maintain two sets of parameters:</p>
+
+<ul>
+  <li>
+<strong>Critic</strong> Updates action-value function parameters w</li>
+  <li>
+<strong>Actor</strong> Updates policy parameters θ, in direction suggested by critic</li>
+</ul>
+
+<p>Actor-critic algorithms follow an approximate policy gradient
+<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi mathvariant="normal">∇</mi><mi>θ</mi></msub><mi>J</mi><mo stretchy="false">(</mo><mi>θ</mi><mo stretchy="false">)</mo><mo>≈</mo><msub><mi mathvariant="double-struck">E</mi><msub><mi>π</mi><mi>θ</mi></msub></msub><mo stretchy="false">[</mo><msub><mi mathvariant="normal">∇</mi><mi>θ</mi></msub><mi>log</mi><mo>⁡</mo><msub><mi>π</mi><mi>θ</mi></msub><mo stretchy="false">(</mo><mi>s</mi><mo separator="true">,</mo><mi>a</mi><mo stretchy="false">)</mo><msub><mi>Q</mi><mi>w</mi></msub><mo stretchy="false">(</mo><mi>s</mi><mo separator="true">,</mo><mi>a</mi><mo stretchy="false">)</mo><mo stretchy="false">]</mo><mspace linebreak="newline"></mspace><mi mathvariant="normal">Δ</mi><mi>θ</mi><mo>=</mo><mi>α</mi><msub><mi mathvariant="normal">∇</mi><mi>θ</mi></msub><mi>log</mi><mo>⁡</mo><msub><mi>π</mi><mi>θ</mi></msub><mo stretchy="false">(</mo><mi>s</mi><mo separator="true">,</mo><mi>a</mi><mo stretchy="false">)</mo><msub><mi>Q</mi><mi>w</mi></msub><mo stretchy="false">(</mo><mi>s</mi><mo separator="true">,</mo><mi>a</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\nabla_\theta J(\theta) \approx \mathbb{E}_{\pi_\theta}[\nabla_\theta \log\pi_\theta(s, a)Q_w(s, a)]
+\\
+\Delta\theta=\alpha\nabla_\theta\log\pi_\theta(s, a)Q_w(s, a)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord">∇</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.33610799999999996em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.02778em;">θ</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord mathnormal" style="margin-right:0.09618em;">J</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.02778em;">θ</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">≈</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1.00586em;vertical-align:-0.25586em;"></span><span class="mord"><span class="mord mathbb">E</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.15139199999999997em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.03588em;">π</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3448em;"><span style="top:-2.3487714285714287em;margin-left:-0.03588em;margin-right:0.07142857142857144em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mathnormal mtight" style="margin-right:0.02778em;">θ</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15122857142857138em;"><span></span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.25586em;"><span></span></span></span></span></span></span><span class="mopen">[</span><span class="mord"><span class="mord">∇</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.33610799999999996em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.02778em;">θ</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">π</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.33610799999999996em;"><span style="top:-2.5500000000000003em;margin-left:-0.03588em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.02778em;">θ</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathnormal">s</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathnormal">a</span><span class="mclose">)</span><span class="mord"><span class="mord mathnormal">Q</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.151392em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.02691em;">w</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathnormal">s</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathnormal">a</span><span class="mclose">)]</span></span><span class="mspace newline"></span><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord">Δ</span><span class="mord mathnormal" style="margin-right:0.02778em;">θ</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.0037em;">α</span><span class="mord"><span class="mord">∇</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.33610799999999996em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.02778em;">θ</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">π</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.33610799999999996em;"><span style="top:-2.5500000000000003em;margin-left:-0.03588em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.02778em;">θ</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathnormal">s</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathnormal">a</span><span class="mclose">)</span><span class="mord"><span class="mord mathnormal">Q</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.151392em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.02691em;">w</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathnormal">s</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathnormal">a</span><span class="mclose">)</span></span></span></span>
+Critic will use a policy evaluation (several options seen so far: monte-carlo policy evaluation, TD, TD($\lambda$))</p>
+
+<h2 id="62121---lecture-8-integrating-learning-and-planning">
+<a class="anchor" href="#62121---lecture-8-integrating-learning-and-planning" aria-hidden="true"><span class="octicon octicon-link"></span></a>6/21/21 - Lecture 8: Integrating Learning and Planning</h2>
+
+<p>3 parts in this lecture:</p>
+
+<ul>
+  <li>model based reinforcement learning</li>
+  <li>integrated architecture</li>
+  <li>simulation-based search</li>
+</ul>
+
+<p>Learn by model. What we mean by the model is 2 parts: understand transitions (how one state will transition to another state) and reward. If the agent has this understanding, then one can plan with that.</p>
+
+<p>Model-Free RL</p>
+
+<ul>
+  <li>No model</li>
+  <li>Learn value function (and/or policy) from experience</li>
+</ul>
+
+<p>Model-Based RL</p>
+
+<ul>
+  <li>Learn a model from experience</li>
+  <li>Plan value function (and/or policy) from model</li>
+</ul>
+
+<p>Model-Based RL (using Sample-Based Planning)</p>
+
+<ul>
+  <li>Learn a model from real experience</li>
+  <li>Plan value function (and/or policy) from simulated experience</li>
+</ul>
+
+<p>Dyna-Q is a way to combine real experience with simulation.</p>
+
+<p>Simulation-Based Search</p>
+
+<ul>
+  <li>Forward search paradigm using sample-based planning</li>
+  <li>Simulate episodes of experience from now with the model</li>
+  <li>Apply model-free RL to simulated episodes</li>
+</ul>
+
+<p>Simulate episodes of experience from now with the model</p>
+
+<span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mo fence="false" stretchy="true" minsize="1.8em" maxsize="1.8em">{</mo><msubsup><mi>S</mi><mi>t</mi><mi>k</mi></msubsup><mo separator="true">,</mo><msubsup><mi>A</mi><mi>t</mi><mi>k</mi></msubsup><mo separator="true">,</mo><msubsup><mi>R</mi><mrow><mi>t</mi><mo>+</mo><mn>1</mn></mrow><mi>k</mi></msubsup><mo separator="true">,</mo><mi mathvariant="normal">.</mi><mi mathvariant="normal">.</mi><mi mathvariant="normal">.</mi><mo separator="true">,</mo><msubsup><mi>S</mi><mi>T</mi><mi>k</mi></msubsup><msubsup><mo fence="false" stretchy="true" minsize="1.8em" maxsize="1.8em">}</mo><mrow><mi>k</mi><mo>=</mo><mn>1</mn></mrow><mi>K</mi></msubsup><mo>∼</mo><msub><mi mathvariant="script">M</mi><mi>v</mi></msub></mrow><annotation encoding="application/x-tex">\Big\{ S_t^k, A_t^k, R_{t+1}^k, ..., S_T^k \Big\}_{k=1}^K \sim \mathcal{M}_v</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:2.0809509999999998em;vertical-align:-0.69972em;"></span><span class="mord"><span class="delimsizing size2">{</span></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.05764em;">S</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8991079999999998em;"><span style="top:-2.4530000000000003em;margin-left:-0.05764em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">t</span></span></span><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.03148em;">k</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.247em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathnormal">A</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8991079999999998em;"><span style="top:-2.4530000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">t</span></span></span><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.03148em;">k</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.247em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.00773em;">R</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.899108em;"><span style="top:-2.4530000000000003em;margin-left:-0.00773em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">t</span><span class="mbin mtight">+</span><span class="mord mtight">1</span></span></span></span><span style="top:-3.1130000000000004em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.03148em;">k</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.305331em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord">...</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.05764em;">S</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8991079999999998em;"><span style="top:-2.4530000000000003em;margin-left:-0.05764em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.13889em;">T</span></span></span><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.03148em;">k</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.247em;"><span></span></span></span></span></span></span><span class="mord"><span class="mord"><span class="delimsizing size2">}</span></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3812309999999997em;"><span style="top:-2.00028em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.03148em;">k</span><span class="mrel mtight">=</span><span class="mord mtight">1</span></span></span></span><span style="top:-3.6029em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.07153em;">K</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.69972em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">∼</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathcal">M</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.151392em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.03588em;">v</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></span>
+
+<p>Apply model-free RL to simulated episodes</p>
+
+<ul>
+  <li>Monte-Carlo control → Monte-Carlo search</li>
+  <li>Sarsa → TD search</li>
+</ul>
+
+<p><img src="../images/silver_mc_search.png" alt=""></p>
+
+<p><img src="../images/silver_td_search.png" alt=""></p>
+
+<h2 id="7121---lecture-9-exploration-and-exploitation">
+<a class="anchor" href="#7121---lecture-9-exploration-and-exploitation" aria-hidden="true"><span class="octicon octicon-link"></span></a>7/1/21 - Lecture 9: Exploration and exploitation</h2>
+
+<p>David starts with a multi-armed bandit case. We can think about it as a one-step MDP.</p>
+
+<p>But in that case we don’t have states anymore.</p>
+
+<p>Definition of regret as the total opportunity loss (how far we are from the best value). And maximizing cumulative reward is the same as minimizing total regret.</p>
+
+<p>Greedy and $\epsilon$-greedy have linear total regret.</p>
+
+<p><strong>Optimism in face of uncertainty</strong>: don’t play the one with best mean value but play the one with best potential (characterized with the highest tail) = select action maximising Upper Confidence Bound (UCB)</p>
+
+<p>$\epsilon$-greedy is behaving right when properly tuned or can be a disaster otherwise. UCB is comparable to properly tuned $\epsilon$-greedy.</p>
+
+<p>thesis from a French guy about thompson sampling in optimisation control problems: <a href="https://www.google.com/url?sa=t&amp;rct=j&amp;q=&amp;esrc=s&amp;source=web&amp;cd=&amp;ved=2ahUKEwiUiqCfh8TxAhUG14UKHXK1C_AQFjACegQIBxAD&amp;url=https%3A%2F%2Ftel.archives-ouvertes.fr%2Ftel-01816069%2Fdocument&amp;usg=AOvVaw3hFUV24uDy-3nKFtTUW7Ea">Exploration-Exploitation with Thompson Sampling in Linear</a></p>
+
+
+  </div><!-- from https://github.com/utterance/utterances -->
+<script src="https://utteranc.es/client.js"
+        repo="castorfou/blog"
+        issue-term="title"
+        label="blogpost-comment"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script><a class="u-url" href="/blog/reinforcement%20learning/deepmind/2021/03/09/Introduction-to-Reinforcement-Learning-with-David-Silver.html" hidden></a>
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/blog/"></data>
+
+  <div class="wrapper">
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col">
+        <p class="feed-subscribe">
+          <a href="/blog/feed.xml">
+            <svg class="svg-icon orange">
+              <use xlink:href="/blog/assets/minima-social-icons.svg#rss"></use>
+            </svg><span>Subscribe</span>
+          </a>
+        </p>
+      </div>
+      <div class="footer-col">
+        <p>An easy to use blogging platform with support for Jupyter Notebooks.</p>
+      </div>
+    </div>
+
+    <div class="social-links"><ul class="social-media-list"><li><a rel="me" href="https://github.com/fastai" target="_blank" title="fastai"><svg class="svg-icon grey"><use xlink:href="/blog/assets/minima-social-icons.svg#github"></use></svg></a></li><li><a rel="me" href="https://twitter.com/fastdotai" target="_blank" title="fastdotai"><svg class="svg-icon grey"><use xlink:href="/blog/assets/minima-social-icons.svg#twitter"></use></svg></a></li></ul>
+</div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>
