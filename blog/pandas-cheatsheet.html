@@ -1,0 +1,1005 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="twitter:card" content="summary_large_image" /><!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>pandas cheatsheet | Guillaume’s blog</title>
+<meta name="generator" content="Jekyll v4.1.1" />
+<meta property="og:title" content="pandas cheatsheet" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="so much different ways to do something with pandas, …" />
+<meta property="og:description" content="so much different ways to do something with pandas, …" />
+<link rel="canonical" href="https://castorfou.github.io/blog/blog/pandas-cheatsheet.html" />
+<meta property="og:url" content="https://castorfou.github.io/blog/blog/pandas-cheatsheet.html" />
+<meta property="og:site_name" content="Guillaume’s blog" />
+<meta property="og:image" content="https://learn-the-web.algonquindesign.ca/images/icon-cheat-sheet.svg" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2021-01-13T00:00:00-06:00" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="https://learn-the-web.algonquindesign.ca/images/icon-cheat-sheet.svg" />
+<meta property="twitter:title" content="pandas cheatsheet" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2021-01-13T00:00:00-06:00","datePublished":"2021-01-13T00:00:00-06:00","description":"so much different ways to do something with pandas, …","headline":"pandas cheatsheet","image":"https://learn-the-web.algonquindesign.ca/images/icon-cheat-sheet.svg","mainEntityOfPage":{"@type":"WebPage","@id":"https://castorfou.github.io/blog/blog/pandas-cheatsheet.html"},"url":"https://castorfou.github.io/blog/blog/pandas-cheatsheet.html"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/blog/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="https://castorfou.github.io/blog/feed.xml" title="Guillaume's blog" /><link rel="shortcut icon" type="image/x-icon" href="/blog/images/favicon.ico"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Primer/15.2.0/primer.css" integrity="sha512-xTz2ys4coGAOz8vuV1NcQBkgVmKhsSEtjbqyMJbBHRplFuvKIUo6xhLHpAyPt9mfR6twHJgn9OgVLuqOvjeBhg==" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.12.0/katex.min.css" integrity="sha512-h7nl+xz8wgDlNM4NqKEM4F1NkIRS17M9+uJwIGwuo8vGqIl4BhuCKdxjWEINm+xyrUjNCnK5dCrhM0sj+wTIXw==" crossorigin="anonymous" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.12.0/katex.min.js" integrity="sha512-/CMIhXiDA3m2c9kzRyd97MTb3MC6OVnx4TElQ7fkkoRghwDf6gi41gaT1PwF270W6+J60uTmwgeRpNpJdRV6sg==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.12.0/contrib/auto-render.min.js" integrity="sha512-Do7uJAaHZm5OLrIv/yN4w0iG1dbu01kzdMNnFfu/mAqgUk6Nniv2JYHcwH+cNwjqgLcqcuBBk+JRvprLVI8azg==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha512-0doc9hKxR3PYwso42RD1p5ySZpzzuDiOwMrdCEh2WdJZCjcmFKc/wEnL+z8fBQrnHoiNWbo+3fiGkOYXBdQp4A==" crossorigin="anonymous"></script>
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        renderMathInElement( document.body, {
+        delimiters: [
+            {left: "$$", right: "$$", display: true},
+            {left: "[%", right: "%]", display: true},
+            {left: "$", right: "$", display: false}
+        ]}
+        );
+    });
+    </script>
+
+
+<script>
+function wrap_img(fn) {
+    if (document.attachEvent ? document.readyState === "complete" : document.readyState !== "loading") {
+        var elements = document.querySelectorAll(".post img");
+        Array.prototype.forEach.call(elements, function(el, i) {
+            if (el.getAttribute("title") && (el.className != "emoji")) {
+                const caption = document.createElement('figcaption');
+                var node = document.createTextNode(el.getAttribute("title"));
+                caption.appendChild(node);
+                const wrapper = document.createElement('figure');
+                wrapper.className = 'image';
+                el.parentNode.insertBefore(wrapper, el);
+                el.parentNode.removeChild(el);
+                wrapper.appendChild(el);
+                wrapper.appendChild(caption);
+            }
+        });
+    } else { document.addEventListener('DOMContentLoaded', fn); }
+}
+window.onload = wrap_img;
+</script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function(){
+    // add link icon to anchor tags
+    var elem = document.querySelectorAll(".anchor-link")
+    elem.forEach(e => (e.innerHTML = '<i class="fas fa-link fa-xs"></i>'));
+    });
+</script>
+</head>
+<body><header class="site-header">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/blog/">Guillaume&#39;s blog</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/blog/about/">About Me</a><a class="page-link" href="/blog/search/">Search</a><a class="page-link" href="/blog/categories/">Tags</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">pandas cheatsheet</h1><p class="page-description">so much different ways to do something with pandas, ...</p><p class="post-meta post-meta-title"><time class="dt-published" datetime="2021-01-13T00:00:00-06:00" itemprop="datePublished">
+        Jan 13, 2021
+      </time>
+       • <span class="read-time" title="Estimated read time">
+    
+    
+      5 min read
+    
+</span></p>
+
+    
+      <p class="category-tags"><i class="fas fa-tags category-tags-icon"></i></i> 
+      
+        <a class="category-tags-link" href="/blog/categories/#pandas">pandas</a>
+        &nbsp;
+      
+        <a class="category-tags-link" href="/blog/categories/#cheatsheet">cheatsheet</a>
+        
+      
+      </p>
+    
+
+    
+      </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <ul id="toc" class="section-nav">
+<li class="toc-entry toc-h1"><a href="#Data-Manipulation-with-pandas">Data Manipulation with pandas </a>
+<ul>
+<li class="toc-entry toc-h2"><a href="#Transforming-Data">Transforming Data </a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#Introducing-DataFrames">Introducing DataFrames </a></li>
+<li class="toc-entry toc-h3"><a href="#Sorting-and-subsetting">Sorting and subsetting </a></li>
+<li class="toc-entry toc-h3"><a href="#New-columns">New columns </a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="#Aggregating-Data">Aggregating Data </a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#Summary-statistics">Summary statistics </a></li>
+<li class="toc-entry toc-h3"><a href="#Counting">Counting </a></li>
+<li class="toc-entry toc-h3"><a href="#Grouped-summary-statistics">Grouped summary statistics </a></li>
+<li class="toc-entry toc-h3"><a href="#Pivot-tables">Pivot tables </a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="#Slicing-and-Indexing">Slicing and Indexing </a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#Explicit-indexes">Explicit indexes </a></li>
+<li class="toc-entry toc-h3"><a href="#Slicing-and-subsetting-with-.loc-and-.iloc">Slicing and subsetting with .loc and .iloc </a></li>
+<li class="toc-entry toc-h3"><a href="#Working-with-pivot-tables">Working with pivot tables </a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="#Creating-and-Visualizing-DataFrames">Creating and Visualizing DataFrames </a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#Visualizing-your-data">Visualizing your data </a></li>
+<li class="toc-entry toc-h3"><a href="#Missing-values">Missing values </a></li>
+<li class="toc-entry toc-h3"><a href="#Reading-and-writing-CSVs">Reading and writing CSVs </a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-entry toc-h1"><a href="#Joining-data-with-pandas">Joining data with pandas </a>
+<ul>
+<li class="toc-entry toc-h2"><a href="#Data-merging-basics">Data merging basics </a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#Inner-join">Inner join </a></li>
+<li class="toc-entry toc-h3"><a href="#One-to-many-relationships">One-to-many relationships </a></li>
+<li class="toc-entry toc-h3"><a href="#Merging-multiple-DataFrames">Merging multiple DataFrames </a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="#Merging-Tables-With-Different-Join-Types">Merging Tables With Different Join Types </a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#Left-join">Left join </a></li>
+<li class="toc-entry toc-h3"><a href="#Other-joins">Other joins </a></li>
+<li class="toc-entry toc-h3"><a href="#Merging-a-table-to-itself">Merging a table to itself </a></li>
+<li class="toc-entry toc-h3"><a href="#Merging-on-indexes">Merging on indexes </a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="#Advanced-Merging-and-Concatenating">Advanced Merging and Concatenating </a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#Filtering-joins">Filtering joins </a></li>
+<li class="toc-entry toc-h3"><a href="#Concatenate-DataFrames-together-vertically">Concatenate DataFrames together vertically </a></li>
+<li class="toc-entry toc-h3"><a href="#Verifying-integrity">Verifying integrity </a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="#Merging-Ordered-and-Time-Series-Data">Merging Ordered and Time-Series Data </a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#Using-merge_ordered()">Using merge_ordered() </a></li>
+<li class="toc-entry toc-h3"><a href="#Using-merge_asof()">Using merge_asof() </a></li>
+<li class="toc-entry toc-h3"><a href="#Selecting-data-with-.query()">Selecting data with .query() </a></li>
+<li class="toc-entry toc-h3"><a href="#Reshaping-data-with-.melt()">Reshaping data with .melt() </a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul><!--
+#################################################
+### THIS FILE WAS AUTOGENERATED! DO NOT EDIT! ###
+#################################################
+# file to edit: _notebooks/2021-01-13-pandas-cheatsheet.ipynb
+-->
+
+<div class="container" id="notebook-container">
+        
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Data-Manipulation-with-pandas">
+<a class="anchor" href="#Data-Manipulation-with-pandas" aria-hidden="true"><span class="octicon octicon-link"></span></a>Data Manipulation with pandas<a class="anchor-link" href="#Data-Manipulation-with-pandas"> </a>
+</h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Transforming-Data">
+<a class="anchor" href="#Transforming-Data" aria-hidden="true"><span class="octicon octicon-link"></span></a>Transforming Data<a class="anchor-link" href="#Transforming-Data"> </a>
+</h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Introducing-DataFrames">
+<a class="anchor" href="#Introducing-DataFrames" aria-hidden="true"><span class="octicon octicon-link"></span></a>Introducing DataFrames<a class="anchor-link" href="#Introducing-DataFrames"> </a>
+</h3>
+<div class="highlight"><pre><span></span><span class="c1"># Exploring a DataFrame: .head()</span>
+<span class="n">dogs</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+
+<span class="c1"># Exploring a DataFrame: .info()</span>
+<span class="n">dogs</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+
+<span class="c1"># Exploring a DataFrame: .shape</span>
+<span class="n">dogs</span><span class="o">.</span><span class="n">shape</span>
+
+<span class="c1"># Exploring a DataFrame: .describe()</span>
+<span class="n">dogs</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+
+<span class="c1"># Components of a DataFrame: .values</span>
+<span class="n">dogs</span><span class="o">.</span><span class="n">values</span>
+
+<span class="c1"># Components of a DataFrame: .columns and .index</span>
+<span class="n">dogs</span><span class="o">.</span><span class="n">columns</span>
+
+<span class="n">dogs</span><span class="o">.</span><span class="n">index</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Sorting-and-subsetting">
+<a class="anchor" href="#Sorting-and-subsetting" aria-hidden="true"><span class="octicon octicon-link"></span></a>Sorting and subsetting<a class="anchor-link" href="#Sorting-and-subsetting"> </a>
+</h3>
+<div class="highlight"><pre><span></span><span class="c1">#Sorting by multiple variables</span>
+<span class="n">dogs</span><span class="o">.</span><span class="n">sort_values</span><span class="p">([</span><span class="s2">"weight_kg"</span><span class="p">,</span> <span class="s2">"height_cm"</span><span class="p">],</span> <span class="n">ascending</span><span class="o">=</span><span class="p">[</span><span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">])</span>
+
+<span class="c1">#Subsetting based on dates</span>
+<span class="n">dogs</span><span class="p">[</span><span class="n">dogs</span><span class="p">[</span><span class="s2">"date_of_birth"</span><span class="p">]</span> <span class="o">&gt;</span> <span class="s2">"2015-01-01"</span><span class="p">]</span>
+
+<span class="c1">#Subsetting based on multiple conditions</span>
+<span class="n">is_lab</span> <span class="o">=</span> <span class="n">dogs</span><span class="p">[</span><span class="s2">"breed"</span><span class="p">]</span> <span class="o">==</span> <span class="s2">"Labrador"</span>
+<span class="n">is_brown</span> <span class="o">=</span> <span class="n">dogs</span><span class="p">[</span><span class="s2">"color"</span><span class="p">]</span> <span class="o">==</span> <span class="s2">"Brown"</span>
+<span class="n">dogs</span><span class="p">[</span><span class="n">is_lab</span> <span class="o">&amp;</span> <span class="n">is_brown</span><span class="p">]</span>
+<span class="n">dogs</span><span class="p">[</span> <span class="p">(</span><span class="n">dogs</span><span class="p">[</span><span class="s2">"breed"</span><span class="p">]</span> <span class="o">==</span> <span class="s2">"Labrador"</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">dogs</span><span class="p">[</span><span class="s2">"color"</span><span class="p">]</span> <span class="o">==</span> <span class="s2">"Brown"</span><span class="p">)</span> <span class="p">]</span>
+
+<span class="c1">#Subsetting using .isin()</span>
+<span class="n">is_black_or_brown</span> <span class="o">=</span> <span class="n">dogs</span><span class="p">[</span><span class="s2">"color"</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">([</span><span class="s2">"Black"</span><span class="p">,</span> <span class="s2">"Brown"</span><span class="p">])</span>
+<span class="n">dogs</span><span class="p">[</span><span class="n">is_black_or_brown</span><span class="p">]</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="New-columns">
+<a class="anchor" href="#New-columns" aria-hidden="true"><span class="octicon octicon-link"></span></a>New columns<a class="anchor-link" href="#New-columns"> </a>
+</h3>
+<div class="highlight"><pre><span></span><span class="c1"># Adding a new column</span>
+<span class="n">dogs</span><span class="p">[</span><span class="s2">"height_m"</span><span class="p">]</span> <span class="o">=</span> <span class="n">dogs</span><span class="p">[</span><span class="s2">"height_cm"</span><span class="p">]</span> <span class="o">/</span> <span class="mi">100</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Aggregating-Data">
+<a class="anchor" href="#Aggregating-Data" aria-hidden="true"><span class="octicon octicon-link"></span></a>Aggregating Data<a class="anchor-link" href="#Aggregating-Data"> </a>
+</h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Summary-statistics">
+<a class="anchor" href="#Summary-statistics" aria-hidden="true"><span class="octicon octicon-link"></span></a>Summary statistics<a class="anchor-link" href="#Summary-statistics"> </a>
+</h3>
+<div class="highlight"><pre><span></span><span class="c1">#Summarizing numerical data</span>
+<span class="n">dogs</span><span class="p">[</span><span class="s2">"height_cm"</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+
+<span class="o">.</span><span class="n">median</span><span class="p">()</span> <span class="p">,</span> <span class="o">.</span><span class="n">mode</span><span class="p">()</span>
+<span class="o">.</span><span class="n">min</span><span class="p">()</span> <span class="p">,</span> <span class="o">.</span><span class="n">max</span><span class="p">()</span>
+<span class="o">.</span><span class="n">var</span><span class="p">()</span> <span class="p">,</span> <span class="o">.</span><span class="n">std</span><span class="p">()</span>
+<span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<span class="o">.</span><span class="n">quantile</span><span class="p">()</span>
+
+<span class="c1">#The .agg() method</span>
+<span class="k">def</span> <span class="nf">pct30</span><span class="p">(</span><span class="n">column</span><span class="p">):</span>
+<span class="k">return</span> <span class="n">column</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="mf">0.3</span><span class="p">)</span>
+<span class="n">dogs</span><span class="p">[</span><span class="s2">"weight_kg"</span><span class="p">]</span><span class="o">.</span><span class="n">agg</span><span class="p">(</span><span class="n">pct30</span><span class="p">)</span>
+
+<span class="c1">#Multiple summaries</span>
+<span class="k">def</span> <span class="nf">pct40</span><span class="p">(</span><span class="n">column</span><span class="p">):</span>
+<span class="k">return</span> <span class="n">column</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="mf">0.4</span><span class="p">)</span>
+<span class="n">dogs</span><span class="p">[</span><span class="s2">"weight_kg"</span><span class="p">]</span><span class="o">.</span><span class="n">agg</span><span class="p">([</span><span class="n">pct30</span><span class="p">,</span> <span class="n">pct40</span><span class="p">])</span>
+
+<span class="c1">#Cumulative sum</span>
+<span class="n">dogs</span><span class="p">[</span><span class="s2">"weight_kg"</span><span class="p">]</span><span class="o">.</span><span class="n">cumsum</span><span class="p">()</span>
+
+<span class="c1">#Cumulative statistics</span>
+<span class="o">.</span><span class="n">cummax</span><span class="p">()</span>
+<span class="o">.</span><span class="n">cummin</span><span class="p">()</span>
+<span class="o">.</span><span class="n">cumprod</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Counting">
+<a class="anchor" href="#Counting" aria-hidden="true"><span class="octicon octicon-link"></span></a>Counting<a class="anchor-link" href="#Counting"> </a>
+</h3>
+<div class="highlight"><pre><span></span><span class="c1">#Dropping duplicate names</span>
+<span class="n">vet_visits</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="s2">"name"</span><span class="p">)</span>
+
+<span class="c1">#Dropping duplicate pairs</span>
+<span class="n">unique_dogs</span> <span class="o">=</span> <span class="n">vet_visits</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="p">[</span><span class="s2">"name"</span><span class="p">,</span> <span class="s2">"breed"</span><span class="p">])</span>
+
+<span class="c1">#Counting</span>
+<span class="n">unique_dogs</span><span class="p">[</span><span class="s2">"breed"</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">(</span><span class="n">sort</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Grouped-summary-statistics">
+<a class="anchor" href="#Grouped-summary-statistics" aria-hidden="true"><span class="octicon octicon-link"></span></a>Grouped summary statistics<a class="anchor-link" href="#Grouped-summary-statistics"> </a>
+</h3>
+<div class="highlight"><pre><span></span><span class="c1">#Summaries by group</span>
+<span class="n">dogs</span><span class="p">[</span><span class="n">dogs</span><span class="p">[</span><span class="s2">"color"</span><span class="p">]</span> <span class="o">==</span> <span class="s2">"Black"</span><span class="p">][</span><span class="s2">"weight_kg"</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">dogs</span><span class="p">[</span><span class="n">dogs</span><span class="p">[</span><span class="s2">"color"</span><span class="p">]</span> <span class="o">==</span> <span class="s2">"Brown"</span><span class="p">][</span><span class="s2">"weight_kg"</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+
+<span class="c1">#Grouped summaries</span>
+<span class="n">dogs</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">"color"</span><span class="p">)[</span><span class="s2">"weight_kg"</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+
+<span class="c1">#Multiple grouped summaries</span>
+<span class="n">dogs</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">"color"</span><span class="p">)[</span><span class="s2">"weight_kg"</span><span class="p">]</span><span class="o">.</span><span class="n">agg</span><span class="p">([</span><span class="nb">min</span><span class="p">,</span> <span class="nb">max</span><span class="p">,</span> <span class="nb">sum</span><span class="p">])</span>
+
+<span class="c1">#Grouping by multiple variables</span>
+<span class="n">dogs</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s2">"color"</span><span class="p">,</span> <span class="s2">"breed"</span><span class="p">])[</span><span class="s2">"weight_kg"</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+
+<span class="c1">#Many groups, many summaries</span>
+<span class="n">dogs</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s2">"color"</span><span class="p">,</span> <span class="s2">"breed"</span><span class="p">])[[</span><span class="s2">"weight_kg"</span><span class="p">,</span> <span class="s2">"height_cm"</span><span class="p">]]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Pivot-tables">
+<a class="anchor" href="#Pivot-tables" aria-hidden="true"><span class="octicon octicon-link"></span></a>Pivot tables<a class="anchor-link" href="#Pivot-tables"> </a>
+</h3>
+<div class="highlight"><pre><span></span><span class="c1">#pivot table</span>
+<span class="n">dogs</span><span class="o">.</span><span class="n">pivot_table</span><span class="p">(</span><span class="n">values</span><span class="o">=</span><span class="s2">"weight_kg"</span><span class="p">,</span><span class="n">index</span><span class="o">=</span><span class="s2">"color"</span><span class="p">)</span>
+
+<span class="c1">#Different statistics</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="n">dogs</span><span class="o">.</span><span class="n">pivot_table</span><span class="p">(</span><span class="n">values</span><span class="o">=</span><span class="s2">"weight_kg"</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="s2">"color"</span><span class="p">,</span> <span class="n">aggfunc</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">median</span><span class="p">)</span>
+
+<span class="c1">#Multiple statistics</span>
+<span class="n">dogs</span><span class="o">.</span><span class="n">pivot_table</span><span class="p">(</span><span class="n">values</span><span class="o">=</span><span class="s2">"weight_kg"</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="s2">"color"</span><span class="p">,</span> <span class="n">aggfunc</span><span class="o">=</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">median</span><span class="p">])</span>
+
+<span class="c1">#Pivot on two variables</span>
+<span class="n">dogs</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s2">"color"</span><span class="p">,</span> <span class="s2">"breed"</span><span class="p">])[</span><span class="s2">"weight_kg"</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">dogs</span><span class="o">.</span><span class="n">pivot_table</span><span class="p">(</span><span class="n">values</span><span class="o">=</span><span class="s2">"weight_kg"</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="s2">"color"</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="s2">"breed"</span><span class="p">)</span>
+
+<span class="c1">#Filling missing values in pivot tables</span>
+<span class="n">dogs</span><span class="o">.</span><span class="n">pivot_table</span><span class="p">(</span><span class="n">values</span><span class="o">=</span><span class="s2">"weight_kg"</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="s2">"color"</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="s2">"breed"</span><span class="p">,</span> <span class="n">fill_value</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="c1"># Summing with pivot tables</span>
+<span class="n">dogs</span><span class="o">.</span><span class="n">pivot_table</span><span class="p">(</span><span class="n">values</span><span class="o">=</span><span class="s2">"weight_kg"</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="s2">"color"</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="s2">"breed"</span><span class="p">,</span>
+<span class="n">fill_value</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">margins</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Slicing-and-Indexing">
+<a class="anchor" href="#Slicing-and-Indexing" aria-hidden="true"><span class="octicon octicon-link"></span></a>Slicing and Indexing<a class="anchor-link" href="#Slicing-and-Indexing"> </a>
+</h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Explicit-indexes">
+<a class="anchor" href="#Explicit-indexes" aria-hidden="true"><span class="octicon octicon-link"></span></a>Explicit indexes<a class="anchor-link" href="#Explicit-indexes"> </a>
+</h3>
+<div class="highlight"><pre><span></span><span class="c1"># Setting a column as the index</span>
+<span class="n">dogs_ind</span> <span class="o">=</span> <span class="n">dogs</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s2">"name"</span><span class="p">)</span>
+
+<span class="c1"># Removing an index</span>
+<span class="n">dogs_ind</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+
+<span class="c1"># Dropping an index</span>
+<span class="n">dogs_ind</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Indexes make subsetting simpler</span>
+<span class="n">dogs</span><span class="p">[</span><span class="n">dogs</span><span class="p">[</span><span class="s2">"name"</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">([</span><span class="s2">"Bella"</span><span class="p">,</span> <span class="s2">"Stella"</span><span class="p">])]</span>
+<span class="c1"># versus</span>
+<span class="n">dogs_ind</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="s2">"Bella"</span><span class="p">,</span> <span class="s2">"Stella"</span><span class="p">]]</span>
+
+<span class="c1"># Multi-level indexes a.k.a. hierarchical indexes</span>
+<span class="n">dogs_ind3</span> <span class="o">=</span> <span class="n">dogs</span><span class="o">.</span><span class="n">set_index</span><span class="p">([</span><span class="s2">"breed"</span><span class="p">,</span> <span class="s2">"color"</span><span class="p">])</span>
+
+<span class="c1"># Subset the outer level with a list</span>
+<span class="n">dogs_ind3</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="s2">"Labrador"</span><span class="p">,</span> <span class="s2">"Chihuahua"</span><span class="p">]]</span>
+
+<span class="c1"># Subset inner levels with a list of tuples</span>
+<span class="n">dogs_ind3</span><span class="o">.</span><span class="n">loc</span><span class="p">[[(</span><span class="s2">"Labrador"</span><span class="p">,</span> <span class="s2">"Brown"</span><span class="p">),</span> <span class="p">(</span><span class="s2">"Chihuahua"</span><span class="p">,</span> <span class="s2">"Tan"</span><span class="p">)]]</span>
+
+<span class="c1"># Sorting by index values</span>
+<span class="n">dogs_ind3</span><span class="o">.</span><span class="n">sort_index</span><span class="p">()</span>
+
+<span class="c1"># Controlling sort_index</span>
+<span class="n">dogs_ind3</span><span class="o">.</span><span class="n">sort_index</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="p">[</span><span class="s2">"color"</span><span class="p">,</span> <span class="s2">"breed"</span><span class="p">],</span> <span class="n">ascending</span><span class="o">=</span><span class="p">[</span><span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">])</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Slicing-and-subsetting-with-.loc-and-.iloc">
+<a class="anchor" href="#Slicing-and-subsetting-with-.loc-and-.iloc" aria-hidden="true"><span class="octicon octicon-link"></span></a>Slicing and subsetting with .loc and .iloc<a class="anchor-link" href="#Slicing-and-subsetting-with-.loc-and-.iloc"> </a>
+</h3>
+<div class="highlight"><pre><span></span><span class="c1"># Sort the index before you slice</span>
+<span class="n">dogs_srt</span> <span class="o">=</span> <span class="n">dogs</span><span class="o">.</span><span class="n">set_index</span><span class="p">([</span><span class="s2">"breed"</span><span class="p">,</span> <span class="s2">"color"</span><span class="p">])</span><span class="o">.</span><span class="n">sort_index</span><span class="p">()</span>
+
+<span class="c1"># Slicing the outer index level</span>
+<span class="n">dogs_srt</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">"Chow Chow"</span><span class="p">:</span><span class="s2">"Poodle"</span><span class="p">]</span>
+
+<span class="c1"># Slicing the inner index levels correctly</span>
+<span class="n">dogs_srt</span><span class="o">.</span><span class="n">loc</span><span class="p">[(</span><span class="s2">"Labrador"</span><span class="p">,</span> <span class="s2">"Brown"</span><span class="p">):(</span><span class="s2">"Schnauzer"</span><span class="p">,</span> <span class="s2">"Grey"</span><span class="p">)]</span>
+
+<span class="c1"># Slicing columns</span>
+<span class="n">dogs_srt</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s2">"name"</span><span class="p">:</span><span class="s2">"height_cm"</span><span class="p">]</span>
+
+<span class="c1"># Slice twice</span>
+<span class="n">dogs_srt</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span>
+<span class="p">(</span><span class="s2">"Labrador"</span><span class="p">,</span> <span class="s2">"Brown"</span><span class="p">):(</span><span class="s2">"Schnauzer"</span><span class="p">,</span> <span class="s2">"Grey"</span><span class="p">),</span>
+<span class="s2">"name"</span><span class="p">:</span><span class="s2">"height_cm"</span><span class="p">]</span>
+
+<span class="c1"># Dog days</span>
+<span class="n">dogs</span> <span class="o">=</span> <span class="n">dogs</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s2">"date_of_birth"</span><span class="p">)</span><span class="o">.</span><span class="n">sort_index</span><span class="p">()</span>
+
+<span class="c1"># Slicing by dates</span>
+<span class="c1"># Get dogs with date_of_birth between 2014-08-25 and 2016-09-16</span>
+<span class="n">dogs</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">"2014-08-25"</span><span class="p">:</span><span class="s2">"2016-09-16"</span><span class="p">]</span>
+
+<span class="c1"># Slicing by partial dates</span>
+<span class="c1"># Get dogs with date_of_birth between 2014-01-01 and 2016-12-31</span>
+<span class="n">dogs</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">"2014"</span><span class="p">:</span><span class="s2">"2016"</span><span class="p">]</span>
+
+<span class="c1"># Subsetting by row/column number</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">dogs</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">2</span><span class="p">:</span><span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span><span class="mi">4</span><span class="p">])</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Working-with-pivot-tables">
+<a class="anchor" href="#Working-with-pivot-tables" aria-hidden="true"><span class="octicon octicon-link"></span></a>Working with pivot tables<a class="anchor-link" href="#Working-with-pivot-tables"> </a>
+</h3>
+<div class="highlight"><pre><span></span><span class="c1"># Pivoting the dog pack</span>
+<span class="n">dogs_height_by_breed_vs_color</span> <span class="o">=</span> <span class="n">dog_pack</span><span class="o">.</span><span class="n">pivot_table</span><span class="p">(</span>
+<span class="s2">"height_cm"</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="s2">"breed"</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="s2">"color"</span><span class="p">)</span>
+
+<span class="c1"># The axis argument</span>
+<span class="n">dogs_height_by_breed_vs_color</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s2">"index"</span><span class="p">)</span>
+
+<span class="c1"># Calculating summary stats across columns</span>
+<span class="n">dogs_height_by_breed_vs_color</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s2">"columns"</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Creating-and-Visualizing-DataFrames">
+<a class="anchor" href="#Creating-and-Visualizing-DataFrames" aria-hidden="true"><span class="octicon octicon-link"></span></a>Creating and Visualizing DataFrames<a class="anchor-link" href="#Creating-and-Visualizing-DataFrames"> </a>
+</h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Visualizing-your-data">
+<a class="anchor" href="#Visualizing-your-data" aria-hidden="true"><span class="octicon octicon-link"></span></a>Visualizing your data<a class="anchor-link" href="#Visualizing-your-data"> </a>
+</h3>
+<div class="highlight"><pre><span></span><span class="c1"># Histograms</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="n">dog_pack</span><span class="p">[</span><span class="s2">"height_cm"</span><span class="p">]</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">bins</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+
+<span class="c1"># Bar plots</span>
+<span class="n">avg_weight_by_breed</span> <span class="o">=</span> <span class="n">dog_pack</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">"breed"</span><span class="p">)[</span><span class="s2">"weight_kg"</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">avg_weight_by_breed</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s2">"bar"</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">"Mean Weight by Dog Breed"</span><span class="p">)</span>
+
+<span class="c1"># Line plots</span>
+<span class="n">sully</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<span class="n">sully</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">"date"</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">"weight_kg"</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s2">"line"</span><span class="p">)</span>
+
+<span class="c1"># Rotating axis labels</span>
+<span class="n">sully</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">"date"</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">"weight_kg"</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s2">"line"</span><span class="p">,</span> <span class="n">rot</span><span class="o">=</span><span class="mi">45</span><span class="p">)</span>
+
+<span class="c1"># Scatter plots</span>
+<span class="n">dog_pack</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">"height_cm"</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">"weight_kg"</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s2">"scatter"</span><span class="p">)</span>
+
+<span class="c1"># Layering plots</span>
+<span class="n">dog_pack</span><span class="p">[</span><span class="n">dog_pack</span><span class="p">[</span><span class="s2">"sex"</span><span class="p">]</span><span class="o">==</span><span class="s2">"F"</span><span class="p">][</span><span class="s2">"height_cm"</span><span class="p">]</span><span class="o">.</span><span class="n">hist</span><span class="p">()</span>
+<span class="n">dog_pack</span><span class="p">[</span><span class="n">dog_pack</span><span class="p">[</span><span class="s2">"sex"</span><span class="p">]</span><span class="o">==</span><span class="s2">"M"</span><span class="p">][</span><span class="s2">"height_cm"</span><span class="p">]</span><span class="o">.</span><span class="n">hist</span><span class="p">()</span>
+
+<span class="c1"># Add a legend</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="s2">"F"</span><span class="p">,</span> <span class="s2">"M"</span><span class="p">])</span>
+
+<span class="c1"># Transparency</span>
+<span class="n">dog_pack</span><span class="p">[</span><span class="n">dog_pack</span><span class="p">[</span><span class="s2">"sex"</span><span class="p">]</span><span class="o">==</span><span class="s2">"F"</span><span class="p">][</span><span class="s2">"height_cm"</span><span class="p">]</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">)</span>
+<span class="n">dog_pack</span><span class="p">[</span><span class="n">dog_pack</span><span class="p">[</span><span class="s2">"sex"</span><span class="p">]</span><span class="o">==</span><span class="s2">"M"</span><span class="p">][</span><span class="s2">"height_cm"</span><span class="p">]</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="s2">"F"</span><span class="p">,</span> <span class="s2">"M"</span><span class="p">])</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Missing-values">
+<a class="anchor" href="#Missing-values" aria-hidden="true"><span class="octicon octicon-link"></span></a>Missing values<a class="anchor-link" href="#Missing-values"> </a>
+</h3>
+<div class="highlight"><pre><span></span><span class="c1"># Detecting missing values</span>
+<span class="n">dogs</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span>
+
+<span class="c1"># Detecting any missing values</span>
+<span class="n">dogs</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span><span class="o">.</span><span class="n">any</span><span class="p">()</span>
+
+<span class="c1"># Counting missing values</span>
+<span class="n">dogs</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+
+<span class="c1"># Plotting missing values</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="n">dogs</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s2">"bar"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># Removing rows containing missing values</span>
+<span class="n">dogs</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+
+<span class="c1"># Replacing missing values</span>
+<span class="n">dogs</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Reading-and-writing-CSVs">
+<a class="anchor" href="#Reading-and-writing-CSVs" aria-hidden="true"><span class="octicon octicon-link"></span></a>Reading and writing CSVs<a class="anchor-link" href="#Reading-and-writing-CSVs"> </a>
+</h3>
+<div class="highlight"><pre><span></span><span class="c1"># CSV to DataFrame</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="n">new_dogs</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">"new_dogs.csv"</span><span class="p">)</span>
+
+<span class="c1"># DataFrame to CSV</span>
+<span class="n">new_dogs</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s2">"new_dogs_with_bmi.csv"</span><span class="p">)</span>
+
+<span class="c1"># CSV to dataframe parsing dates, and having date as index</span>
+<span class="n">climate_change</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">prefix</span><span class="o">+</span><span class="s1">'climate_change.csv'</span><span class="p">,</span> <span class="n">parse_dates</span><span class="o">=</span><span class="p">[</span><span class="s1">'date'</span><span class="p">],</span> <span class="n">index_col</span><span class="o">=</span><span class="s1">'date'</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Joining-data-with-pandas">
+<a class="anchor" href="#Joining-data-with-pandas" aria-hidden="true"><span class="octicon octicon-link"></span></a>Joining data with pandas<a class="anchor-link" href="#Joining-data-with-pandas"> </a>
+</h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Data-merging-basics">
+<a class="anchor" href="#Data-merging-basics" aria-hidden="true"><span class="octicon octicon-link"></span></a>Data merging basics<a class="anchor-link" href="#Data-merging-basics"> </a>
+</h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Inner-join">
+<a class="anchor" href="#Inner-join" aria-hidden="true"><span class="octicon octicon-link"></span></a>Inner join<a class="anchor-link" href="#Inner-join"> </a>
+</h3>
+<div class="highlight"><pre><span></span><span class="c1"># Inner join</span>
+<span class="n">wards_census</span> <span class="o">=</span> <span class="n">wards</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">census</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="s1">'ward'</span><span class="p">)</span>
+
+<span class="c1"># Suffixes</span>
+<span class="n">wards_census</span> <span class="o">=</span> <span class="n">wards</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">census</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="s1">'ward'</span><span class="p">,</span> <span class="n">suffixes</span><span class="o">=</span><span class="p">(</span><span class="s1">'_ward'</span><span class="p">,</span><span class="s1">'_cen'</span><span class="p">))</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="One-to-many-relationships">
+<a class="anchor" href="#One-to-many-relationships" aria-hidden="true"><span class="octicon octicon-link"></span></a>One-to-many relationships<a class="anchor-link" href="#One-to-many-relationships"> </a>
+</h3>
+<div class="highlight"><pre><span></span><span class="c1"># One-to-many example</span>
+<span class="n">ward_licenses</span> <span class="o">=</span> <span class="n">wards</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">licenses</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="s1">'ward'</span><span class="p">,</span> <span class="n">suffixes</span><span class="o">=</span><span class="p">(</span><span class="s1">'_ward'</span><span class="p">,</span><span class="s1">'_lic'</span><span class="p">))</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Merging-multiple-DataFrames">
+<a class="anchor" href="#Merging-multiple-DataFrames" aria-hidden="true"><span class="octicon octicon-link"></span></a>Merging multiple DataFrames<a class="anchor-link" href="#Merging-multiple-DataFrames"> </a>
+</h3>
+<div class="highlight"><pre><span></span><span class="c1"># Single merge</span>
+<span class="n">grants</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">licenses</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="p">[</span><span class="s1">'address'</span><span class="p">,</span><span class="s1">'zip'</span><span class="p">])</span>
+
+<span class="c1"># Merging multiple tables</span>
+<span class="n">grants_licenses_ward</span> <span class="o">=</span> <span class="n">grants</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">licenses</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="p">[</span><span class="s1">'address'</span><span class="p">,</span><span class="s1">'zip'</span><span class="p">])</span> \
+<span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">wards</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="s1">'ward'</span><span class="p">,</span> <span class="n">suffixes</span><span class="o">=</span><span class="p">(</span><span class="s1">'_bus'</span><span class="p">,</span><span class="s1">'_ward'</span><span class="p">))</span>
+
+
+<span class="c1"># Plot Results</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="n">grant_licenses_ward</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">'ward'</span><span class="p">)</span><span class="o">.</span><span class="n">agg</span><span class="p">(</span><span class="s1">'sum'</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">'bar'</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">'grant'</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Merging-Tables-With-Different-Join-Types">
+<a class="anchor" href="#Merging-Tables-With-Different-Join-Types" aria-hidden="true"><span class="octicon octicon-link"></span></a>Merging Tables With Different Join Types<a class="anchor-link" href="#Merging-Tables-With-Different-Join-Types"> </a>
+</h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Left-join">
+<a class="anchor" href="#Left-join" aria-hidden="true"><span class="octicon octicon-link"></span></a>Left join<a class="anchor-link" href="#Left-join"> </a>
+</h3>
+<div class="highlight"><pre><span></span><span class="c1"># Merge with left join</span>
+<span class="n">movies_taglines</span> <span class="o">=</span> <span class="n">movies</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">taglines</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="s1">'id'</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s1">'left'</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Other-joins">
+<a class="anchor" href="#Other-joins" aria-hidden="true"><span class="octicon octicon-link"></span></a>Other joins<a class="anchor-link" href="#Other-joins"> </a>
+</h3>
+<div class="highlight"><pre><span></span><span class="c1"># Merge with right join</span>
+<span class="n">tv_movies</span> <span class="o">=</span> <span class="n">movies</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">tv_genre</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s1">'right'</span><span class="p">,</span>
+<span class="n">left_on</span><span class="o">=</span><span class="s1">'id'</span><span class="p">,</span> <span class="n">right_on</span><span class="o">=</span><span class="s1">'movie_id'</span><span class="p">)</span>
+
+<span class="c1"># Merge with outer join</span>
+<span class="n">family_comedy</span> <span class="o">=</span> <span class="n">family</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">comedy</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="s1">'movie_id'</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s1">'outer'</span><span class="p">,</span>
+<span class="n">suffixes</span><span class="o">=</span><span class="p">(</span><span class="s1">'_fam'</span><span class="p">,</span> <span class="s1">'_com'</span><span class="p">))</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Merging-a-table-to-itself">
+<a class="anchor" href="#Merging-a-table-to-itself" aria-hidden="true"><span class="octicon octicon-link"></span></a>Merging a table to itself<a class="anchor-link" href="#Merging-a-table-to-itself"> </a>
+</h3>
+<div class="highlight"><pre><span></span><span class="c1"># Merging a table to itself</span>
+<span class="n">original_sequels</span> <span class="o">=</span> <span class="n">sequels</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">sequels</span><span class="p">,</span> <span class="n">left_on</span><span class="o">=</span><span class="s1">'sequel'</span><span class="p">,</span> <span class="n">right_on</span><span class="o">=</span><span class="s1">'id'</span><span class="p">,</span>
+<span class="n">suffixes</span><span class="o">=</span><span class="p">(</span><span class="s1">'_org'</span><span class="p">,</span><span class="s1">'_seq'</span><span class="p">))</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Merging-on-indexes">
+<a class="anchor" href="#Merging-on-indexes" aria-hidden="true"><span class="octicon octicon-link"></span></a>Merging on indexes<a class="anchor-link" href="#Merging-on-indexes"> </a>
+</h3>
+<div class="highlight"><pre><span></span><span class="c1"># Setting an index</span>
+<span class="n">movies</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">'tmdb_movies.csv'</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="p">[</span><span class="s1">'id'</span><span class="p">])</span>
+
+<span class="c1"># Merging on index</span>
+<span class="n">movies_taglines</span> <span class="o">=</span> <span class="n">movies</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">taglines</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="s1">'id'</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s1">'left'</span><span class="p">)</span>
+
+<span class="c1"># MultiIndex merge</span>
+<span class="n">samuel_casts</span> <span class="o">=</span> <span class="n">samuel</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">casts</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="p">[</span><span class="s1">'movie_id'</span><span class="p">,</span><span class="s1">'cast_id'</span><span class="p">])</span>
+
+<span class="c1"># Index merge with left_on and right_on</span>
+<span class="n">movies_genres</span> <span class="o">=</span> <span class="n">movies</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">movie_to_genres</span><span class="p">,</span> <span class="n">left_on</span><span class="o">=</span><span class="s1">'id'</span><span class="p">,</span> <span class="n">left_index</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="n">right_on</span><span class="o">=</span><span class="s1">'movie_id'</span><span class="p">,</span> <span class="n">right_index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Advanced-Merging-and-Concatenating">
+<a class="anchor" href="#Advanced-Merging-and-Concatenating" aria-hidden="true"><span class="octicon octicon-link"></span></a>Advanced Merging and Concatenating<a class="anchor-link" href="#Advanced-Merging-and-Concatenating"> </a>
+</h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Filtering-joins">
+<a class="anchor" href="#Filtering-joins" aria-hidden="true"><span class="octicon octicon-link"></span></a>Filtering joins<a class="anchor-link" href="#Filtering-joins"> </a>
+</h3>
+<div class="highlight"><pre><span></span><span class="c1">###########</span>
+<span class="c1"># semi-join</span>
+
+<span class="c1"># Step 1 - semi-join</span>
+<span class="n">genres_tracks</span> <span class="o">=</span> <span class="n">genres</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">top_tracks</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="s1">'gid'</span><span class="p">)</span>
+
+<span class="c1"># Step 2 - semi-join</span>
+<span class="n">genres</span><span class="p">[</span><span class="s1">'gid'</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">genres_tracks</span><span class="p">[</span><span class="s1">'gid'</span><span class="p">])</span>
+
+<span class="c1"># Step 3 - semi-join</span>
+<span class="n">genres_tracks</span> <span class="o">=</span> <span class="n">genres</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">top_tracks</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="s1">'gid'</span><span class="p">)</span>
+<span class="n">top_genres</span> <span class="o">=</span> <span class="n">genres</span><span class="p">[</span><span class="n">genres</span><span class="p">[</span><span class="s1">'gid'</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">genres_tracks</span><span class="p">[</span><span class="s1">'gid'</span><span class="p">])]</span>
+
+<span class="c1">###########</span>
+<span class="c1"># anti-join</span>
+
+<span class="c1"># Step 1 - anti-join</span>
+<span class="n">genres_tracks</span> <span class="o">=</span> <span class="n">genres</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">top_tracks</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="s1">'gid'</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s1">'left'</span><span class="p">,</span> <span class="n">indicator</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Step 2 - anti-join</span>
+<span class="n">gid_list</span> <span class="o">=</span> <span class="n">genres_tracks</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">genres_tracks</span><span class="p">[</span><span class="s1">'_merge'</span><span class="p">]</span> <span class="o">==</span> <span class="s1">'left_only'</span><span class="p">,</span> <span class="s1">'gid'</span><span class="p">]</span>
+
+<span class="c1"># Step 3 - anti-join</span>
+<span class="n">genres_tracks</span> <span class="o">=</span> <span class="n">genres</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">top_tracks</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="s1">'gid'</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s1">'left'</span><span class="p">,</span> <span class="n">indicator</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">gid_list</span> <span class="o">=</span> <span class="n">genres_tracks</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">genres_tracks</span><span class="p">[</span><span class="s1">'_merge'</span><span class="p">]</span> <span class="o">==</span> <span class="s1">'left_only'</span><span class="p">,</span><span class="s1">'gid'</span><span class="p">]</span>
+<span class="n">non_top_genres</span> <span class="o">=</span> <span class="n">genres</span><span class="p">[</span><span class="n">genres</span><span class="p">[</span><span class="s1">'gid'</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">gid_list</span><span class="p">)]</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Concatenate-DataFrames-together-vertically">
+<a class="anchor" href="#Concatenate-DataFrames-together-vertically" aria-hidden="true"><span class="octicon octicon-link"></span></a>Concatenate DataFrames together vertically<a class="anchor-link" href="#Concatenate-DataFrames-together-vertically"> </a>
+</h3>
+<div class="highlight"><pre><span></span><span class="c1"># Basic concatenation</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">inv_jan</span><span class="p">,</span> <span class="n">inv_feb</span><span class="p">,</span> <span class="n">inv_mar</span><span class="p">])</span>
+
+<span class="c1"># Ignoring the index</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">inv_jan</span><span class="p">,</span> <span class="n">inv_feb</span><span class="p">,</span> <span class="n">inv_mar</span><span class="p">],</span>
+<span class="n">ignore_index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Setting labels to original tables</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">inv_jan</span><span class="p">,</span> <span class="n">inv_feb</span><span class="p">,</span> <span class="n">inv_mar</span><span class="p">],</span>
+<span class="n">ignore_index</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+<span class="n">keys</span><span class="o">=</span><span class="p">[</span><span class="s1">'jan'</span><span class="p">,</span><span class="s1">'feb'</span><span class="p">,</span><span class="s1">'mar'</span><span class="p">])</span>
+
+<span class="c1"># Concatenate tables with different column names</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">inv_jan</span><span class="p">,</span> <span class="n">inv_feb</span><span class="p">],</span>
+<span class="n">sort</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Concatenate tables with different column names</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">inv_jan</span><span class="p">,</span> <span class="n">inv_feb</span><span class="p">],</span>
+<span class="n">join</span><span class="o">=</span><span class="s1">'inner'</span><span class="p">)</span>
+
+<span class="c1"># Append the tables</span>
+<span class="n">inv_jan</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="n">inv_feb</span><span class="p">,</span> <span class="n">inv_mar</span><span class="p">],</span>
+<span class="n">ignore_index</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> 
+<span class="n">sort</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Verifying-integrity">
+<a class="anchor" href="#Verifying-integrity" aria-hidden="true"><span class="octicon octicon-link"></span></a>Verifying integrity<a class="anchor-link" href="#Verifying-integrity"> </a>
+</h3>
+<div class="highlight"><pre><span></span><span class="c1"># Validating merges</span>
+<span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">validate</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="p">:</span>
+<span class="n">Checks</span> <span class="k">if</span> <span class="n">merge</span> <span class="ow">is</span> <span class="n">of</span> <span class="n">specified</span> <span class="nb">type</span>
+<span class="s1">'one_to_one'</span>
+<span class="s1">'one_to_many'</span>
+<span class="s1">'many_to_one'</span>
+<span class="s1">'many_to_many'</span>
+
+<span class="c1"># Merge validate: one_to_one</span>
+<span class="n">tracks</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">specs</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="s1">'tid'</span><span class="p">,</span>
+<span class="n">validate</span><span class="o">=</span><span class="s1">'one_to_one'</span><span class="p">)</span>
+
+<span class="c1"># Merge validate: one_to_many</span>
+<span class="n">albums</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">tracks</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="s1">'aid'</span><span class="p">,</span>
+<span class="n">validate</span><span class="o">=</span><span class="s1">'one_to_many'</span><span class="p">)</span>
+
+<span class="c1"># Verifying concatenations</span>
+<span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">verify_integrity</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span> <span class="p">:</span>
+<span class="n">Check</span> <span class="n">whether</span> <span class="n">the</span> <span class="n">new</span> <span class="n">concatenated</span> <span class="n">index</span> <span class="n">contains</span> <span class="n">duplicates</span>
+<span class="n">Default</span> <span class="n">value</span> <span class="ow">is</span> <span class="kc">False</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Merging-Ordered-and-Time-Series-Data">
+<a class="anchor" href="#Merging-Ordered-and-Time-Series-Data" aria-hidden="true"><span class="octicon octicon-link"></span></a>Merging Ordered and Time-Series Data<a class="anchor-link" href="#Merging-Ordered-and-Time-Series-Data"> </a>
+</h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Using-merge_ordered()">
+<a class="anchor" href="#Using-merge_ordered()" aria-hidden="true"><span class="octicon octicon-link"></span></a>Using merge_ordered()<a class="anchor-link" href="#Using-merge_ordered()"> </a>
+</h3>
+<div class="highlight"><pre><span></span><span class="c1"># Merging stock data</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">merge_ordered</span><span class="p">(</span><span class="n">appl</span><span class="p">,</span> <span class="n">mcd</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="s1">'date'</span><span class="p">,</span> <span class="n">suffixes</span><span class="o">=</span><span class="p">(</span><span class="s1">'_aapl'</span><span class="p">,</span><span class="s1">'_mcd'</span><span class="p">))</span>
+
+<span class="c1"># Forward fill example</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">merge_ordered</span><span class="p">(</span><span class="n">appl</span><span class="p">,</span> <span class="n">mcd</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="s1">'date'</span><span class="p">,</span>
+<span class="n">suffixes</span><span class="o">=</span><span class="p">(</span><span class="s1">'_aapl'</span><span class="p">,</span><span class="s1">'_mcd'</span><span class="p">),</span>
+<span class="n">fill_method</span><span class="o">=</span><span class="s1">'ffill'</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Using-merge_asof()">
+<a class="anchor" href="#Using-merge_asof()" aria-hidden="true"><span class="octicon octicon-link"></span></a>Using merge_asof()<a class="anchor-link" href="#Using-merge_asof()"> </a>
+</h3>
+<div class="highlight"><pre><span></span><span class="c1"># merge_asof() example</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">merge_asof</span><span class="p">(</span><span class="n">visa</span><span class="p">,</span> <span class="n">ibm</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="s1">'date_time'</span><span class="p">,</span>
+<span class="n">suffixes</span><span class="o">=</span><span class="p">(</span><span class="s1">'_visa'</span><span class="p">,</span><span class="s1">'_ibm'</span><span class="p">))</span>
+
+<span class="c1"># merge_asof() example with direction</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">merge_asof</span><span class="p">(</span><span class="n">visa</span><span class="p">,</span> <span class="n">ibm</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="p">[</span><span class="s1">'date_time'</span><span class="p">],</span>
+<span class="n">suffixes</span><span class="o">=</span><span class="p">(</span><span class="s1">'_visa'</span><span class="p">,</span><span class="s1">'_ibm'</span><span class="p">),</span>
+<span class="n">direction</span><span class="o">=</span><span class="s1">'forward'</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Selecting-data-with-.query()">
+<a class="anchor" href="#Selecting-data-with-.query()" aria-hidden="true"><span class="octicon octicon-link"></span></a>Selecting data with .query()<a class="anchor-link" href="#Selecting-data-with-.query()"> </a>
+</h3>
+<div class="highlight"><pre><span></span><span class="c1"># Querying on a single condition</span>
+<span class="n">stocks</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">'nike &gt;= 90'</span><span class="p">)</span>
+
+<span class="c1"># Querying on a multiple conditions, "and", "or"</span>
+<span class="n">stocks</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">'nike &gt; 90 and disney &lt; 140'</span><span class="p">)</span>
+<span class="n">stocks</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">'nike &gt; 96 or disney &lt; 98'</span><span class="p">)</span>
+
+<span class="c1"># Using .query() to select text</span>
+<span class="n">stocks_long</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">'stock=="disney" or (stock=="nike" and close &lt; 90)'</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Reshaping-data-with-.melt()">
+<a class="anchor" href="#Reshaping-data-with-.melt()" aria-hidden="true"><span class="octicon octicon-link"></span></a>Reshaping data with .melt()<a class="anchor-link" href="#Reshaping-data-with-.melt()"> </a>
+</h3>
+<div class="highlight"><pre><span></span><span class="c1"># Example of .melt()</span>
+<span class="n">social_fin_tall</span> <span class="o">=</span> <span class="n">social_fin</span><span class="o">.</span><span class="n">melt</span><span class="p">(</span><span class="n">id_vars</span><span class="o">=</span><span class="p">[</span><span class="s1">'financial'</span><span class="p">,</span><span class="s1">'company'</span><span class="p">])</span>
+
+<span class="c1"># Melting with value_vars</span>
+<span class="n">social_fin_tall</span> <span class="o">=</span> <span class="n">social_fin</span><span class="o">.</span><span class="n">melt</span><span class="p">(</span><span class="n">id_vars</span><span class="o">=</span><span class="p">[</span><span class="s1">'financial'</span><span class="p">,</span><span class="s1">'company'</span><span class="p">],</span>
+<span class="n">value_vars</span><span class="o">=</span><span class="p">[</span><span class="s1">'2018'</span><span class="p">,</span><span class="s1">'2017'</span><span class="p">])</span>
+
+<span class="c1"># Melting with column names</span>
+<span class="n">social_fin_tall</span> <span class="o">=</span> <span class="n">social_fin</span><span class="o">.</span><span class="n">melt</span><span class="p">(</span><span class="n">id_vars</span><span class="o">=</span><span class="p">[</span><span class="s1">'financial'</span><span class="p">,</span><span class="s1">'company'</span><span class="p">],</span>
+<span class="n">value_vars</span><span class="o">=</span><span class="p">[</span><span class="s1">'2018'</span><span class="p">,</span><span class="s1">'2017'</span><span class="p">],</span>
+<span class="n">var_name</span><span class="o">=</span><span class="p">[</span><span class="s1">'year'</span><span class="p">],</span> <span class="n">value_name</span><span class="o">=</span><span class="s1">'dollars'</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+</div>
+
+
+
+  </div><!-- from https://github.com/utterance/utterances -->
+<script src="https://utteranc.es/client.js"
+        repo="castorfou/guillaume_blog"
+        issue-term="title"
+        label="blogpost-comment"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script><a class="u-url" href="/blog/blog/pandas-cheatsheet.html" hidden></a>
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/blog/"></data>
+
+  <div class="wrapper">
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col">
+        <p class="feed-subscribe">
+          <a href="/blog/feed.xml">
+            <svg class="svg-icon orange">
+              <use xlink:href="/blog/assets/minima-social-icons.svg#rss"></use>
+            </svg><span>Subscribe</span>
+          </a>
+        </p>
+      </div>
+      <div class="footer-col">
+        <p>Journey for a datascientist</p>
+      </div>
+    </div>
+
+    <div class="social-links"><ul class="social-media-list"><li><a rel="me" href="https://github.com/castorfou" target="_blank" title="castorfou"><svg class="svg-icon grey"><use xlink:href="/blog/assets/minima-social-icons.svg#github"></use></svg></a></li><li><a rel="me" href="https://twitter.com/GuillaumeRamel1" target="_blank" title="GuillaumeRamel1"><svg class="svg-icon grey"><use xlink:href="/blog/assets/minima-social-icons.svg#twitter"></use></svg></a></li></ul>
+</div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>

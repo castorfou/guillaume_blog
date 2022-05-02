@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="twitter:card" content="summary_large_image" /><!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Blog from jupyter notebook | Guillaume’s blog</title>
+<meta name="generator" content="Jekyll v4.1.1" />
+<meta property="og:title" content="Blog from jupyter notebook" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="how to setup fastpages to blog from jupyter notebook" />
+<meta property="og:description" content="how to setup fastpages to blog from jupyter notebook" />
+<link rel="canonical" href="https://castorfou.github.io/blog/blog/blog-from-jupyter-sans-images.html" />
+<meta property="og:url" content="https://castorfou.github.io/blog/blog/blog-from-jupyter-sans-images.html" />
+<meta property="og:site_name" content="Guillaume’s blog" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2020-09-10T00:00:00-05:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Blog from jupyter notebook" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2020-09-10T00:00:00-05:00","datePublished":"2020-09-10T00:00:00-05:00","description":"how to setup fastpages to blog from jupyter notebook","headline":"Blog from jupyter notebook","mainEntityOfPage":{"@type":"WebPage","@id":"https://castorfou.github.io/blog/blog/blog-from-jupyter-sans-images.html"},"url":"https://castorfou.github.io/blog/blog/blog-from-jupyter-sans-images.html"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/blog/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="https://castorfou.github.io/blog/feed.xml" title="Guillaume's blog" /><link rel="shortcut icon" type="image/x-icon" href="/blog/images/favicon.ico"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Primer/15.2.0/primer.css" integrity="sha512-xTz2ys4coGAOz8vuV1NcQBkgVmKhsSEtjbqyMJbBHRplFuvKIUo6xhLHpAyPt9mfR6twHJgn9OgVLuqOvjeBhg==" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.12.0/katex.min.css" integrity="sha512-h7nl+xz8wgDlNM4NqKEM4F1NkIRS17M9+uJwIGwuo8vGqIl4BhuCKdxjWEINm+xyrUjNCnK5dCrhM0sj+wTIXw==" crossorigin="anonymous" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.12.0/katex.min.js" integrity="sha512-/CMIhXiDA3m2c9kzRyd97MTb3MC6OVnx4TElQ7fkkoRghwDf6gi41gaT1PwF270W6+J60uTmwgeRpNpJdRV6sg==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.12.0/contrib/auto-render.min.js" integrity="sha512-Do7uJAaHZm5OLrIv/yN4w0iG1dbu01kzdMNnFfu/mAqgUk6Nniv2JYHcwH+cNwjqgLcqcuBBk+JRvprLVI8azg==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha512-0doc9hKxR3PYwso42RD1p5ySZpzzuDiOwMrdCEh2WdJZCjcmFKc/wEnL+z8fBQrnHoiNWbo+3fiGkOYXBdQp4A==" crossorigin="anonymous"></script>
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        renderMathInElement( document.body, {
+        delimiters: [
+            {left: "$$", right: "$$", display: true},
+            {left: "[%", right: "%]", display: true},
+            {left: "$", right: "$", display: false}
+        ]}
+        );
+    });
+    </script>
+
+
+<script>
+function wrap_img(fn) {
+    if (document.attachEvent ? document.readyState === "complete" : document.readyState !== "loading") {
+        var elements = document.querySelectorAll(".post img");
+        Array.prototype.forEach.call(elements, function(el, i) {
+            if (el.getAttribute("title") && (el.className != "emoji")) {
+                const caption = document.createElement('figcaption');
+                var node = document.createTextNode(el.getAttribute("title"));
+                caption.appendChild(node);
+                const wrapper = document.createElement('figure');
+                wrapper.className = 'image';
+                el.parentNode.insertBefore(wrapper, el);
+                el.parentNode.removeChild(el);
+                wrapper.appendChild(el);
+                wrapper.appendChild(caption);
+            }
+        });
+    } else { document.addEventListener('DOMContentLoaded', fn); }
+}
+window.onload = wrap_img;
+</script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function(){
+    // add link icon to anchor tags
+    var elem = document.querySelectorAll(".anchor-link")
+    elem.forEach(e => (e.innerHTML = '<i class="fas fa-link fa-xs"></i>'));
+    });
+</script>
+</head>
+<body><header class="site-header">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/blog/">Guillaume&#39;s blog</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/blog/about/">About Me</a><a class="page-link" href="/blog/search/">Search</a><a class="page-link" href="/blog/categories/">Tags</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">Blog from jupyter notebook</h1><p class="page-description">how to setup fastpages to blog from jupyter notebook</p><p class="post-meta post-meta-title"><time class="dt-published" datetime="2020-09-10T00:00:00-05:00" itemprop="datePublished">
+        Sep 10, 2020
+      </time>
+       • <span class="read-time" title="Estimated read time">
+    
+    
+      4 min read
+    
+</span></p>
+
+    
+      <p class="category-tags"><i class="fas fa-tags category-tags-icon"></i></i> 
+      
+        <a class="category-tags-link" href="/blog/categories/#fastpages">fastpages</a>
+        &nbsp;
+      
+        <a class="category-tags-link" href="/blog/categories/#jupyter">jupyter</a>
+        &nbsp;
+      
+        <a class="category-tags-link" href="/blog/categories/#notebooks">notebooks</a>
+        
+      
+      </p>
+    
+
+    
+      </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <ul id="toc" class="section-nav">
+<li class="toc-entry toc-h2"><a href="#get-local-repo-from-github">get local repo from github </a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#WSL">WSL </a></li>
+<li class="toc-entry toc-h3"><a href="#set-unset-proxy-in-WSL">set unset proxy in WSL </a></li>
+<li class="toc-entry toc-h3"><a href="#git-clone-castorfou.github.io">git clone castorfou.github.io </a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="#create-a-blog-entry-with-Jupyter-Notebook">create a blog entry with Jupyter Notebook </a></li>
+<li class="toc-entry toc-h2"><a href="#commit-and-push-to-github">commit and push to github </a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#error:-gnutls_handshake()-failed:-The-TLS-connection-was-non-properly-terminated.">error: gnutls_handshake() failed: The TLS connection was non-properly terminated. </a></li>
+<li class="toc-entry toc-h3"><a href="#switch-to-mobile-wifi-without-need-of-proxy">switch to mobile wifi without need of proxy </a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="#check-entries-into-blog">check entries into blog </a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#double-entries">double entries </a></li>
+<li class="toc-entry toc-h3"><a href="#cannot-open-notebook-into-browser">cannot open notebook into browser </a></li>
+<li class="toc-entry toc-h3"><a href="#checking-.gitignore">checking .gitignore </a></li>
+<li class="toc-entry toc-h3"><a href="#notebooks-from-_notebooks-not-rendered">notebooks from _notebooks not rendered </a></li>
+<li class="toc-entry toc-h3"><a href="#test-entry-from-md-using-local-repo">test entry from md using local repo </a></li>
+<li class="toc-entry toc-h3"><a href="#following-fastpages-troubleshooting-guide">following fastpages troubleshooting guide </a>
+<ul>
+<li class="toc-entry toc-h4"><a href="#upgrade-fastpages">upgrade fastpages </a></li>
+<li class="toc-entry toc-h4"><a href="#manual-fastpages-upgrade">manual fastpages upgrade </a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h3"><a href="#fastai-forum:-fastpages-category">fastai forum: fastpages category </a></li>
+<li class="toc-entry toc-h3"><a href="#nothing-visible-from-Actions-tab">nothing visible from Actions tab </a></li>
+<li class="toc-entry toc-h3"><a href="#Page-build-failure">Page build failure </a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="#Move-to-another-repo">Move to another repo </a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#repo-creation">repo creation </a></li>
+<li class="toc-entry toc-h3"><a href="#actions-monitoring">actions monitoring </a></li>
+<li class="toc-entry toc-h3"><a href="#merge-pull-request">merge pull request </a>
+<ul>
+<li class="toc-entry toc-h4"><a href="#actions-around-ssh-keys">actions around ssh keys </a></li>
+<li class="toc-entry toc-h4"><a href="#merge-PR">merge PR </a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h3"><a href="#And-it-works:-https://castorfou.github.io/guillaume_blog/">And it works: https://castorfou.github.io/guillaume_blog/ </a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="#Get-local-repo">Get local repo </a></li>
+</ul><!--
+#################################################
+### THIS FILE WAS AUTOGENERATED! DO NOT EDIT! ###
+#################################################
+# file to edit: _notebooks/2020-09-10-blog-from-jupyter-sans-images.ipynb
+-->
+
+<div class="container" id="notebook-container">
+        
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>That will be great if I can simply write blog entries using Jupyter Notebook.</p>
+<p>I usually paste inner images into jupyter cells. But this <a href="https://github.com/fastai/fastpages/issues/415">feature</a> is not available yet into fastpages. So for the moment I won't include images into these posts.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>That way I could simply use markdown and insert images</p>
+<p>And directly see rendered impact before commiting and pushing to my blog.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="get-local-repo-from-github">
+<a class="anchor" href="#get-local-repo-from-github" aria-hidden="true"><span class="octicon octicon-link"></span></a>get local repo from github<a class="anchor-link" href="#get-local-repo-from-github"> </a>
+</h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>As I am behind a proxy most of my time when working from office, the easiest way for me is to work from <a href="https://en.wikipedia.org/wiki/Windows_Subsystem_for_Linux">WSL</a>.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="WSL">
+<a class="anchor" href="#WSL" aria-hidden="true"><span class="octicon octicon-link"></span></a>WSL<a class="anchor-link" href="#WSL"> </a>
+</h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>I won't detail how to install WSL on Windows.</p>
+<p>I use ubuntu images (18.04) on my PC.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="set-unset-proxy-in-WSL">
+<a class="anchor" href="#set-unset-proxy-in-WSL" aria-hidden="true"><span class="octicon octicon-link"></span></a>set unset proxy in WSL<a class="anchor-link" href="#set-unset-proxy-in-WSL"> </a>
+</h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>I have just added some bash commands at the end of my <code>.bashrc</code> file.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<div class="highlight"><pre><span></span><span class="c1"># Set Proxy</span>
+<span class="k">function</span> setproxy<span class="o">()</span> <span class="o">{</span>
+    <span class="nb">export</span> <span class="o">{</span>http,https,ftp<span class="o">}</span><span class="nv">_proxy</span><span class="o">=</span><span class="s2">"http://&lt;my proxy ip address&gt;:80"</span>
+    <span class="nb">export</span> <span class="o">{</span>HTTP,HTTPS,FTP<span class="o">}</span><span class="nv">_PROXY</span><span class="o">=</span><span class="s2">"http://&lt;my proxy ip address&gt;:80"</span>
+<span class="o">}</span>
+
+<span class="c1"># Unset Proxy</span>
+<span class="k">function</span> unsetproxy<span class="o">()</span> <span class="o">{</span>
+    <span class="nb">unset</span> <span class="o">{</span>http,https,ftp<span class="o">}</span>_proxy
+    <span class="nb">unset</span> <span class="o">{</span>HTTP,HTTPS,FTP<span class="o">}</span>_PROXY
+<span class="o">}</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="git-clone-castorfou.github.io">
+<a class="anchor" href="#git-clone-castorfou.github.io" aria-hidden="true"><span class="octicon octicon-link"></span></a>git clone castorfou.github.io<a class="anchor-link" href="#git-clone-castorfou.github.io"> </a>
+</h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>I keep most of my local repos under <code>~/git/</code></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<div class="highlight"><pre><span></span><span class="nb">cd</span> ~/git
+setproxy
+git clone https://github.com/castorfou/castorfou.github.io.git
+</pre></div>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="create-a-blog-entry-with-Jupyter-Notebook">
+<a class="anchor" href="#create-a-blog-entry-with-Jupyter-Notebook" aria-hidden="true"><span class="octicon octicon-link"></span></a>create a blog entry with Jupyter Notebook<a class="anchor-link" href="#create-a-blog-entry-with-Jupyter-Notebook"> </a>
+</h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="commit-and-push-to-github">
+<a class="anchor" href="#commit-and-push-to-github" aria-hidden="true"><span class="octicon octicon-link"></span></a>commit and push to github<a class="anchor-link" href="#commit-and-push-to-github"> </a>
+</h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<div class="highlight"><pre><span></span><span class="o">(</span>base<span class="o">)</span> guillaume@LL11LPC0PQARQ:~$ <span class="nb">cd</span> git
+<span class="o">(</span>base<span class="o">)</span> guillaume@LL11LPC0PQARQ:~/git$ <span class="nb">cd</span> castorfou.github.io/
+<span class="o">(</span>base<span class="o">)</span> guillaume@LL11LPC0PQARQ:~/git/castorfou.github.io$ git add .
+<span class="o">(</span>base<span class="o">)</span> guillaume@LL11LPC0PQARQ:~/git/castorfou.github.io$ git commit -m <span class="s1">'new blog entry: blog from jupyter'</span>
+<span class="o">[</span>master 6b7460a<span class="o">]</span> new blog entry: blog from jupyter
+ <span class="m">4</span> files changed, <span class="m">516</span> insertions<span class="o">(</span>+<span class="o">)</span>
+ create mode <span class="m">100644</span> _posts/.ipynb_checkpoints/2020-09-10-blog-from-jupyter-checkpoint.ipynb
+ create mode <span class="m">100644</span> _posts/2020-09-10-blog-from-jupyter.ipynb
+ create mode <span class="m">100644</span> _posts/2020-09-10-blog-from-jupyter.py
+ create mode <span class="m">100644</span> _posts/Untitled.txt
+<span class="o">(</span>base<span class="o">)</span> guillaume@LL11LPC0PQARQ:~/git/castorfou.github.io$ git push
+fatal: unable to access <span class="s1">'https://github.com/castorfou/castorfou.github.io.git/'</span>: gnutls_handshake<span class="o">()</span> failed: The TLS connection was non-properly terminated.
+</pre></div>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="error:-gnutls_handshake()-failed:-The-TLS-connection-was-non-properly-terminated.">
+<a class="anchor" href="#error:-gnutls_handshake()-failed:-The-TLS-connection-was-non-properly-terminated." aria-hidden="true"><span class="octicon octicon-link"></span></a>error: gnutls_handshake() failed: The TLS connection was non-properly terminated.<a class="anchor-link" href="#error:-gnutls_handshake()-failed:-The-TLS-connection-was-non-properly-terminated."> </a>
+</h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Just googling this error gives some insight: <a href="https://github.community/t/unable-to-push-to-repo-gnutls-handshake-failed/885">https://github.community/t/unable-to-push-to-repo-gnutls-handshake-failed/885</a></p>
+<p>It is likely some local firewell issue.</p>
+<p></p>
+<div class="Toast Toast--warning googoo">
+   <span class="Toast-icon"><svg class="octicon octicon-alert" viewbox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M8.22 1.754a.25.25 0 00-.44 0L1.698 13.132a.25.25 0 00.22.368h12.164a.25.25 0 00.22-.368L8.22 1.754zm-1.763-.707c.659-1.234 2.427-1.234 3.086 0l6.082 11.378A1.75 1.75 0 0114.082 15H1.918a1.75 1.75 0 01-1.543-2.575L6.457 1.047zM9 11a1 1 0 11-2 0 1 1 0 012 0zm-.25-5.25a.75.75 0 00-1.5 0v2.5a.75.75 0 001.5 0v-2.5z"></path></svg></span>
+   <span class="Toast-content">To be fixed later</span>
+</div>
+
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="switch-to-mobile-wifi-without-need-of-proxy">
+<a class="anchor" href="#switch-to-mobile-wifi-without-need-of-proxy" aria-hidden="true"><span class="octicon octicon-link"></span></a>switch to mobile wifi without need of proxy<a class="anchor-link" href="#switch-to-mobile-wifi-without-need-of-proxy"> </a>
+</h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<div class="highlight"><pre><span></span><span class="o">(</span>base<span class="o">)</span> guillaume@LL11LPC0PQARQ:~/git/castorfou.github.io$ unsetproxy
+<span class="o">(</span>base<span class="o">)</span> guillaume@LL11LPC0PQARQ:~/git/castorfou.github.io$ git push
+Username <span class="k">for</span> <span class="s1">'https://github.com'</span>: castorfou
+Password <span class="k">for</span> <span class="s1">'https://castorfou@github.com'</span>:
+Counting objects: <span class="m">7</span>, <span class="k">done</span>.
+Delta compression using up to <span class="m">8</span> threads.
+Compressing objects: <span class="m">100</span>% <span class="o">(</span><span class="m">6</span>/6<span class="o">)</span>, <span class="k">done</span>.
+Writing objects: <span class="m">100</span>% <span class="o">(</span><span class="m">7</span>/7<span class="o">)</span>, <span class="m">141</span>.26 KiB <span class="p">|</span> <span class="m">10</span>.09 MiB/s, <span class="k">done</span>.
+Total <span class="m">7</span> <span class="o">(</span>delta <span class="m">1</span><span class="o">)</span>, reused <span class="m">0</span> <span class="o">(</span>delta <span class="m">0</span><span class="o">)</span>
+remote: Resolving deltas: <span class="m">100</span>% <span class="o">(</span><span class="m">1</span>/1<span class="o">)</span>, completed with <span class="m">1</span> <span class="nb">local</span> object.
+remote:
+remote: GitHub found <span class="m">3</span> vulnerabilities on castorfou/castorfou.github.io<span class="err">'</span>s default branch <span class="o">(</span><span class="m">2</span> high, <span class="m">1</span> moderate<span class="o">)</span>. To find out more, visit:
+remote:      https://github.com/castorfou/castorfou.github.io/network/alerts
+remote:
+To https://github.com/castorfou/castorfou.github.io.git
+   6adeb02..6b7460a  master -&gt; master
+</pre></div>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="check-entries-into-blog">
+<a class="anchor" href="#check-entries-into-blog" aria-hidden="true"><span class="octicon octicon-link"></span></a>check entries into blog<a class="anchor-link" href="#check-entries-into-blog"> </a>
+</h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="double-entries">
+<a class="anchor" href="#double-entries" aria-hidden="true"><span class="octicon octicon-link"></span></a>double entries<a class="anchor-link" href="#double-entries"> </a>
+</h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Double entries: one for the notebook (.ipynb) and one for the auto python export (.py).
+I will have to update my jupyter settings to avoid this python file creation.
+In the meantime I can just delete the python file, and commit.</p>
+<p></p>
+<div class="Toast Toast--warning googoo">
+   <span class="Toast-icon"><svg class="octicon octicon-alert" viewbox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M8.22 1.754a.25.25 0 00-.44 0L1.698 13.132a.25.25 0 00.22.368h12.164a.25.25 0 00.22-.368L8.22 1.754zm-1.763-.707c.659-1.234 2.427-1.234 3.086 0l6.082 11.378A1.75 1.75 0 0114.082 15H1.918a1.75 1.75 0 01-1.543-2.575L6.457 1.047zM9 11a1 1 0 11-2 0 1 1 0 012 0zm-.25-5.25a.75.75 0 00-1.5 0v2.5a.75.75 0 001.5 0v-2.5z"></path></svg></span>
+   <span class="Toast-content">Change settings of jupyter + <code>.gitignore</code> to avoid these double entries</span>
+</div>
+
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="cannot-open-notebook-into-browser">
+<a class="anchor" href="#cannot-open-notebook-into-browser" aria-hidden="true"><span class="octicon octicon-link"></span></a>cannot open notebook into browser<a class="anchor-link" href="#cannot-open-notebook-into-browser"> </a>
+</h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Clicking just ask me to download the notebook, it doesn't display it into the browser.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="checking-.gitignore">
+<a class="anchor" href="#checking-.gitignore" aria-hidden="true"><span class="octicon octicon-link"></span></a>checking .gitignore<a class="anchor-link" href="#checking-.gitignore"> </a>
+</h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Just by looking into <code>.gitignore</code>, there is an interesting entry:</p>
+
+<pre><code>*.swp
+~*
+*~
+_site
+.sass-cache
+.jekyll-cache
+.jekyll-metadata
+vendor
+_notebooks/.ipynb_checkpoints</code></pre>
+<p>Wait what is in this last line.</p>
+<p>Let's create <code>_notebooks</code> directory and move my notebook in that directory.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="notebooks-from-_notebooks-not-rendered">
+<a class="anchor" href="#notebooks-from-_notebooks-not-rendered" aria-hidden="true"><span class="octicon octicon-link"></span></a>notebooks from _notebooks not rendered<a class="anchor-link" href="#notebooks-from-_notebooks-not-rendered"> </a>
+</h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>No entries, I guess there is some additional settings to do...</p>
+<p></p>
+<div class="Toast Toast--warning googoo">
+   <span class="Toast-icon"><svg class="octicon octicon-alert" viewbox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M8.22 1.754a.25.25 0 00-.44 0L1.698 13.132a.25.25 0 00.22.368h12.164a.25.25 0 00.22-.368L8.22 1.754zm-1.763-.707c.659-1.234 2.427-1.234 3.086 0l6.082 11.378A1.75 1.75 0 0114.082 15H1.918a1.75 1.75 0 01-1.543-2.575L6.457 1.047zM9 11a1 1 0 11-2 0 1 1 0 012 0zm-.25-5.25a.75.75 0 00-1.5 0v2.5a.75.75 0 001.5 0v-2.5z"></path></svg></span>
+   <span class="Toast-content">Why notebooks are not rendered by Jekyl</span>
+</div>
+
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="test-entry-from-md-using-local-repo">
+<a class="anchor" href="#test-entry-from-md-using-local-repo" aria-hidden="true"><span class="octicon octicon-link"></span></a>test entry from md using local repo<a class="anchor-link" href="#test-entry-from-md-using-local-repo"> </a>
+</h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>There is no problem with that.</p>
+<p>Creating a local md file in <code>_posts</code>then pushing to github is creating the right entry blog.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="following-fastpages-troubleshooting-guide">
+<a class="anchor" href="#following-fastpages-troubleshooting-guide" aria-hidden="true"><span class="octicon octicon-link"></span></a>following fastpages <a href="https://github.com/fastai/fastpages/blob/master/_fastpages_docs/TROUBLESHOOTING.md">troubleshooting guide</a><a class="anchor-link" href="#following-fastpages-troubleshooting-guide"> </a>
+</h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="upgrade-fastpages">
+<a class="anchor" href="#upgrade-fastpages" aria-hidden="true"><span class="octicon octicon-link"></span></a>upgrade fastpages<a class="anchor-link" href="#upgrade-fastpages"> </a>
+</h4>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Try the automated upgrade as described in <a href="https://github.com/fastai/fastpages/blob/master/_fastpages_docs/UPGRADE.md">https://github.com/fastai/fastpages/blob/master/_fastpages_docs/UPGRADE.md</a></p>
+<p>Unfortunately I don't see</p>
+<p>I have to follow the manual upgrade.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="manual-fastpages-upgrade">
+<a class="anchor" href="#manual-fastpages-upgrade" aria-hidden="true"><span class="octicon octicon-link"></span></a><a href="https://github.com/fastai/fastpages/blob/master/_fastpages_docs/UPGRADE.md#manual-upgrade">manual fastpages upgrade</a><a class="anchor-link" href="#manual-fastpages-upgrade"> </a>
+</h4>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>I am surprised because the 1st step from manual upgrade is to copy the fastpages repo. It is what I did 2 days ago. I doubt having an outdated version of fastpages.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="fastai-forum:-fastpages-category">
+<a class="anchor" href="#fastai-forum:-fastpages-category" aria-hidden="true"><span class="octicon octicon-link"></span></a>fastai forum: <a href="https://forums.fast.ai/c/fastai-users/nbdev/48">fastpages category</a><a class="anchor-link" href="#fastai-forum:-fastpages-category"> </a>
+</h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>I will browse through <a href="https://forums.fast.ai/c/fastai-users/nbdev/48">nbdev &amp; faspages category</a> in fastai forums. I should see people with the same issue.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>I have created an entry, into fastai forums: <a href="https://forums.fast.ai/t/fastpages-cannot-see-build-process-of-github-actions/78719">Fastpages - cannot see build process of GitHub Actions</a></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>And quite immediately Hamel Hussain answered guiding to the write direction:</p>
+<p>I misread the Settings instruction: my github repo should explicitely <em>NOT</em> include my github username and I did exactly the opposite.</p>
+<p></p>
+<div class="Toast Toast--warning googoo">
+   <span class="Toast-icon"><svg class="octicon octicon-alert" viewbox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M8.22 1.754a.25.25 0 00-.44 0L1.698 13.132a.25.25 0 00.22.368h12.164a.25.25 0 00.22-.368L8.22 1.754zm-1.763-.707c.659-1.234 2.427-1.234 3.086 0l6.082 11.378A1.75 1.75 0 0114.082 15H1.918a1.75 1.75 0 01-1.543-2.575L6.457 1.047zM9 11a1 1 0 11-2 0 1 1 0 012 0zm-.25-5.25a.75.75 0 00-1.5 0v2.5a.75.75 0 001.5 0v-2.5z"></path></svg></span>
+   <span class="Toast-content">I have to create a new repo: guillaume_blog</span>
+</div>
+
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="nothing-visible-from-Actions-tab">
+<a class="anchor" href="#nothing-visible-from-Actions-tab" aria-hidden="true"><span class="octicon octicon-link"></span></a>nothing visible from Actions tab<a class="anchor-link" href="#nothing-visible-from-Actions-tab"> </a>
+</h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>And another surprising subject: at github in Actions tab. I have a kind of default page. I expect something like an execution journal of Actions.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Page-build-failure">
+<a class="anchor" href="#Page-build-failure" aria-hidden="true"><span class="octicon octicon-link"></span></a>Page build failure<a class="anchor-link" href="#Page-build-failure"> </a>
+</h3>
+<p>Received a notification by email:</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The page build failed for the <code>master</code> branch with the following error:</p>
+<p>Page build failed. For more information, see <a href="https://docs.github.com/github/working-with-github-pages/troubleshooting-jekyll-build-errors-for-github-pages-sites#troubleshooting-build-errors">https://docs.github.com/github/working-with-github-pages/troubleshooting-jekyll-build-errors-for-github-pages-sites#troubleshooting-build-errors</a>.</p>
+<p>For information on troubleshooting Jekyll see:</p>
+<p><a href="https://docs.github.com/articles/troubleshooting-jekyll-builds">https://docs.github.com/articles/troubleshooting-jekyll-builds</a></p>
+<p>If you have any questions you can submit a request on the Contact GitHub page at <a href="https://support.github.com/contact?repo_id=293820308&amp;page_build_id=202240535">https://support.github.com/contact?repo_id=293820308&amp;page_build_id=202240535</a></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Move-to-another-repo">
+<a class="anchor" href="#Move-to-another-repo" aria-hidden="true"><span class="octicon octicon-link"></span></a>Move to another repo<a class="anchor-link" href="#Move-to-another-repo"> </a>
+</h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="repo-creation">
+<a class="anchor" href="#repo-creation" aria-hidden="true"><span class="octicon octicon-link"></span></a>repo creation<a class="anchor-link" href="#repo-creation"> </a>
+</h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>It was just a matter of creating a new repo:</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="actions-monitoring">
+<a class="anchor" href="#actions-monitoring" aria-hidden="true"><span class="octicon octicon-link"></span></a>actions monitoring<a class="anchor-link" href="#actions-monitoring"> </a>
+</h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Monitoring is effective</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="merge-pull-request">
+<a class="anchor" href="#merge-pull-request" aria-hidden="true"><span class="octicon octicon-link"></span></a>merge pull request<a class="anchor-link" href="#merge-pull-request"> </a>
+</h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="actions-around-ssh-keys">
+<a class="anchor" href="#actions-around-ssh-keys" aria-hidden="true"><span class="octicon octicon-link"></span></a>actions around ssh keys<a class="anchor-link" href="#actions-around-ssh-keys"> </a>
+</h4>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Following the steps:</p>
+<ul>
+<li>Create keys using <a href="https://8gwifi.org/sshfunctions.jsp">ssh utility</a>
+</li>
+<li>Enter Secret Key</li>
+<li>Enter Deploy Key</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="merge-PR">
+<a class="anchor" href="#merge-PR" aria-hidden="true"><span class="octicon octicon-link"></span></a>merge PR<a class="anchor-link" href="#merge-PR"> </a>
+</h4>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>There are conflicts to be fixed before that.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="And-it-works:-https://castorfou.github.io/guillaume_blog/">
+<a class="anchor" href="#And-it-works:-https://castorfou.github.io/guillaume_blog/" aria-hidden="true"><span class="octicon octicon-link"></span></a>And it works: <a href="https://castorfou.github.io/guillaume_blog/">https://castorfou.github.io/guillaume_blog/</a><a class="anchor-link" href="#And-it-works:-https://castorfou.github.io/guillaume_blog/"> </a>
+</h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Get-local-repo">
+<a class="anchor" href="#Get-local-repo" aria-hidden="true"><span class="octicon octicon-link"></span></a>Get local repo<a class="anchor-link" href="#Get-local-repo"> </a>
+</h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+
+<pre><code>cd ~/git
+unsetproxy
+git clone https://github.com/castorfou/guillaume_blog.git</code></pre>
+
+</div>
+</div>
+</div>
+</div>
+
+
+
+  </div><!-- from https://github.com/utterance/utterances -->
+<script src="https://utteranc.es/client.js"
+        repo="castorfou/guillaume_blog"
+        issue-term="title"
+        label="blogpost-comment"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script><a class="u-url" href="/blog/blog/blog-from-jupyter-sans-images.html" hidden></a>
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/blog/"></data>
+
+  <div class="wrapper">
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col">
+        <p class="feed-subscribe">
+          <a href="/blog/feed.xml">
+            <svg class="svg-icon orange">
+              <use xlink:href="/blog/assets/minima-social-icons.svg#rss"></use>
+            </svg><span>Subscribe</span>
+          </a>
+        </p>
+      </div>
+      <div class="footer-col">
+        <p>Journey for a datascientist</p>
+      </div>
+    </div>
+
+    <div class="social-links"><ul class="social-media-list"><li><a rel="me" href="https://github.com/castorfou" target="_blank" title="castorfou"><svg class="svg-icon grey"><use xlink:href="/blog/assets/minima-social-icons.svg#github"></use></svg></a></li><li><a rel="me" href="https://twitter.com/GuillaumeRamel1" target="_blank" title="GuillaumeRamel1"><svg class="svg-icon grey"><use xlink:href="/blog/assets/minima-social-icons.svg#twitter"></use></svg></a></li></ul>
+</div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>

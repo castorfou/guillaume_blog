@@ -1,0 +1,934 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="twitter:card" content="summary_large_image" /><!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Fastai on WSL 2 with Cuda | Guillaume’s blog</title>
+<meta name="generator" content="Jekyll v4.1.1" />
+<meta property="og:title" content="Fastai on WSL 2 with Cuda" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="how to NOT get an operational corporate workstation with windows 10, cuda, wsl2, fastai, pytorch…" />
+<meta property="og:description" content="how to NOT get an operational corporate workstation with windows 10, cuda, wsl2, fastai, pytorch…" />
+<link rel="canonical" href="https://castorfou.github.io/blog/blog/Windows10-fastai-wsl2-cuda.html" />
+<meta property="og:url" content="https://castorfou.github.io/blog/blog/Windows10-fastai-wsl2-cuda.html" />
+<meta property="og:site_name" content="Guillaume’s blog" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2020-09-21T00:00:00-05:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Fastai on WSL 2 with Cuda" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2020-09-21T00:00:00-05:00","datePublished":"2020-09-21T00:00:00-05:00","description":"how to NOT get an operational corporate workstation with windows 10, cuda, wsl2, fastai, pytorch…","headline":"Fastai on WSL 2 with Cuda","mainEntityOfPage":{"@type":"WebPage","@id":"https://castorfou.github.io/blog/blog/Windows10-fastai-wsl2-cuda.html"},"url":"https://castorfou.github.io/blog/blog/Windows10-fastai-wsl2-cuda.html"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/blog/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="https://castorfou.github.io/blog/feed.xml" title="Guillaume's blog" /><link rel="shortcut icon" type="image/x-icon" href="/blog/images/favicon.ico"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Primer/15.2.0/primer.css" integrity="sha512-xTz2ys4coGAOz8vuV1NcQBkgVmKhsSEtjbqyMJbBHRplFuvKIUo6xhLHpAyPt9mfR6twHJgn9OgVLuqOvjeBhg==" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.12.0/katex.min.css" integrity="sha512-h7nl+xz8wgDlNM4NqKEM4F1NkIRS17M9+uJwIGwuo8vGqIl4BhuCKdxjWEINm+xyrUjNCnK5dCrhM0sj+wTIXw==" crossorigin="anonymous" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.12.0/katex.min.js" integrity="sha512-/CMIhXiDA3m2c9kzRyd97MTb3MC6OVnx4TElQ7fkkoRghwDf6gi41gaT1PwF270W6+J60uTmwgeRpNpJdRV6sg==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.12.0/contrib/auto-render.min.js" integrity="sha512-Do7uJAaHZm5OLrIv/yN4w0iG1dbu01kzdMNnFfu/mAqgUk6Nniv2JYHcwH+cNwjqgLcqcuBBk+JRvprLVI8azg==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha512-0doc9hKxR3PYwso42RD1p5ySZpzzuDiOwMrdCEh2WdJZCjcmFKc/wEnL+z8fBQrnHoiNWbo+3fiGkOYXBdQp4A==" crossorigin="anonymous"></script>
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        renderMathInElement( document.body, {
+        delimiters: [
+            {left: "$$", right: "$$", display: true},
+            {left: "[%", right: "%]", display: true},
+            {left: "$", right: "$", display: false}
+        ]}
+        );
+    });
+    </script>
+
+
+<script>
+function wrap_img(fn) {
+    if (document.attachEvent ? document.readyState === "complete" : document.readyState !== "loading") {
+        var elements = document.querySelectorAll(".post img");
+        Array.prototype.forEach.call(elements, function(el, i) {
+            if (el.getAttribute("title") && (el.className != "emoji")) {
+                const caption = document.createElement('figcaption');
+                var node = document.createTextNode(el.getAttribute("title"));
+                caption.appendChild(node);
+                const wrapper = document.createElement('figure');
+                wrapper.className = 'image';
+                el.parentNode.insertBefore(wrapper, el);
+                el.parentNode.removeChild(el);
+                wrapper.appendChild(el);
+                wrapper.appendChild(caption);
+            }
+        });
+    } else { document.addEventListener('DOMContentLoaded', fn); }
+}
+window.onload = wrap_img;
+</script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function(){
+    // add link icon to anchor tags
+    var elem = document.querySelectorAll(".anchor-link")
+    elem.forEach(e => (e.innerHTML = '<i class="fas fa-link fa-xs"></i>'));
+    });
+</script>
+</head>
+<body><header class="site-header">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/blog/">Guillaume&#39;s blog</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/blog/about/">About Me</a><a class="page-link" href="/blog/search/">Search</a><a class="page-link" href="/blog/categories/">Tags</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">Fastai on WSL 2 with Cuda</h1><p class="page-description">how to **NOT** get an operational corporate workstation with windows 10, cuda, wsl2, fastai, pytorch...</p><p class="post-meta post-meta-title"><time class="dt-published" datetime="2020-09-21T00:00:00-05:00" itemprop="datePublished">
+        Sep 21, 2020
+      </time>
+       • <span class="read-time" title="Estimated read time">
+    
+    
+      5 min read
+    
+</span></p>
+
+    
+      <p class="category-tags"><i class="fas fa-tags category-tags-icon"></i></i> 
+      
+        <a class="category-tags-link" href="/blog/categories/#WSL">WSL</a>
+        &nbsp;
+      
+        <a class="category-tags-link" href="/blog/categories/#fastai">fastai</a>
+        &nbsp;
+      
+        <a class="category-tags-link" href="/blog/categories/#WSL2">WSL2</a>
+        &nbsp;
+      
+        <a class="category-tags-link" href="/blog/categories/#cuda">cuda</a>
+        
+      
+      </p>
+    
+
+    
+      </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <ul id="toc" class="section-nav">
+<li class="toc-entry toc-h2"><a href="#install-update-of-nvidia-drivers">install update of nvidia drivers </a></li>
+<li class="toc-entry toc-h2"><a href="#install-of-WSL2-and-convert-existing-images">install of WSL2 and convert existing images </a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#update-KB">update KB </a></li>
+<li class="toc-entry toc-h3"><a href="#update-kernel-version">update kernel version </a></li>
+<li class="toc-entry toc-h3"><a href="#set-default-WSL-to-be-version-2">set default WSL to be version 2 </a></li>
+<li class="toc-entry toc-h3"><a href="#convert-existing-images">convert existing images </a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="#install-of-nvidia-drivers-under-ubuntu">install of nvidia drivers under ubuntu </a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#cuda-for-WSL">cuda for WSL </a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="#install-a-new-distro-(ubuntu-20.04)">install a new distro (ubuntu 20.04) </a></li>
+<li class="toc-entry toc-h2"><a href="#WSL2-and-network">WSL2 and network </a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#Revert-image-to-WSL1-to-get-back-network-access">Revert image to WSL1 to get back network access </a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="#access-to-linux-files-from-windows">access to linux files from windows </a></li>
+<li class="toc-entry toc-h2"><a href="#some-usefull-wsl-commands">some usefull wsl commands </a></li>
+<li class="toc-entry toc-h2"><a href="#Workaround-network-issue-with-WSL2">Workaround network issue with WSL2 </a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#installation-setup">installation setup </a>
+<ul>
+<li class="toc-entry toc-h4"><a href="#vpnkit">vpnkit </a></li>
+<li class="toc-entry toc-h4"><a href="#npiperelay">npiperelay </a></li>
+<li class="toc-entry toc-h4"><a href="#socat">socat </a></li>
+<li class="toc-entry toc-h4"><a href="#Configure-DNS-for-WSL">Configure DNS for WSL </a></li>
+<li class="toc-entry toc-h4"><a href="#wsl-vpnkit">wsl-vpnkit </a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h3"><a href="#execution">execution </a></li>
+<li class="toc-entry toc-h3"><a href="#proxychains">proxychains </a></li>
+<li class="toc-entry toc-h3"><a href="#clean-from-local-deb-install-to-ubuntu-repo">clean from local deb install to ubuntu repo </a></li>
+</ul>
+</li>
+</ul><!--
+#################################################
+### THIS FILE WAS AUTOGENERATED! DO NOT EDIT! ###
+#################################################
+# file to edit: _notebooks/2020-09-21-Windows10-fastai-wsl2-cuda.ipynb
+-->
+
+<div class="container" id="notebook-container">
+        
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>This is based on what is explained in
+<a href="https://forums.fast.ai/t/fastai-on-wsl-2-ubuntu-0-7-0-or-any-version/76651">https://forums.fast.ai/t/fastai-on-wsl-2-ubuntu-0-7-0-or-any-version/76651</a></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="install-update-of-nvidia-drivers">
+<a class="anchor" href="#install-update-of-nvidia-drivers" aria-hidden="true"><span class="octicon octicon-link"></span></a>install update of nvidia drivers<a class="anchor-link" href="#install-update-of-nvidia-drivers"> </a>
+</h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Based on <a href="https://forums.fast.ai/t/platform-windows-10-using-wsl2-w-gpu/73521">Deep Learning Course Forums
+Platform: Windows 10 using WSL2 w/GPU
+fastai users</a></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>create nvidia account</li>
+<li>download quadro driver from <a href="https://developer.nvidia.com/cuda/wsl/download">https://developer.nvidia.com/cuda/wsl/download</a> (460.15)</li>
+<li>install</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<div class="highlight"><pre><span></span><span class="o">(</span>xgboost<span class="o">)</span> guillaume@LL11LPC0PQARQ:~/git/guillaume_blog$ nvidia-smi.exe
+Mon Sep <span class="m">21</span> <span class="m">16</span>:00:46 <span class="m">2020</span>
++-----------------------------------------------------------------------------+
+<span class="p">|</span> NVIDIA-SMI <span class="m">460</span>.15       Driver Version: <span class="m">460</span>.15       CUDA Version: <span class="m">11</span>.1     <span class="p">|</span>
+<span class="p">|</span>-------------------------------+----------------------+----------------------+
+<span class="p">|</span> GPU  Name            TCC/WDDM <span class="p">|</span> Bus-Id        Disp.A <span class="p">|</span> Volatile Uncorr. ECC <span class="p">|</span>
+<span class="p">|</span> Fan  Temp  Perf  Pwr:Usage/Cap<span class="p">|</span>         Memory-Usage <span class="p">|</span> GPU-Util  Compute M. <span class="p">|</span>
+<span class="p">|</span><span class="o">===============================</span>+<span class="o">======================</span>+<span class="o">======================</span><span class="p">|</span>
+<span class="p">|</span>   <span class="m">0</span>  Quadro M1000M      WDDM  <span class="p">|</span> <span class="m">00000000</span>:01:00.0  On <span class="p">|</span>                  N/A <span class="p">|</span>
+<span class="p">|</span> N/A   59C    P0    N/A /  N/A <span class="p">|</span>    905MiB /  4096MiB <span class="p">|</span>      <span class="m">0</span>%      Default <span class="p">|</span>
++-------------------------------+----------------------+----------------------+
+</pre></div>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="install-of-WSL2-and-convert-existing-images">
+<a class="anchor" href="#install-of-WSL2-and-convert-existing-images" aria-hidden="true"><span class="octicon octicon-link"></span></a>install of WSL2 and convert existing images<a class="anchor-link" href="#install-of-WSL2-and-convert-existing-images"> </a>
+</h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Open a PowerShell window as an Administrator</p>
+<p>Run wsl --set-default-version 2</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="update-KB">
+<a class="anchor" href="#update-KB" aria-hidden="true"><span class="octicon octicon-link"></span></a>update KB<a class="anchor-link" href="#update-KB"> </a>
+</h3>
+<p></p>
+<div class="Toast Toast--warning googoo">
+   <span class="Toast-icon"><svg class="octicon octicon-alert" viewbox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M8.22 1.754a.25.25 0 00-.44 0L1.698 13.132a.25.25 0 00.22.368h12.164a.25.25 0 00.22-.368L8.22 1.754zm-1.763-.707c.659-1.234 2.427-1.234 3.086 0l6.082 11.378A1.75 1.75 0 0114.082 15H1.918a1.75 1.75 0 01-1.543-2.575L6.457 1.047zM9 11a1 1 0 11-2 0 1 1 0 012 0zm-.25-5.25a.75.75 0 00-1.5 0v2.5a.75.75 0 001.5 0v-2.5z"></path></svg></span>
+   <span class="Toast-content">--set-default-version 2 is not a valid option. KB4566116 should be installed</span>
+</div>
+
+<p>This can be downloaded from <a href="http://www.catalog.update.microsoft.com/Search.aspx?q=KB4566116">Catalog Microsoft Update</a></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="update-kernel-version">
+<a class="anchor" href="#update-kernel-version" aria-hidden="true"><span class="octicon octicon-link"></span></a>update kernel version<a class="anchor-link" href="#update-kernel-version"> </a>
+</h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>If you see this message after running the command: WSL 2 requires an update to its kernel component. For information please visit <a href="https://aka.ms/wsl2kernel">https://aka.ms/wsl2kernel</a>. You still need to install the MSI Linux kernel update package.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Download from <a href="https://docs.microsoft.com/en-us/windows/wsl/install-win10#step-4---download-the-linux-kernel-update-package">https://docs.microsoft.com/en-us/windows/wsl/install-win10#step-4---download-the-linux-kernel-update-package</a></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="set-default-WSL-to-be-version-2">
+<a class="anchor" href="#set-default-WSL-to-be-version-2" aria-hidden="true"><span class="octicon octicon-link"></span></a>set default WSL to be version 2<a class="anchor-link" href="#set-default-WSL-to-be-version-2"> </a>
+</h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+
+<pre><code>PS C:\WINDOWS\system32&gt; wsl --set-default-version 2</code></pre>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="convert-existing-images">
+<a class="anchor" href="#convert-existing-images" aria-hidden="true"><span class="octicon octicon-link"></span></a>convert existing images<a class="anchor-link" href="#convert-existing-images"> </a>
+</h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+
+<pre><code>PS C:\WINDOWS\system32&gt; wsl --list --verbose
+  NAME            STATE           VERSION
+* Ubuntu-18.04    Running         1
+PS C:\WINDOWS\system32&gt; wsl --set-version Ubuntu-18.04 2
+La conversion est en cours. Cette opération peut prendre quelques minutes...
+Pour plus d’informations sur les différences de clés avec WSL 2, visitez https://aka.ms/wsl2
+La conversion est terminée.</code></pre>
+<p>It took a while (~1 hour) for my unique ubuntu image.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>And at the end it has worked.</p>
+
+<pre><code>PS C:\WINDOWS\system32&gt; wsl --list --verbose
+  NAME            STATE           VERSION
+* Ubuntu-18.04    Stopped         2</code></pre>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="install-of-nvidia-drivers-under-ubuntu">
+<a class="anchor" href="#install-of-nvidia-drivers-under-ubuntu" aria-hidden="true"><span class="octicon octicon-link"></span></a>install of nvidia drivers under ubuntu<a class="anchor-link" href="#install-of-nvidia-drivers-under-ubuntu"> </a>
+</h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>[Installation instructions)(<a href="https://developer.nvidia.com/cuda-downloads?target_os=Linux&amp;target_arch=x86_64&amp;target_distro=Ubuntu&amp;target_version=1804&amp;target_type=deblocal">https://developer.nvidia.com/cuda-downloads?target_os=Linux&amp;target_arch=x86_64&amp;target_distro=Ubuntu&amp;target_version=1804&amp;target_type=deblocal</a>)</p>
+<div class="highlight"><pre><span></span>wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/cuda-ubuntu1804.pin
+sudo mv cuda-ubuntu1804.pin /etc/apt/preferences.d/cuda-repository-pin-600
+wget https://developer.download.nvidia.com/compute/cuda/11.0.3/local_installers/cuda-repo-ubuntu1804-11-0-local_11.0.3-450.51.06-1_amd64.deb
+sudo dpkg -i cuda-repo-ubuntu1804-11-0-local_11.0.3-450.51.06-1_amd64.deb
+sudo apt-key add /var/cuda-repo-ubuntu1804-11-0-local/7fa2af80.pub
+sudo apt-get update
+sudo apt-get -y install cuda
+</pre></div>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>cat /usr/local/cuda/version.txt
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>CUDA Version 11.0.228
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>/usr/local/cuda/samples/4_Finance/BlackScholes/BlackScholes
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>[/usr/local/cuda/samples/4_Finance/BlackScholes/BlackScholes] - Starting...
+CUDA error at ../../common/inc/helper_cuda.h:777 code=35(cudaErrorInsufficientDriver) "cudaGetDeviceCount(&amp;device_count)" 
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>There is an error when launching CUDA samples. Googling that error maybe my video card is running on low driver version?</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>I have posted on nvidia (cuda+wsl) forum: <a href="https://forums.developer.nvidia.com/t/cuda-sample-throwing-error/142537/18">https://forums.developer.nvidia.com/t/cuda-sample-throwing-error/142537/18</a></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>(update 09-22: it is not possible to have cuda on wsl2 if not in Windows Insider build from Dev Channel. (20145 or higher))</p>
+<p></p>
+<div class="Toast Toast--warning googoo">
+   <span class="Toast-icon"><svg class="octicon octicon-alert" viewbox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M8.22 1.754a.25.25 0 00-.44 0L1.698 13.132a.25.25 0 00.22.368h12.164a.25.25 0 00.22-.368L8.22 1.754zm-1.763-.707c.659-1.234 2.427-1.234 3.086 0l6.082 11.378A1.75 1.75 0 0114.082 15H1.918a1.75 1.75 0 01-1.543-2.575L6.457 1.047zM9 11a1 1 0 11-2 0 1 1 0 012 0zm-.25-5.25a.75.75 0 00-1.5 0v2.5a.75.75 0 001.5 0v-2.5z"></path></svg></span>
+   <span class="Toast-content">because I am in version 1909 (<strong>18363</strong>.1049), it won't work for me. ;(</span>
+</div>
+
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="cuda-for-WSL">
+<a class="anchor" href="#cuda-for-WSL" aria-hidden="true"><span class="octicon octicon-link"></span></a>cuda for WSL<a class="anchor-link" href="#cuda-for-WSL"> </a>
+</h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Here is a link that could be interesting: <a href="https://docs.nvidia.com/cuda/wsl-user-guide/index.html">https://docs.nvidia.com/cuda/wsl-user-guide/index.html</a></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>According to this, I should not have installed cuda but cuda-toolkit. 
+<code>Do not choose the cuda, cuda-11-0, or cuda-drivers meta-packages under WSL 2 since these packages will result in an attempt to install the Linux NVIDIA driver under WSL 2.</code></p>
+<p>Is it causing my issue?</p>
+<div class="highlight"><pre><span></span>apt-get install -y cuda-toolkit-11-0
+</pre></div>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>/usr/local/cuda/bin/nvcc --version
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>nvcc: NVIDIA (R) Cuda compiler driver
+Copyright (c) 2005-2020 NVIDIA Corporation
+Built on Wed_Jul_22_19:09:09_PDT_2020
+Cuda compilation tools, release 11.0, V11.0.221
+Build cuda_11.0_bu.TC445_37.28845127_0
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="install-a-new-distro-(ubuntu-20.04)">
+<a class="anchor" href="#install-a-new-distro-(ubuntu-20.04)" aria-hidden="true"><span class="octicon octicon-link"></span></a>install a new distro (ubuntu 20.04)<a class="anchor-link" href="#install-a-new-distro-(ubuntu-20.04)"> </a>
+</h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Because I cannot use windows store, I have to manually install <a href="https://docs.microsoft.com/fr-fr/windows/wsl/install-manual">https://docs.microsoft.com/fr-fr/windows/wsl/install-manual</a></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Installation by just launching Ubuntu_2004.2020.424.0_x64.appx.</p>
+<p>I have now 2 distros,</p>
+
+<pre><code>PS C:\WINDOWS\system32&gt; wsl --list -v
+  NAME            STATE           VERSION
+* Ubuntu-18.04    Running         2
+  Ubuntu-20.04    Running         2</code></pre>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="WSL2-and-network">
+<a class="anchor" href="#WSL2-and-network" aria-hidden="true"><span class="octicon octicon-link"></span></a>WSL2 and network<a class="anchor-link" href="#WSL2-and-network"> </a>
+</h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>There is a change of network architecture between WSL 1 and WSL 2.
+In WSL 2, a new network interface is available:</p>
+
+<pre><code>Carte Ethernet vEthernet (WSL) :
+
+   Suffixe DNS propre à la connexion. . . :
+   Adresse IPv6 de liaison locale. . . . .: 
+   Adresse IPv4. . . . . . . . . . . . . .: 192.168.81.193
+   Masque de sous-réseau. . . . . . . . . : 255.255.255.240
+   Passerelle par défaut. . . . . . . . . :</code></pre>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Revert-image-to-WSL1-to-get-back-network-access">
+<a class="anchor" href="#Revert-image-to-WSL1-to-get-back-network-access" aria-hidden="true"><span class="octicon octicon-link"></span></a>Revert image to WSL1 to get back network access<a class="anchor-link" href="#Revert-image-to-WSL1-to-get-back-network-access"> </a>
+</h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+
+<pre><code>PS C:\WINDOWS\system32&gt; wsl --set-version Ubuntu-18.04 1
+La conversion est en cours. Cette opération peut prendre quelques minutes...
+La conversion est terminée.</code></pre>
+
+<pre><code>PS C:\WINDOWS\system32&gt; wsl --list -v
+  NAME            STATE           VERSION
+* Ubuntu-18.04    Stopped         1
+  Ubuntu-20.04    Stopped         2</code></pre>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="access-to-linux-files-from-windows">
+<a class="anchor" href="#access-to-linux-files-from-windows" aria-hidden="true"><span class="octicon octicon-link"></span></a>access to linux files from windows<a class="anchor-link" href="#access-to-linux-files-from-windows"> </a>
+</h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>For running state distros:</p>
+<p>Files are available at <code>\\wsl$\</code>.</p>
+<p>For stopped state distros:</p>
+<p>Files are available at <code>C:\Users\&lt;users&gt;\AppData\Local\Packages\CanonicalGroupLimited.Ubuntu*\LocalState\rootfs</code></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="some-usefull-wsl-commands">
+<a class="anchor" href="#some-usefull-wsl-commands" aria-hidden="true"><span class="octicon octicon-link"></span></a>some usefull wsl commands<a class="anchor-link" href="#some-usefull-wsl-commands"> </a>
+</h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>List distros</strong></p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>wsl --list --verbose
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<div class="highlight"><pre><span></span>NAME            STATE           VERSION
+
+* Ubuntu-18.04    Running         <span class="m">1</span>
+
+  Ubuntu-20.04    Stopped         <span class="m">2</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>Stop a distro</strong></p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>wsl --terminate Ubuntu-18.04
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>Update dns settings</strong></p>
+<p>as explained <a href="https://superuser.com/questions/1533291/how-do-i-change-the-dns-settings-for-wsl2">here</a></p>
+<p>just switch from <code>generateResolvConf = true</code> to <code>generateResolvConf = false</code> in <code>/etc/wsl.conf</code> and edit <code>/etc/resolv.conf</code></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>But still have issues, mainly I think linked to Symantec Endpoint protection.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Workaround-network-issue-with-WSL2">
+<a class="anchor" href="#Workaround-network-issue-with-WSL2" aria-hidden="true"><span class="octicon octicon-link"></span></a>Workaround network issue with WSL2<a class="anchor-link" href="#Workaround-network-issue-with-WSL2"> </a>
+</h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><a href="https://github.com/sakai135/wsl-vpnkit">https://github.com/sakai135/wsl-vpnkit</a></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="installation-setup">
+<a class="anchor" href="#installation-setup" aria-hidden="true"><span class="octicon octicon-link"></span></a>installation setup<a class="anchor-link" href="#installation-setup"> </a>
+</h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="vpnkit">
+<a class="anchor" href="#vpnkit" aria-hidden="true"><span class="octicon octicon-link"></span></a>vpnkit<a class="anchor-link" href="#vpnkit"> </a>
+</h4>
+<p>install <a href="https://hub.docker.com/editions/community/docker-ce-desktop-windows/">docker</a> for windows</p>
+<p>install genisoimage in ubuntu (from <a href="http://archive.ubuntu.com/ubuntu/pool/main/c/cdrkit/genisoimage_1.1.11-3.1ubuntu1_amd64.deb">http://archive.ubuntu.com/ubuntu/pool/main/c/cdrkit/genisoimage_1.1.11-3.1ubuntu1_amd64.deb</a>)</p>
+<p>install vpnkit</p>
+<div class="highlight"><pre><span></span>isoinfo -i /mnt/c/Program<span class="se">\ </span>Files/Docker/Docker/resources/wsl/docker-for-wsl.iso -R -x /containers/services/vpnkit-tap-vsockd/lower/sbin/vpnkit-tap-vsockd &gt; ./vpnkit-tap-vsockd
+chmod +x vpnkit-tap-vsockd
+sudo mv vpnkit-tap-vsockd /sbin/vpnkit-tap-vsockd
+sudo chown root:root /sbin/vpnkit-tap-vsockd
+</pre></div>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="npiperelay">
+<a class="anchor" href="#npiperelay" aria-hidden="true"><span class="octicon octicon-link"></span></a>npiperelay<a class="anchor-link" href="#npiperelay"> </a>
+</h4>
+<p>install unzip in ubuntu (from <a href="http://archive.ubuntu.com/ubuntu/pool/main/u/unzip/unzip_6.0-25ubuntu1_amd64.deb">http://archive.ubuntu.com/ubuntu/pool/main/u/unzip/unzip_6.0-25ubuntu1_amd64.deb</a>)</p>
+<p>download npiprelay (from <a href="https://github.com/jstarks/npiperelay/releases/download/v0.1.0/npiperelay_windows_amd64.zip">https://github.com/jstarks/npiperelay/releases/download/v0.1.0/npiperelay_windows_amd64.zip</a>
+)</p>
+<p>install npiprelay</p>
+<div class="highlight"><pre><span></span>unzip npiperelay_windows_amd64.zip npiperelay.exe
+rm npiperelay_windows_amd64.zip
+mkdir -p /mnt/c/bin
+mv npiperelay.exe /mnt/c/bin/
+sudo ln -s /mnt/c/bin/npiperelay.exe /usr/local/bin/npiperelay.exe
+</pre></div>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="socat">
+<a class="anchor" href="#socat" aria-hidden="true"><span class="octicon octicon-link"></span></a>socat<a class="anchor-link" href="#socat"> </a>
+</h4>
+<p>install socat in ubuntu (from <a href="http://archive.ubuntu.com/ubuntu/pool/main/s/socat/socat_1.7.3.3-2_amd64.deb">http://archive.ubuntu.com/ubuntu/pool/main/s/socat/socat_1.7.3.3-2_amd64.deb</a>)</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Configure-DNS-for-WSL">
+<a class="anchor" href="#Configure-DNS-for-WSL" aria-hidden="true"><span class="octicon octicon-link"></span></a>Configure DNS for WSL<a class="anchor-link" href="#Configure-DNS-for-WSL"> </a>
+</h4>
+<p>Disable WSL from generating and overwriting <code>/etc/resolv.conf</code>.</p>
+<div class="highlight"><pre><span></span>sudo tee /etc/wsl.conf <span class="s">&lt;&lt;EOL</span>
+<span class="s">[network]</span>
+<span class="s">generateResolvConf = false</span>
+<span class="s">EOL</span>
+</pre></div>
+<p>Manually set DNS servers to use when not running this script. 1.1.1.1 is provided as an example.</p>
+<div class="highlight"><pre><span></span>sudo tee /etc/resolv.conf <span class="s">&lt;&lt;EOL</span>
+<span class="s">nameserver 1.1.1.1</span>
+<span class="s">EOL</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="wsl-vpnkit">
+<a class="anchor" href="#wsl-vpnkit" aria-hidden="true"><span class="octicon octicon-link"></span></a>wsl-vpnkit<a class="anchor-link" href="#wsl-vpnkit"> </a>
+</h4>
+<p>from <a href="https://github.com/sakai135/wsl-vpnkit/archive/refs/heads/main.zip">https://github.com/sakai135/wsl-vpnkit/archive/refs/heads/main.zip</a></p>
+<p>unzip ~/git/wsl-vpnkit-main.zip -d ~/Applications/wsl-vpnkit</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="execution">
+<a class="anchor" href="#execution" aria-hidden="true"><span class="octicon octicon-link"></span></a>execution<a class="anchor-link" href="#execution"> </a>
+</h3>
+<div class="highlight"><pre><span></span>~/Applications/wsl-vpnkit/wsl-vpnkit-main$ sudo ./wsl-vpnkit
+</pre></div>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="proxychains">
+<a class="anchor" href="#proxychains" aria-hidden="true"><span class="octicon octicon-link"></span></a>proxychains<a class="anchor-link" href="#proxychains"> </a>
+</h3>
+<p>I can now use proxychains and everything works beautifully ;)</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="clean-from-local-deb-install-to-ubuntu-repo">
+<a class="anchor" href="#clean-from-local-deb-install-to-ubuntu-repo" aria-hidden="true"><span class="octicon octicon-link"></span></a>clean from local deb install to ubuntu repo<a class="anchor-link" href="#clean-from-local-deb-install-to-ubuntu-repo"> </a>
+</h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<div class="highlight"><pre><span></span>~/git$ ls *.deb
+genisoimage_1.1.11-3.1ubuntu1_amd64.deb                proxychains_3.1-8.1_all.deb
+libproxychains3_3.1-8.1_amd64.deb                      socat_1.7.3.3-2_amd64.deb
+net-tools_1.60+git20180626.aebd88e-1ubuntu1_amd64.deb  unzip_6.0-25ubuntu1_amd64.deb
+</pre></div>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<div class="highlight"><pre><span></span>sudo apt remove genisoimage  net-tools  socat unzip
+sudo proxychains apt install genisoimage libproxychains3 net-tools proxychains socat unzip
+</pre></div>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>I don't exactly see how to do it with proxychains.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+
+
+  </div><!-- from https://github.com/utterance/utterances -->
+<script src="https://utteranc.es/client.js"
+        repo="castorfou/guillaume_blog"
+        issue-term="title"
+        label="blogpost-comment"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script><a class="u-url" href="/blog/blog/Windows10-fastai-wsl2-cuda.html" hidden></a>
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/blog/"></data>
+
+  <div class="wrapper">
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col">
+        <p class="feed-subscribe">
+          <a href="/blog/feed.xml">
+            <svg class="svg-icon orange">
+              <use xlink:href="/blog/assets/minima-social-icons.svg#rss"></use>
+            </svg><span>Subscribe</span>
+          </a>
+        </p>
+      </div>
+      <div class="footer-col">
+        <p>Journey for a datascientist</p>
+      </div>
+    </div>
+
+    <div class="social-links"><ul class="social-media-list"><li><a rel="me" href="https://github.com/castorfou" target="_blank" title="castorfou"><svg class="svg-icon grey"><use xlink:href="/blog/assets/minima-social-icons.svg#github"></use></svg></a></li><li><a rel="me" href="https://twitter.com/GuillaumeRamel1" target="_blank" title="GuillaumeRamel1"><svg class="svg-icon grey"><use xlink:href="/blog/assets/minima-social-icons.svg#twitter"></use></svg></a></li></ul>
+</div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>

@@ -1,1 +1,1297 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.1.1">Jekyll</generator><link href="https://castorfou.github.io/blog/feed.xml" rel="self" type="application/atom+xml" /><link href="https://castorfou.github.io/blog/" rel="alternate" type="text/html" /><updated>2022-05-02T10:14:25-05:00</updated><id>https://castorfou.github.io/blog/feed.xml</id><title type="html">fastpages</title><subtitle>An easy to use blogging platform with support for Jupyter Notebooks.</subtitle><entry><title type="html">install ubuntu 22.04 on WSL</title><link href="https://castorfou.github.io/blog/wsl/2022/04/25/install-ubuntu-22.04-on-WSL.html" rel="alternate" type="text/html" title="install ubuntu 22.04 on WSL" /><published>2022-04-25T00:00:00-05:00</published><updated>2022-04-25T00:00:00-05:00</updated><id>https://castorfou.github.io/blog/wsl/2022/04/25/install%20ubuntu%2022.04%20on%20WSL</id><author><name></name></author><category term="wsl" /><summary type="html"><![CDATA[even if not available in Windows Store]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://castorfou.github.io/blog/images/icons/wsl2.jpeg" /><media:content medium="image" url="https://castorfou.github.io/blog/images/icons/wsl2.jpeg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">keep dotfiles in git</title><link href="https://castorfou.github.io/blog/git/2022/04/07/keep-dotfiles-in-git.html" rel="alternate" type="text/html" title="keep dotfiles in git" /><published>2022-04-07T00:00:00-05:00</published><updated>2022-04-07T00:00:00-05:00</updated><id>https://castorfou.github.io/blog/git/2022/04/07/keep%20dotfiles%20in%20git</id><author><name></name></author><category term="git" /><summary type="html"><![CDATA[as pointed by Jeremy Howard]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://castorfou.github.io/blog/images/git.png" /><media:content medium="image" url="https://castorfou.github.io/blog/images/git.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Logbook for February 22</title><link href="https://castorfou.github.io/blog/logbook/2022/02/01/logbook-February.html" rel="alternate" type="text/html" title="Logbook for February 22" /><published>2022-02-01T00:00:00-06:00</published><updated>2022-02-01T00:00:00-06:00</updated><id>https://castorfou.github.io/blog/logbook/2022/02/01/logbook-February</id><author><name></name></author><category term="logbook" /><summary type="html"><![CDATA[Week 5 - February 22]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://castorfou.github.io/blog/images/logbook.jpg" /><media:content medium="image" url="https://castorfou.github.io/blog/images/logbook.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">setup wsl2 conda mamba and cuda</title><link href="https://castorfou.github.io/blog/wsl/cuda/conda/2022/01/18/wsl2-conda-mamba-cuda.html" rel="alternate" type="text/html" title="setup wsl2 conda mamba and cuda" /><published>2022-01-18T00:00:00-06:00</published><updated>2022-01-18T00:00:00-06:00</updated><id>https://castorfou.github.io/blog/wsl/cuda/conda/2022/01/18/wsl2%20conda%20mamba%20cuda</id><author><name></name></author><category term="wsl" /><category term="cuda" /><category term="conda" /><summary type="html"><![CDATA[best of breed windows + linux]]></summary></entry><entry><title type="html">Logbook for January 22</title><link href="https://castorfou.github.io/blog/logbook/2022/01/01/logbook-January.html" rel="alternate" type="text/html" title="Logbook for January 22" /><published>2022-01-01T00:00:00-06:00</published><updated>2022-01-01T00:00:00-06:00</updated><id>https://castorfou.github.io/blog/logbook/2022/01/01/logbook-January</id><author><name></name></author><category term="logbook" /><summary type="html"><![CDATA[Week 1 - January 22]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://castorfou.github.io/blog/images/logbook.jpg" /><media:content medium="image" url="https://castorfou.github.io/blog/images/logbook.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry></feed>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.1.1">Jekyll</generator><link href="https://castorfou.github.io/blog/feed.xml" rel="self" type="application/atom+xml" /><link href="https://castorfou.github.io/blog/" rel="alternate" type="text/html" /><updated>2022-05-02T10:22:17-05:00</updated><id>https://castorfou.github.io/blog/feed.xml</id><title type="html">Guillaume’s blog</title><subtitle>Journey for a datascientist</subtitle><entry><title type="html">install ubuntu 22.04 on WSL</title><link href="https://castorfou.github.io/blog/blog/install-ubuntu-22.04-on-WSL.html" rel="alternate" type="text/html" title="install ubuntu 22.04 on WSL" /><published>2022-04-25T00:00:00-05:00</published><updated>2022-04-25T00:00:00-05:00</updated><id>https://castorfou.github.io/blog/blog/install%20ubuntu%2022.04%20on%20WSL</id><content type="html" xml:base="https://castorfou.github.io/blog/blog/install-ubuntu-22.04-on-WSL.html"><![CDATA[<h2 id="source-of-inspiration">source of inspiration</h2>
+
+<p><a href="https://www.windowscentral.com/how-install-ubuntu-2110-wsl-windows-10-and-11">How to install Ubuntu 21.10 on WSL for Windows 10 and 11</a></p>
+
+<h2 id="installation">Installation</h2>
+
+<h3 id="uninstall-image-if-needed">uninstall image (if needed)</h3>
+
+<div class="language-powershell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># wsl --unregister &lt;distroName&gt;</span><span class="w">
+</span><span class="n">wsl</span><span class="w"> </span><span class="nt">--unregister</span><span class="w"> </span><span class="nx">ubuntu-22.04</span><span class="w">
+</span></code></pre></div></div>
+
+<h3 id="download-images">download images</h3>
+
+<p>From <a href="https://cloud-images.ubuntu.com/jammy/current/">cloud images ubuntu</a> (cloud-images &gt; jammy &gt; current), now there are wsl images:</p>
+
+<p><img src="https://www.windowscentral.com/sites/wpcentral.com/files/styles/larger/public/field/image/2022/01/ubuntu-cloud-images-website.png" alt="ubuntu cloud images" /></p>
+
+<p>I just have to download the last jammy (22.04) image <code class="language-plaintext highlighter-rouge">jammy-server-cloudimg-amd64-wsl.rootfs.tar.gz</code></p>
+
+<h3 id="install-and-setup-from-powershell">install and setup from powershell</h3>
+
+<p>I have downloaded this ubuntu image to <code class="language-plaintext highlighter-rouge">D:\wsl\ubuntu-22.04\download</code></p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">(</span>base<span class="o">)</span> guillaume@LL11LPC0PQARQ:/mnt/d/wsl<span class="nv">$ </span>tree
+<span class="nb">.</span>
+├── Ubuntu-20.04
+│   └── ext4.vhdx
+├── Ubuntu-22.04
+│   ├── download
+│   │   └── jammy-server-cloudimg-amd64-wsl.rootfs.tar.gz
+│   └── instance
+</code></pre></div></div>
+
+<p>and my <code class="language-plaintext highlighter-rouge">ubuntu-22.04</code> instance will stand in <code class="language-plaintext highlighter-rouge">D:\wsl\ubuntu-22.04\instance</code></p>
+
+<p>Install with this command from powershell</p>
+
+<div class="language-powershell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># wsl --import &lt;distroname&gt; &lt;location of instance&gt; &lt;location of download&gt;</span><span class="w">
+</span><span class="n">wsl</span><span class="w"> </span><span class="nt">--import</span><span class="w"> </span><span class="nx">ubuntu-22.04</span><span class="w"> </span><span class="nx">D:\wsl\ubuntu-22.04\instance</span><span class="w"> </span><span class="nx">D:\wsl\ubuntu-22.04\download\jammy-server-cloudimg-amd64-wsl.rootfs.tar.gz</span><span class="w">
+</span></code></pre></div></div>
+
+<p>It takes 3-4 minutes to install. and should be visible in your wsl instances.</p>
+
+<div class="language-powershell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="w"> </span><span class="n">wsl</span><span class="w"> </span><span class="nt">--list</span><span class="w"> </span><span class="nt">--all</span><span class="w"> </span><span class="nt">-v</span><span class="w">
+  </span><span class="n">NAME</span><span class="w">            </span><span class="nx">STATE</span><span class="w">           </span><span class="nx">VERSION</span><span class="w">
+  </span><span class="n">ubuntu-22.04</span><span class="w">    </span><span class="nx">Stopped</span><span class="w">         </span><span class="nx">2</span><span class="w">
+</span></code></pre></div></div>
+
+<p>then to run it</p>
+
+<div class="language-powershell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># wsl -d &lt;distroname&gt;</span><span class="w">
+</span><span class="n">wsl</span><span class="w"> </span><span class="nt">-d</span><span class="w"> </span><span class="nx">ubuntu-22.04</span><span class="w">
+</span></code></pre></div></div>
+
+<p>or</p>
+
+<h4 id="use-windows-terminal-as-a-launcher">use Windows Terminal as a launcher</h4>
+
+<p>Windows Terminal is a smart way to group all terminals (powershell, and all your wsl instances)</p>
+
+<p><img src="../images/windows_terminal.jpg" alt="windows terminal" /></p>
+
+<p>It can be installed even with limited windows store access by clicking install in <a href="https://docs.microsoft.com/fr-fr/windows/terminal/install">Installer le Terminal Windows et commencer à le configurer</a></p>
+
+<p>Automatically all wsl instances appear in Settings.</p>
+
+<h2 id="automatic-setup">Automatic setup</h2>
+
+<p>copy these 2 <a href="https://github.com/castorfou/guillaume_blog/tree/master/files">scripts</a> in /root/ (given they are in <code class="language-plaintext highlighter-rouge">D:\wsl\ubuntu-22.04\download</code>)</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cp</span> /mnt/d/wsl/Ubuntu-22.04/download/setup_wsl_<span class="k">*</span> <span class="nb">.</span>
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">setup_wsl_root.sh</code> <a href="../files/setup_wsl_root.sh">download</a></p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">#!/bin/bash</span>
+
+<span class="nb">echo</span> <span class="s2">"0. get username: "</span>
+<span class="nb">read </span>user_name
+
+<span class="nb">.</span> /etc/lsb-release
+
+<span class="nb">echo </span>Configuration <span class="k">for </span>user <span class="o">[</span><span class="nv">$user_name</span><span class="o">]</span>
+<span class="nb">echo </span>of distribution <span class="nv">$DISTRIB_CODENAME</span>
+<span class="nb">echo
+
+echo</span> <span class="s2">"1. create user and add in sudo"</span>
+<span class="c">#adduser --disabled-password --gecos "" $user_name</span>
+adduser <span class="nt">--gecos</span> <span class="s2">""</span> <span class="nv">$user_name</span>
+usermod <span class="nt">-aG</span> <span class="nb">sudo</span> <span class="nv">$user_name</span>
+<span class="nb">echo
+
+echo</span> <span class="s2">"2. create wsl.conf file"</span>
+<span class="nb">rm</span> <span class="nt">-rf</span> /etc/wsl.conf
+<span class="nb">tee</span> /etc/wsl.conf <span class="o">&lt;&lt;</span> <span class="no">EOF</span><span class="sh">
+# Set the user when launching a distribution with WSL.
+[user]
+default=</span><span class="nv">$user_name</span><span class="sh">
+</span><span class="no">EOF
+</span><span class="nb">echo
+
+echo</span> <span class="s2">"3. prepare setup by user"</span>
+<span class="nb">cp </span>setup_wsl_user.sh /home/<span class="nv">$user_name</span>
+<span class="nb">chown</span> <span class="nv">$user_name</span>:users /home/<span class="nv">$user_name</span>/setup_wsl_user.sh
+<span class="nb">chmod </span>750  /home/<span class="nv">$user_name</span>/setup_wsl_user.sh
+<span class="nb">tee</span> <span class="nt">-a</span> /home/<span class="nv">$user_name</span>/.bashrc <span class="o">&lt;&lt;</span> <span class="no">EOF</span><span class="sh">
+if [ ! -e ".wsl_configured" ]; then
+		./setup_wsl_user.sh
+        touch .wsl_configured
+fi
+</span><span class="no">EOF
+</span><span class="nb">echo
+
+echo</span> <span class="s2">"end of configuration for root"</span>
+<span class="nb">echo</span> <span class="s2">"stop wsl instance by running 'wsl --shutdown &lt;distroname&gt;' from powershell"</span>
+<span class="nb">echo</span> <span class="s2">"and start from Windows Terminal"</span>
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">setup_wsl_user.sh</code> <a href="../files/setup_wsl_user.sh">download</a></p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">#!/bin/bash</span>
+
+<span class="nb">echo</span> <span class="s2">"1. setup wsl-vpnkit"</span>
+<span class="k">if </span><span class="nb">grep</span> <span class="nt">-Fxq</span> <span class="s2">"wsl-vpnkit"</span> ~/.profile
+<span class="k">then</span>
+    <span class="c"># code if found</span>
+	<span class="nb">echo</span> <span class="s2">"   wsl-vpnkit already setup"</span>
+<span class="k">else</span>
+    <span class="c"># code if not found</span>
+	<span class="nb">echo</span> <span class="s1">'wsl.exe -d wsl-vpnkit service wsl-vpnkit start'</span> <span class="o">&gt;&gt;</span> ~/.profile
+<span class="k">fi
+</span>wsl.exe <span class="nt">-d</span> wsl-vpnkit service wsl-vpnkit start
+<span class="nb">source</span> ./.bashrc
+<span class="nb">echo
+
+echo</span> <span class="s2">"2. create ssh key to copy to gitlab"</span>
+<span class="nb">.</span> /etc/lsb-release
+<span class="k">if</span> <span class="o">[</span> <span class="o">!</span> <span class="nt">-e</span> <span class="s2">".ssh/id_rsa.pub"</span> <span class="o">]</span><span class="p">;</span> <span class="k">then
+		</span>ssh-keygen <span class="nt">-t</span> rsa <span class="nt">-b</span> 4096 <span class="nt">-C</span> <span class="s2">"WSL2 ubuntu </span><span class="nv">$DISTRIB_RELEASE</span><span class="s2">"</span>
+		<span class="nb">cat</span> .ssh/id_rsa.pub
+		<span class="nb">echo</span> <span class="s2">"copy this content to gitlab &gt; preferences &gt; SSH Keys"</span>
+		<span class="nb">read</span> <span class="nt">-p</span> <span class="s2">"Press any key to resume ..."</span>
+<span class="k">fi
+</span><span class="nb">echo
+
+echo</span> <span class="s2">"3. update certificates"</span>
+git clone git@gitlab.michelin.com:devops-foundation/devops_environment.git /tmp/devops_environment
+<span class="nb">sudo cp</span> /tmp/devops_environment/certs/<span class="k">*</span> /usr/local/share/ca-certificates/
+<span class="nb">sudo </span>update-ca-certificates
+<span class="nb">rm</span> <span class="nt">-rf</span> /tmp/devops_environment
+<span class="k">if</span> <span class="o">[</span> <span class="nv">$DISTRIB_RELEASE</span> <span class="o">==</span> <span class="s2">"22.04"</span> <span class="o">]</span>
+<span class="k">then
+</span><span class="nb">echo</span> <span class="s1">'bug SSL with ubuntu 22.04 - https://bugs.launchpad.net/ubuntu/+source/openssl/+bug/1963834/comments/7'</span>
+<span class="nb">sudo tee</span> <span class="nt">-a</span> /etc/ssl/openssl.cnf <span class="o">&lt;&lt;</span> <span class="no">EOF</span><span class="sh">
+[openssl_init]
+ssl_conf = ssl_sect
+
+[ssl_sect]
+system_default = system_default_sect
+
+[system_default_sect]
+Options = UnsafeLegacyRenegotiation
+</span><span class="no">EOF
+</span><span class="k">fi
+</span><span class="nb">echo
+
+echo</span> <span class="s2">"4. update apt sources with artifactory"</span>
+<span class="nb">echo</span> <span class="s1">'Acquire { http::User-Agent "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:13.37) Gecko/20100101 Firefox/31.33.7"; };'</span> | <span class="nb">sudo tee</span> /etc/apt/apt.conf.d/90globalprotectconf
+<span class="nb">sudo sed</span> <span class="nt">-i</span> <span class="s1">'s,http://archive.ubuntu.com/ubuntu,https://artifactory.michelin.com/artifactory/ubuntu-archive-remote,g'</span> /etc/apt/sources.list
+<span class="nb">sudo sed</span> <span class="nt">-i</span> <span class="s1">'s,http://security.ubuntu.com/ubuntu,https://artifactory.michelin.com/artifactory/ubuntu-archive-remote,g'</span> /etc/apt/sources.list
+<span class="nb">sudo </span>apt update
+<span class="nb">sudo </span>apt upgrade <span class="nt">-y</span>
+<span class="nb">echo</span>
+</code></pre></div></div>
+
+<p>Then</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">chmod</span> +x setup_wsl_root.sh
+./setup_wsl_root.sh
+</code></pre></div></div>
+
+<p>As explained stop wsl instance by running <code class="language-plaintext highlighter-rouge">wsl --shutdown ubuntu-22.04</code> from powershell
+and start from Windows Terminal</p>
+
+<p>It restarts from your user and it will install:</p>
+
+<ul>
+  <li>setup wsl-vpnkit</li>
+  <li>create ssh key to copy to gitlab</li>
+  <li>update certificates</li>
+  <li>update apt sources with artifactory</li>
+</ul>
+
+<h2 id="and-now-we-can-install-other-parts">And now we can install other parts</h2>
+
+<h3 id="00---keep-config-files-in-git">00 - keep config files in git</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>wget <span class="nt">-O</span> - https://raw.githubusercontent.com/castorfou/guillaume_blog/master/files/setup_wsl_00_config_files_in_git.sh | bash
+<span class="nb">source</span> .bashrc
+</code></pre></div></div>
+
+<h3 id="01---automount-secured-vbox">01 - automount secured vbox</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>wget <span class="nt">-O</span> - https://raw.githubusercontent.com/castorfou/guillaume_blog/master/files/setup_wsl_01_automount_secured_vbox.sh | bash
+</code></pre></div></div>
+
+<h3 id="02---python-with-conda-and-configure-base-environment-jupyterlab-mamba">02 - python with conda and configure base environment (jupyterlab, mamba)</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>wget <span class="nt">-O</span> - https://raw.githubusercontent.com/castorfou/guillaume_blog/master/files/setup_wsl_02_install_python_conda_part1.sh | bash
+<span class="nb">cd 
+source</span> .bashrc
+wget <span class="nt">-O</span> - https://raw.githubusercontent.com/castorfou/guillaume_blog/master/files/setup_wsl_02_install_python_conda_part2.sh | bash
+</code></pre></div></div>
+
+<h3 id="03---bat-cat">03 - bat cat</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>wget <span class="nt">-O</span> - https://raw.githubusercontent.com/castorfou/guillaume_blog/master/files/setup_wsl_03_install_batcat.sh | bash
+<span class="nb">source</span> .bashrc
+</code></pre></div></div>
+
+<h3 id="04---git-access">04 - git access</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">ln</span> <span class="nt">-s</span> /mnt/d/git/ ~/
+</code></pre></div></div>
+
+<h3 id="05---x-access-with-gwsl">05 - X access with GWSL</h3>
+
+<p><a href="https://opticos.github.io/gwsl/">GWSL Homepage</a></p>
+
+<p>if you have access to <a href="https://apps.microsoft.com/store/detail/gwsl/9NL6KD1H33V3?hl=fr-fr&amp;gl=FR">Windows Store</a>, it is available.</p>
+
+<p>Or alternate download are possible.</p>
+
+<p><img src="..\images\GWSL_Dashboard.jpg" alt="" /></p>
+
+<h2 id="manual-setup-skip-if-to-follow-automatic-setup">Manual setup (skip if to follow automatic setup)</h2>
+
+<h3 id="basic-setup">basic setup</h3>
+
+<p>With this way to install, you don’t have any user, you don’t have any launcher within Windows.</p>
+
+<p>Create a user and add it to sudo:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># adduser &lt;yourusername&gt;</span>
+<span class="c"># usermod -aG sudo &lt;yourusername&gt;</span>
+adduser guillaume
+usermod <span class="nt">-aG</span> <span class="nb">sudo </span>guillaume
+</code></pre></div></div>
+
+<p>and I can switch to this user simply with</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># su &lt;yourusername&gt;</span>
+su guillaume
+</code></pre></div></div>
+
+<h3 id="launch-distro-with-yourusername---update-wslconf">launch distro with yourusername - update <code class="language-plaintext highlighter-rouge">wsl.conf</code></h3>
+
+<p>Manually you can now start your distro with your username from powershell</p>
+
+<div class="language-powershell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># wsl -d &lt;distroname&gt; -u &lt;yourusername&gt;</span><span class="w">
+</span><span class="n">wsl</span><span class="w"> </span><span class="nt">-d</span><span class="w"> </span><span class="nx">ubuntu-22.04</span><span class="w"> </span><span class="nt">-u</span><span class="w"> </span><span class="nx">guillaume</span><span class="w">
+</span></code></pre></div></div>
+
+<p>Or from another wsl (huge avantage to run in linux terminal instead of powershell)</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>wsl.exe <span class="nt">-d</span> ubuntu-22.04 <span class="nt">-u</span> guillaume
+</code></pre></div></div>
+
+<p>but you can better keep this username setting by updating <code class="language-plaintext highlighter-rouge">wsl.conf</code></p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># /etc/wsl.conf</span>
+<span class="c"># Set the user when launching a distribution with WSL.</span>
+<span class="o">[</span>user]
+<span class="nv">default</span><span class="o">=</span>YourUserName
+</code></pre></div></div>
+
+<p>It is now setup. You can now shutdown this instance from powershell.</p>
+
+<div class="language-powershell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># wsl --shutdown &lt;distroname&gt;</span><span class="w">
+</span><span class="n">wsl</span><span class="w"> </span><span class="nt">--shutdown</span><span class="w"> </span><span class="nx">ubuntu-22.04</span><span class="w">
+</span></code></pre></div></div>
+
+<p>and when starting <code class="language-plaintext highlighter-rouge">wsl -d ubuntu-22.04</code>, you reach your username.</p>
+
+<h3 id="wsl-vpnkit">wsl-vpnkit</h3>
+
+<p>As wsl-vpnkit is already installed, I just have to</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">echo</span> <span class="s1">'wsl.exe -d wsl-vpnkit service wsl-vpnkit start'</span> <span class="o">&gt;&gt;</span> ~/.profile
+<span class="nb">source</span> .bashrc
+</code></pre></div></div>
+
+<h3 id="gitlab">gitlab</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ssh-keygen <span class="nt">-t</span> rsa <span class="nt">-b</span> 4096 <span class="nt">-C</span> <span class="s2">"WSL2 ubuntu 22.04"</span>
+</code></pre></div></div>
+
+<p>and copy <code class="language-plaintext highlighter-rouge">id_rsa.pub</code> into gitlab &gt; preferences &gt; SSH Keys</p>
+
+<h3 id="corporate-ca-certificates">corporate CA certificates</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git clone git@gitlab.michelin.com:devops-foundation/devops_environment.git /tmp/devops_environment
+<span class="nb">sudo cp</span> /tmp/devops_environment/certs/<span class="k">*</span> /usr/local/share/ca-certificates/
+<span class="nb">sudo </span>update-ca-certificates
+<span class="nb">rm</span> <span class="nt">-rf</span> /tmp/devops_environment
+</code></pre></div></div>
+
+<h3 id="apt-sources">apt sources</h3>
+
+<p>had to replace focal (20.04) to jammy (22.04)</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">echo</span> <span class="s1">'Acquire { http::User-Agent "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:13.37) Gecko/20100101 Firefox/31.33.7"; };'</span> | <span class="nb">sudo tee</span> /etc/apt/apt.conf.d/90globalprotectconf
+<span class="nb">sudo sed</span> <span class="nt">-i</span> <span class="s1">'s@^\(deb \)http://archive.ubuntu.com/ubuntu/\( jammy\(-updates\)\?.*\)$@\1https://artifactory.michelin.com/artifactory/ubuntu-archive-remote\2\n# &amp;@'</span> /etc/apt/sources.list
+<span class="nb">sudo sed</span> <span class="nt">-i</span> <span class="s1">'s@^\(deb \)http://security.ubuntu.com/ubuntu/\( jammy\(-updates\)\?.*\)$@\1https://artifactory.michelin.com/artifactory/ubuntu-security-remote\2\n# &amp;@'</span> /etc/apt/sources.list
+</code></pre></div></div>
+
+<h3 id="check-everything-is-ok">check everything is ok</h3>
+
+<ul>
+  <li>This command must return google ip:</li>
+</ul>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  host google.fr
+</code></pre></div></div>
+
+<ul>
+  <li>This command must return artifactory ip:</li>
+</ul>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  host artifactory.michelin.com
+</code></pre></div></div>
+
+<ul>
+  <li>You are able to update your distribution without error:</li>
+</ul>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="nb">sudo </span>apt update
+  <span class="nb">sudo </span>apt upgrade <span class="nt">-y</span>
+</code></pre></div></div>
+
+<h3 id="setup-config-dotfiles-with-whole-filesystem-">Setup config dotfiles with whole filesystem (/)</h3>
+
+<p>as detailed in <a href="https://castorfou.github.io/guillaume_blog/blog/keep-dotfiles-in-git.html">keep dotfiles in git</a></p>
+
+<p>but to manage the whole filesystem.</p>
+
+<h4 id="init-local-repo">init local repo</h4>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo mkdir</span> <span class="nt">-p</span> /.cfg
+<span class="nb">sudo chown</span> <span class="nv">$USER</span>:users /.cfg
+git init <span class="nt">--bare</span> /.cfg
+<span class="nb">alias </span><span class="nv">config</span><span class="o">=</span><span class="s1">'/usr/bin/git --git-dir=/.cfg/ --work-tree=/'</span>
+config config <span class="nt">--local</span> status.showUntrackedFiles no
+<span class="nb">echo</span> <span class="s2">"alias config='/usr/bin/git --git-dir=/.cfg/ --work-tree=/'"</span> <span class="o">&gt;&gt;</span> <span class="nv">$HOME</span>/.bash_aliases
+<span class="nb">cd
+source</span> .bashrc
+</code></pre></div></div>
+
+<h4 id="git-default-identity-if-needed">git default identity (if needed)</h4>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>config config <span class="nt">--global</span> user.email <span class="s2">"guillaume.ramelet@michelin.com"</span>
+config config <span class="nt">--global</span> user.name <span class="s2">"guillaume"</span>
+</code></pre></div></div>
+
+<h4 id="setup-branch-and-push-to-central-repo">setup branch and push to central repo</h4>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>config remote add origin git@gitlab.michelin.com:janus/dotfiles.git
+config fetch
+<span class="nb">cd
+</span>config add .bashrc
+config commit <span class="nt">-m</span> <span class="s1">'init with .bashrc'</span>
+
+config branch GR_WSL2_ubuntu22.04
+config checkout GR_WSL2_ubuntu22.04
+config push <span class="nt">--set-upstream</span> origin GR_WSL2_ubuntu22.04
+</code></pre></div></div>]]></content><author><name></name></author><category term="wsl" /><summary type="html"><![CDATA[even if not available in Windows Store]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://castorfou.github.io/blog/images/icons/wsl2.jpeg" /><media:content medium="image" url="https://castorfou.github.io/blog/images/icons/wsl2.jpeg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">keep dotfiles in git</title><link href="https://castorfou.github.io/blog/blog/keep-dotfiles-in-git.html" rel="alternate" type="text/html" title="keep dotfiles in git" /><published>2022-04-07T00:00:00-05:00</published><updated>2022-04-07T00:00:00-05:00</updated><id>https://castorfou.github.io/blog/blog/keep%20dotfiles%20in%20git</id><content type="html" xml:base="https://castorfou.github.io/blog/blog/keep-dotfiles-in-git.html"><![CDATA[<h2 id="source-of-inspiration">source of inspiration</h2>
+
+<p>as <a href="https://www.atlassian.com/git/tutorials/dotfiles">pointed</a> by Jeremy Howard.</p>
+
+<h2 id="how-to-setup-it">How to setup it</h2>
+
+<h4 id="prerequisites">prerequisites</h4>
+
+<p>I consider I already have a git repo with my dotfiles from other machines.</p>
+
+<p>Repo: <code class="language-plaintext highlighter-rouge">git@&lt;your_gitlab_address&gt;:&lt;your_id&gt;/dotfiles.git</code></p>
+
+<p>I keep one separate branch per machine. Current branches: master (empty), and WSL2.</p>
+
+<p>I am going to add a machine called iolab.</p>
+
+<h4 id="from-iolab">from iolab</h4>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git init <span class="nt">--bare</span> <span class="nv">$HOME</span>/.cfg
+<span class="nb">alias </span><span class="nv">config</span><span class="o">=</span><span class="s1">'/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'</span>
+config config <span class="nt">--local</span> status.showUntrackedFiles no
+<span class="nb">echo</span> <span class="s2">"alias config='/usr/bin/git --git-dir=</span><span class="nv">$HOME</span><span class="s2">/.cfg/ --work-tree=</span><span class="nv">$HOME</span><span class="s2">'"</span> <span class="o">&gt;&gt;</span> <span class="nv">$HOME</span>/.bash_aliases
+</code></pre></div></div>
+
+<p>And we can now run <code class="language-plaintext highlighter-rouge">config status</code></p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">(</span>base<span class="o">)</span> <span class="o">[</span> 09:53:56 <span class="o">][</span> <span class="nb">id</span>: ~ <span class="o">]</span><span class="nv">$ </span>config status
+<span class="c"># On branch master</span>
+<span class="c">#</span>
+<span class="c"># Initial commit</span>
+<span class="c">#</span>
+nothing to commit <span class="o">(</span>create/copy files and use <span class="s2">"git add"</span> to track<span class="o">)</span>
+</code></pre></div></div>
+
+<p>but now we would like to create a new branch, and push all this to our central repo.</p>
+
+<p>First we have to set this central repo.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>config remote add origin git@&lt;your_gitlab_address&gt;:&lt;your_id&gt;/dotfiles.git
+config fetch
+</code></pre></div></div>
+
+<p>Before creating our branch, we have to commit something (to really create our local branch master)</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>config add .bashrc
+config commit <span class="nt">-m</span> <span class="s1">'init with .bashrc'</span>
+</code></pre></div></div>
+
+<p>And then only we can create our branch iolab</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>config branch iolab
+config checkout iolab
+config push <span class="nt">--set-upstream</span> origin iolab
+</code></pre></div></div>
+
+<p>we are now ready to use it</p>
+
+<h2 id="how-to-use-it">How to use it</h2>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>config add .bash_aliases
+config commit <span class="nt">-m</span><span class="s1">'bash aliases'</span>
+config push
+</code></pre></div></div>
+
+<h2 id="how-to-setup-2-remote-repo">How to setup 2 remote repo</h2>
+
+<p>There is a nice explanation abut how to work with multiple repos in <a href="https://jigarius.com/blog/multiple-git-remote-repositories">https://jigarius.com/blog/multiple-git-remote-repositories</a>.</p>
+
+<p>To follow that, I will configure my dotfile repo from WSL2 to push to 2 remotes, one on gitlab (internal) and one on github.</p>
+
+<p>For the moment it is only connected to gitlab.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>config remote <span class="nt">-v</span>
+origin	git@gitlab.michelin.com:janus/dotfiles.git <span class="o">(</span>fetch<span class="o">)</span>
+origin	git@gitlab.michelin.com:janus/dotfiles.git <span class="o">(</span>push<span class="o">)</span>
+</code></pre></div></div>
+
+<p>My github repo is at: https://github.com/castorfou/dotfiles.git (I use https, because of my local firewall)</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>config remote set-url <span class="nt">--add</span> <span class="nt">--push</span> origin git@gitlab.michelin.com:janus/dotfiles.git
+<span class="nv">$ </span>config remote set-url <span class="nt">--add</span> <span class="nt">--push</span> origin https://github.com/castorfou/dotfiles.git
+<span class="nv">$ </span>config push origin GR_WSL2
+</code></pre></div></div>
+
+<p>I have to get a token from github to access in https</p>
+
+<p>To generate a token:</p>
+
+<ol>
+  <li>Log into <strong>GitHub</strong></li>
+  <li>Click on your name / Avatar in the upper right corner and select <strong>Settings</strong></li>
+  <li>On the left, click <strong>Developer settings</strong></li>
+  <li>Select <strong>Personal access tokens</strong> and click <strong>Generate new token</strong></li>
+  <li>Give the token a description/name and select the scope of the token
+    <ul>
+      <li>I selected <strong>repo</strong> only to facilitate pull, push, clone, and commit actions</li>
+      <li>Click the link <strong>Read more about OAuth scopes</strong> for details about the permission sets</li>
+    </ul>
+  </li>
+  <li>Click <strong>Generate token</strong></li>
+  <li>Copy the token – this is your new password!</li>
+</ol>
+
+<p>Lastly, to ensure the local computer remembers the token, we can  enable caching of the credentials. This configures the computer to  remember the complex token so that we dont have too.</p>
+
+<p><code class="language-plaintext highlighter-rouge">git config --global credential.helper cache</code></p>]]></content><author><name></name></author><category term="git" /><summary type="html"><![CDATA[as pointed by Jeremy Howard]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://castorfou.github.io/blog/images/git.png" /><media:content medium="image" url="https://castorfou.github.io/blog/images/git.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Logbook for February 22</title><link href="https://castorfou.github.io/blog/blog/logbook-February.html" rel="alternate" type="text/html" title="Logbook for February 22" /><published>2022-02-01T00:00:00-06:00</published><updated>2022-02-01T00:00:00-06:00</updated><id>https://castorfou.github.io/blog/blog/logbook-February</id><content type="html" xml:base="https://castorfou.github.io/blog/blog/logbook-February.html"><![CDATA[<h2 id="week-5---february-22">Week 5 - February 22</h2>
+
+<p><strong>Thursday 2/3</strong></p>
+
+<p>Stephane Mallat - collège de France - <a href="https://www.college-de-france.fr/site/stephane-mallat/course-2022-01-26-09h30.htm">Information et complexité</a> video n°2: Estimation par maximum de vraisemblance</p>
+
+<h2 id="week-8---february-22">Week 8 - February 22</h2>
+
+<p><strong>Monday 2/21</strong></p>
+
+<p>Stephane Mallat - collège de France - <a href="https://www.college-de-france.fr/site/stephane-mallat/course-2022-02-02-09h30.htm">Information et complexité</a> video n°3: Optimisation et modèles exponentiels</p>
+
+<p><strong>Tuesday 2/22</strong></p>
+
+<p>Antonin Raffin (Stable Baselines 3 author) explains how to better evaluate RL agents using <a href="https://araffin.github.io/post/rliable/">Rliable</a>. Would like to test that.</p>]]></content><author><name></name></author><category term="logbook" /><summary type="html"><![CDATA[Week 5 - February 22]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://castorfou.github.io/blog/images/logbook.jpg" /><media:content medium="image" url="https://castorfou.github.io/blog/images/logbook.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">setup wsl2 conda mamba and cuda</title><link href="https://castorfou.github.io/blog/blog/wsl2-conda-mamba-cuda.html" rel="alternate" type="text/html" title="setup wsl2 conda mamba and cuda" /><published>2022-01-18T00:00:00-06:00</published><updated>2022-01-18T00:00:00-06:00</updated><id>https://castorfou.github.io/blog/blog/wsl2%20conda%20mamba%20cuda</id><content type="html" xml:base="https://castorfou.github.io/blog/blog/wsl2-conda-mamba-cuda.html"><![CDATA[<h2 id="wsl2---installation-and-configuration">wsl2 - installation and configuration</h2>
+
+<p>most of it is explained in an <a href="https://developers.michelin.com/details/wsl2/wsl2_fundamentals.html">internal blog entry</a>.</p>
+
+<p>To display windows version: <code class="language-plaintext highlighter-rouge">winver.exe</code></p>
+
+<p>I use version <code class="language-plaintext highlighter-rouge">20H2 build 19042.1415</code></p>
+
+<h4 id="installation">installation</h4>
+
+<p>It is now as easy as to run <code class="language-plaintext highlighter-rouge">wsl --install</code> in powershell as admin.</p>
+
+<p>Full detail at <a href="https://docs.microsoft.com/fr-fr/windows/wsl/install">MS WSL doc</a></p>
+
+<p>Other commands:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># list all wsl distributions installed and their WSL version</span>
+wsl <span class="nt">--list</span> <span class="nt">--verbose</span>
+
+<span class="c"># list all distributions available</span>
+wsl <span class="nt">--list</span> <span class="nt">--online</span>
+Voici la liste des distributions valides qui peuvent être installées.
+Installer à l’aide de « wsl <span class="nt">--install</span> <span class="nt">-d</span> &lt;Distribution&gt; ».
+
+NAME            FRIENDLY NAME
+Ubuntu          Ubuntu
+Debian          Debian GNU/Linux
+kali-linux      Kali Linux Rolling
+openSUSE-42     openSUSE Leap 42
+SLES-12         SUSE Linux Enterprise Server v12
+Ubuntu-16.04    Ubuntu 16.04 LTS
+Ubuntu-18.04    Ubuntu 18.04 LTS
+Ubuntu-20.04    Ubuntu 20.04 LTS
+
+<span class="c"># install Linux distributions</span>
+wsl <span class="nt">--install</span> <span class="nt">-d</span> &lt;Distribution Name&gt;
+
+<span class="c"># shutdown wsl: shutdown all </span>
+wsl <span class="nt">--shutdown</span> 
+
+<span class="c"># define default wsl distribution to use with wsl</span>
+wsl <span class="nt">-s</span> &lt;DistributionName&gt;
+</code></pre></div></div>
+
+<h4 id="installation-in-a-non-system-drive">installation in a non-system drive</h4>
+
+<p>and <a href="https://damsteen.nl/blog/2018/08/29/installing-wsl-manually-on-non-system-drive">here</a> is a more advanced config to install in a non system drive (D: instead of C:)</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">#from powershell</span>
+New-Item D:<span class="se">\W</span>SL<span class="se">\U</span>buntu-20.04 <span class="nt">-ItemType</span> Directory
+Set-Location D:<span class="se">\W</span>SL<span class="se">\U</span>buntu-20.04
+
+<span class="c">#list+link of distributions in https://docs.microsoft.com/en-us/windows/wsl/install-manual#downloading-distributions</span>
+Invoke-WebRequest <span class="nt">-Uri</span> https://aka.ms/wslubuntu2004 <span class="nt">-OutFile</span> Ubuntu-20.04.appx <span class="nt">-UseBasicParsing</span>
+
+Rename-Item .<span class="se">\U</span>buntu-20.04.appx Ubuntu-20.04.zip
+Expand-Archive .<span class="se">\U</span>buntu-20.04.zip <span class="nt">-Verbose</span>
+<span class="c"># and then run Ubuntu_2004.2021.825.0_x64.appx</span>
+</code></pre></div></div>
+
+<p>I don’t know yet where the WSL disk is located (is it a .vhdx file?)</p>
+
+<p>Disks are located at <code class="language-plaintext highlighter-rouge">%USERPROFILE%\AppData\Local\Packages\[distro name]</code></p>
+
+<p>2 ditros used:</p>
+
+<ul>
+  <li>
+    <p>wsl1 ubuntu 18.04: CanonicalGroupLimited.Ubuntu18.04onWindows_79rhkp1fndgsc</p>
+  </li>
+  <li>
+    <p>wsl2 ubuntu 20.04: CanonicalGroupLimited.UbuntuonWindows_79rhkp1fndgsc</p>
+  </li>
+</ul>
+
+<p>So disks are still in C:\</p>
+
+<p>Guess I have to use move-wsl.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Set-Location <span class="s1">'D:\Program Files (x86)\move-wsl\'</span>
+.<span class="se">\m</span>ove-wsl.ps1
+
+PS D:<span class="se">\P</span>rogram Files <span class="o">(</span>x86<span class="o">)</span><span class="se">\m</span>ove-wsl&gt; .<span class="se">\m</span>ove-wsl.ps1
+Getting distros...
+Select distro to move:
+1: Ubuntu-18.04
+2: Ubuntu
+2
+Enter WSL target directory:
+D:<span class="se">\w</span>sl<span class="se">\U</span>buntu-20.04
+Move Ubuntu to <span class="s2">"D:</span><span class="se">\w</span><span class="s2">sl</span><span class="se">\U</span><span class="s2">buntu-20.04"</span>? <span class="o">(</span>Y|n<span class="o">)</span>: Y
+Exporting VHDX to <span class="s2">"D:</span><span class="se">\w</span><span class="s2">sl</span><span class="se">\U</span><span class="s2">buntu-20.04</span><span class="se">\U</span><span class="s2">buntu.tar"</span> ...
+</code></pre></div></div>
+
+<p>And after that, have to create file<code class="language-plaintext highlighter-rouge">/etc/wsl.conf</code></p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>guillaume@LL11LPC0PQARQ:~<span class="nv">$ </span><span class="nb">cat</span> /etc/wsl.conf
+<span class="o">[</span>user]
+<span class="nv">default</span><span class="o">=</span>guillaume
+</code></pre></div></div>
+
+<h4 id="configuration">configuration</h4>
+
+<h5 id="wsl-vpnkit">wsl-vpnkit</h5>
+
+<p>It is nicely explained in the Michelin blog entry. DNS resolution is kind of broken (I think due to internal protections we use on our corporate PC)</p>
+
+<p><a href="https://github.com/moby/vpnkit">vpnkit</a> provides a secured solution to make it work. And sakai135 has packaged it for wsl: <a href="https://github.com/sakai135/wsl-vpnkit">wsl-vpnkit</a></p>
+
+<p>The steps to install wsl-vpn kit are:</p>
+
+<ul>
+  <li>Create a working directory on your windows workspace and download this <a href="https://github.com/sakai135/wsl-vpnkit/releases/download/v0.2.3/wsl-vpnkit.tar.gz">packaging of wsl-vpnkit</a> inside.</li>
+  <li>Now, open a powershell and go to the location of wsl-vpnkit.tar.gz, downloaded during the previous step</li>
+  <li>On your powershell terminal, launch:</li>
+</ul>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="c">#/!\ in powserhsell</span>
+  wsl <span class="nt">--import</span> wsl-vpnkit <span class="nv">$env</span>:USERPROFILE<span class="se">\w</span>sl-vpnkit wsl-vpnkit.tar.gz
+  wsl <span class="nt">-d</span> wsl-vpnkit
+</code></pre></div></div>
+
+<ul>
+  <li>You can now exit your powershell</li>
+  <li>For the last step, to ensure all wsl reboot good communication, we will write in .profile file of your ubuntu user wsl-vpnkit initialization command:</li>
+</ul>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="nb">echo</span> <span class="s1">'wsl.exe -d wsl-vpnkit service wsl-vpnkit start'</span> <span class="o">&gt;&gt;</span> ~/.profile
+</code></pre></div></div>
+
+<ul>
+  <li>Relaunch your WSL terminal</li>
+</ul>
+
+<h5 id="git-configuration">git configuration</h5>
+
+<p>create a SSH key pair under your distribution</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ssh-keygen <span class="nt">-t</span> rsa <span class="nt">-b</span> 4096 <span class="nt">-C</span> <span class="s2">"WSL2"</span>
+</code></pre></div></div>
+
+<p>Integrate into gitlab using <a href="https://docs.gitlab.com/ee/ssh/#add-an-ssh-key-to-your-gitlab-account">gitlab doc</a>.  (copy <code class="language-plaintext highlighter-rouge">id_rsa.pub</code> into gitlab &gt; preferences &gt; SSH Keys)cat .s</p>
+
+<h5 id="add-corporate-ca-certificates">Add corporate CA certificates</h5>
+
+<p>Michelin SI is behind an ssl proxy with his proper PKI for certificates delivering. That is why, your subsystem must add this pki in her recognized authorities.</p>
+
+<p>To do this, we will clone a repository with the certificates in the subsystem and copy them to ca-certificates:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git clone git@gitlab.michelin.com:devops-foundation/devops_environment.git /tmp/devops_environment
+<span class="nb">sudo cp</span> /tmp/devops_environment/certs/<span class="k">*</span> /usr/local/share/ca-certificates/
+<span class="nb">sudo </span>update-ca-certificates
+</code></pre></div></div>
+
+<p>If everything is ok, terminal notify you that certificates has been added.</p>
+
+<p>You can now clean the temp working folder:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">rm</span> <span class="nt">-rf</span> /tmp/devops_environment
+</code></pre></div></div>
+
+<p>we can have similar approach to update CA certifcates for Python. 1st step is to locate cacert.pem of your active python environment.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">certifi</span>
+<span class="n">certifi</span><span class="p">.</span><span class="n">where</span><span class="p">()</span> 
+<span class="o">&gt;&gt;</span> <span class="s">'/home/guillaume/miniconda3/envs/fastai/lib/python3.9/site-packages/certifi/cacert.pem'</span>
+</code></pre></div></div>
+
+<p><strong>TO BE FIXED</strong></p>
+
+<p>After having run <code class="language-plaintext highlighter-rouge">update-ca-certifcates</code>, there is an updated ca file at <code class="language-plaintext highlighter-rouge">/etc/ssl/certs/ca-certificates.crt</code>. Let’s concatenate it to our <code class="language-plaintext highlighter-rouge">cacert.pem</code>.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cp</span> /etc/ssl/certs/ca-certificates.crt /tmp/ca-certificates.crt
+openssl x509 <span class="nt">-in</span> /tmp/ca-certificates.crt <span class="nt">-out</span> /tmp/ca-certificates.pem <span class="nt">-outform</span> PEM
+<span class="nb">cat</span> /tmp/ca-certificates.pem | <span class="nb">tee</span> <span class="nt">-a</span> /home/guillaume/miniconda3/envs/fastai/lib/python3.9/site-packages/certifi/cacert.pem
+</code></pre></div></div>
+
+<h5 id="configure-apt">Configure APT</h5>
+
+<p>The last step, to have a subsystem ready to use, is to have an apt with Michelin trusted sources configured. Ubuntu based package repositories can’t be used behind Michelin proxy.</p>
+
+<p>Michelin offers its own apt server with artifactory. To configure apt to use artifactory, launch these commands:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">echo</span> <span class="s1">'Acquire { http::User-Agent "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:13.37) Gecko/20100101 Firefox/31.33.7"; };'</span> | <span class="nb">sudo tee</span> /etc/apt/apt.conf.d/90globalprotectconf
+<span class="nb">sudo sed</span> <span class="nt">-i</span> <span class="s1">'s@^\(deb \)http://archive.ubuntu.com/ubuntu/\( focal\(-updates\)\?.*\)$@\1https://artifactory.michelin.com/artifactory/ubuntu-archive-remote\2\n# &amp;@'</span> /etc/apt/sources.list
+<span class="nb">sudo sed</span> <span class="nt">-i</span> <span class="s1">'s@^\(deb \)http://security.ubuntu.com/ubuntu/\( focal\(-updates\)\?.*\)$@\1https://artifactory.michelin.com/artifactory/ubuntu-security-remote\2\n# &amp;@'</span> /etc/apt/sources.list
+</code></pre></div></div>
+
+<h5 id="check-if-your-wsl-distribution-is-working-correctly">Check if your WSL distribution is working correctly</h5>
+
+<p>To verify if everything is OK on your distribution:</p>
+
+<ul>
+  <li>This command must return google ip:</li>
+</ul>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  host google.fr
+</code></pre></div></div>
+
+<ul>
+  <li>This command must return artifactory ip:</li>
+</ul>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  host artifactory.michelin.com
+</code></pre></div></div>
+
+<ul>
+  <li>You are able to update your distribution without error:</li>
+</ul>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  sudo apt update
+  sudo apt upgrade -y
+</code></pre></div></div>
+
+<h2 id="conda-mamba---installation-and-configuration">Conda Mamba - installation and configuration</h2>
+
+<h4 id="conda-installation">conda installation</h4>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">tmpdir</span><span class="o">=</span><span class="si">$(</span><span class="nb">mktemp</span> <span class="nt">-d</span><span class="si">)</span>
+<span class="nb">cd</span> <span class="nv">$tmpdir</span>
+wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
+<span class="nb">chmod</span> +x Miniconda3-latest-Linux-x86_64.sh
+<span class="c"># answer yes to question Do you wish the installer to initialize Miniconda3 by running conda init?</span>
+bash Miniconda3-latest-Linux-x86_64.sh <span class="nt">-p</span> <span class="nv">$HOME</span>/miniconda3
+
+<span class="o">&gt;&gt;</span> <span class="o">==&gt;</span> For changes to take effect, close and re-open your current shell. &lt;<span class="o">==</span>
+</code></pre></div></div>
+
+<p>With this configuration, conda will be activate at startup. If you’d prefer that conda’s base environment not be activated on startup,   set the auto_activate_base parameter to false: <code class="language-plaintext highlighter-rouge">conda config --set auto_activate_base false</code></p>
+
+<h4 id="conda-configuration">conda configuration</h4>
+
+<p>As we have in-house CA certificates, and conda uses its own CA certificates (in <code class="language-plaintext highlighter-rouge">~/miniconda3/ssl</code>)</p>
+
+<p>We have to change this behaviour and ask conda to use system CA certifcates.</p>
+
+<p>At the end of <code class="language-plaintext highlighter-rouge">.bash_rc</code>, add <code class="language-plaintext highlighter-rouge">export REQUESTS_CA_BUNDLE=/etc/ssl/certs/ca-certificates.crt</code></p>
+
+<h4 id="mamba-installation">mamba installation</h4>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>conda <span class="nb">install </span>mamba <span class="nt">-n</span> base <span class="nt">-c</span> conda-forge
+mamba init
+</code></pre></div></div>
+
+<h4 id="installation-jupyter-notebook-nb_conda_kernels-jupyter-lab">installation jupyter notebook, nb_conda_kernels, jupyter lab</h4>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mamba <span class="nb">install </span>nb_conda_kernels
+mamba <span class="nb">install</span> <span class="nt">-c</span> conda-forge jupyterlab jupyterlab-git
+</code></pre></div></div>
+
+<h4 id="create-conda-envt---fastai-v253-optional">create conda envt - fastai (v2.5.3) (optional)</h4>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mamba create <span class="nt">--name</span> fastai
+mamba activate fastai
+mamba <span class="nb">install</span> <span class="nt">-c</span> fastai <span class="nt">-c</span> pytorch fastai
+mamba <span class="nb">install </span>ipykernel
+</code></pre></div></div>
+
+<h2 id="jupyter">Jupyter</h2>
+
+<p>Start jupyter (lab or notebook) from base environment, and switch to desired python environment.</p>
+
+<h4 id="modify-jupyter-config">modify jupyter config</h4>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">#create jupyter config file in ~.jupyter</span>
+jupyter notebook <span class="nt">--generate-config</span>
+</code></pre></div></div>
+
+<p>And activate jupyter config file to change <code class="language-plaintext highlighter-rouge">#c.NotebookApp.use_redirect_file = True</code> to <code class="language-plaintext highlighter-rouge">c.NotebookApp.use_redirect_file = False</code></p>]]></content><author><name></name></author><category term="wsl" /><category term="cuda" /><category term="conda" /><summary type="html"><![CDATA[best of breed windows + linux]]></summary></entry><entry><title type="html">Logbook for January 22</title><link href="https://castorfou.github.io/blog/blog/logbook-January.html" rel="alternate" type="text/html" title="Logbook for January 22" /><published>2022-01-01T00:00:00-06:00</published><updated>2022-01-01T00:00:00-06:00</updated><id>https://castorfou.github.io/blog/blog/logbook-January</id><content type="html" xml:base="https://castorfou.github.io/blog/blog/logbook-January.html"><![CDATA[<h2 id="week-1---january-22">Week 1 - January 22</h2>
+
+<p><strong>Monday 1/3</strong></p>
+
+<p>Will try to use <a href="https://www.zotero.org">Zotero</a> for managing research papers. Can sync between PC. Seems helpful. My <a href="https://www.zotero.org/guillaumeramelet/library">lib</a></p>
+
+<p><strong>Tuesday 1/4</strong></p>
+
+<p>Git revert a file to a previous commit</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git log 00<span class="se">\ </span>-<span class="se">\ </span>my_lib.ipynb
+git checkout f97406b026bfdf529d2dc4de96224bdfbaa576a8 00<span class="se">\ </span>-<span class="se">\ </span>my_lib.ipynb
+</code></pre></div></div>
+
+<h2 id="week-2---january-22">Week 2 - January 22</h2>
+
+<p><strong>Monday 1/17</strong></p>
+
+<p>To update fastai from an existing envt under windows</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>conda update <span class="nt">-n</span> base <span class="nt">-c</span> defaults conda <span class="o">(</span>from base<span class="o">)</span>
+conda update fastai <span class="nt">-c</span> fastai <span class="nt">-c</span> pytorch <span class="nt">-c</span> conda-forge <span class="nt">-c</span> nvidia <span class="o">(</span>from fastai<span class="o">)</span>
+</code></pre></div></div>
+
+<p>To install <a href="https://github.com/mamba-org/mamba">mamba</a> under WSL2</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>conda <span class="nb">install </span>mamba <span class="nt">-n</span> base <span class="nt">-c</span> conda-forge <span class="o">(</span>from base<span class="o">)</span>
+
+<span class="k">then
+
+</span>mamba init
+</code></pre></div></div>
+
+<p>To use system CA certificate in WSL2</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">export </span><span class="nv">REQUESTS_CA_BUNDLE</span><span class="o">=</span>/etc/ssl/certs/ca-certificates.crt
+</code></pre></div></div>
+
+<p>To install fastai in WSL2 using mamba</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">mamba</span> <span class="n">install</span> <span class="o">-</span><span class="n">c</span> <span class="n">fastchan</span> <span class="n">fastai</span>
+</code></pre></div></div>
+
+<p><strong>Thursday 1/20</strong></p>
+
+<p>Stephane Mallat - collège de France - <a href="https://www.college-de-france.fr/site/stephane-mallat/course-2022-01-19-09h30.htm">Information et complexité</a> but unfortunately video is not yet available.</p>
+
+<p>Re-read of arXiv:2110.01889 Deep Neural Networks and Tabular Data: A Survey (here on <a href="https://www.zotero.org/guillaumeramelet/collections/S9YLK8K9/items/V6LWTC5E/collection">zotero</a>)</p>
+
+<h2 id="week-3---january-22">Week 3 - January 22</h2>
+
+<p><strong>Tuesday 1/26</strong></p>
+
+<p>Video of 1st lecture of Stephane Mallat 2022 is now available.</p>]]></content><author><name></name></author><category term="logbook" /><summary type="html"><![CDATA[Week 1 - January 22]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://castorfou.github.io/blog/images/logbook.jpg" /><media:content medium="image" url="https://castorfou.github.io/blog/images/logbook.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Logbook for December 21</title><link href="https://castorfou.github.io/blog/blog/logbook-December.html" rel="alternate" type="text/html" title="Logbook for December 21" /><published>2021-12-01T00:00:00-06:00</published><updated>2021-12-01T00:00:00-06:00</updated><id>https://castorfou.github.io/blog/blog/logbook-December</id><content type="html" xml:base="https://castorfou.github.io/blog/blog/logbook-December.html"><![CDATA[<h2 id="week-49---december-21">Week 49 - December 21</h2>
+
+<p><strong>Thursday 12/9</strong></p>
+
+<p>A deep learning course using PyTorch including Transformers, Generative models and self-supervised learning: <a href="https://deeplearning.neuromatch.io/tutorials/intro.html">https://deeplearning.neuromatch.io/tutorials/intro.html</a> - <a href="https://colab.research.google.com/github/NeuromatchAcademy/course-content-dl/blob/main/tutorials/W1D2_LinearDeepLearning/student/W1D2_Tutorial1.ipynb">W1D1 - Gradient Descent and AutoGrad</a> done</p>
+
+<p>NeurIPS workshop on RL next Monday. <a href="https://sites.google.com/view/deep-rl-workshop-neurips2021">https://sites.google.com/view/deep-rl-workshop-neurips2021</a>. List of posters is just impressive.</p>
+
+<p>And <a href="https://github.com/tmabraham/awesome-fastai">best fastai sources</a> compiled by Tanishq Mathew Abraham.</p>
+
+<p>From @paperswithcode, Deep learning models for tabular data continue to improve. What are the latest methods and recent progress? <a href="https://twitter.com/paperswithcode/status/1458433653269205002">https://twitter.com/paperswithcode/status/1458433653269205002</a></p>
+
+<p><strong>Friday 12/10</strong></p>
+
+<p>Registration for <a href="https://nips.cc/virtual/2021/index.html">neurips 2021</a> taken. Specially interested by <a href="https://sites.google.com/view/deep-rl-workshop-neurips2021">RL workshop</a> on Monday.</p>
+
+<h2 id="week-50---december-21">Week 50 - December 21</h2>
+
+<p><strong>Monday 12/13</strong></p>
+
+<p>NeurIPS tutorial: <a href="https://nips.cc/virtual/2021/tutorial/21892">Real-Time Optimization for Fast and Complex Control Systems</a></p>]]></content><author><name></name></author><category term="logbook" /><summary type="html"><![CDATA[Week 49 - December 21]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://castorfou.github.io/blog/images/logbook.jpg" /><media:content medium="image" url="https://castorfou.github.io/blog/images/logbook.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Logbook for November 21</title><link href="https://castorfou.github.io/blog/blog/logbook-November.html" rel="alternate" type="text/html" title="Logbook for November 21" /><published>2021-11-01T00:00:00-05:00</published><updated>2021-11-01T00:00:00-05:00</updated><id>https://castorfou.github.io/blog/blog/logbook-November</id><content type="html" xml:base="https://castorfou.github.io/blog/blog/logbook-November.html"><![CDATA[<h2 id="week-47---november-21">Week 47 - November 21</h2>
+
+<p><strong>Monday 11/22</strong></p>
+
+<p>back after a nice vacation break + some catchup to do for work.</p>
+
+<p>to use iphone as a webcam on linux or windows: https://www.iriun.com/ (but not detected as a webcam in linux)</p>
+
+<p><strong>Wednesday 11/24</strong></p>
+
+<p>getting this message when pushing to gitlab: remote: GitLab: File <my_large_file>  is larger than the allowed size of 100 MB</my_large_file></p>
+
+<p>if from the most recent commit:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git <span class="nb">rm</span> <span class="nt">--cached</span> &lt;my large file&gt;
+git commit <span class="nt">--amend</span> <span class="nt">-C</span> HEAD
+</code></pre></div></div>
+
+<p>otherwise follow <a href="https://medium.com/analytics-vidhya/tutorial-removing-large-files-from-git-78dbf4cf83a">Tutorial: Removing Large Files from Git</a> on medium (or <a href="https://castorfou.github.io/guillaume_blog/blog/git-clean-large-files.html">git clean repo with BFG</a> on this blog)</p>
+
+<p><strong>Thursday 11/25</strong></p>
+
+<p>when exporting notebooks with plotly graphs, it can help to use</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">plotly</span>
+<span class="n">plotly</span><span class="p">.</span><span class="n">offline</span><span class="p">.</span><span class="n">init_notebook_mode</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p>exporting to html will integrate these plotly graphs (but not exporting to pdf)</p>]]></content><author><name></name></author><category term="logbook" /><summary type="html"><![CDATA[Week 47 - November 21]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://castorfou.github.io/blog/images/logbook.jpg" /><media:content medium="image" url="https://castorfou.github.io/blog/images/logbook.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Just some usefull keyboard shortcuts</title><link href="https://castorfou.github.io/blog/blog/Just-some-usefull-keyboard-shortcuts.html" rel="alternate" type="text/html" title="Just some usefull keyboard shortcuts" /><published>2021-10-21T00:00:00-05:00</published><updated>2021-10-21T00:00:00-05:00</updated><id>https://castorfou.github.io/blog/blog/Just-some-usefull-keyboard-shortcuts</id><content type="html" xml:base="https://castorfou.github.io/blog/blog/Just-some-usefull-keyboard-shortcuts.html"><![CDATA[<p>I cannot believe I have been using linux for more than 20 years as my main system and have never configured keyboard shortcuts to launch explorer files.</p>
+
+<p><img src="../images/keyboard_shortcuts.png" alt="" /></p>]]></content><author><name></name></author><category term="linux" /><summary type="html"><![CDATA[launch Gnome files, firefox]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://castorfou.github.io/blog/images/image_linux.jpg" /><media:content medium="image" url="https://castorfou.github.io/blog/images/image_linux.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Logbook for October 21</title><link href="https://castorfou.github.io/blog/blog/logbook-October.html" rel="alternate" type="text/html" title="Logbook for October 21" /><published>2021-10-01T00:00:00-05:00</published><updated>2021-10-01T00:00:00-05:00</updated><id>https://castorfou.github.io/blog/blog/logbook-October</id><content type="html" xml:base="https://castorfou.github.io/blog/blog/logbook-October.html"><![CDATA[<h2 id="week-40---october-21">Week 40 - October 21</h2>
+
+<p><strong>Monday 10/4</strong></p>
+
+<p>Jupyter Lab is now packaged as a <a href="https://github.com/jupyterlab/jupyterlab_app">desktop app</a>. Gave a try 2 minutes but <a href="https://github.com/jupyterlab/jupyterlab_app/issues/228">issue</a> with my running environment</p>
+
+<p>To do: read and handson <a href="https://towardsdatascience.com/understanding-variational-autoencoders-vaes-f70510919f73">Understanding Variational Autoencoders (VAEs)</a></p>
+
+<p>To do: reand and handson <a href="https://towardsdatascience.com/patsy-build-powerful-features-with-arbitrary-python-code-bb4bb98db67a">Patsy: Build Powerful Features with Arbitrary Python Code</a></p>
+
+<p><strong>Thursday 10/7</strong></p>
+
+<blockquote>
+  <p>Deep learning seems unstoppable! I’m particularly impressed by the recent progress of deep learning on tabular data. This new survey paper provides an overview of the SOTA deep learning methods on tabular data. A great read for students and practitioners.</p>
+
+  <p><a href="https://arxiv.org/abs/2110.01889">Deep Neural Networks and Tabular Data: A Survey - arxiv 2110.01889</a></p>
+</blockquote>
+
+<h2 id="week-42---october-21">Week 42 - October 21</h2>
+
+<p><strong>Wednesday 10/20</strong></p>
+
+<p>Using <a href="https://forums.fast.ai/search?q=vae">fastai forums</a> to get inspirational content for VAE with tabular data. This one sounds good: <a href="https://blog.paperspace.com/adversarial-autoencoders-with-pytorch/">Adversarial Autoencoders (with Pytorch)</a>. And this talk <a href="https://www.youtube.com/watch?v=s0S6HFdPtlA&amp;ab_channel=PyData">demystifying bayesian</a> stuff.</p>
+
+<blockquote>
+  <p>“Most of human and animal learning is unsupervised learning. If intelligence was a cake, unsupervised learning would be the cake [base], supervised learning would be the icing on the cake, and reinforcement learning would be the cherry on the cake. We know how to make the icing and the cherry, but we don’t know how to make the cake.”</p>
+
+  <p>Yann LeCunn</p>
+</blockquote>
+
+<p>And <a href="https://towardsdatascience.com/intuitively-understanding-variational-autoencoders-1bfe67eb5daf?gi=3eb2b735d1d4">Intuitively Understanding Variational Autoencoders</a> mentioned by Jeremy Howard</p>]]></content><author><name></name></author><category term="logbook" /><summary type="html"><![CDATA[Week 40 - October 21]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://castorfou.github.io/blog/images/logbook.jpg" /><media:content medium="image" url="https://castorfou.github.io/blog/images/logbook.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Generate python modules from jupyter notebooks</title><link href="https://castorfou.github.io/blog/blog/nbdev-notebook2script.html" rel="alternate" type="text/html" title="Generate python modules from jupyter notebooks" /><published>2021-09-29T00:00:00-05:00</published><updated>2021-09-29T00:00:00-05:00</updated><id>https://castorfou.github.io/blog/blog/nbdev-notebook2script</id><content type="html" xml:base="https://castorfou.github.io/blog/blog/nbdev-notebook2script.html"><![CDATA[<!--
+#################################################
+### THIS FILE WAS AUTOGENERATED! DO NOT EDIT! ###
+#################################################
+# file to edit: _notebooks/2021-09-29-nbdev-notebook2script.ipynb
+-->
+
+<div class="container" id="notebook-container">
+        
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>I have been using this for more than a year and I have just realized I don't have any blog entry about it?</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Notebook2script">Notebook2script<a class="anchor-link" href="#Notebook2script"> </a></h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>As you may know, the full fastai v2 has been written in notebooks.</p>
+<p>This is quite impressive these notebooks are documentation + code, and fastai libraries are built from these notebooks.</p>
+<p>I have been using one of the first version of Jeremy Howard's process, I am quite sure there have been many improvment since then.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Here is the source code for <code>notebook2script.py</code> <a href="/guillaume_blog/files/notebook2script.py.file">download</a></p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">json</span><span class="o">,</span><span class="nn">fire</span><span class="o">,</span><span class="nn">re</span>
+<span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+<span class="kn">import</span> <span class="nn">io</span>
+
+<span class="k">def</span> <span class="nf">is_export</span><span class="p">(</span><span class="n">cell</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">cell</span><span class="p">[</span><span class="s1">&#39;cell_type&#39;</span><span class="p">]</span> <span class="o">!=</span> <span class="s1">&#39;code&#39;</span><span class="p">:</span> <span class="k">return</span> <span class="kc">False</span>
+    <span class="n">src</span> <span class="o">=</span> <span class="n">cell</span><span class="p">[</span><span class="s1">&#39;source&#39;</span><span class="p">]</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">src</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">or</span> <span class="nb">len</span><span class="p">(</span><span class="n">src</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">&lt;</span> <span class="mi">7</span><span class="p">:</span> <span class="k">return</span> <span class="kc">False</span>
+    <span class="c1">#import pdb; pdb.set_trace()</span>
+    <span class="k">return</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;^\s*#\s*export\s*$&#39;</span><span class="p">,</span> <span class="n">src</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">re</span><span class="o">.</span><span class="n">IGNORECASE</span><span class="p">)</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+
+<span class="k">def</span> <span class="nf">getSortedFiles</span><span class="p">(</span><span class="n">allFiles</span><span class="p">,</span> <span class="n">upTo</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;Returns all the notebok files sorted by name.</span>
+<span class="sd">       allFiles = True : returns all files</span>
+<span class="sd">                = &#39;*_*.ipynb&#39; : returns this pattern</span>
+<span class="sd">       upTo = None : no upper limit</span>
+<span class="sd">            = filter : returns all files up to &#39;filter&#39; included</span>
+<span class="sd">       The sorting optioj is important to ensure that the notebok are executed in correct order.</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="kn">import</span> <span class="nn">glob</span>
+    <span class="n">ret</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">allFiles</span><span class="o">==</span><span class="kc">True</span><span class="p">):</span> <span class="n">ret</span> <span class="o">=</span> <span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s1">&#39;*.ipynb&#39;</span><span class="p">)</span> <span class="c1"># Checks both that is bool type and that is True</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">allFiles</span><span class="p">,</span><span class="nb">str</span><span class="p">)):</span> <span class="n">ret</span> <span class="o">=</span> <span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="n">allFiles</span><span class="p">)</span>
+    <span class="k">if</span> <span class="mi">0</span><span class="o">==</span><span class="nb">len</span><span class="p">(</span><span class="n">ret</span><span class="p">):</span> 
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;WARNING: No files found&#39;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">ret</span>
+    <span class="k">if</span> <span class="n">upTo</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span> <span class="n">ret</span> <span class="o">=</span> <span class="p">[</span><span class="n">f</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">ret</span> <span class="k">if</span> <span class="nb">str</span><span class="p">(</span><span class="n">f</span><span class="p">)</span><span class="o">&lt;=</span><span class="nb">str</span><span class="p">(</span><span class="n">upTo</span><span class="p">)]</span>
+    <span class="k">return</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">ret</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">notebook2script</span><span class="p">(</span><span class="n">fname</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">allFiles</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">upTo</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">fnameout</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;Finds cells starting with `#export` and puts them into a new module</span>
+<span class="sd">       + allFiles: convert all files in the folder</span>
+<span class="sd">       + upTo: convert files up to specified one included</span>
+<span class="sd">       </span>
+<span class="sd">       ES: </span>
+<span class="sd">       notebook2script --allFiles=True   # Parse all files</span>
+<span class="sd">       notebook2script --allFiles=nb*   # Parse all files starting with nb*</span>
+<span class="sd">       notebook2script --upTo=10   # Parse all files with (name&lt;=&#39;10&#39;)</span>
+<span class="sd">       notebook2script --allFiles=*_*.ipynb --upTo=10   # Parse all files with an &#39;_&#39; and (name&lt;=&#39;10&#39;)</span>
+<span class="sd">       notebook2script --fnameout=&#39;test_25.py&#39;</span>
+
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="c1"># initial checks</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">allFiles</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">upTo</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">):</span> <span class="n">allFiles</span><span class="o">=</span><span class="kc">True</span> <span class="c1"># Enable allFiles if upTo is present</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">fname</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="ow">not</span> <span class="n">allFiles</span><span class="p">):</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Should provide a file name&#39;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">allFiles</span><span class="p">:</span> <span class="n">notebook2scriptSingle</span><span class="p">(</span><span class="n">fname</span><span class="p">,</span> <span class="n">fnameout</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Begin...&#39;</span><span class="p">)</span>
+        <span class="p">[</span><span class="n">notebook2scriptSingle</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">fnameout</span><span class="p">)</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">getSortedFiles</span><span class="p">(</span><span class="n">allFiles</span><span class="p">,</span><span class="n">upTo</span><span class="p">)]</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;...End&#39;</span><span class="p">)</span>
+        
+        
+<span class="k">def</span> <span class="nf">notebook2scriptSingle</span><span class="p">(</span><span class="n">fname</span><span class="p">,</span> <span class="o">*</span><span class="n">fname_out</span><span class="p">):</span>
+    <span class="s2">&quot;Finds cells starting with `#export` and puts them into a new module&quot;</span>
+    <span class="n">fname</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">fname</span><span class="p">)</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">fname_out</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">==</span><span class="kc">None</span><span class="p">):</span> 
+        <span class="n">fname_out</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;nb_</span><span class="si">{</span><span class="n">fname</span><span class="o">.</span><span class="n">stem</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;_&quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s1">.py&#39;</span> 
+    <span class="k">else</span><span class="p">:</span> <span class="n">fname_out</span> <span class="o">=</span> <span class="n">fname_out</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">main_dic</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="n">fname</span><span class="p">,</span><span class="s1">&#39;r&#39;</span><span class="p">,</span><span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">))</span>
+    <span class="n">code_cells</span> <span class="o">=</span> <span class="p">[</span><span class="n">c</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">main_dic</span><span class="p">[</span><span class="s1">&#39;cells&#39;</span><span class="p">]</span> <span class="k">if</span> <span class="n">is_export</span><span class="p">(</span><span class="n">c</span><span class="p">)]</span>
+    <span class="n">module</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">#################################################</span>
+<span class="s1">### THIS FILE WAS AUTOGENERATED! DO NOT EDIT! ###</span>
+<span class="s1">#################################################</span>
+<span class="s1"># file to edit: </span><span class="si">{</span><span class="n">fname</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s1"></span>
+
+<span class="s1">&#39;&#39;&#39;</span>
+    <span class="k">for</span> <span class="n">cell</span> <span class="ow">in</span> <span class="n">code_cells</span><span class="p">:</span> <span class="n">module</span> <span class="o">+=</span> <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">cell</span><span class="p">[</span><span class="s1">&#39;source&#39;</span><span class="p">][</span><span class="mi">1</span><span class="p">:])</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\n\n</span><span class="s1">&#39;</span>
+    <span class="c1"># remove trailing spaces</span>
+    <span class="n">module</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39; +$&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">module</span><span class="p">,</span> <span class="n">flags</span><span class="o">=</span><span class="n">re</span><span class="o">.</span><span class="n">MULTILINE</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="n">fname</span><span class="o">.</span><span class="n">parent</span><span class="o">/</span><span class="s1">&#39;exp&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">exists</span><span class="p">():</span> <span class="p">(</span><span class="n">fname</span><span class="o">.</span><span class="n">parent</span><span class="o">/</span><span class="s1">&#39;exp&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">mkdir</span><span class="p">()</span>
+    <span class="n">output_path</span> <span class="o">=</span> <span class="n">fname</span><span class="o">.</span><span class="n">parent</span><span class="o">/</span><span class="s1">&#39;exp&#39;</span><span class="o">/</span><span class="n">fname_out</span>
+    <span class="k">with</span> <span class="n">io</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">output_path</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">module</span><span class="p">[:</span><span class="o">-</span><span class="mi">2</span><span class="p">])</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Converted </span><span class="si">{</span><span class="n">fname</span><span class="si">}</span><span class="s2"> to </span><span class="si">{</span><span class="n">output_path</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span> <span class="n">fire</span><span class="o">.</span><span class="n">Fire</span><span class="p">(</span><span class="n">notebook2script</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="How-to-extract-modules-from-notebooks">How to extract modules from notebooks<a class="anchor-link" href="#How-to-extract-modules-from-notebooks"> </a></h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Mark-cells-to-be-exported-in-your-notebook">Mark cells to be exported in your notebook<a class="anchor-link" href="#Mark-cells-to-be-exported-in-your-notebook"> </a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><code>notebook2script</code>expects a keyword at the top of each cell to be exported. This keyword is <code>#export</code>.</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">variable3</span> <span class="o">=</span> <span class="s1">&#39;Not this one&#39;</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>You got the idea</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Export-your-module-my_great_module">Export your module <code>my_great_module</code><a class="anchor-link" href="#Export-your-module-my_great_module"> </a></h2>
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#code from Jeremy Howard (fastai v2)</span>
+<span class="c1">#!python notebook2script.py &quot;00D059_init_and_import.ipynb&quot;</span>
+<span class="o">!</span>python notebook2script.py --fnameout<span class="o">=</span><span class="s2">&quot;my_great_module.py&quot;</span>  <span class="s2">&quot;2021-09-29-nbdev-notebook2script.ipynb&quot;</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Converted 2021-09-29-nbdev-notebook2script.ipynb to exp/my_great_module.py
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Exported-module">Exported module<a class="anchor-link" href="#Exported-module"> </a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>If subfolder <code>exp</code> doesn't exist, it will be automatically created.</p>
+<p>And <code>my_great_module.py</code> is being created as well.</p>
+<p><img src="/blog/images/copied_from_nb/../images/exported_module.jpg" alt="exported_module.jpg" /></p>
+<p>Here is the content generated.</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>cat exp/my_great_module.py
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>
+#################################################
+### THIS FILE WAS AUTOGENERATED! DO NOT EDIT! ###
+#################################################
+# file to edit: 2021-09-29-nbdev-notebook2script.ipynb
+
+
+variable = &#39;This will be exported in a module&#39;
+
+
+variable2 = &#39;This one as well&#39;</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Python-library-needed:-fire">Python library needed: fire<a class="anchor-link" href="#Python-library-needed:-fire"> </a></h1>
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
+<span class="o">!</span>conda install --yes --prefix <span class="o">{</span>sys.prefix<span class="o">}</span>  -c conda-forge fire
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Collecting package metadata (current_repodata.json): done
+Solving environment: done
+
+
+==&gt; WARNING: A newer version of conda exists. &lt;==
+  current version: 4.10.1
+  latest version: 4.10.3
+
+Please update conda by running
+
+    $ conda update -n base -c defaults conda
+
+
+
+## Package Plan ##
+
+  environment location: /home/guillaume/anaconda3/envs/xgboost
+
+  added / updated specs:
+    - fire
+
+
+The following packages will be UPDATED:
+
+  fire                                           0.2.1-py_0 --&gt; 0.4.0-pyh44b312d_0
+
+
+Preparing transaction: done
+Verifying transaction: done
+Executing transaction: done
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Combine-with-pdoc-to-generate-documentation">Combine with pdoc to generate documentation<a class="anchor-link" href="#Combine-with-pdoc-to-generate-documentation"> </a></h1>
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="ch">#!python notebook2script.py &quot;00D059_init_and_import.ipynb&quot;</span>
+
+<span class="n">library_name</span> <span class="o">=</span> <span class="s2">&quot;dataprophet&quot;</span>
+<span class="n">notebook_name</span> <span class="o">=</span> <span class="s2">&quot;00 - dataprophet library - dataprophet&quot;</span>
+
+<span class="o">!</span>python notebook2script.py --fnameout<span class="o">=</span><span class="s2">&quot;{library_name}.py&quot;</span>  <span class="s2">&quot;{notebook_name}.ipynb&quot;</span>
+
+<span class="o">!</span>pdoc --html --output-dir exp/html --force <span class="s2">&quot;exp/{library_name}.py&quot;</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Note the {} notation which allows to use ipython variables as arguments to bash commands</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Proper-docstring">Proper docstring<a class="anchor-link" href="#Proper-docstring"> </a></h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>See in <a href="/guillaume_blog/blog/documentation-python.html#Example">Autogenerate documentation from custom python classes</a></p>
+
+</div>
+</div>
+</div>
+</div>]]></content><author><name></name></author><category term="jupyter" /><category term="fastai" /><summary type="html"><![CDATA[using nbdev/notebook2script from fastai, Jeremy Howard]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://jupyter.readthedocs.io/en/latest/_static/jupyter.svg" /><media:content medium="image" url="https://jupyter.readthedocs.io/en/latest/_static/jupyter.svg" xmlns:media="http://search.yahoo.com/mrss/" /></entry></feed>

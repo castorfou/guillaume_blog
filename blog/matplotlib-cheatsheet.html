@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="twitter:card" content="summary_large_image" /><!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>matplotlib cheatsheet | Guillaume’s blog</title>
+<meta name="generator" content="Jekyll v4.1.1" />
+<meta property="og:title" content="matplotlib cheatsheet" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="so much options" />
+<meta property="og:description" content="so much options" />
+<link rel="canonical" href="https://castorfou.github.io/blog/blog/matplotlib-cheatsheet.html" />
+<meta property="og:url" content="https://castorfou.github.io/blog/blog/matplotlib-cheatsheet.html" />
+<meta property="og:site_name" content="Guillaume’s blog" />
+<meta property="og:image" content="https://learn-the-web.algonquindesign.ca/images/icon-cheat-sheet.svg" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2021-01-13T00:00:00-06:00" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="https://learn-the-web.algonquindesign.ca/images/icon-cheat-sheet.svg" />
+<meta property="twitter:title" content="matplotlib cheatsheet" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2021-01-13T00:00:00-06:00","datePublished":"2021-01-13T00:00:00-06:00","description":"so much options","headline":"matplotlib cheatsheet","image":"https://learn-the-web.algonquindesign.ca/images/icon-cheat-sheet.svg","mainEntityOfPage":{"@type":"WebPage","@id":"https://castorfou.github.io/blog/blog/matplotlib-cheatsheet.html"},"url":"https://castorfou.github.io/blog/blog/matplotlib-cheatsheet.html"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/blog/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="https://castorfou.github.io/blog/feed.xml" title="Guillaume's blog" /><link rel="shortcut icon" type="image/x-icon" href="/blog/images/favicon.ico"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Primer/15.2.0/primer.css" integrity="sha512-xTz2ys4coGAOz8vuV1NcQBkgVmKhsSEtjbqyMJbBHRplFuvKIUo6xhLHpAyPt9mfR6twHJgn9OgVLuqOvjeBhg==" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.12.0/katex.min.css" integrity="sha512-h7nl+xz8wgDlNM4NqKEM4F1NkIRS17M9+uJwIGwuo8vGqIl4BhuCKdxjWEINm+xyrUjNCnK5dCrhM0sj+wTIXw==" crossorigin="anonymous" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.12.0/katex.min.js" integrity="sha512-/CMIhXiDA3m2c9kzRyd97MTb3MC6OVnx4TElQ7fkkoRghwDf6gi41gaT1PwF270W6+J60uTmwgeRpNpJdRV6sg==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.12.0/contrib/auto-render.min.js" integrity="sha512-Do7uJAaHZm5OLrIv/yN4w0iG1dbu01kzdMNnFfu/mAqgUk6Nniv2JYHcwH+cNwjqgLcqcuBBk+JRvprLVI8azg==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha512-0doc9hKxR3PYwso42RD1p5ySZpzzuDiOwMrdCEh2WdJZCjcmFKc/wEnL+z8fBQrnHoiNWbo+3fiGkOYXBdQp4A==" crossorigin="anonymous"></script>
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        renderMathInElement( document.body, {
+        delimiters: [
+            {left: "$$", right: "$$", display: true},
+            {left: "[%", right: "%]", display: true},
+            {left: "$", right: "$", display: false}
+        ]}
+        );
+    });
+    </script>
+
+
+<script>
+function wrap_img(fn) {
+    if (document.attachEvent ? document.readyState === "complete" : document.readyState !== "loading") {
+        var elements = document.querySelectorAll(".post img");
+        Array.prototype.forEach.call(elements, function(el, i) {
+            if (el.getAttribute("title") && (el.className != "emoji")) {
+                const caption = document.createElement('figcaption');
+                var node = document.createTextNode(el.getAttribute("title"));
+                caption.appendChild(node);
+                const wrapper = document.createElement('figure');
+                wrapper.className = 'image';
+                el.parentNode.insertBefore(wrapper, el);
+                el.parentNode.removeChild(el);
+                wrapper.appendChild(el);
+                wrapper.appendChild(caption);
+            }
+        });
+    } else { document.addEventListener('DOMContentLoaded', fn); }
+}
+window.onload = wrap_img;
+</script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function(){
+    // add link icon to anchor tags
+    var elem = document.querySelectorAll(".anchor-link")
+    elem.forEach(e => (e.innerHTML = '<i class="fas fa-link fa-xs"></i>'));
+    });
+</script>
+</head>
+<body><header class="site-header">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/blog/">Guillaume&#39;s blog</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/blog/about/">About Me</a><a class="page-link" href="/blog/search/">Search</a><a class="page-link" href="/blog/categories/">Tags</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">matplotlib cheatsheet</h1><p class="page-description">so much options</p><p class="post-meta post-meta-title"><time class="dt-published" datetime="2021-01-13T00:00:00-06:00" itemprop="datePublished">
+        Jan 13, 2021
+      </time>
+       • <span class="read-time" title="Estimated read time">
+    
+    
+      5 min read
+    
+</span></p>
+
+    
+      <p class="category-tags"><i class="fas fa-tags category-tags-icon"></i></i> 
+      
+        <a class="category-tags-link" href="/blog/categories/#visualization">visualization</a>
+        &nbsp;
+      
+        <a class="category-tags-link" href="/blog/categories/#matplotlib">matplotlib</a>
+        &nbsp;
+      
+        <a class="category-tags-link" href="/blog/categories/#cheatsheet">cheatsheet</a>
+        
+      
+      </p>
+    
+
+    
+      </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <ul id="toc" class="section-nav">
+<li class="toc-entry toc-h1"><a href="#Introduction-to-Data-Visualization-with-Matplotlib">Introduction to Data Visualization with Matplotlib </a>
+<ul>
+<li class="toc-entry toc-h2"><a href="#Introduction-to-Matplotlib">Introduction to Matplotlib </a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#Introduction-to-data-visualization-with-Matplotlib">Introduction to data visualization with Matplotlib </a></li>
+<li class="toc-entry toc-h3"><a href="#Customizing-your-plots">Customizing your plots </a></li>
+<li class="toc-entry toc-h3"><a href="#Small-multiples">Small multiples </a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="#Plotting-time-series">Plotting time-series </a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#Plotting-time-series-data">Plotting time-series data </a></li>
+<li class="toc-entry toc-h3"><a href="#Plotting-time-series-with-different-variables">Plotting time-series with different variables </a></li>
+<li class="toc-entry toc-h3"><a href="#Annotating-time-series-data">Annotating time-series data </a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="#Quantitative-comparisons-and-statistical-visualizations">Quantitative comparisons and statistical visualizations </a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#Quantitative-comparisons:-bar-charts">Quantitative comparisons: bar-charts </a></li>
+<li class="toc-entry toc-h3"><a href="#Quantitative-comparisons:-histograms">Quantitative comparisons: histograms </a></li>
+<li class="toc-entry toc-h3"><a href="#Statistical-plotting">Statistical plotting </a></li>
+<li class="toc-entry toc-h3"><a href="#Quantitative-comparisons:-scatter-plots">Quantitative comparisons: scatter plots </a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="#Sharing-visualizations-with-others">Sharing visualizations with others </a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#Preparing-your-figures-to-share-with-others">Preparing your figures to share with others </a></li>
+<li class="toc-entry toc-h3"><a href="#Saving-your-visualizations">Saving your visualizations </a></li>
+<li class="toc-entry toc-h3"><a href="#Automating-figures-from-data">Automating figures from data </a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul><!--
+#################################################
+### THIS FILE WAS AUTOGENERATED! DO NOT EDIT! ###
+#################################################
+# file to edit: _notebooks/2021-01-13-matplotlib-cheatsheet.ipynb
+-->
+
+<div class="container" id="notebook-container">
+        
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Introduction-to-Data-Visualization-with-Matplotlib">
+<a class="anchor" href="#Introduction-to-Data-Visualization-with-Matplotlib" aria-hidden="true"><span class="octicon octicon-link"></span></a>Introduction to Data Visualization with Matplotlib<a class="anchor-link" href="#Introduction-to-Data-Visualization-with-Matplotlib"> </a>
+</h1>
+<p><a href="../files/matplotlib_cheatsheet.pdf">matplotlib cheatsheet</a> in pdf</p>
+<p><a href="https://github.com/castorfou/data-scientist-skills/tree/master/04%20-%20data-scientist-with-python%20new-track/Introduction%20to%20Data%20Visualization%20with%20Matplotlib">pdf lecture in github</a></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Introduction-to-Matplotlib">
+<a class="anchor" href="#Introduction-to-Matplotlib" aria-hidden="true"><span class="octicon octicon-link"></span></a>Introduction to Matplotlib<a class="anchor-link" href="#Introduction-to-Matplotlib"> </a>
+</h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Introduction-to-data-visualization-with-Matplotlib">
+<a class="anchor" href="#Introduction-to-data-visualization-with-Matplotlib" aria-hidden="true"><span class="octicon octicon-link"></span></a>Introduction to data visualization with Matplotlib<a class="anchor-link" href="#Introduction-to-data-visualization-with-Matplotlib"> </a>
+</h3>
+<div class="highlight"><pre><span></span><span class="c1"># Introducing the pyplot interface</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># Adding data to axes</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">seattle_weather</span><span class="p">[</span><span class="s2">"MONTH"</span><span class="p">],</span> <span class="n">seattle_weather</span><span class="p">[</span><span class="s2">"MLY-TAVG-NORMAL"</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Customizing-your-plots">
+<a class="anchor" href="#Customizing-your-plots" aria-hidden="true"><span class="octicon octicon-link"></span></a>Customizing your plots<a class="anchor-link" href="#Customizing-your-plots"> </a>
+</h3>
+<div class="highlight"><pre><span></span><span class="c1"># Adding markers</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">seattle_weather</span><span class="p">[</span><span class="s2">"MONTH"</span><span class="p">],</span>
+<span class="n">seattle_weather</span><span class="p">[</span><span class="s2">"MLY-PRCP-NORMAL"</span><span class="p">],</span>
+<span class="n">marker</span><span class="o">=</span><span class="s2">"o"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># Choosing markers</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">seattle_weather</span><span class="p">[</span><span class="s2">"MONTH"</span><span class="p">],</span>
+<span class="n">seattle_weather</span><span class="p">[</span><span class="s2">"MLY-PRCP-NORMAL"</span><span class="p">],</span>
+<span class="n">marker</span><span class="o">=</span><span class="s2">"v"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+<p><a href="https://matplotlib.org/api/markers_api.html">markers</a></p>
+<div class="highlight"><pre><span></span><span class="c1"># Setting the linestyle</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">seattle_weather</span><span class="p">[</span><span class="s2">"MONTH"</span><span class="p">],</span>
+<span class="n">seattle_weather</span><span class="p">[</span><span class="s2">"MLY-TAVG-NORMAL"</span><span class="p">],</span>
+<span class="n">marker</span><span class="o">=</span><span class="s2">"v"</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">"--"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+<p><a href="https://matplotlib.org/gallery/lines_bars_and_markers/line_styles_reference.html">line style</a></p>
+<div class="highlight"><pre><span></span><span class="c1"># Eliminating lines with linestyle</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">seattle_weather</span><span class="p">[</span><span class="s2">"MONTH"</span><span class="p">],</span>
+<span class="n">seattle_weather</span><span class="p">[</span><span class="s2">"MLY-TAVG-NORMAL"</span><span class="p">],</span>
+<span class="n">marker</span><span class="o">=</span><span class="s2">"v"</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">"None"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># Choosing color</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">seattle_weather</span><span class="p">[</span><span class="s2">"MONTH"</span><span class="p">],</span>
+<span class="n">seattle_weather</span><span class="p">[</span><span class="s2">"MLY-TAVG-NORMAL"</span><span class="p">],</span>
+<span class="n">marker</span><span class="o">=</span><span class="s2">"v"</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">"--"</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">"r"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># Customizing the axes labels</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">"Time (months)"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># Setting the y axis label</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">"Time (months)"</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">"Average temperature (Fahrenheit degrees)"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># Adding a title</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">"Weather in Seattle"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Small-multiples">
+<a class="anchor" href="#Small-multiples" aria-hidden="true"><span class="octicon octicon-link"></span></a>Small multiples<a class="anchor-link" href="#Small-multiples"> </a>
+</h3>
+<div class="highlight"><pre><span></span><span class="c1"># Small multiples with plt.subplots</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># Adding data to subplots</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">shape</span>
+<span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">seattle_weather</span><span class="p">[</span><span class="s2">"MONTH"</span><span class="p">],</span><span class="n">seattle_weather</span><span class="p">[</span><span class="s2">"MLY-PRCP-NORMAL"</span><span class="p">],</span><span class="n">color</span><span class="o">=</span><span class="s1">'b'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># Subplots with data</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">seattle_weather</span><span class="p">[</span><span class="s2">"MONTH"</span><span class="p">],</span> <span class="n">seattle_weather</span><span class="p">[</span><span class="s2">"MLY-PRCP-NORMAL"</span><span class="p">],</span><span class="n">color</span><span class="o">=</span><span class="s1">'b'</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">seattle_weather</span><span class="p">[</span><span class="s2">"MONTH"</span><span class="p">],</span> <span class="n">seattle_weather</span><span class="p">[</span><span class="s2">"MLY-PRCP-25PCTL"</span><span class="p">],</span><span class="n">linestyle</span><span class="o">=</span><span class="s1">'--'</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">'b'</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">seattle_weather</span><span class="p">[</span><span class="s2">"MONTH"</span><span class="p">],</span> <span class="n">seattle_weather</span><span class="p">[</span><span class="s2">"MLY-PRCP-75PCTL"</span><span class="p">],</span><span class="n">linestyle</span><span class="o">=</span><span class="s1">'--'</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">'b'</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">austin_weather</span><span class="p">[</span><span class="s2">"MONTH"</span><span class="p">],</span> <span class="n">austin_weather</span><span class="p">[</span><span class="s2">"MLY-PRCP-NORMAL"</span><span class="p">],</span><span class="n">color</span><span class="o">=</span><span class="s1">'r'</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">austin_weather</span><span class="p">[</span><span class="s2">"MONTH"</span><span class="p">],</span> <span class="n">austin_weather</span><span class="p">[</span><span class="s2">"MLY-PRCP-25PCTL"</span><span class="p">],</span><span class="n">linestyle</span><span class="o">=</span><span class="s1">'--'</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">'r'</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">austin_weather</span><span class="p">[</span><span class="s2">"MONTH"</span><span class="p">],</span> <span class="n">austin_weather</span><span class="p">[</span><span class="s2">"MLY-PRCP-75PCTL"</span><span class="p">],</span><span class="n">linestyle</span><span class="o">=</span><span class="s1">'--'</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">'r'</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">"Precipitation (inches)"</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">"Precipitation (inches)"</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">"Time (months)"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># Sharing the y-axis range</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">sharey</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Plotting-time-series">
+<a class="anchor" href="#Plotting-time-series" aria-hidden="true"><span class="octicon octicon-link"></span></a>Plotting time-series<a class="anchor-link" href="#Plotting-time-series"> </a>
+</h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Plotting-time-series-data">
+<a class="anchor" href="#Plotting-time-series-data" aria-hidden="true"><span class="octicon octicon-link"></span></a>Plotting time-series data<a class="anchor-link" href="#Plotting-time-series-data"> </a>
+</h3>
+<div class="highlight"><pre><span></span><span class="c1"># DateTimeIndex</span>
+<span class="n">climate_change</span><span class="o">.</span><span class="n">index</span>
+<span class="n">DatetimeIndex</span><span class="p">([</span><span class="s1">'1958-03-06'</span><span class="p">,</span> <span class="s1">'1958-04-06'</span><span class="p">,</span> <span class="s1">'1958-05-06'</span><span class="p">,</span> <span class="s1">'1958-06-06'</span><span class="p">,</span>
+     <span class="n">dtype</span><span class="o">=</span><span class="s1">'datetime64[ns]'</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">'date'</span><span class="p">,</span> <span class="n">length</span><span class="o">=</span><span class="mi">706</span><span class="p">,</span> <span class="n">freq</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+
+
+<span class="c1"># Plotting time-series data</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">climate_change</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">climate_change</span><span class="p">[</span><span class="s1">'co2'</span><span class="p">])</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">'Time'</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">'CO2 (ppm)'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># Zooming in on a decade</span>
+<span class="n">sixties</span> <span class="o">=</span> <span class="n">climate_change</span><span class="p">[</span><span class="s2">"1960-01-01"</span><span class="p">:</span><span class="s2">"1969-12-31"</span><span class="p">]</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">sixties</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">sixties</span><span class="p">[</span><span class="s1">'co2'</span><span class="p">])</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">'Time'</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">'CO2 (ppm)'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># Zooming in on one year</span>
+<span class="n">sixty_nine</span> <span class="o">=</span> <span class="n">climate_change</span><span class="p">[</span><span class="s2">"1969-01-01"</span><span class="p">:</span><span class="s2">"1969-12-31"</span><span class="p">]</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">sixty_nine</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">sixty_nine</span><span class="p">[</span><span class="s1">'co2'</span><span class="p">])</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">'Time'</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">'CO2 (ppm)'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Plotting-time-series-with-different-variables">
+<a class="anchor" href="#Plotting-time-series-with-different-variables" aria-hidden="true"><span class="octicon octicon-link"></span></a>Plotting time-series with different variables<a class="anchor-link" href="#Plotting-time-series-with-different-variables"> </a>
+</h3>
+<div class="highlight"><pre><span></span><span class="c1"># Plotting two time-series together</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">climate_change</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">climate_change</span><span class="p">[</span><span class="s2">"co2"</span><span class="p">])</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">climate_change</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">climate_change</span><span class="p">[</span><span class="s2">"relative_temp"</span><span class="p">])</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">'Time'</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">'CO2 (ppm) / Relative temperature'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># Using twin axes</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">climate_change</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">climate_change</span><span class="p">[</span><span class="s2">"co2"</span><span class="p">])</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">'Time'</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">'CO2 (ppm)'</span><span class="p">)</span>
+<span class="n">ax2</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">twinx</span><span class="p">()</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">climate_change</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">climate_change</span><span class="p">[</span><span class="s2">"relative_temp"</span><span class="p">])</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">'Relative temperature (Celsius)'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># Separating variables by color</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">climate_change</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">climate_change</span><span class="p">[</span><span class="s2">"co2"</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">'blue'</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">'Time'</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">'CO2 (ppm)'</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">'blue'</span><span class="p">)</span>
+<span class="n">ax2</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">twinx</span><span class="p">()</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">climate_change</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">climate_change</span><span class="p">[</span><span class="s2">"relative_temp"</span><span class="p">],</span>
+<span class="n">color</span><span class="o">=</span><span class="s1">'red'</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">'Relative temperature (Celsius)'</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">'red'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># Coloring the ticks</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">climate_change</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">climate_change</span><span class="p">[</span><span class="s2">"co2"</span><span class="p">],</span>
+<span class="n">color</span><span class="o">=</span><span class="s1">'blue'</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">'Time'</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">'CO2 (ppm)'</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">'blue'</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="s1">'y'</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="s1">'blue'</span><span class="p">)</span>
+<span class="n">ax2</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">twinx</span><span class="p">()</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">climate_change</span><span class="o">.</span><span class="n">index</span><span class="p">,</span>
+<span class="n">climate_change</span><span class="p">[</span><span class="s2">"relative_temp"</span><span class="p">],</span>
+<span class="n">color</span><span class="o">=</span><span class="s1">'red'</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">'Relative temperature (Celsius)'</span><span class="p">,</span>
+<span class="n">color</span><span class="o">=</span><span class="s1">'red'</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="s1">'y'</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="s1">'red'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># A function that plots time-series</span>
+<span class="k">def</span> <span class="nf">plot_timeseries</span><span class="p">(</span><span class="n">axes</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">color</span><span class="p">,</span> <span class="n">xlabel</span><span class="p">,</span> <span class="n">ylabel</span><span class="p">):</span>
+    <span class="n">axes</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">)</span>
+    <span class="n">axes</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="n">xlabel</span><span class="p">)</span>
+    <span class="n">axes</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="n">ylabel</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">)</span>
+    <span class="n">axes</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="s1">'y'</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="n">color</span><span class="p">)</span>
+<span class="c1"># Using our function</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">plot_timeseries</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">climate_change</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">climate_change</span><span class="p">[</span><span class="s1">'co2'</span><span class="p">],</span><span class="s1">'blue'</span><span class="p">,</span> <span class="s1">'Time'</span><span class="p">,</span> <span class="s1">'CO2 (ppm)'</span><span class="p">)</span>
+<span class="n">ax2</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">twinx</span><span class="p">()</span>
+<span class="n">plot_timeseries</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">climate_change</span><span class="o">.</span><span class="n">index</span><span class="p">,</span><span class="n">climate_change</span><span class="p">[</span><span class="s1">'relative_temp'</span><span class="p">],</span><span class="s1">'red'</span><span class="p">,</span> <span class="s1">'Time'</span><span class="p">,</span> <span class="s1">'Relative temperature (Celsius)'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Annotating-time-series-data">
+<a class="anchor" href="#Annotating-time-series-data" aria-hidden="true"><span class="octicon octicon-link"></span></a>Annotating time-series data<a class="anchor-link" href="#Annotating-time-series-data"> </a>
+</h3>
+<div class="highlight"><pre><span></span><span class="c1"># Annotation</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">plot_timeseries</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">climate_change</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">climate_change</span><span class="p">[</span><span class="s1">'co2'</span><span class="p">],</span>
+<span class="s1">'blue'</span><span class="p">,</span> <span class="s1">'Time'</span><span class="p">,</span> <span class="s1">'CO2 (ppm)'</span><span class="p">)</span>
+<span class="n">ax2</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">twinx</span><span class="p">()</span>
+<span class="n">plot_timeseries</span><span class="p">(</span><span class="n">ax2</span><span class="p">,</span> <span class="n">climate_change</span><span class="o">.</span><span class="n">index</span><span class="p">,</span>
+<span class="n">climate_change</span><span class="p">[</span><span class="s1">'relative_temp'</span><span class="p">],</span>
+<span class="s1">'red'</span><span class="p">,</span> <span class="s1">'Time'</span><span class="p">,</span> <span class="s1">'Relative temperature (Celsius)'</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s2">"&gt;1 degree"</span><span class="p">,</span>
+<span class="n">xy</span><span class="o">=</span><span class="p">[</span><span class="n">pd</span><span class="o">.</span><span class="n">TimeStamp</span><span class="p">(</span><span class="s2">"2015-10-06"</span><span class="p">),</span> <span class="mi">1</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># Positioning the text</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s2">"&gt;1 degree"</span><span class="p">,</span>
+<span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">Timestamp</span><span class="p">(</span><span class="s1">'2015-10-06'</span><span class="p">),</span> <span class="mi">1</span><span class="p">),</span>
+<span class="n">xytext</span><span class="o">=</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">Timestamp</span><span class="p">(</span><span class="s1">'2008-10-06'</span><span class="p">),</span> <span class="o">-</span><span class="mf">0.2</span><span class="p">))</span>
+
+<span class="c1"># Adding arrows to annotation</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s2">"&gt;1 degree"</span><span class="p">,</span>
+<span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">Timestamp</span><span class="p">(</span><span class="s1">'2015-10-06'</span><span class="p">),</span> <span class="mi">1</span><span class="p">),</span>
+<span class="n">xytext</span><span class="o">=</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">Timestamp</span><span class="p">(</span><span class="s1">'2008-10-06'</span><span class="p">),</span> <span class="o">-</span><span class="mf">0.2</span><span class="p">),</span>
+<span class="n">arrowprops</span><span class="o">=</span><span class="p">{})</span>
+
+<span class="c1"># Customizing arrow properties</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s2">"&gt;1 degree"</span><span class="p">,</span>
+<span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">Timestamp</span><span class="p">(</span><span class="s1">'2015-10-06'</span><span class="p">),</span> <span class="mi">1</span><span class="p">),</span>
+<span class="n">xytext</span><span class="o">=</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">Timestamp</span><span class="p">(</span><span class="s1">'2008-10-06'</span><span class="p">),</span> <span class="o">-</span><span class="mf">0.2</span><span class="p">),</span>
+<span class="n">arrowprops</span><span class="o">=</span><span class="p">{</span><span class="s2">"arrowstyle"</span><span class="p">:</span><span class="s2">"-&gt;"</span><span class="p">,</span> <span class="s2">"color"</span><span class="p">:</span><span class="s2">"gray"</span><span class="p">})</span>
+</pre></div>
+<p><a href="https://matplotlib.org/tutorials/text/annotations.html">Customizing annotations</a></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Quantitative-comparisons-and-statistical-visualizations">
+<a class="anchor" href="#Quantitative-comparisons-and-statistical-visualizations" aria-hidden="true"><span class="octicon octicon-link"></span></a>Quantitative comparisons and statistical visualizations<a class="anchor-link" href="#Quantitative-comparisons-and-statistical-visualizations"> </a>
+</h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Quantitative-comparisons:-bar-charts">
+<a class="anchor" href="#Quantitative-comparisons:-bar-charts" aria-hidden="true"><span class="octicon octicon-link"></span></a>Quantitative comparisons: bar-charts<a class="anchor-link" href="#Quantitative-comparisons:-bar-charts"> </a>
+</h3>
+<div class="highlight"><pre><span></span><span class="c1"># Olympic medals: visualizing the data</span>
+<span class="n">medals</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">'medals_by_country_2016.csv'</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">medals</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">medals</span><span class="p">[</span><span class="s2">"Gold"</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># Interlude: rotate the tick labels</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">medals</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">medals</span><span class="p">[</span><span class="s2">"Gold"</span><span class="p">])</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xticklabels</span><span class="p">(</span><span class="n">medals</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">90</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">"Number of medals"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># Olympic medals: visualizing the other medals : stacked bar chart</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">medals</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">medals</span><span class="p">[</span><span class="s2">"Gold"</span><span class="p">])</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">medals</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">medals</span><span class="p">[</span><span class="s2">"Silver"</span><span class="p">],</span> <span class="n">bottom</span><span class="o">=</span><span class="n">medals</span><span class="p">[</span><span class="s2">"Gold"</span><span class="p">])</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xticklabels</span><span class="p">(</span><span class="n">medals</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">90</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">"Number of medals"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># Olympic medals: visualizing all three</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">medals</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">medals</span><span class="p">[</span><span class="s2">"Gold"</span><span class="p">])</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">medals</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">medals</span><span class="p">[</span><span class="s2">"Silver"</span><span class="p">],</span> <span class="n">bottom</span><span class="o">=</span><span class="n">medals</span><span class="p">[</span><span class="s2">"Gold"</span><span class="p">])</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">medals</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">medals</span><span class="p">[</span><span class="s2">"Bronze"</span><span class="p">],</span>
+<span class="n">bottom</span><span class="o">=</span><span class="n">medals</span><span class="p">[</span><span class="s2">"Gold"</span><span class="p">]</span> <span class="o">+</span> <span class="n">medals</span><span class="p">[</span><span class="s2">"Silver"</span><span class="p">])</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xticklabels</span><span class="p">(</span><span class="n">medals</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">90</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">"Number of medals"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># Adding a legend</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">medals</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">medals</span><span class="p">[</span><span class="s2">"Gold"</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s2">"Gold"</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">medals</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">medals</span><span class="p">[</span><span class="s2">"Silver"</span><span class="p">],</span> <span class="n">bottom</span><span class="o">=</span><span class="n">medals</span><span class="p">[</span><span class="s2">"Gold"</span><span class="p">],</span>
+<span class="n">label</span><span class="o">=</span><span class="s2">"Silver"</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">medals</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">medals</span><span class="p">[</span><span class="s2">"Bronze"</span><span class="p">],</span>
+<span class="n">bottom</span><span class="o">=</span><span class="n">medals</span><span class="p">[</span><span class="s2">"Gold"</span><span class="p">]</span> <span class="o">+</span> <span class="n">medals</span><span class="p">[</span><span class="s2">"Silver"</span><span class="p">],</span>
+<span class="n">label</span><span class="o">=</span><span class="s2">"Bronze"</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xticklabels</span><span class="p">(</span><span class="n">medals</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">90</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">"Number of medals"</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Quantitative-comparisons:-histograms">
+<a class="anchor" href="#Quantitative-comparisons:-histograms" aria-hidden="true"><span class="octicon octicon-link"></span></a>Quantitative comparisons: histograms<a class="anchor-link" href="#Quantitative-comparisons:-histograms"> </a>
+</h3>
+<div class="highlight"><pre><span></span><span class="c1"># Introducing histograms</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">mens_rowing</span><span class="p">[</span><span class="s2">"Height"</span><span class="p">])</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">mens_gymnastic</span><span class="p">[</span><span class="s2">"Height"</span><span class="p">])</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">"Height (cm)"</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">"# of observations"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># Labels are needed</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">mens_rowing</span><span class="p">[</span><span class="s2">"Height"</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s2">"Rowing"</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">mens_gymnastic</span><span class="p">[</span><span class="s2">"Height"</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s2">"Gymnastics"</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">"Height (cm)"</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">"# of observations"</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># Customizing histograms: setting the number of bins</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">mens_rowing</span><span class="p">[</span><span class="s2">"Height"</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s2">"Rowing"</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">mens_gymnastic</span><span class="p">[</span><span class="s2">"Height"</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s2">"Gymnastics"</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">"Height (cm)"</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">"# of observations"</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># Customizing histograms: setting bin boundaries</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">mens_rowing</span><span class="p">[</span><span class="s2">"Height"</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s2">"Rowing"</span><span class="p">,</span>
+<span class="n">bins</span><span class="o">=</span><span class="p">[</span><span class="mi">150</span><span class="p">,</span> <span class="mi">160</span><span class="p">,</span> <span class="mi">170</span><span class="p">,</span> <span class="mi">180</span><span class="p">,</span> <span class="mi">190</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="mi">210</span><span class="p">])</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">mens_gymnastic</span><span class="p">[</span><span class="s2">"Height"</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s2">"Gymnastics"</span><span class="p">,</span>
+<span class="n">bins</span><span class="o">=</span><span class="p">[</span><span class="mi">150</span><span class="p">,</span> <span class="mi">160</span><span class="p">,</span> <span class="mi">170</span><span class="p">,</span> <span class="mi">180</span><span class="p">,</span> <span class="mi">190</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="mi">210</span><span class="p">])</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">"Height (cm)"</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">"# of observations"</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># Customizing histograms: transparency</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">mens_rowing</span><span class="p">[</span><span class="s2">"Height"</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s2">"Rowing"</span><span class="p">,</span>
+<span class="n">bins</span><span class="o">=</span><span class="p">[</span><span class="mi">150</span><span class="p">,</span> <span class="mi">160</span><span class="p">,</span> <span class="mi">170</span><span class="p">,</span> <span class="mi">180</span><span class="p">,</span> <span class="mi">190</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="mi">210</span><span class="p">],</span>
+<span class="n">histtype</span><span class="o">=</span><span class="s2">"step"</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">mens_gymnastic</span><span class="p">[</span><span class="s2">"Height"</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s2">"Gymnastics"</span><span class="p">,</span>
+<span class="n">bins</span><span class="o">=</span><span class="p">[</span><span class="mi">150</span><span class="p">,</span> <span class="mi">160</span><span class="p">,</span> <span class="mi">170</span><span class="p">,</span> <span class="mi">180</span><span class="p">,</span> <span class="mi">190</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="mi">210</span><span class="p">],</span>
+<span class="n">histtype</span><span class="o">=</span><span class="s2">"step"</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">"Height (cm)"</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">"# of observations"</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Statistical-plotting">
+<a class="anchor" href="#Statistical-plotting" aria-hidden="true"><span class="octicon octicon-link"></span></a>Statistical plotting<a class="anchor-link" href="#Statistical-plotting"> </a>
+</h3>
+<div class="highlight"><pre><span></span><span class="c1"># Adding error bars to bar charts</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="s2">"Rowing"</span><span class="p">,</span><span class="n">mens_rowing</span><span class="p">[</span><span class="s2">"Height"</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span>
+<span class="n">yerr</span><span class="o">=</span><span class="n">mens_rowing</span><span class="p">[</span><span class="s2">"Height"</span><span class="p">]</span><span class="o">.</span><span class="n">std</span><span class="p">())</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="s2">"Gymnastics"</span><span class="p">,</span><span class="n">mens_gymnastics</span><span class="p">[</span><span class="s2">"Height"</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span>
+<span class="n">yerr</span><span class="o">=</span><span class="n">mens_gymnastics</span><span class="p">[</span><span class="s2">"Height"</span><span class="p">]</span><span class="o">.</span><span class="n">std</span><span class="p">())</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">"Height (cm)"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># Adding error bars to plots</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">errorbar</span><span class="p">(</span><span class="n">seattle_weather</span><span class="p">[</span><span class="s2">"MONTH"</span><span class="p">],</span>
+<span class="n">seattle_weather</span><span class="p">[</span><span class="s2">"MLY-TAVG-NORMAL"</span><span class="p">],</span>
+<span class="n">yerr</span><span class="o">=</span><span class="n">seattle_weather</span><span class="p">[</span><span class="s2">"MLY-TAVG-STDDEV"</span><span class="p">])</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">errorbar</span><span class="p">(</span><span class="n">austin_weather</span><span class="p">[</span><span class="s2">"MONTH"</span><span class="p">],</span>
+<span class="n">austin_weather</span><span class="p">[</span><span class="s2">"MLY-TAVG-NORMAL"</span><span class="p">],</span>
+<span class="n">yerr</span><span class="o">=</span><span class="n">austin_weather</span><span class="p">[</span><span class="s2">"MLY-TAVG-STDDEV"</span><span class="p">])</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">"Temperature (Fahrenheit)"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># Adding boxplots</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">boxplot</span><span class="p">([</span><span class="n">mens_rowing</span><span class="p">[</span><span class="s2">"Height"</span><span class="p">],</span>
+<span class="n">mens_gymnastics</span><span class="p">[</span><span class="s2">"Height"</span><span class="p">]])</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xticklabels</span><span class="p">([</span><span class="s2">"Rowing"</span><span class="p">,</span> <span class="s2">"Gymnastics"</span><span class="p">])</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">"Height (cm)"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Quantitative-comparisons:-scatter-plots">
+<a class="anchor" href="#Quantitative-comparisons:-scatter-plots" aria-hidden="true"><span class="octicon octicon-link"></span></a>Quantitative comparisons: scatter plots<a class="anchor-link" href="#Quantitative-comparisons:-scatter-plots"> </a>
+</h3>
+<div class="highlight"><pre><span></span><span class="c1"># Introducing scatter plots</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">climate_change</span><span class="p">[</span><span class="s2">"co2"</span><span class="p">],</span> <span class="n">climate_change</span><span class="p">[</span><span class="s2">"relative_temp"</span><span class="p">])</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">"CO2 (ppm)"</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">"Relative temperature (Celsius)"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># Customizing scatter plots</span>
+<span class="n">eighties</span> <span class="o">=</span> <span class="n">climate_change</span><span class="p">[</span><span class="s2">"1980-01-01"</span><span class="p">:</span><span class="s2">"1989-12-31"</span><span class="p">]</span>
+<span class="n">nineties</span> <span class="o">=</span> <span class="n">climate_change</span><span class="p">[</span><span class="s2">"1990-01-01"</span><span class="p">:</span><span class="s2">"1999-12-31"</span><span class="p">]</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">eighties</span><span class="p">[</span><span class="s2">"co2"</span><span class="p">],</span> <span class="n">eighties</span><span class="p">[</span><span class="s2">"relative_temp"</span><span class="p">],</span>
+<span class="n">color</span><span class="o">=</span><span class="s2">"red"</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">"eighties"</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">nineties</span><span class="p">[</span><span class="s2">"co2"</span><span class="p">],</span> <span class="n">nineties</span><span class="p">[</span><span class="s2">"relative_temp"</span><span class="p">],</span>
+<span class="n">color</span><span class="o">=</span><span class="s2">"blue"</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">"nineties"</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">"CO2 (ppm)"</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">"Relative temperature (Celsius)"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># Encoding a third variable by color</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">climate_change</span><span class="p">[</span><span class="s2">"co2"</span><span class="p">],</span> <span class="n">climate_change</span><span class="p">[</span><span class="s2">"relative_temp"</span><span class="p">],</span>
+<span class="n">c</span><span class="o">=</span><span class="n">climate_change</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">"CO2 (ppm)"</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">"Relative temperature (Celsius)"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Sharing-visualizations-with-others">
+<a class="anchor" href="#Sharing-visualizations-with-others" aria-hidden="true"><span class="octicon octicon-link"></span></a>Sharing visualizations with others<a class="anchor-link" href="#Sharing-visualizations-with-others"> </a>
+</h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Preparing-your-figures-to-share-with-others">
+<a class="anchor" href="#Preparing-your-figures-to-share-with-others" aria-hidden="true"><span class="octicon octicon-link"></span></a>Preparing your figures to share with others<a class="anchor-link" href="#Preparing-your-figures-to-share-with-others"> </a>
+</h3>
+<div class="highlight"><pre><span></span><span class="c1"># Choosing a style</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s2">"ggplot"</span><span class="p">)</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">seattle_weather</span><span class="p">[</span><span class="s2">"MONTH"</span><span class="p">],</span> <span class="n">seattle_weather</span><span class="p">[</span><span class="s2">"MLY-TAVG-NORMAL"</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">austin_weather</span><span class="p">[</span><span class="s2">"MONTH"</span><span class="p">],</span> <span class="n">austin_weather</span><span class="p">[</span><span class="s2">"MLY-TAVG-NORMAL"</span><span class="p">])</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">"Time (months)"</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">"Average temperature (Fahrenheit degrees)"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># Back to the default</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s2">"default"</span><span class="p">)</span>
+</pre></div>
+<p><a href="https://matplotlib.org/gallery/style_sheets/style_sheets_reference.html">available styles</a></p>
+<div class="highlight"><pre><span></span><span class="c1"># The "bmh" style</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s2">"bmh"</span><span class="p">)</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">seattle_weather</span><span class="p">[</span><span class="s2">"MONTH"</span><span class="p">],</span> <span class="n">seattle_weather</span><span class="p">[</span><span class="s2">"MLY-TAVG-NORMAL"</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">austin_weather</span><span class="p">[</span><span class="s2">"MONTH"</span><span class="p">],</span> <span class="n">austin_weather</span><span class="p">[</span><span class="s2">"MLY-TAVG-NORMAL"</span><span class="p">])</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">"Time (months)"</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">"Average temperature (Fahrenheit degrees)"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># Seaborn styles</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s2">"seaborn-colorblind"</span><span class="p">)</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">seattle_weather</span><span class="p">[</span><span class="s2">"MONTH"</span><span class="p">],</span> <span class="n">seattle_weather</span><span class="p">[</span><span class="s2">"MLY-TAVG-NORMAL"</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">austin_weather</span><span class="p">[</span><span class="s2">"MONTH"</span><span class="p">],</span> <span class="n">austin_weather</span><span class="p">[</span><span class="s2">"MLY-TAVG-NORMAL"</span><span class="p">])</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">"Time (months)"</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">"Average temperature (Fahrenheit degrees)"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Saving-your-visualizations">
+<a class="anchor" href="#Saving-your-visualizations" aria-hidden="true"><span class="octicon octicon-link"></span></a>Saving your visualizations<a class="anchor-link" href="#Saving-your-visualizations"> </a>
+</h3>
+<div class="highlight"><pre><span></span><span class="c1"># Saving the figure to file</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">medals</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">medals</span><span class="p">[</span><span class="s2">"Gold"</span><span class="p">])</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xticklabels</span><span class="p">(</span><span class="n">medals</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">90</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">"Number of medals"</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">"gold_medals.png"</span><span class="p">)</span>
+
+<span class="c1"># Different file formats</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">"gold_medals.jpg"</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">"gold_medals.jpg"</span><span class="p">,</span> <span class="n">quality</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">"gold_medals.svg"</span><span class="p">)</span>
+
+<span class="c1"># Resolution</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">"gold_medals.png"</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span>
+
+<span class="c1"># Size</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">set_size_inches</span><span class="p">([</span><span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+
+<span class="c1"># Another aspect ratio</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">set_size_inches</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Automating-figures-from-data">
+<a class="anchor" href="#Automating-figures-from-data" aria-hidden="true"><span class="octicon octicon-link"></span></a>Automating figures from data<a class="anchor-link" href="#Automating-figures-from-data"> </a>
+</h3>
+<div class="highlight"><pre><span></span><span class="c1"># Getting unique values of a column</span>
+<span class="n">sports</span> <span class="o">=</span> <span class="n">summer_2016_medals</span><span class="p">[</span><span class="s2">"Sport"</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
+
+<span class="c1"># Bar-chart of heights for all sports</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">sport</span> <span class="ow">in</span> <span class="n">sports</span><span class="p">:</span>
+<span class="n">sport_df</span> <span class="o">=</span> <span class="n">summer_2016_medals</span><span class="p">[</span><span class="n">summer_2016_medals</span><span class="p">[</span><span class="s2">"Sport"</span><span class="p">]</span> <span class="o">==</span> <span class="n">spor</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">sport</span><span class="p">,</span> <span class="n">sport_df</span><span class="p">[</span><span class="s2">"Height"</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span>
+<span class="n">yerr</span><span class="o">=</span><span class="n">sport_df</span><span class="p">[</span><span class="s2">"Height"</span><span class="p">]</span><span class="o">.</span><span class="n">std</span><span class="p">())</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">"Height (cm)"</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xticklabels</span><span class="p">(</span><span class="n">sports</span><span class="p">,</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">90</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+</div>
+
+
+
+  </div><!-- from https://github.com/utterance/utterances -->
+<script src="https://utteranc.es/client.js"
+        repo="castorfou/guillaume_blog"
+        issue-term="title"
+        label="blogpost-comment"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script><a class="u-url" href="/blog/blog/matplotlib-cheatsheet.html" hidden></a>
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/blog/"></data>
+
+  <div class="wrapper">
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col">
+        <p class="feed-subscribe">
+          <a href="/blog/feed.xml">
+            <svg class="svg-icon orange">
+              <use xlink:href="/blog/assets/minima-social-icons.svg#rss"></use>
+            </svg><span>Subscribe</span>
+          </a>
+        </p>
+      </div>
+      <div class="footer-col">
+        <p>Journey for a datascientist</p>
+      </div>
+    </div>
+
+    <div class="social-links"><ul class="social-media-list"><li><a rel="me" href="https://github.com/castorfou" target="_blank" title="castorfou"><svg class="svg-icon grey"><use xlink:href="/blog/assets/minima-social-icons.svg#github"></use></svg></a></li><li><a rel="me" href="https://twitter.com/GuillaumeRamel1" target="_blank" title="GuillaumeRamel1"><svg class="svg-icon grey"><use xlink:href="/blog/assets/minima-social-icons.svg#twitter"></use></svg></a></li></ul>
+</div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>

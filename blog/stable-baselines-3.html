@@ -1,0 +1,922 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="twitter:card" content="summary_large_image" /><!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Stable baselines 3 - 1st steps | Guillaume’s blog</title>
+<meta name="generator" content="Jekyll v4.1.1" />
+<meta property="og:title" content="Stable baselines 3 - 1st steps" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="installation, 1st experimentations" />
+<meta property="og:description" content="installation, 1st experimentations" />
+<link rel="canonical" href="https://castorfou.github.io/blog/blog/stable-baselines-3.html" />
+<meta property="og:url" content="https://castorfou.github.io/blog/blog/stable-baselines-3.html" />
+<meta property="og:site_name" content="Guillaume’s blog" />
+<meta property="og:image" content="https://stable-baselines3.readthedocs.io/en/master/_static/logo.png" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2021-03-24T00:00:00-05:00" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="https://stable-baselines3.readthedocs.io/en/master/_static/logo.png" />
+<meta property="twitter:title" content="Stable baselines 3 - 1st steps" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2021-03-24T00:00:00-05:00","datePublished":"2021-03-24T00:00:00-05:00","description":"installation, 1st experimentations","headline":"Stable baselines 3 - 1st steps","image":"https://stable-baselines3.readthedocs.io/en/master/_static/logo.png","mainEntityOfPage":{"@type":"WebPage","@id":"https://castorfou.github.io/blog/blog/stable-baselines-3.html"},"url":"https://castorfou.github.io/blog/blog/stable-baselines-3.html"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/blog/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="https://castorfou.github.io/blog/feed.xml" title="Guillaume's blog" /><link rel="shortcut icon" type="image/x-icon" href="/blog/images/favicon.ico"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Primer/15.2.0/primer.css" integrity="sha512-xTz2ys4coGAOz8vuV1NcQBkgVmKhsSEtjbqyMJbBHRplFuvKIUo6xhLHpAyPt9mfR6twHJgn9OgVLuqOvjeBhg==" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.12.0/katex.min.css" integrity="sha512-h7nl+xz8wgDlNM4NqKEM4F1NkIRS17M9+uJwIGwuo8vGqIl4BhuCKdxjWEINm+xyrUjNCnK5dCrhM0sj+wTIXw==" crossorigin="anonymous" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.12.0/katex.min.js" integrity="sha512-/CMIhXiDA3m2c9kzRyd97MTb3MC6OVnx4TElQ7fkkoRghwDf6gi41gaT1PwF270W6+J60uTmwgeRpNpJdRV6sg==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.12.0/contrib/auto-render.min.js" integrity="sha512-Do7uJAaHZm5OLrIv/yN4w0iG1dbu01kzdMNnFfu/mAqgUk6Nniv2JYHcwH+cNwjqgLcqcuBBk+JRvprLVI8azg==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha512-0doc9hKxR3PYwso42RD1p5ySZpzzuDiOwMrdCEh2WdJZCjcmFKc/wEnL+z8fBQrnHoiNWbo+3fiGkOYXBdQp4A==" crossorigin="anonymous"></script>
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        renderMathInElement( document.body, {
+        delimiters: [
+            {left: "$$", right: "$$", display: true},
+            {left: "[%", right: "%]", display: true},
+            {left: "$", right: "$", display: false}
+        ]}
+        );
+    });
+    </script>
+
+
+<script>
+function wrap_img(fn) {
+    if (document.attachEvent ? document.readyState === "complete" : document.readyState !== "loading") {
+        var elements = document.querySelectorAll(".post img");
+        Array.prototype.forEach.call(elements, function(el, i) {
+            if (el.getAttribute("title") && (el.className != "emoji")) {
+                const caption = document.createElement('figcaption');
+                var node = document.createTextNode(el.getAttribute("title"));
+                caption.appendChild(node);
+                const wrapper = document.createElement('figure');
+                wrapper.className = 'image';
+                el.parentNode.insertBefore(wrapper, el);
+                el.parentNode.removeChild(el);
+                wrapper.appendChild(el);
+                wrapper.appendChild(caption);
+            }
+        });
+    } else { document.addEventListener('DOMContentLoaded', fn); }
+}
+window.onload = wrap_img;
+</script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function(){
+    // add link icon to anchor tags
+    var elem = document.querySelectorAll(".anchor-link")
+    elem.forEach(e => (e.innerHTML = '<i class="fas fa-link fa-xs"></i>'));
+    });
+</script>
+</head>
+<body><header class="site-header">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/blog/">Guillaume&#39;s blog</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/blog/about/">About Me</a><a class="page-link" href="/blog/search/">Search</a><a class="page-link" href="/blog/categories/">Tags</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">Stable baselines 3 - 1st steps</h1><p class="page-description">installation, 1st experimentations</p><p class="post-meta post-meta-title"><time class="dt-published" datetime="2021-03-24T00:00:00-05:00" itemprop="datePublished">
+        Mar 24, 2021
+      </time>
+       • <span class="read-time" title="Estimated read time">
+    
+    
+      9 min read
+    
+</span></p>
+
+    
+      <p class="category-tags"><i class="fas fa-tags category-tags-icon"></i></i> 
+      
+        <a class="category-tags-link" href="/blog/categories/#reinforcement learning">reinforcement learning</a>
+        &nbsp;
+      
+        <a class="category-tags-link" href="/blog/categories/#pytorch">pytorch</a>
+        &nbsp;
+      
+        <a class="category-tags-link" href="/blog/categories/#sb3">sb3</a>
+        
+      
+      </p>
+    
+
+    
+      </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <ul id="toc" class="section-nav">
+<li class="toc-entry toc-h1"><a href="#What-is-stable-baselines-3-(sb3)">What is stable baselines 3 (sb3) </a></li>
+<li class="toc-entry toc-h1"><a href="#My-installation">My installation </a></li>
+<li class="toc-entry toc-h1"><a href="#SB3-tutorials">SB3 tutorials </a></li>
+<li class="toc-entry toc-h1"><a href="#Issues-and-fix">Issues and fix </a></li>
+<li class="toc-entry toc-h1"><a href="#Stable-baselines-3-user-guide">Stable baselines 3 user guide </a>
+<ul>
+<li class="toc-entry toc-h2"><a href="#Tips-and-tricks">Tips and tricks </a></li>
+<li class="toc-entry toc-h2"><a href="#Resource-page">Resource page </a></li>
+<li class="toc-entry toc-h2"><a href="#Examples">Examples </a></li>
+</ul>
+</li>
+</ul><!--
+#################################################
+### THIS FILE WAS AUTOGENERATED! DO NOT EDIT! ###
+#################################################
+# file to edit: _notebooks/2021-03-24-stable-baselines-3.ipynb
+-->
+
+<div class="container" id="notebook-container">
+        
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="What-is-stable-baselines-3-(sb3)">
+<a class="anchor" href="#What-is-stable-baselines-3-(sb3)" aria-hidden="true"><span class="octicon octicon-link"></span></a>What is stable baselines 3 (sb3)<a class="anchor-link" href="#What-is-stable-baselines-3-(sb3)"> </a>
+</h1>
+<p>I have just read about this new release. This is a complete rewrite of stable baselines 2, without any reference to tensorflow, and based on pytorch (&gt;1.4+).</p>
+<p>There is a lot of running implementations of RL algorithms, based on gym.
+A very good introduction in this <a href="https://araffin.github.io/post/sb3/">blog entry</a></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><a href="https://araffin.github.io/post/sb3/">Stable-Baselines3: Reliable Reinforcement Learning Implementations | Antonin Raffin | Homepage</a></p>
+<p><strong>Links</strong></p>
+<ul>
+<li>
+<p>GitHub repository: <a href="https://github.com/DLR-RM/stable-baselines3">https://github.com/DLR-RM/stable-baselines3</a></p>
+</li>
+<li>
+<p>Documentation: <a href="https://stable-baselines3.readthedocs.io/">https://stable-baselines3.readthedocs.io/</a></p>
+</li>
+<li>
+<p>RL Baselines3 Zoo: <a href="https://github.com/DLR-RM/rl-baselines3-zoo">https://github.com/DLR-RM/rl-baselines3-zoo</a></p>
+</li>
+<li>
+<p>Contrib: <a href="https://github.com/Stable-Baselines-Team/stable-baselines3-contrib">https://github.com/Stable-Baselines-Team/stable-baselines3-contrib</a></p>
+</li>
+<li>
+<p>RL Tutorial: <a href="https://github.com/araffin/rl-tutorial-jnrr19">https://github.com/araffin/rl-tutorial-jnrr19</a></p>
+</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="My-installation">
+<a class="anchor" href="#My-installation" aria-hidden="true"><span class="octicon octicon-link"></span></a>My installation<a class="anchor-link" href="#My-installation"> </a>
+</h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Standard installation</p>
+<div class="highlight"><pre><span></span>conda create --name stablebaselines3 <span class="nv">python</span><span class="o">=</span><span class="m">3</span>.7
+conda activate stablebaselines3
+pip install stable-baselines3<span class="o">[</span>extra<span class="o">]</span>
+conda install -c conda-forge jupyter_contrib_nbextensions
+conda install nb_conda
+</pre></div>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>conda list
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre># packages in environment at /home/explore/miniconda3/envs/stablebaselines3:
+#
+# Name                    Version                   Build  Channel
+_libgcc_mutex             0.1                        main  
+_pytorch_select           0.1                       cpu_0  
+absl-py                   0.12.0                   pypi_0    pypi
+atari-py                  0.2.6                    pypi_0    pypi
+attrs                     20.3.0             pyhd3deb0d_0    conda-forge
+backcall                  0.2.0              pyh9f0ad1d_0    conda-forge
+backports                 1.0                        py_2    conda-forge
+backports.functools_lru_cache 1.6.1                      py_0    conda-forge
+blas                      1.0                         mkl  
+bleach                    3.3.0              pyh44b312d_0    conda-forge
+box2d                     2.3.10                   pypi_0    pypi
+box2d-py                  2.3.8                    pypi_0    pypi
+ca-certificates           2021.1.19            h06a4308_1  
+cachetools                4.2.1                    pypi_0    pypi
+certifi                   2020.12.5        py37h06a4308_0  
+cffi                      1.14.5           py37h261ae71_0  
+chardet                   4.0.0                    pypi_0    pypi
+cloudpickle               1.6.0                    pypi_0    pypi
+cudatoolkit               11.0.221             h6bb024c_0  
+cycler                    0.10.0                   pypi_0    pypi
+decorator                 4.4.2                      py_0    conda-forge
+defusedxml                0.7.1              pyhd8ed1ab_0    conda-forge
+entrypoints               0.3             pyhd8ed1ab_1003    conda-forge
+fire                      0.4.0              pyh44b312d_0    conda-forge
+freetype                  2.10.4               h5ab3b9f_0  
+future                    0.18.2                   pypi_0    pypi
+google-auth               1.28.0                   pypi_0    pypi
+google-auth-oauthlib      0.4.3                    pypi_0    pypi
+grpcio                    1.36.1                   pypi_0    pypi
+gym                       0.18.0                   pypi_0    pypi
+icu                       58.2              hf484d3e_1000    conda-forge
+idna                      2.10                     pypi_0    pypi
+importlib-metadata        3.7.3            py37h89c1867_0    conda-forge
+intel-openmp              2019.4                      243  
+ipykernel                 5.5.0            py37h888b3d9_1    conda-forge
+ipython                   7.21.0           py37h888b3d9_0    conda-forge
+ipython_genutils          0.2.0                      py_1    conda-forge
+jedi                      0.18.0           py37h89c1867_2    conda-forge
+jinja2                    2.11.3             pyh44b312d_0    conda-forge
+jpeg                      9b                   h024ee3a_2  
+jsonschema                3.2.0              pyhd8ed1ab_3    conda-forge
+jupyter_client            6.1.12             pyhd8ed1ab_0    conda-forge
+jupyter_contrib_core      0.3.3                      py_2    conda-forge
+jupyter_contrib_nbextensions 0.5.1              pyhd8ed1ab_2    conda-forge
+jupyter_core              4.7.1            py37h89c1867_0    conda-forge
+jupyter_highlight_selected_word 0.2.0           py37h89c1867_1002    conda-forge
+jupyter_latex_envs        1.4.6           pyhd8ed1ab_1002    conda-forge
+jupyter_nbextensions_configurator 0.4.1            py37h89c1867_2    conda-forge
+kiwisolver                1.3.1                    pypi_0    pypi
+lcms2                     2.11                 h396b838_0  
+ld_impl_linux-64          2.33.1               h53a641e_7  
+libffi                    3.3                  he6710b0_2  
+libgcc-ng                 9.1.0                hdf63c60_0  
+libmklml                  2019.0.5                      0  
+libpng                    1.6.37               hbc83047_0  
+libsodium                 1.0.18               h36c2ea0_1    conda-forge
+libstdcxx-ng              9.1.0                hdf63c60_0  
+libtiff                   4.2.0                h85742a9_0  
+libuv                     1.40.0               h7b6447c_0  
+libwebp-base              1.2.0                h27cfd23_0  
+libxml2                   2.9.10               hb55368b_3  
+libxslt                   1.1.34               hc22bd24_0  
+lxml                      4.6.3            py37h9120a33_0  
+lz4-c                     1.9.3                h2531618_0  
+markdown                  3.3.4                    pypi_0    pypi
+markupsafe                1.1.1            py37hb5d75c8_2    conda-forge
+matplotlib                3.3.4                    pypi_0    pypi
+mistune                   0.8.4           py37h4abf009_1002    conda-forge
+mkl                       2020.2                      256  
+mkl-service               2.3.0            py37he8ac12f_0  
+mkl_fft                   1.3.0            py37h54f3939_0  
+mkl_random                1.1.1            py37h0573a6f_0  
+nb_conda                  2.2.1                    py37_0  
+nb_conda_kernels          2.3.1            py37h06a4308_0  
+nbconvert                 5.6.1            py37hc8dfbb8_1    conda-forge
+nbformat                  5.1.2              pyhd8ed1ab_1    conda-forge
+ncurses                   6.2                  he6710b0_1  
+ninja                     1.10.2           py37hff7bd54_0  
+notebook                  5.7.10           py37hc8dfbb8_0    conda-forge
+numpy                     1.20.1                   pypi_0    pypi
+numpy-base                1.19.2           py37hfa32c7d_0  
+oauthlib                  3.1.0                    pypi_0    pypi
+olefile                   0.46                     py37_0  
+opencv-python             4.5.1.48                 pypi_0    pypi
+openssl                   1.1.1j               h27cfd23_0  
+packaging                 20.9               pyh44b312d_0    conda-forge
+pandas                    1.2.3                    pypi_0    pypi
+pandoc                    2.12                 h7f98852_0    conda-forge
+pandocfilters             1.4.2                      py_1    conda-forge
+parso                     0.8.1              pyhd8ed1ab_0    conda-forge
+pexpect                   4.8.0              pyh9f0ad1d_2    conda-forge
+pickleshare               0.7.5                   py_1003    conda-forge
+pillow                    7.2.0                    pypi_0    pypi
+pip                       21.0.1           py37h06a4308_0  
+prometheus_client         0.9.0              pyhd3deb0d_0    conda-forge
+prompt-toolkit            3.0.18             pyha770c72_0    conda-forge
+protobuf                  3.15.6                   pypi_0    pypi
+psutil                    5.8.0                    pypi_0    pypi
+ptyprocess                0.7.0              pyhd3deb0d_0    conda-forge
+pyasn1                    0.4.8                    pypi_0    pypi
+pyasn1-modules            0.2.8                    pypi_0    pypi
+pycparser                 2.20                       py_2  
+pyglet                    1.5.0                    pypi_0    pypi
+pygments                  2.8.1              pyhd8ed1ab_0    conda-forge
+pyparsing                 2.4.7              pyh9f0ad1d_0    conda-forge
+pyrsistent                0.17.3           py37h4abf009_1    conda-forge
+python                    3.7.10               hdb3f193_0  
+python-dateutil           2.8.1                      py_0    conda-forge
+python_abi                3.7                     1_cp37m    conda-forge
+pytorch                   1.7.1           py3.7_cuda11.0.221_cudnn8.0.5_0    pytorch
+pytz                      2021.1                   pypi_0    pypi
+pyyaml                    5.3.1            py37hb5d75c8_1    conda-forge
+pyzmq                     19.0.2           py37hac76be4_2    conda-forge
+readline                  8.1                  h27cfd23_0  
+requests                  2.25.1                   pypi_0    pypi
+requests-oauthlib         1.3.0                    pypi_0    pypi
+rsa                       4.7.2                    pypi_0    pypi
+scipy                     1.6.1                    pypi_0    pypi
+send2trash                1.5.0                      py_0    conda-forge
+setuptools                52.0.0           py37h06a4308_0  
+six                       1.15.0             pyh9f0ad1d_0    conda-forge
+sqlite                    3.35.2               hdfb4753_0  
+stable-baselines3         1.0                      pypi_0    pypi
+tensorboard               2.4.1                    pypi_0    pypi
+tensorboard-plugin-wit    1.8.0                    pypi_0    pypi
+termcolor                 1.1.0            py37h06a4308_1  
+terminado                 0.9.3            py37h89c1867_0    conda-forge
+testpath                  0.4.4                      py_0    conda-forge
+tk                        8.6.10               hbc83047_0  
+torchaudio                0.7.2                      py37    pytorch
+torchvision               0.8.2                py37_cu110    pytorch
+tornado                   6.1              py37h4abf009_0    conda-forge
+traitlets                 5.0.5                      py_0    conda-forge
+typing-extensions         3.7.4.3                       0  
+typing_extensions         3.7.4.3                    py_0    conda-forge
+urllib3                   1.26.4                   pypi_0    pypi
+wcwidth                   0.2.5              pyh9f0ad1d_2    conda-forge
+webencodings              0.5.1                      py_1    conda-forge
+werkzeug                  1.0.1                    pypi_0    pypi
+wheel                     0.36.2             pyhd3eb1b0_0  
+xz                        5.2.5                h7b6447c_0  
+yaml                      0.2.5                h516909a_0    conda-forge
+zeromq                    4.3.4                h2531618_0  
+zipp                      3.4.1              pyhd8ed1ab_0    conda-forge
+zlib                      1.2.11               h7b6447c_3  
+zstd                      1.4.5                h9ceee32_0  
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="SB3-tutorials">
+<a class="anchor" href="#SB3-tutorials" aria-hidden="true"><span class="octicon octicon-link"></span></a>SB3 tutorials<a class="anchor-link" href="#SB3-tutorials"> </a>
+</h1>
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">gym</span>
+
+<span class="kn">from</span> <span class="nn">stable_baselines3</span> <span class="kn">import</span> <span class="n">A2C</span>
+<span class="kn">from</span> <span class="nn">stable_baselines3.common.monitor</span> <span class="kn">import</span> <span class="n">Monitor</span>
+<span class="kn">from</span> <span class="nn">stable_baselines3.common.callbacks</span> <span class="kn">import</span> <span class="n">CheckpointCallback</span><span class="p">,</span> <span class="n">EvalCallback</span>
+
+<span class="c1"># Save a checkpoint every 1000 steps</span>
+<span class="n">checkpoint_callback</span> <span class="o">=</span> <span class="n">CheckpointCallback</span><span class="p">(</span><span class="n">save_freq</span><span class="o">=</span><span class="mi">5000</span><span class="p">,</span> <span class="n">save_path</span><span class="o">=</span><span class="s2">"/home/explore/git/guillaume/stable_baselines_3/logs/"</span><span class="p">,</span>
+                                         <span class="n">name_prefix</span><span class="o">=</span><span class="s2">"rl_model"</span><span class="p">)</span>
+
+<span class="c1"># Evaluate the model periodically</span>
+<span class="c1"># and auto-save the best model and evaluations</span>
+<span class="c1"># Use a monitor wrapper to properly report episode stats</span>
+<span class="n">eval_env</span> <span class="o">=</span> <span class="n">Monitor</span><span class="p">(</span><span class="n">gym</span><span class="o">.</span><span class="n">make</span><span class="p">(</span><span class="s2">"LunarLander-v2"</span><span class="p">))</span>
+<span class="c1"># Use deterministic actions for evaluation</span>
+<span class="n">eval_callback</span> <span class="o">=</span> <span class="n">EvalCallback</span><span class="p">(</span><span class="n">eval_env</span><span class="p">,</span> <span class="n">best_model_save_path</span><span class="o">=</span><span class="s2">"/home/explore/git/guillaume/stable_baselines_3/logs/"</span><span class="p">,</span>
+                             <span class="n">log_path</span><span class="o">=</span><span class="s2">"/home/explore/git/guillaume/stable_baselines_3/logs/"</span><span class="p">,</span> <span class="n">eval_freq</span><span class="o">=</span><span class="mi">2000</span><span class="p">,</span>
+                             <span class="n">deterministic</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">render</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="c1"># Train an agent using A2C on LunarLander-v2</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">A2C</span><span class="p">(</span><span class="s2">"MlpPolicy"</span><span class="p">,</span> <span class="s2">"LunarLander-v2"</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">learn</span><span class="p">(</span><span class="n">total_timesteps</span><span class="o">=</span><span class="mi">20000</span><span class="p">,</span> <span class="n">callback</span><span class="o">=</span><span class="p">[</span><span class="n">checkpoint_callback</span><span class="p">,</span> <span class="n">eval_callback</span><span class="p">])</span>
+
+<span class="c1"># Retrieve and reset the environment</span>
+<span class="n">env</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">get_env</span><span class="p">()</span>
+<span class="n">obs</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">reset</span><span class="p">()</span>
+
+<span class="c1"># Query the agent (stochastic action here)</span>
+<span class="n">action</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">obs</span><span class="p">,</span> <span class="n">deterministic</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Issues-and-fix">
+<a class="anchor" href="#Issues-and-fix" aria-hidden="true"><span class="octicon octicon-link"></span></a>Issues and fix<a class="anchor-link" href="#Issues-and-fix"> </a>
+</h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>CUDA error: CUBLAS_STATUS_INTERNAL_ERROR</strong></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Downgrade pytorch to 1.7.1</p>
+<p>to avoid <code>RuntimeError: CUDA error: CUBLAS_STATUS_INTERNAL_ERROR when calling cublasCreate(handle)</code></p>
+<div class="highlight"><pre><span></span>pip install <span class="nv">torch</span><span class="o">==</span><span class="m">1</span>.7.1
+</pre></div>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>RuntimeError: CUDA error: invalid device function</strong></p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>nvidia-smi
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Thu Mar 25 09:13:49 2021       
++-----------------------------------------------------------------------------+
+| NVIDIA-SMI 450.102.04   Driver Version: 450.102.04   CUDA Version: 11.0     |
+|-------------------------------+----------------------+----------------------+
+| GPU  Name        Persistence-M| Bus-Id        Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp  Perf  Pwr:Usage/Cap|         Memory-Usage | GPU-Util  Compute M. |
+|                               |                      |               MIG M. |
+|===============================+======================+======================|
+|   0  Quadro RTX 4000     Off  | 00000000:01:00.0  On |                  N/A |
+| N/A   41C    P5    18W /  N/A |   2104MiB /  7982MiB |     32%      Default |
+|                               |                      |                  N/A |
++-------------------------------+----------------------+----------------------+
+                                                                               
++-----------------------------------------------------------------------------+
+| Processes:                                                                  |
+|  GPU   GI   CI        PID   Type   Process name                  GPU Memory |
+|        ID   ID                                                   Usage      |
+|=============================================================================|
+|    0   N/A  N/A      1153      G   /usr/lib/xorg/Xorg                162MiB |
+|    0   N/A  N/A      1904      G   /usr/lib/xorg/Xorg                268MiB |
+|    0   N/A  N/A      2076      G   /usr/bin/gnome-shell              403MiB |
+|    0   N/A  N/A      2697      G   ...gAAAAAAAAA --shared-files       54MiB |
+|    0   N/A  N/A      7220      G   ...AAAAAAAAA= --shared-files       84MiB |
+|    0   N/A  N/A     57454      G   /usr/lib/firefox/firefox            2MiB |
+|    0   N/A  N/A     59274      C   ...ablebaselines3/bin/python     1051MiB |
++-----------------------------------------------------------------------------+
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>CUDA version is 11.0 on my workstation.</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>nvcc --version
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>nvcc: NVIDIA (R) Cuda compiler driver
+Copyright (c) 2005-2019 NVIDIA Corporation
+Built on Sun_Jul_28_19:07:16_PDT_2019
+Cuda compilation tools, release 10.1, V10.1.243
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>conda install <span class="nv">pytorch</span><span class="o">==</span><span class="m">1</span>.7.1 <span class="nv">torchvision</span><span class="o">==</span><span class="m">0</span>.8.2 <span class="nv">torchaudio</span><span class="o">==</span><span class="m">0</span>.7.2 <span class="nv">cudatoolkit</span><span class="o">=</span><span class="m">11</span>.0 -c pytorch
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Collecting package metadata (current_repodata.json): done
+Solving environment: done
+
+# All requested packages already installed.
+
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Everything seems fine after these updates.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Stable-baselines-3-user-guide">
+<a class="anchor" href="#Stable-baselines-3-user-guide" aria-hidden="true"><span class="octicon octicon-link"></span></a>Stable baselines 3 user guide<a class="anchor-link" href="#Stable-baselines-3-user-guide"> </a>
+</h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>There is an impressive documentation associated with stable baselines 3.
+<a href="https://stable-baselines3.readthedocs.io/en/master/guide/quickstart.html">Quickstart</a></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Tips-and-tricks">
+<a class="anchor" href="#Tips-and-tricks" aria-hidden="true"><span class="octicon octicon-link"></span></a>Tips and tricks<a class="anchor-link" href="#Tips-and-tricks"> </a>
+</h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>This <a href="https://stable-baselines3.readthedocs.io/en/master/guide/rl_tips.html">page</a> covers general advice about RL (where to start, which algorithm to choose, how to evaluate an algorithm, …), as well as tips and tricks when using a custom environment or implementing an RL algorithm.</p>
+<ul>
+<li>Be familiar with RL, see <a href="https://stable-baselines3.readthedocs.io/en/master/guide/rl.html">resource</a> page</li>
+<li>read SB3 documentation</li>
+<li>do the <a href="https://github.com/araffin/rl-tutorial-jnrr19/tree/sb3">tutorial</a>
+</li>
+</ul>
+<p><strong>Tune hyperparameters</strong>
+RL zoo is introduced. It contains some hyperparameter optimization.</p>
+<p><strong>RL evaluation</strong>
+We suggest you reading <a href="https://arxiv.org/abs/1709.06560">Deep Reinforcement Learning that Matters</a> for a good discussion about RL evaluation.</p>
+<p><strong>which algorithm to choose</strong>
+1st criteria is discrete vs continuous actions. And 2nd is capacity to parallelize training.</p>
+<p><em>Discrete Actions</em></p>
+<ul>
+<li>Discrete Actions - Single Process</li>
+</ul>
+<p><code>DQN</code> with extensions (double DQN, prioritized replay, …) are the recommended algorithms. We notably provide <code>QR-DQN</code> in our <a href="https://stable-baselines3.readthedocs.io/en/master/guide/sb3_contrib.html#sb3-contrib">contrib repo</a>. <code>DQN</code> is usually slower to train (regarding wall clock time) but is the most sample efficient (because of its replay buffer).</p>
+<ul>
+<li>Discrete Actions - Multiprocessed</li>
+</ul>
+<p>You should give a try to <code>PPO</code> or <code>A2C</code>.</p>
+<p><em>Continuous Actions</em></p>
+<ul>
+<li>Continuous Actions - Single Process</li>
+</ul>
+<p>Current State Of The Art (SOTA) algorithms are <code>SAC</code>, <code>TD3</code> and <code>TQC</code> (available in our <a href="https://stable-baselines3.readthedocs.io/en/master/guide/sb3_contrib.html#sb3-contrib">contrib repo</a>). Please use the hyperparameters in the <a href="https://github.com/DLR-RM/rl-baselines3-zoo">RL zoo</a> for best results.</p>
+<ul>
+<li>Continuous Actions - Multiprocessed</li>
+</ul>
+<p>Take a look at <code>PPO</code> or <code>A2C</code>. Again, don’t forget to take the hyperparameters from the <a href="https://github.com/DLR-RM/rl-baselines3-zoo">RL zoo</a> for continuous actions problems (cf <em>Bullet</em> envs).</p>
+<p><strong>Creating a custom env</strong></p>
+<p>multiple times there are advices about normalizing: observation and action space. A good practice is to rescale your actions to lie in [-1, 1]. This does not limit you as you can easily rescale the action inside the environment</p>
+<p><strong>tips and tricks to reproduce a RL paper</strong></p>
+<p><a href="https://stable-baselines3.readthedocs.io/en/master/guide/rl_tips.html">Reinforcement Learning Tips and Tricks — Stable Baselines3 1.1.0a1 documentation</a></p>
+<blockquote>
+<p>A personal pick (by @araffin) for environments with gradual difficulty in RL with continuous actions:&gt; &gt; 1.  Pendulum (easy to solve)
+</p>
+<ol>
+<li>
+<p>HalfCheetahBullet (medium difficulty with local minima and shaped reward)</p>
+</li>
+<li>
+<p>BipedalWalkerHardcore (if it works on that one, then you can have a cookie)</p>
+</li>
+</ol>
+<p>in RL with discrete actions:&gt; &gt; 1.  CartPole-v1 (easy to be better than random agent, harder to achieve maximal performance)
+</p>
+<ol>
+<li>
+<p>LunarLander</p>
+</li>
+<li>
+<p>Pong (one of the easiest Atari game)</p>
+</li>
+<li>
+<p>other Atari games (e.g. Breakout)</p>
+</li>
+</ol>
+</blockquote>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Resource-page">
+<a class="anchor" href="#Resource-page" aria-hidden="true"><span class="octicon octicon-link"></span></a>Resource page<a class="anchor-link" href="#Resource-page"> </a>
+</h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><a href="https://stable-baselines3.readthedocs.io/en/master/guide/rl.html">Reinforcement Learning Resources — Stable Baselines3 1.1.0a1 documentation</a></p>
+<p>Stable-Baselines3 assumes that you already understand the basic concepts of Reinforcement Learning (RL).</p>
+<p>However, if you want to learn about RL, there are several good resources to get started:</p>
+<ul>
+<li>
+<p><a href="https://spinningup.openai.com/en/latest/">OpenAI Spinning Up</a></p>
+</li>
+<li>
+<p><a href="http://www0.cs.ucl.ac.uk/staff/d.silver/web/Teaching.html">David Silver’s course</a></p>
+</li>
+<li>
+<p><a href="https://lilianweng.github.io/lil-log/2018/04/08/policy-gradient-algorithms.html">Lilian Weng’s blog</a></p>
+</li>
+<li>
+<p><a href="https://sites.google.com/view/deep-rl-bootcamp/lectures">Berkeley’s Deep RL Bootcamp</a></p>
+</li>
+<li>
+<p><a href="http://rail.eecs.berkeley.edu/deeprlcourse/">Berkeley’s Deep Reinforcement Learning course</a></p>
+</li>
+<li>
+<p><a href="https://github.com/dennybritz/reinforcement-learning">More resources</a></p>
+</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Examples">
+<a class="anchor" href="#Examples" aria-hidden="true"><span class="octicon octicon-link"></span></a>Examples<a class="anchor-link" href="#Examples"> </a>
+</h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>I will run these examples in <a href="https://github.com/castorfou/handson_stablebaselines3/blob/main/01%20-%20hands-on.ipynb">01 -hands-on.ipynb</a> from <a href="https://github.com/castorfou/handson_stablebaselines3">handson_stablebaselines3</a></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>DQN lunarlander</strong>
+<img src="/blog/images/copied_from_nb/../images/lunar_module.gif" alt=""></p>
+<p>My module is never landing :(</p>
+<p>Note: animated gif created with <a href="https://github.com/phw/peek">peek</a>.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>PPO with multiprocessing cartpole</strong></p>
+<p><img src="/blog/images/copied_from_nb/../images/cartpole_ppo.gif" alt=""></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>Monitor training using callback</strong></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>This could be useful when you want to monitor training, for instance display live learning curves in Tensorboard (or in <a href="https://github.com/fossasia/visdom">Visdom</a>) or save the best agent.</p>
+<p><img src="/blog/images/copied_from_nb/../images/sb3_learning.png" alt=""></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>Atari game such as pong (A2C with 6 envt) or breakout</strong></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><img src="/blog/images/copied_from_nb/../images/sb3_pong.gif" alt=""></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Here the list of valid gym atari environments: <a href="https://gym.openai.com/envs/#atari">https://gym.openai.com/envs/#atari</a></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><img src="/blog/images/copied_from_nb/../images/sb3_breakout.gif" alt="sb3_breakout.gif"></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>pybullet</strong></p>
+<p>This is a SDK to real-time collision detection and multi-physics simulation for VR, games, visual effects, robotics, machine learning etc.</p>
+<p><a href="https://github.com/bulletphysics/bullet3/">https://github.com/bulletphysics/bullet3/</a></p>
+<p><img src="https://camo.githubusercontent.com/0f979f7423e65c1bd31659d153b6b2a59d3fd83896bafb96f7c3f80e3f7f1ee1/68747470733a2f2f707962756c6c65742e6f72672f776f726470726573732f77702d636f6e74656e742f75706c6f6164732f323031392f30332f63726f707065642d707962756c6c65742e706e67" alt=""></p>
+<p>We need to install it: <code>pip install pybullet</code></p>
+<p>I don't have rendering capacity when playing with it. Because robotic is far from my need, I will skip on this one</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>Hindsight Experience Replay (HER)</strong></p>
+<p>using <a href="https://github.com/eleurent/highway-env">Highway-Env</a></p>
+<p>installation with <code>pip install highway-env</code></p>
+<p>After 1h15m of training, some 1st results:</p>
+<p><img src="/blog/images/copied_from_nb/../images/sb3_parking.gif" alt=""></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>And after that some technical stuff such as:</p>
+<ul>
+<li>Learning Rate Schedule: start with high value and reduce it as learning goes</li>
+<li>Advanced Saving and Loading: how to easily create a test environment to evaluate an agent periodically, use a policy independently from a model (and how to save it, load it) and save/load a replay buffer.</li>
+<li>Accessing and modifying model parameters: These functions are useful when you need to e.g. evaluate large set of models with same network structure, visualize different layers of the network or modify parameters manually.</li>
+<li>Record a video or make a gif</li>
+</ul>
+<p><strong>Make a GIF of a Trained Agent</strong></p>
+<p><code>pip install imageio</code></p>
+<p>and this time the lander is getting closer to moon but not at all between flags.
+<img src="/blog/images/copied_from_nb/../images/lander_a2c.gif" alt=""></p>
+
+</div>
+</div>
+</div>
+</div>
+
+
+
+  </div><!-- from https://github.com/utterance/utterances -->
+<script src="https://utteranc.es/client.js"
+        repo="castorfou/guillaume_blog"
+        issue-term="title"
+        label="blogpost-comment"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script><a class="u-url" href="/blog/blog/stable-baselines-3.html" hidden></a>
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/blog/"></data>
+
+  <div class="wrapper">
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col">
+        <p class="feed-subscribe">
+          <a href="/blog/feed.xml">
+            <svg class="svg-icon orange">
+              <use xlink:href="/blog/assets/minima-social-icons.svg#rss"></use>
+            </svg><span>Subscribe</span>
+          </a>
+        </p>
+      </div>
+      <div class="footer-col">
+        <p>Journey for a datascientist</p>
+      </div>
+    </div>
+
+    <div class="social-links"><ul class="social-media-list"><li><a rel="me" href="https://github.com/castorfou" target="_blank" title="castorfou"><svg class="svg-icon grey"><use xlink:href="/blog/assets/minima-social-icons.svg#github"></use></svg></a></li><li><a rel="me" href="https://twitter.com/GuillaumeRamel1" target="_blank" title="GuillaumeRamel1"><svg class="svg-icon grey"><use xlink:href="/blog/assets/minima-social-icons.svg#twitter"></use></svg></a></li></ul>
+</div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>
