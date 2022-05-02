@@ -16,6 +16,8 @@ as detailed inhttps://github.com/fastai/fastpages/issues/634
 
 Hamel asks to restart from a new repo. But how to keep the same blog url?
 
+I would like to keep [castorfou.github.io/guillaume_blog](https://castorfou.github.io/guillaume_blog/) and not have to move to  [castorfou.github.io/blog](https://castorfou.github.io/blog/) 
+
 Here are the steps.
 
 
@@ -44,9 +46,10 @@ Here are the steps.
 
 
 
-### And complete the configuration to keep our baseurl
+### ~~And complete the configuration to keep our baseurl~~
 
-by copying `_config.yml`
+~~by copying `_config.yml`~~
 
-and editing `_action_files/settings.ini` to update `baseurl`: fastpages expects a match with `baseurl` in `_config.yml` and `_action_files/settings.ini`
+~~and editing `_action_files/settings.ini` to update `baseurl`: fastpages expects a match with `baseurl` in `_config.yml` and `_action_files/settings.ini~~`
 
+It doesn't work... to be continued ...
