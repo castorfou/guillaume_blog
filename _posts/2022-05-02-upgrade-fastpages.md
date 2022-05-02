@@ -14,7 +14,9 @@ as detailed inhttps://github.com/fastai/fastpages/issues/634
 
 
 
-Hamel asks to restart from a new repo. Here are the steps.
+Hamel asks to restart from a new repo. But how to keep the same blog url?
+
+Here are the steps.
 
 
 
@@ -22,7 +24,7 @@ Hamel asks to restart from a new repo. Here are the steps.
 
 
 
-### Setup
+### Installation
 
 1. Generate a copy of [fastpages repo](https://github.com/fastai/fastpages#setup-instructions). Just have to follow instructions by clicking at https://github.com/fastai/fastpages/generate
 2. Click on the PR `Initial Setup` in your new repo. There are instructions to create a SSH_DEPLOY_KEY.
@@ -42,7 +44,7 @@ Hamel asks to restart from a new repo. Here are the steps.
 
 
 
-### And complete the configuration
+### And complete the configuration to keep our baseurl
 
 by copying `_config.yml`
 
