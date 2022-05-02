@@ -1,0 +1,2193 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.9.2" />
+<title>DateFab_NumTombee_Dataset API documentation</title>
+<meta name="description" content="" />
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
+<link rel="stylesheet preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js" integrity="sha256-Uv3H6lx7dJmRfRvH8TH6kJD1TSK1aFcwgx+mdg3epi8=" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => hljs.initHighlighting())</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>DateFab_NumTombee_Dataset</code></h1>
+</header>
+<section id="section-intro">
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">#################################################
+### THIS FILE WAS AUTOGENERATED! DO NOT EDIT! ###
+#################################################
+# file to edit: 00 - Class DateFab_NumTombee_Dataset.ipynb
+
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+
+from bokeh.io import show, output_notebook
+from bokeh.models import ColumnDataSource
+from bokeh.plotting import figure
+from bokeh.transform import jitter
+from bokeh.models import HoverTool
+from bokeh.models import Legend, LegendItem
+from math import pi
+
+from IPython.display import set_matplotlib_formats
+set_matplotlib_formats(&#39;png&#39;, &#39;pdf&#39;)
+
+import os.path, platform
+
+
+
+
+
+from exp.init_D059 import *
+check_SECU()
+
+
+class DateFab_NumTombee_Dataset:
+    &#39;&#39;&#39;Pour stocker les datasets contenant les clés Date_Fab et Num_Tombee&#39;&#39;&#39;
+    def __init__(self, dataset, name, description=&#39;&#39;):
+        &#39;&#39;&#39;
+        les attributs:
+        - dataset : une copie du dataframe, on supprime les vrais doublons (2 lignes strictement identiques)
+        - name : le nom (abrégé) du dataframe
+        - description : une description en quelques mots
+        &#39;&#39;&#39;
+        self.dataset = dataset.copy()
+        self.name = name
+        self.description = description
+        # on supprime les lignes dupliquées: 2 lignes strictement identiques
+        self.dataset.drop_duplicates(inplace=True)
+
+    def get_info(self):
+        &#39;&#39;&#39;retourne le nom, la description du dataset&#39;&#39;&#39;
+        return f&#34;\n Dataset {self.name} [{self.description}]\n&#34;
+
+    def get_shape(self):
+        &#39;&#39;&#39;retourne le nombre de lignes et colonnes du dataset&#39;&#39;&#39;
+        return f&#34; - shape : ({self.dataset.shape})\n&#34;
+
+    def get_dates(self):
+        &#39;&#39;&#39;retourne l&#39;amplitude temporelle de Date_Fab du dataset&#39;&#39;&#39;
+        return f&#34; - amplitude temporelle : ({self.dataset.Date_Fab.min()} - {self.dataset.Date_Fab.max()})\n&#34;
+
+    def __repr__(self):
+        &#39;&#39;&#39;retourne get_info quand évalué directement&#39;&#39;&#39;
+        return self.get_info()
+
+    def __str__(self):
+        &#39;&#39;&#39;retourne get_info, get_shape, get_dates dans un print(&lt;DateFab_NumTombee_Dataset&gt;)&#39;&#39;&#39;
+        return self.get_info()+self.get_shape()+self.get_dates()+&#39;\n&#39;
+
+    def get_duplicates(self, keep=False):
+        &#39;&#39;&#39;retourne les lignes du dataset qui contiennent des doublons sur la base de la clé
+        Date_Fab, Num_Tombee
+        keep{‘first’, ‘last’, False}, default ‘False’
+            Determines which duplicates (if any) to mark.
+            first : Mark duplicates as True except for the first occurrence.
+            last : Mark duplicates as True except for the last occurrence.
+            False : Mark all duplicates as True.
+        &#39;&#39;&#39;
+        return self.dataset.loc[self.dataset.duplicated(subset=[&#39;Num_Tombee&#39;, &#39;Date_Fab&#39;], keep=keep)]
+
+    def _create_tempo_df(self, dataset_copy):
+        &#39;&#39;&#39;
+        fonction technique (pas à appeler directement)
+        à partir d&#39;un dataset qui contient
+        les colonnes date_week, date_year
+        crée un dataframe dense de 0 de la 1ere semaine à la derniere
+        (c&#39;est uniquement pour completer les density plots : plot_density_per_week, plot_density_per_week_bokeh, comparaison_plot_density)
+        &#39;&#39;&#39;
+        if (dataset_copy.shape[0]==0):
+            return pd.DataFrame()
+        debut_annee=dataset_copy[&#39;date_year&#39;].min()
+        fin_annee=dataset_copy[&#39;date_year&#39;].max()
+        debut_semaine=dataset_copy.loc[dataset_copy[&#39;date_year&#39;] == debut_annee][&#39;date_week&#39;].min()
+        fin_semaine=dataset_copy.loc[dataset_copy[&#39;date_year&#39;] == fin_annee][&#39;date_week&#39;].max()
+        liste_tempo = []
+        for annee in range(debut_annee, fin_annee+1):
+            deb_sem = 1
+            fin_sem = 52
+            if (annee == debut_annee):
+                deb_sem = debut_semaine
+            if (annee == fin_annee):
+                fin_sem = fin_semaine
+            for sem in range(deb_sem, fin_sem+1):
+                liste_tempo.append([annee, sem, 0, 0])
+        liste_tempo_df = pd.DataFrame(liste_tempo, columns =[&#39;date_year&#39;, &#39;date_week&#39;, &#39;Unique&#39;, &#39;Doublons&#39;]).set_index([&#39;date_year&#39;, &#39;date_week&#39;])
+        return liste_tempo_df
+
+
+    def plot_density_per_week_matplotlib(self, without_duplicate=False):
+        &#39;&#39;&#39;affiche le nombre d&#39;observations par semaine
+        si without_duplicate=True, on drop les doublons sur le critere [&#39;Num_Tombee&#39;, &#39;Date_Fab&#39;]
+        sinon on les affiche en rouge (par défaut)
+        &#39;&#39;&#39;
+        dataset_copy = self.dataset.copy()
+        if (without_duplicate):
+            dataset_copy.drop_duplicates(subset=[&#39;Date_Fab&#39;, &#39;Num_Tombee&#39;], inplace=True)
+        # add columns for week and year of the date
+        dataset_copy[&#39;date_week&#39;] = dataset_copy[&#39;Date_Fab&#39;].apply(lambda x: x.isocalendar()[1])
+        dataset_copy[&#39;date_year&#39;] = dataset_copy[&#39;Date_Fab&#39;].apply(lambda x: x.isocalendar()[0])
+
+        dataset_unique = dataset_copy.drop_duplicates(subset=[&#39;Date_Fab&#39;, &#39;Num_Tombee&#39;])
+        dataset_doublon = dataset_copy.loc[dataset_copy.index.difference(dataset_unique.index)]
+        groupage_unique = dataset_unique.groupby([dataset_unique[&#39;date_year&#39;],dataset_unique[&#39;date_week&#39;]])[&#39;Num_Tombee&#39;].count()
+        groupage_doublon = dataset_doublon.groupby([dataset_doublon[&#39;date_year&#39;],dataset_doublon[&#39;date_week&#39;]])[&#39;Num_Tombee&#39;].count()
+
+        graph_rft = pd.concat([groupage_unique, groupage_doublon], axis=1)
+        graph_rft.columns=[&#39;Unique&#39;, &#39;Doublons&#39;]
+        graph_rft=graph_rft[[&#39;Unique&#39;, &#39;Doublons&#39;]]
+
+        graph_rft=graph_rft.reindex(self._create_tempo_df(dataset_copy).index)
+
+        colors = [&#34;green&#34; , &#34;red&#34;]
+        barWidth = 0.85
+        graph_rft.plot.bar(stacked=True, color=colors, figsize=(17,7),width=barWidth)
+        plt.show()
+
+    def plot_density_per_week(self, without_duplicate=False):
+        &#39;&#39;&#39;affiche le nombre d&#39;observations par semaine
+        si without_duplicate=True, on drop les doublons sur le critere [&#39;Num_Tombee&#39;, &#39;Date_Fab&#39;]
+        sinon on les affiche en rouge (par défaut)
+        &#39;&#39;&#39;
+        dataset_copy = self.dataset.copy()
+        if (without_duplicate):
+            dataset_copy.drop_duplicates(subset=[&#39;Date_Fab&#39;, &#39;Num_Tombee&#39;], inplace=True)
+        # add columns for week and year of the date
+        dataset_copy[&#39;date_week&#39;] = dataset_copy[&#39;Date_Fab&#39;].apply(lambda x: x.isocalendar()[1])
+        dataset_copy[&#39;date_year&#39;] = dataset_copy[&#39;Date_Fab&#39;].apply(lambda x: x.isocalendar()[0])
+
+        dataset_unique = dataset_copy.drop_duplicates(subset=[&#39;Date_Fab&#39;, &#39;Num_Tombee&#39;])
+        dataset_doublon = dataset_copy.loc[dataset_copy.index.difference(dataset_unique.index)]
+        groupage_unique = dataset_unique.groupby([dataset_unique[&#39;date_year&#39;],dataset_unique[&#39;date_week&#39;]])[&#39;Num_Tombee&#39;].count()
+        groupage_doublon = dataset_doublon.groupby([dataset_doublon[&#39;date_year&#39;],dataset_doublon[&#39;date_week&#39;]])[&#39;Num_Tombee&#39;].count()
+
+        graph_rft = pd.concat([groupage_unique, groupage_doublon], axis=1)
+        graph_rft.columns=[&#39;Unique&#39;, &#39;Doublons&#39;]
+        graph_rft=graph_rft[[&#39;Unique&#39;, &#39;Doublons&#39;]]
+
+        graph_rft=graph_rft.reindex(self._create_tempo_df(dataset_copy).index)
+        graph_rft=graph_rft.reset_index(level=[0,1])
+        graph_rft[&#39;index&#39;]=graph_rft[&#39;date_year&#39;].apply(str)+&#39;-&#39;+graph_rft[&#39;date_week&#39;].apply(str)
+        graph_rft.fillna(0, inplace=True)
+        graph_rft[&#39;total&#39;]=graph_rft[&#39;Unique&#39;]+graph_rft[&#39;Doublons&#39;]
+    #     graph_rft[&#39;index&#39;]=graph_rft[&#39;index&#39;].astype(&#39;int64&#39;)
+        graph_rft.set_index([&#39;index&#39;], inplace=True)
+
+        graph_rft.drop([&#39;date_year&#39;, &#39;date_week&#39;], axis=1, inplace=True)
+
+    #     return graph_rft
+
+        colors = [&#34;green&#34; , &#34;red&#34;]
+        barWidth = 0.7
+    #         graph_rft.plot.bar(stacked=True, color=colors, figsize=(17,7),width=barWidth)
+    #         plt.show()
+
+        output_notebook()
+        TOOLS = &#34;xpan,xwheel_zoom,crosshair, reset,save&#34;
+
+        p = figure(x_range=list(graph_rft.index), title=&#34;Density plot &#34;+self.name,
+                   tools=TOOLS, active_scroll=&#39;xwheel_zoom&#39;, plot_width=900, plot_height=500)
+        v = p.vbar_stack([&#39;Unique&#39;, &#39;Doublons&#39;], x=&#39;index&#39;, width=barWidth, color=colors,
+                     source=graph_rft, line_color=None)
+
+        tooltips = [
+            (&#34;Total &#34;, &#34;@total&#34;),
+            (&#34;Unique &#34;, &#34;@Unique&#34;),
+            (&#34;Doublons &#34;, &#34;@Doublons&#34;),
+            (&#39;# de semaine &#39;, &#34;@index&#34;)
+        ]
+
+        hover = HoverTool(tooltips=tooltips)
+        p.add_tools(hover)
+    #     item1 = LegendItem({&#39;label&#39;:&#39;Unique&#39;, &#39;renderers&#39;:[p.renderers[0]]});
+    #     item2 = LegendItem({&#39;label&#39;:&#39;Doublons&#39;, &#39;renderers&#39;:[p.renderers[1]]});
+    #     legend = Legend(items=[item1, item2])
+    #     p.add_layout(legend)
+
+        legend=Legend(items=[
+            (&#34;Unique&#34;,   [v[0]]),
+            (&#34;Doublons&#34;,   [v[1]])
+        ], location=(0, -30))
+        p.add_layout(legend)
+
+        p.legend.orientation = &#34;horizontal&#34;
+        p.legend.location = &#34;top_center&#34;
+        p.legend.click_policy=&#34;hide&#34;
+
+        p.xaxis.major_label_orientation = 3*pi/8
+        p.xaxis.axis_label_text_font_size = &#34;5pt&#34;
+        p.xaxis.major_label_text_font_size = &#34;5pt&#34;
+        p.xaxis.axis_label_text_font = &#34;times&#34;
+        p.xaxis.axis_label_text_color = &#34;black&#34;
+
+        show(p)
+
+    def extraire_periode(self, date_debut, date_fin):
+        &#39;&#39;&#39;
+        retourne un objet DateFab_NumTombee_Dataset
+        en ne gardant le contenu du dataset obéissant à date_debut&lt;= Date_Fab &lt;= date_fin
+
+        les dates peuvent être à structure variable: &#39;2021&#39; (année), &#39;2021-01&#39; (mois), &#39;2021-05-23&#39; (jour)
+        &#39;&#39;&#39;
+        sous_dataset=self.dataset.copy()[(self.dataset.Date_Fab &gt;= pd.to_datetime(date_debut))
+                                                     &amp; (self.dataset.Date_Fab &lt;= pd.to_datetime(date_fin))]
+        nouveauDateFab_NumTombee_Dataset = DateFab_NumTombee_Dataset(sous_dataset, self.name, self.description+f&#39; filtré entre {date_debut} et {date_fin}.&#39;)
+        return nouveauDateFab_NumTombee_Dataset
+
+
+    def comparaison(self, autreDateFab_NumTombee_Dataset):
+        &#39;&#39;&#39;retourne 3 objets DateFab_NumTombee_Dataset dont les datasets sont:
+        - dataset_commun - c&#39;est l&#39;intersection des index (Date_Fab, Num_Tombee) de self et autreDateFab_NumTombee_Dataset
+        - dataset_difference_gauche - c&#39;est la difference des index (Date_Fab, Num_Tombee) de self et
+                                        autreDateFab_NumTombee_Dataset en partant de self
+        - dataset_difference_droite - c&#39;est la difference des index (Date_Fab, Num_Tombee) de self et
+                                        autreDateFab_NumTombee_Dataset en partant de autreDateFab_NumTombee_Dataset
+        &#39;&#39;&#39;
+        index_commun = self.dataset.set_index([&#39;Date_Fab&#39;, &#39;Num_Tombee&#39;]).index.intersection(autreDateFab_NumTombee_Dataset.dataset.set_index([&#39;Date_Fab&#39;, &#39;Num_Tombee&#39;]).index)
+        index_gauche = self.dataset.set_index([&#39;Date_Fab&#39;, &#39;Num_Tombee&#39;]).index.difference(autreDateFab_NumTombee_Dataset.dataset.set_index([&#39;Date_Fab&#39;, &#39;Num_Tombee&#39;]).index)
+        index_droite = autreDateFab_NumTombee_Dataset.dataset.set_index([&#39;Date_Fab&#39;, &#39;Num_Tombee&#39;]).index.difference(self.dataset.set_index([&#39;Date_Fab&#39;, &#39;Num_Tombee&#39;]).index)
+
+        if (len(index_commun)==0):
+            dataset_commun=pd.DataFrame(columns=self.dataset.columns)
+        else:
+            dataset_commun = self.dataset.set_index([&#39;Date_Fab&#39;, &#39;Num_Tombee&#39;]).loc[index_commun].reset_index()
+
+        if (len(index_gauche)==0):
+            dataset_difference_gauche = pd.DataFrame(columns=self.dataset.columns)
+        else:
+            dataset_difference_gauche = self.dataset.set_index([&#39;Date_Fab&#39;, &#39;Num_Tombee&#39;]).loc[index_gauche].reset_index()
+
+        if (len(index_droite)==0):
+            dataset_difference_droite = pd.DataFrame(columns=autreDateFab_NumTombee_Dataset.dataset.columns)
+        else:
+            dataset_difference_droite = autreDateFab_NumTombee_Dataset.dataset.set_index([&#39;Date_Fab&#39;, &#39;Num_Tombee&#39;]).loc[index_droite].reset_index()
+
+        dataset_commun_obj = DateFab_NumTombee_Dataset(dataset_commun, self.name+&#39; inter &#39;+autreDateFab_NumTombee_Dataset.name, &#39;Intersection des 2 datasets : \n&#39;+self.description+&#39;\n&#39;+autreDateFab_NumTombee_Dataset.description)
+        dataset_difference_gauche_obj = DateFab_NumTombee_Dataset(dataset_difference_gauche, self.name+&#39; diff &#39;+autreDateFab_NumTombee_Dataset.name, &#39;Différence des 2 datasets : \n&#39;+self.description+&#39;\n&#39;+autreDateFab_NumTombee_Dataset.description)
+        dataset_difference_droite_obj = DateFab_NumTombee_Dataset(dataset_difference_droite, autreDateFab_NumTombee_Dataset.name+&#39; diff &#39;+self.name, &#39;Différence des 2 datasets : \n&#39;+autreDateFab_NumTombee_Dataset.description+&#39;\n&#39;+self.description)
+        print(f&#39;couverture commune : {100*dataset_commun_obj.dataset.shape[0]/(dataset_commun_obj.dataset.shape[0]+dataset_difference_gauche_obj.dataset.shape[0]+dataset_difference_droite_obj.dataset.shape[0]):0.02f} %&#39;)
+        return dataset_commun_obj, dataset_difference_gauche_obj, dataset_difference_droite_obj
+
+
+    def comparaison_plot_density_matplotlib(self, autreDateFab_NumTombee_Dataset):
+        &#39;&#39;&#39;affiche le nombre d&#39;observations par semaine
+        3 informations :
+        - en bleu : les données uniquement dans self
+        - en vert: les données (index) communes aux 2 datasets
+        - en rouge : les données uniquement dans autreDateFab_NumTombee_Dataset
+        &#39;&#39;&#39;
+        obj_commun, obj_gauche, obj_droite = self.comparaison(autreDateFab_NumTombee_Dataset)
+        for dataset in [obj_commun.dataset, obj_gauche.dataset, obj_droite.dataset]:
+            # add columns for week and year of the date
+            dataset[&#39;date_week&#39;] = dataset[&#39;Date_Fab&#39;].apply(lambda x: x.isocalendar()[1])
+            dataset[&#39;date_year&#39;] = dataset[&#39;Date_Fab&#39;].apply(lambda x: x.isocalendar()[0])
+
+        groupage_commun = obj_commun.dataset.groupby([obj_commun.dataset[&#39;date_year&#39;],obj_commun.dataset[&#39;date_week&#39;]])[&#39;Num_Tombee&#39;].count()
+        groupage_gauche = obj_gauche.dataset.groupby([obj_gauche.dataset[&#39;date_year&#39;],obj_gauche.dataset[&#39;date_week&#39;]])[&#39;Num_Tombee&#39;].count()
+        groupage_droite = obj_droite.dataset.groupby([obj_droite.dataset[&#39;date_year&#39;],obj_droite.dataset[&#39;date_week&#39;]])[&#39;Num_Tombee&#39;].count()
+
+
+        graph_rft = pd.concat([groupage_gauche, groupage_commun, groupage_droite], axis=1)
+        graph_rft.columns=[obj_gauche.name, obj_commun.name, obj_droite.name]
+        graph_rft=graph_rft[[obj_gauche.name, obj_commun.name, obj_droite.name]]
+
+        graph_rft=graph_rft.reindex(self._create_tempo_df(obj_commun.dataset).index.union(self._create_tempo_df(obj_gauche.dataset).index.union(self._create_tempo_df(obj_droite.dataset).index)))
+
+        colors = [&#34;blue&#34;, &#34;green&#34; , &#34;red&#34;]
+        barWidth = 0.85
+        graph_rft.plot.bar(stacked=True, color=colors, figsize=(17,7),width=barWidth)
+        plt.show()
+
+    def comparaison_plot_density(self, autreDateFab_NumTombee_Dataset):
+        &#39;&#39;&#39;affiche le nombre d&#39;observations par semaine
+        3 informations :
+        - en bleu : les données uniquement dans self
+        - en vert: les données (index) communes aux 2 datasets
+        - en rouge : les données uniquement dans autreDateFab_NumTombee_Dataset
+        &#39;&#39;&#39;
+        obj_commun, obj_gauche, obj_droite = self.comparaison(autreDateFab_NumTombee_Dataset)
+
+        for dataset in [obj_commun.dataset, obj_gauche.dataset, obj_droite.dataset]:
+            # add columns for week and year of the date
+            if (dataset.empty):
+                dataset[&#39;date_week&#39;] = dataset[&#39;Date_Fab&#39;]
+                dataset[&#39;date_year&#39;] = dataset[&#39;Date_Fab&#39;]
+            else:
+                dataset[&#39;date_week&#39;] = dataset[&#39;Date_Fab&#39;].apply(lambda x: x.isocalendar()[1])
+                dataset[&#39;date_year&#39;] = dataset[&#39;Date_Fab&#39;].apply(lambda x: x.isocalendar()[0])
+
+        groupage_commun = obj_commun.dataset.groupby([obj_commun.dataset[&#39;date_year&#39;],obj_commun.dataset[&#39;date_week&#39;]])[&#39;Num_Tombee&#39;].count()
+        groupage_gauche = obj_gauche.dataset.groupby([obj_gauche.dataset[&#39;date_year&#39;],obj_gauche.dataset[&#39;date_week&#39;]])[&#39;Num_Tombee&#39;].count()
+        groupage_droite = obj_droite.dataset.groupby([obj_droite.dataset[&#39;date_year&#39;],obj_droite.dataset[&#39;date_week&#39;]])[&#39;Num_Tombee&#39;].count()
+
+
+        graph_rft = pd.concat([groupage_gauche, groupage_commun, groupage_droite], axis=1)
+        graph_rft.columns=[obj_gauche.name, obj_commun.name, obj_droite.name]
+        graph_rft=graph_rft[[obj_gauche.name, obj_commun.name, obj_droite.name]]
+
+        graph_rft=graph_rft.reindex(self._create_tempo_df(obj_commun.dataset).index.union(self._create_tempo_df(obj_gauche.dataset).index.union(self._create_tempo_df(obj_droite.dataset).index)))
+
+        colors = [&#34;blue&#34;, &#34;green&#34; , &#34;red&#34;]
+        barWidth = 0.85
+    #     graph_rft.plot.bar(stacked=True, color=colors, figsize=(17,7),width=barWidth)
+    #     plt.show()
+        graph_rft=graph_rft.reset_index(level=[0,1])
+        graph_rft[&#39;index&#39;]=graph_rft[&#39;date_year&#39;].apply(str)+&#39;-&#39;+graph_rft[&#39;date_week&#39;].apply(str)
+        graph_rft.fillna(0, inplace=True)
+
+        graph_rft[&#39;total&#39;]=graph_rft[graph_rft.columns[2]]+graph_rft[graph_rft.columns[3]]+graph_rft[graph_rft.columns[4]]
+    #     graph_rft[&#39;index&#39;]=graph_rft[&#39;index&#39;].astype(&#39;int64&#39;)
+        graph_rft.set_index([&#39;index&#39;], inplace=True)
+
+        graph_rft.drop([&#39;date_year&#39;, &#39;date_week&#39;], axis=1, inplace=True)
+    #     return graph_rft
+
+    #     return graph_rft
+
+    #     colors = [&#34;green&#34; , &#34;red&#34;]
+        barWidth = 0.7
+    #         graph_rft.plot.bar(stacked=True, color=colors, figsize=(17,7),width=barWidth)
+    #         plt.show()
+
+        graph_rft.columns=[&#39;gauche&#39;, &#39;commun&#39;, &#39;droite&#39;, &#39;total&#39;]
+
+        output_notebook()
+        TOOLS = &#34;xpan,xwheel_zoom,crosshair, reset,save&#34;
+
+        p = figure(x_range=list(graph_rft.index), title=&#34;Density plot &#34;+self.name+&#34; vs &#34;+autreDateFab_NumTombee_Dataset.name,
+                   tools=TOOLS, active_scroll=&#39;xwheel_zoom&#39;, plot_width=900, plot_height=500)
+        v = p.vbar_stack([&#39;gauche&#39;, &#39;commun&#39;, &#39;droite&#39;], x=&#39;index&#39;, width=barWidth, color=colors,
+                     source=graph_rft, line_color=None)
+
+
+
+        tooltips = [
+            (&#34;Total &#34;, &#34;@total&#34;),
+            (obj_gauche.name, &#34;@gauche&#34;),
+            (obj_commun.name, &#34;@commun&#34;),
+            (obj_droite.name, &#34;@droite&#34;),
+            (&#39;# de semaine &#39;, &#34;@index&#34;)
+        ]
+
+        hover = HoverTool(tooltips=tooltips)
+        p.add_tools(hover)
+    #     item1 = LegendItem({&#39;label&#39;:&#39;Unique&#39;, &#39;renderers&#39;:[p.renderers[0]]});
+    #     item2 = LegendItem({&#39;label&#39;:&#39;Doublons&#39;, &#39;renderers&#39;:[p.renderers[1]]});
+    #     legend = Legend(items=[item1, item2])
+    #     p.add_layout(legend)
+
+        legend=Legend(items=[
+            (obj_gauche.name,   [v[0]]),
+            (obj_commun.name,   [v[1]]),
+            (obj_droite.name,   [v[2]])
+        ], location=(0, -30))
+        p.add_layout(legend)
+
+        p.legend.orientation = &#34;horizontal&#34;
+        p.legend.location = &#34;top_center&#34;
+        p.legend.click_policy=&#34;hide&#34;
+
+        p.xaxis.major_label_orientation = 3*pi/8
+        p.xaxis.axis_label_text_font_size = &#34;5pt&#34;
+        p.xaxis.major_label_text_font_size = &#34;5pt&#34;
+        p.xaxis.axis_label_text_font = &#34;times&#34;
+        p.xaxis.axis_label_text_color = &#34;black&#34;
+
+        show(p)
+
+    def plot(self, date_debut=None, date_fin=None):
+        &#39;&#39;&#39;affichage interactif des num_tombee en fonction de la date de fab
+        en precisant date_debut et date_fin, on vient resserrer la fenetre de visualisation
+        les dates peuvent être à structure variable: &#39;2021&#39; (année), &#39;2021-01&#39; (mois), &#39;2021-05-23&#39; (jour)
+        &#39;&#39;&#39;
+        dataset_copy = self.dataset.copy()
+        if (date_debut==None):
+            date_debut=dataset_copy.Date_Fab.min()
+        if (date_fin==None):
+            date_fin=dataset_copy.Date_Fab.max()
+
+        output_notebook()
+        source_donnees = ColumnDataSource(dataset_copy[(dataset_copy.Date_Fab &gt;= pd.to_datetime(date_debut))
+                                                     &amp; (dataset_copy.Date_Fab &lt;= pd.to_datetime(date_fin))])
+        TOOLS = &#34;xpan,xwheel_zoom,box_zoom,crosshair, reset,save&#34;
+        p = figure(x_axis_type=&#39;datetime&#39;, active_scroll=&#39;xwheel_zoom&#39;, tools=TOOLS,plot_width=900, plot_height=500)
+
+        p.line(x=&#39;Date_Fab&#39;, y=&#39;Num_Tombee&#39;, source=source_donnees)
+
+        p.circle(x=&#39;Date_Fab&#39;, y=&#39;Num_Tombee&#39;, size=3, line_color=&#34;green&#34;,
+                 fill_color=&#34;white&#34;, line_width=1, source=source_donnees, legend_label=self.name)
+
+        hover = HoverTool(tooltips=[(&#39;Date tombée&#39;,&#39;@Date_Fab{%Y-%m-%d %H:%M:%S}&#39;),
+                                (&#39;Num tombée&#39;, &#39;@Num_Tombee&#39;)],
+                      formatters={&#39;@Date_Fab&#39;:&#39;datetime&#39;})
+        p.add_tools(hover)
+        p.title.text = &#34;Num_tombee en fonction de la date&#34;
+        show(p)
+
+    def comparaison_plot(self, autreDateFab_NumTombee_Dataset, date_debut=None, date_fin=None):
+        &#39;&#39;&#39;affichage interactif des num_tombee en fonction de la date de fab
+        pour les 3 datasets retournés par comparaison
+        &#39;&#39;&#39;
+        dataset_copy = self.dataset.copy()
+        if (date_debut==None):
+            date_debut=dataset_copy.Date_Fab.min()
+        if (date_fin==None):
+            date_fin=dataset_copy.Date_Fab.max()
+
+        dataset_commun_obj, dataset_difference_gauche_obj, dataset_difference_droite_obj = self.extraire_periode(date_debut, date_fin).comparaison(autreDateFab_NumTombee_Dataset.extraire_periode(date_debut, date_fin))
+
+        output_notebook()
+        source_donnees_commun = ColumnDataSource(dataset_commun_obj.dataset)
+        source_donnees_droite = ColumnDataSource(dataset_difference_droite_obj.dataset)
+        source_donnees_gauche = ColumnDataSource(dataset_difference_gauche_obj.dataset)
+
+        TOOLS = &#34;xpan,xwheel_zoom,box_zoom,crosshair, reset,save&#34;
+        p = figure(x_axis_type=&#39;datetime&#39;, active_scroll=&#39;xwheel_zoom&#39;, tools=TOOLS,plot_width=900, plot_height=500)
+
+#         p.line(x=&#39;Date_Fab&#39;, y=&#39;Num_Tombee&#39;, source=source_donnees)
+
+        p.circle(x=&#39;Date_Fab&#39;, y=&#39;Num_Tombee&#39;, size=3, line_color=&#34;green&#34;,
+                 fill_color=&#34;white&#34;, line_width=1, source=source_donnees_commun, legend_label=dataset_commun_obj.name)
+        p.circle(x=&#39;Date_Fab&#39;, y=&#39;Num_Tombee&#39;, size=3, line_color=&#34;red&#34;,
+                 fill_color=&#34;white&#34;, line_width=1, source=source_donnees_droite, legend_label=dataset_difference_droite_obj.name)
+        p.circle(x=&#39;Date_Fab&#39;, y=&#39;Num_Tombee&#39;, size=3, line_color=&#34;blue&#34;,
+                 fill_color=&#34;white&#34;, line_width=1, source=source_donnees_gauche, legend_label=dataset_difference_gauche_obj.name)
+
+        hover = HoverTool(tooltips=[(&#39;Date tombée&#39;,&#39;@Date_Fab{%Y-%m-%d %H:%M:%S}&#39;),
+                                (&#39;Num tombée&#39;, &#39;@Num_Tombee&#39;)],
+                      formatters={&#39;@Date_Fab&#39;:&#39;datetime&#39;})
+        p.add_tools(hover)
+        p.title.text = &#34;Num_tombee en fonction de la date&#34;
+        p.legend.click_policy=&#34;hide&#34;
+        show(p)
+
+
+
+class STAM(DateFab_NumTombee_Dataset):
+    &#39;&#39;&#39;
+    Hérite de DateFab_NumTombee_Dataset
+    (Pour stocker les datasets contenant les clés Date_Fab et Num_Tombee)
+    Date_Fab_complet est horodatée et permet de faire des passages entre date calendaire et date michelin
+    Date_Fab_complet est créé à l&#39;initialisation
+    Date_Fab n&#39;est pas horodaté
+    &#39;&#39;&#39;
+    def __init__(self, dataset, name, description=&#39;&#39;, date_calendaire = False):
+        &#39;&#39;&#39;
+        les attributs:
+        - dataset : une copie du dataframe
+        - name : le nom (abrégé) du dataframe
+        - description : une description en quelques mots
+        - date_calendaire : False si les dates sont stockées en date Michelin, True si stockées en date Calendaire
+        &#39;&#39;&#39;
+        super().__init__(dataset, name, description)
+        self._create_dtdate_fom_datecomplet()
+        self.date_calendaire= date_calendaire
+
+    def get_info(self):
+        &#39;&#39;&#39;get_info de DateFab_NumTombee_Dataset complété avec l&#39;info de date_calendaire&#39;&#39;&#39;
+        return super().get_info()+&#39; &#39;+f&#39;Date calendaire: [{self.date_calendaire}]\n&#39;
+
+    def _create_dtdate_fom_datecomplet(self):
+        &#39;&#39;&#39;
+        fonction technique (pas appelable directement)
+        si la colonne Date_Fab_complet existe déjà, on est dans le cas d&#39;un dataset CLEAN
+        donc on ne fait rien
+        &#39;&#39;&#39;
+        if not (&#39;Date_Fab_complet&#39; in self.dataset.columns):
+            self.dataset[&#39;Date_Fab_complet&#39;]=self.dataset[&#39;Date_Fab&#39;]
+            self.dataset[&#39;Date_Fab&#39;]=self.dataset[&#39;Date_Fab_complet&#39;].dt.date
+            self.dataset[&#39;Date_Fab&#39;]=self.dataset[&#39;Date_Fab&#39;].astype(&#39;datetime64&#39;)
+
+    def passage_date_Calendaire(self, heureEquipeA = 6):
+        &#39;&#39;&#39;
+        passe en heure calendaire depuis une heure Michelin
+        seulement si date_calendaire == False
+
+        pour info: la journée Michelin est incrémentée non pas à minuit mais en debut d&#39;équipe A
+        Dates Michelin:
+        2021-01-23 23:00,  2021-01-23 02:00,  2021-01-23 05:59,  2021-01-24 06:05,
+        devient
+        Dates calendaire:
+        2021-01-23 23:00,  2021-01-24 02:00,  2021-01-24 05:59,  2021-01-24 06:05,
+        &#39;&#39;&#39;
+        if (self.date_calendaire):
+            print(self.get_info()+ &#39;déjà en date Calendaire\n&#39;)
+        else:
+            self.dataset[&#39;Date_Fab_complet&#39;]=self.dataset[&#39;Date_Fab_complet&#39;].apply(lambda row:self._ajoute_un_jour(row, heureEquipeA))
+            self.dataset[&#39;Date_Fab_complet&#39;]=self.dataset[&#39;Date_Fab_complet&#39;].astype(&#39;datetime64&#39;)
+            self.date_calendaire = True
+            self.dataset.sort_values(&#39;Date_Fab_complet&#39;, inplace=True)
+            self.dataset[&#39;Date_Fab&#39;]=self.dataset[&#39;Date_Fab_complet&#39;].dt.date
+            self.dataset[&#39;Date_Fab&#39;]=self.dataset[&#39;Date_Fab&#39;].astype(&#39;datetime64&#39;)
+
+    def passage_date_Michelin(self, heureEquipeA = 6):
+        &#39;&#39;&#39;
+        passe en heure Michelin depuis une heure calendaire
+        seulement si date_calendaire == True
+
+        pour info: la journée Michelin est incrémentée non pas à minuit mais en debut d&#39;équipe A
+        Dates calendaire:
+        2021-01-23 23:00,  2021-01-24 02:00,  2021-01-24 05:59,  2021-01-24 06:05,
+        devient
+        Dates Michelin:
+        2021-01-23 23:00,  2021-01-23 02:00,  2021-01-23 05:59,  2021-01-24 06:05,
+        &#39;&#39;&#39;
+        if (not self.date_calendaire):
+            print(self.get_info()+ &#39;déjà en date Michelin\n&#39;)
+        else:
+            self.dataset[&#39;Date_Fab_complet&#39;]=self.dataset[&#39;Date_Fab_complet&#39;].apply(lambda row:self._retire_un_jour(row, heureEquipeA))
+            self.dataset[&#39;Date_Fab_complet&#39;]=self.dataset[&#39;Date_Fab_complet&#39;].astype(&#39;datetime64&#39;)
+            self.date_calendaire = False
+            self.dataset.sort_values(&#39;Date_Fab_complet&#39;, inplace=True)
+            self.dataset[&#39;Date_Fab&#39;]=self.dataset[&#39;Date_Fab_complet&#39;].dt.date
+            self.dataset[&#39;Date_Fab&#39;]=self.dataset[&#39;Date_Fab&#39;].astype(&#39;datetime64&#39;)
+
+
+    def _ajoute_un_jour(self, date, heureEquipeA):
+        &#39;&#39;&#39;
+        fonction technique (pas appelable directement)
+        &#39;&#39;&#39;
+        heure = date.hour
+        if (heure &lt; heureEquipeA):
+            return date+np.timedelta64(24, &#39;h&#39;)
+        return date
+
+    def _retire_un_jour(self, date, heureEquipeA):
+        &#39;&#39;&#39;
+        fonction technique (pas appelable directement)
+        &#39;&#39;&#39;
+        heure = date.hour
+        if (heure &lt; heureEquipeA):
+            return date-np.timedelta64(24, &#39;h&#39;)
+        return date
+
+    def supprime_doublons(self):
+        &#39;&#39;&#39;si 2 lignes ont la meme Date_Fab_complet+Num_Tombee,
+        on ne garde que la dernière mesure (devrait correspondre à CE)
+        (en rediscuter avec Fred)
+        &#39;&#39;&#39;
+        self.dataset.sort_values([&#39;Date_Mes&#39;], inplace=True)
+        self.dataset.drop_duplicates(subset=[&#39;Date_Fab_complet&#39;, &#39;Num_Tombee&#39;], keep=&#39;last&#39;, inplace=True)
+        self.name = self.name+&#39; sans doublon&#39;
+        self.description = self.description + &#39;\n sans doublon&#39;
+        self.dataset.sort_values([&#39;Date_Fab_complet&#39;], inplace=True)
+
+    def extraire_periode(self, date_debut, date_fin):
+        &#39;&#39;&#39;
+        retourne un objet STAM
+        en ne gardant le contenu du dataset obéissant à date_debut&lt;= Date_Fab &lt;= date_fin
+
+        les dates peuvent être à structure variable: &#39;2021&#39; (année), &#39;2021-01&#39; (mois), &#39;2021-05-23&#39; (jour)
+        &#39;&#39;&#39;
+        sous_dataset=self.dataset.copy()[(self.dataset.Date_Fab &gt;= pd.to_datetime(date_debut))
+                                                     &amp; (self.dataset.Date_Fab &lt;= pd.to_datetime(date_fin))]
+        nouveauSTAM = STAM(sous_dataset, self.name, self.description+f&#39; filtré entre {date_debut} et {date_fin}.&#39;, date_calendaire=self.date_calendaire)
+        return nouveauSTAM
+
+
+    def plot(self, date_debut=None, date_fin=None):
+        &#39;&#39;&#39;affichage interactif des num_tombee en fonction de la date de fab complet
+        en precisant date_debut et date_fin, on vient resserrer la fenetre de visualisation
+        les dates peuvent être à structure variable: &#39;2021&#39; (année), &#39;2021-01&#39; (mois), &#39;2021-05-23&#39; (jour)
+
+        il y a 2 courbes, en vert les tests nonCE, en rouge les tests CE
+        si on clique dans la legende on peut venir n&#39;afficher que la courbe de son choix
+        &#39;&#39;&#39;
+        mergeStam_copy = self.dataset.copy()
+        if (date_debut==None):
+            date_debut=mergeStam_copy.Date_Fab_complet.min()
+        if (date_fin==None):
+            date_fin=mergeStam_copy.Date_Fab_complet.max()
+
+        # quand mergeStam_copy[&#39;CE&#39;] est de type object, on est sur un STAM merge (avec des entrées &#39;CE&#39; et nan)
+        # quand mergeStam_copy[&#39;CE&#39;] est de type int64, on est sur un STAM clean (avec des entrées 1 et 0)
+        # on passe tout dans le style clean
+
+        if (mergeStam_copy[&#39;CE&#39;].dtypes == &#39;object&#39;):
+            mergeStam_copy[&#39;CE&#39;] = mergeStam_copy[&#39;CE&#39;].str.strip()
+            mergeStam_copy[&#39;CE&#39;].fillna(0,inplace=True)
+            mergeStam_copy[&#39;CE&#39;].replace(&#39;CE&#39;, 1, inplace=True)
+            mergeStam_copy[&#39;CE&#39;] = mergeStam_copy[&#39;CE&#39;].astype(&#39;int64&#39;)
+
+        output_notebook()
+        source_stam = ColumnDataSource(mergeStam_copy[(mergeStam_copy.Date_Fab_complet &gt;= pd.to_datetime(date_debut))
+                                                     &amp; (mergeStam_copy.Date_Fab_complet &lt;= pd.to_datetime(date_fin))])
+        source_stam_CE = ColumnDataSource(mergeStam_copy[(mergeStam_copy.Date_Fab_complet &gt;= pd.to_datetime(date_debut))
+                                                     &amp; (mergeStam_copy.Date_Fab_complet &lt;= pd.to_datetime(date_fin))
+                                                     &amp; (mergeStam_copy.CE == 1)   ])
+        source_stam_noCE = ColumnDataSource(mergeStam_copy[(mergeStam_copy.Date_Fab_complet &gt;= pd.to_datetime(date_debut))
+                                                     &amp; (mergeStam_copy.Date_Fab_complet &lt;= pd.to_datetime(date_fin))
+                                                     &amp; (mergeStam_copy.CE == 0)   ])
+
+
+        TOOLS = &#34;xpan,xwheel_zoom,box_zoom,crosshair, reset,save&#34;
+        p = figure(x_axis_type=&#39;datetime&#39;, active_scroll=&#39;xwheel_zoom&#39;, tools=TOOLS,plot_width=900, plot_height=500)
+
+        p.line(x=&#39;Date_Fab_complet&#39;, y=&#39;Num_Tombee&#39;, source=source_stam)
+
+        noce = p.circle(x=&#39;Date_Fab_complet&#39;, y=&#39;Num_Tombee&#39;, size=3, line_color=&#34;green&#34;,
+                 fill_color=&#34;white&#34;, line_width=1, source=source_stam_noCE, legend_label=&#39;pas de CE&#39;)
+        ce = p.circle(x=&#39;Date_Fab_complet&#39;, y=&#39;Num_Tombee&#39;, size=3, line_color=&#34;red&#34;,
+                 fill_color=&#34;white&#34;, line_width=1, source=source_stam_CE, legend_label=&#39;avec CE&#39;)
+
+        #le mode vline c&#39;est la barre verticale qui appelle la liste des points à cette date
+        #le mode mouse est plus ciblé et plus performant
+        hover = HoverTool(renderers=[ce, noce],tooltips=[(&#39;Date tombée&#39;,&#39;@Date_Fab_complet{%Y-%m-%d %H:%M:%S}&#39;),
+                                                         (&#39;Date mesure&#39;,&#39;@Date_Mes{%Y-%m-%d %H:%M:%S}&#39;),
+                                                         (&#39;Num tombée&#39;, &#39;@Num_Tombee&#39;), (&#39;CE&#39;, &#39;@CE&#39;)],
+                      formatters={&#39;@Date_Fab_complet&#39;:&#39;datetime&#39;, &#39;@Date_Mes&#39;:&#39;datetime&#39;}, mode=&#39;mouse&#39;)
+        p.add_tools(hover)
+        p.title.text = &#34;Num_tombee en fonction de la date&#34;
+        p.legend.location = &#34;top_left&#34;
+        p.legend.click_policy=&#34;hide&#34;
+        show(p)
+
+
+import datetime
+import time
+
+def printDateRangeFromWeek(p_year,p_week):
+    &#39;&#39;&#39;à partir d&#39;une année et du numero de semaine (ex: 2019, 2)
+    affiche les dates du lundi au dimanche.
+
+    Examples
+    --------
+    &gt;&gt;&gt; printDateRangeFromWeek(2019, 2)
+    (2019-2) du 2019-01-07 au 2019-01-13
+    (datetime.date(2019, 1, 7), datetime.date(2019, 1, 13))
+
+    Returns
+    -------
+    tuple de string au format %Y-%m-%d
+        les 2 dates entourant cette semaine
+    &#39;&#39;&#39;
+
+#     firstdayofweek = datetime.datetime.strptime(f&#39;{p_year}-W{int(p_week )- 1}-1&#39;, &#34;%Y-W%W-%w&#34;).date()
+    firstdayofweek = datetime.date.fromisocalendar(p_year, p_week, 1)
+    lastdayofweek = firstdayofweek + datetime.timedelta(days=6.9)
+    print(f&#39; ({p_year}-{p_week}) du {firstdayofweek} au {lastdayofweek}&#39;)
+    return firstdayofweek.strftime(&#34;%Y-%m-%d&#34;), lastdayofweek.strftime(&#34;%Y-%m-%d&#34;)</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-functions">Functions</h2>
+<dl>
+<dt id="DateFab_NumTombee_Dataset.printDateRangeFromWeek"><code class="name flex">
+<span>def <span class="ident">printDateRangeFromWeek</span></span>(<span>p_year, p_week)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>à partir d'une année et du numero de semaine (ex: 2019, 2)
+affiche les dates du lundi au dimanche.</p>
+<h2 id="examples">Examples</h2>
+<pre><code class="language-python-repl">&gt;&gt;&gt; printDateRangeFromWeek(2019, 2)
+(2019-2) du 2019-01-07 au 2019-01-13
+(datetime.date(2019, 1, 7), datetime.date(2019, 1, 13))
+</code></pre>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>tuple de string au format %Y-%m-%d</code></dt>
+<dd>les 2 dates entourant cette semaine</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def printDateRangeFromWeek(p_year,p_week):
+    &#39;&#39;&#39;à partir d&#39;une année et du numero de semaine (ex: 2019, 2)
+    affiche les dates du lundi au dimanche.
+
+    Examples
+    --------
+    &gt;&gt;&gt; printDateRangeFromWeek(2019, 2)
+    (2019-2) du 2019-01-07 au 2019-01-13
+    (datetime.date(2019, 1, 7), datetime.date(2019, 1, 13))
+
+    Returns
+    -------
+    tuple de string au format %Y-%m-%d
+        les 2 dates entourant cette semaine
+    &#39;&#39;&#39;
+
+#     firstdayofweek = datetime.datetime.strptime(f&#39;{p_year}-W{int(p_week )- 1}-1&#39;, &#34;%Y-W%W-%w&#34;).date()
+    firstdayofweek = datetime.date.fromisocalendar(p_year, p_week, 1)
+    lastdayofweek = firstdayofweek + datetime.timedelta(days=6.9)
+    print(f&#39; ({p_year}-{p_week}) du {firstdayofweek} au {lastdayofweek}&#39;)
+    return firstdayofweek.strftime(&#34;%Y-%m-%d&#34;), lastdayofweek.strftime(&#34;%Y-%m-%d&#34;)</code></pre>
+</details>
+</dd>
+</dl>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="DateFab_NumTombee_Dataset.DateFab_NumTombee_Dataset"><code class="flex name class">
+<span>class <span class="ident">DateFab_NumTombee_Dataset</span></span>
+<span>(</span><span>dataset, name, description='')</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Pour stocker les datasets contenant les clés Date_Fab et Num_Tombee</p>
+<p>les attributs:
+- dataset : une copie du dataframe, on supprime les vrais doublons (2 lignes strictement identiques)
+- name : le nom (abrégé) du dataframe
+- description : une description en quelques mots</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class DateFab_NumTombee_Dataset:
+    &#39;&#39;&#39;Pour stocker les datasets contenant les clés Date_Fab et Num_Tombee&#39;&#39;&#39;
+    def __init__(self, dataset, name, description=&#39;&#39;):
+        &#39;&#39;&#39;
+        les attributs:
+        - dataset : une copie du dataframe, on supprime les vrais doublons (2 lignes strictement identiques)
+        - name : le nom (abrégé) du dataframe
+        - description : une description en quelques mots
+        &#39;&#39;&#39;
+        self.dataset = dataset.copy()
+        self.name = name
+        self.description = description
+        # on supprime les lignes dupliquées: 2 lignes strictement identiques
+        self.dataset.drop_duplicates(inplace=True)
+
+    def get_info(self):
+        &#39;&#39;&#39;retourne le nom, la description du dataset&#39;&#39;&#39;
+        return f&#34;\n Dataset {self.name} [{self.description}]\n&#34;
+
+    def get_shape(self):
+        &#39;&#39;&#39;retourne le nombre de lignes et colonnes du dataset&#39;&#39;&#39;
+        return f&#34; - shape : ({self.dataset.shape})\n&#34;
+
+    def get_dates(self):
+        &#39;&#39;&#39;retourne l&#39;amplitude temporelle de Date_Fab du dataset&#39;&#39;&#39;
+        return f&#34; - amplitude temporelle : ({self.dataset.Date_Fab.min()} - {self.dataset.Date_Fab.max()})\n&#34;
+
+    def __repr__(self):
+        &#39;&#39;&#39;retourne get_info quand évalué directement&#39;&#39;&#39;
+        return self.get_info()
+
+    def __str__(self):
+        &#39;&#39;&#39;retourne get_info, get_shape, get_dates dans un print(&lt;DateFab_NumTombee_Dataset&gt;)&#39;&#39;&#39;
+        return self.get_info()+self.get_shape()+self.get_dates()+&#39;\n&#39;
+
+    def get_duplicates(self, keep=False):
+        &#39;&#39;&#39;retourne les lignes du dataset qui contiennent des doublons sur la base de la clé
+        Date_Fab, Num_Tombee
+        keep{‘first’, ‘last’, False}, default ‘False’
+            Determines which duplicates (if any) to mark.
+            first : Mark duplicates as True except for the first occurrence.
+            last : Mark duplicates as True except for the last occurrence.
+            False : Mark all duplicates as True.
+        &#39;&#39;&#39;
+        return self.dataset.loc[self.dataset.duplicated(subset=[&#39;Num_Tombee&#39;, &#39;Date_Fab&#39;], keep=keep)]
+
+    def _create_tempo_df(self, dataset_copy):
+        &#39;&#39;&#39;
+        fonction technique (pas à appeler directement)
+        à partir d&#39;un dataset qui contient
+        les colonnes date_week, date_year
+        crée un dataframe dense de 0 de la 1ere semaine à la derniere
+        (c&#39;est uniquement pour completer les density plots : plot_density_per_week, plot_density_per_week_bokeh, comparaison_plot_density)
+        &#39;&#39;&#39;
+        if (dataset_copy.shape[0]==0):
+            return pd.DataFrame()
+        debut_annee=dataset_copy[&#39;date_year&#39;].min()
+        fin_annee=dataset_copy[&#39;date_year&#39;].max()
+        debut_semaine=dataset_copy.loc[dataset_copy[&#39;date_year&#39;] == debut_annee][&#39;date_week&#39;].min()
+        fin_semaine=dataset_copy.loc[dataset_copy[&#39;date_year&#39;] == fin_annee][&#39;date_week&#39;].max()
+        liste_tempo = []
+        for annee in range(debut_annee, fin_annee+1):
+            deb_sem = 1
+            fin_sem = 52
+            if (annee == debut_annee):
+                deb_sem = debut_semaine
+            if (annee == fin_annee):
+                fin_sem = fin_semaine
+            for sem in range(deb_sem, fin_sem+1):
+                liste_tempo.append([annee, sem, 0, 0])
+        liste_tempo_df = pd.DataFrame(liste_tempo, columns =[&#39;date_year&#39;, &#39;date_week&#39;, &#39;Unique&#39;, &#39;Doublons&#39;]).set_index([&#39;date_year&#39;, &#39;date_week&#39;])
+        return liste_tempo_df
+
+
+    def plot_density_per_week_matplotlib(self, without_duplicate=False):
+        &#39;&#39;&#39;affiche le nombre d&#39;observations par semaine
+        si without_duplicate=True, on drop les doublons sur le critere [&#39;Num_Tombee&#39;, &#39;Date_Fab&#39;]
+        sinon on les affiche en rouge (par défaut)
+        &#39;&#39;&#39;
+        dataset_copy = self.dataset.copy()
+        if (without_duplicate):
+            dataset_copy.drop_duplicates(subset=[&#39;Date_Fab&#39;, &#39;Num_Tombee&#39;], inplace=True)
+        # add columns for week and year of the date
+        dataset_copy[&#39;date_week&#39;] = dataset_copy[&#39;Date_Fab&#39;].apply(lambda x: x.isocalendar()[1])
+        dataset_copy[&#39;date_year&#39;] = dataset_copy[&#39;Date_Fab&#39;].apply(lambda x: x.isocalendar()[0])
+
+        dataset_unique = dataset_copy.drop_duplicates(subset=[&#39;Date_Fab&#39;, &#39;Num_Tombee&#39;])
+        dataset_doublon = dataset_copy.loc[dataset_copy.index.difference(dataset_unique.index)]
+        groupage_unique = dataset_unique.groupby([dataset_unique[&#39;date_year&#39;],dataset_unique[&#39;date_week&#39;]])[&#39;Num_Tombee&#39;].count()
+        groupage_doublon = dataset_doublon.groupby([dataset_doublon[&#39;date_year&#39;],dataset_doublon[&#39;date_week&#39;]])[&#39;Num_Tombee&#39;].count()
+
+        graph_rft = pd.concat([groupage_unique, groupage_doublon], axis=1)
+        graph_rft.columns=[&#39;Unique&#39;, &#39;Doublons&#39;]
+        graph_rft=graph_rft[[&#39;Unique&#39;, &#39;Doublons&#39;]]
+
+        graph_rft=graph_rft.reindex(self._create_tempo_df(dataset_copy).index)
+
+        colors = [&#34;green&#34; , &#34;red&#34;]
+        barWidth = 0.85
+        graph_rft.plot.bar(stacked=True, color=colors, figsize=(17,7),width=barWidth)
+        plt.show()
+
+    def plot_density_per_week(self, without_duplicate=False):
+        &#39;&#39;&#39;affiche le nombre d&#39;observations par semaine
+        si without_duplicate=True, on drop les doublons sur le critere [&#39;Num_Tombee&#39;, &#39;Date_Fab&#39;]
+        sinon on les affiche en rouge (par défaut)
+        &#39;&#39;&#39;
+        dataset_copy = self.dataset.copy()
+        if (without_duplicate):
+            dataset_copy.drop_duplicates(subset=[&#39;Date_Fab&#39;, &#39;Num_Tombee&#39;], inplace=True)
+        # add columns for week and year of the date
+        dataset_copy[&#39;date_week&#39;] = dataset_copy[&#39;Date_Fab&#39;].apply(lambda x: x.isocalendar()[1])
+        dataset_copy[&#39;date_year&#39;] = dataset_copy[&#39;Date_Fab&#39;].apply(lambda x: x.isocalendar()[0])
+
+        dataset_unique = dataset_copy.drop_duplicates(subset=[&#39;Date_Fab&#39;, &#39;Num_Tombee&#39;])
+        dataset_doublon = dataset_copy.loc[dataset_copy.index.difference(dataset_unique.index)]
+        groupage_unique = dataset_unique.groupby([dataset_unique[&#39;date_year&#39;],dataset_unique[&#39;date_week&#39;]])[&#39;Num_Tombee&#39;].count()
+        groupage_doublon = dataset_doublon.groupby([dataset_doublon[&#39;date_year&#39;],dataset_doublon[&#39;date_week&#39;]])[&#39;Num_Tombee&#39;].count()
+
+        graph_rft = pd.concat([groupage_unique, groupage_doublon], axis=1)
+        graph_rft.columns=[&#39;Unique&#39;, &#39;Doublons&#39;]
+        graph_rft=graph_rft[[&#39;Unique&#39;, &#39;Doublons&#39;]]
+
+        graph_rft=graph_rft.reindex(self._create_tempo_df(dataset_copy).index)
+        graph_rft=graph_rft.reset_index(level=[0,1])
+        graph_rft[&#39;index&#39;]=graph_rft[&#39;date_year&#39;].apply(str)+&#39;-&#39;+graph_rft[&#39;date_week&#39;].apply(str)
+        graph_rft.fillna(0, inplace=True)
+        graph_rft[&#39;total&#39;]=graph_rft[&#39;Unique&#39;]+graph_rft[&#39;Doublons&#39;]
+    #     graph_rft[&#39;index&#39;]=graph_rft[&#39;index&#39;].astype(&#39;int64&#39;)
+        graph_rft.set_index([&#39;index&#39;], inplace=True)
+
+        graph_rft.drop([&#39;date_year&#39;, &#39;date_week&#39;], axis=1, inplace=True)
+
+    #     return graph_rft
+
+        colors = [&#34;green&#34; , &#34;red&#34;]
+        barWidth = 0.7
+    #         graph_rft.plot.bar(stacked=True, color=colors, figsize=(17,7),width=barWidth)
+    #         plt.show()
+
+        output_notebook()
+        TOOLS = &#34;xpan,xwheel_zoom,crosshair, reset,save&#34;
+
+        p = figure(x_range=list(graph_rft.index), title=&#34;Density plot &#34;+self.name,
+                   tools=TOOLS, active_scroll=&#39;xwheel_zoom&#39;, plot_width=900, plot_height=500)
+        v = p.vbar_stack([&#39;Unique&#39;, &#39;Doublons&#39;], x=&#39;index&#39;, width=barWidth, color=colors,
+                     source=graph_rft, line_color=None)
+
+        tooltips = [
+            (&#34;Total &#34;, &#34;@total&#34;),
+            (&#34;Unique &#34;, &#34;@Unique&#34;),
+            (&#34;Doublons &#34;, &#34;@Doublons&#34;),
+            (&#39;# de semaine &#39;, &#34;@index&#34;)
+        ]
+
+        hover = HoverTool(tooltips=tooltips)
+        p.add_tools(hover)
+    #     item1 = LegendItem({&#39;label&#39;:&#39;Unique&#39;, &#39;renderers&#39;:[p.renderers[0]]});
+    #     item2 = LegendItem({&#39;label&#39;:&#39;Doublons&#39;, &#39;renderers&#39;:[p.renderers[1]]});
+    #     legend = Legend(items=[item1, item2])
+    #     p.add_layout(legend)
+
+        legend=Legend(items=[
+            (&#34;Unique&#34;,   [v[0]]),
+            (&#34;Doublons&#34;,   [v[1]])
+        ], location=(0, -30))
+        p.add_layout(legend)
+
+        p.legend.orientation = &#34;horizontal&#34;
+        p.legend.location = &#34;top_center&#34;
+        p.legend.click_policy=&#34;hide&#34;
+
+        p.xaxis.major_label_orientation = 3*pi/8
+        p.xaxis.axis_label_text_font_size = &#34;5pt&#34;
+        p.xaxis.major_label_text_font_size = &#34;5pt&#34;
+        p.xaxis.axis_label_text_font = &#34;times&#34;
+        p.xaxis.axis_label_text_color = &#34;black&#34;
+
+        show(p)
+
+    def extraire_periode(self, date_debut, date_fin):
+        &#39;&#39;&#39;
+        retourne un objet DateFab_NumTombee_Dataset
+        en ne gardant le contenu du dataset obéissant à date_debut&lt;= Date_Fab &lt;= date_fin
+
+        les dates peuvent être à structure variable: &#39;2021&#39; (année), &#39;2021-01&#39; (mois), &#39;2021-05-23&#39; (jour)
+        &#39;&#39;&#39;
+        sous_dataset=self.dataset.copy()[(self.dataset.Date_Fab &gt;= pd.to_datetime(date_debut))
+                                                     &amp; (self.dataset.Date_Fab &lt;= pd.to_datetime(date_fin))]
+        nouveauDateFab_NumTombee_Dataset = DateFab_NumTombee_Dataset(sous_dataset, self.name, self.description+f&#39; filtré entre {date_debut} et {date_fin}.&#39;)
+        return nouveauDateFab_NumTombee_Dataset
+
+
+    def comparaison(self, autreDateFab_NumTombee_Dataset):
+        &#39;&#39;&#39;retourne 3 objets DateFab_NumTombee_Dataset dont les datasets sont:
+        - dataset_commun - c&#39;est l&#39;intersection des index (Date_Fab, Num_Tombee) de self et autreDateFab_NumTombee_Dataset
+        - dataset_difference_gauche - c&#39;est la difference des index (Date_Fab, Num_Tombee) de self et
+                                        autreDateFab_NumTombee_Dataset en partant de self
+        - dataset_difference_droite - c&#39;est la difference des index (Date_Fab, Num_Tombee) de self et
+                                        autreDateFab_NumTombee_Dataset en partant de autreDateFab_NumTombee_Dataset
+        &#39;&#39;&#39;
+        index_commun = self.dataset.set_index([&#39;Date_Fab&#39;, &#39;Num_Tombee&#39;]).index.intersection(autreDateFab_NumTombee_Dataset.dataset.set_index([&#39;Date_Fab&#39;, &#39;Num_Tombee&#39;]).index)
+        index_gauche = self.dataset.set_index([&#39;Date_Fab&#39;, &#39;Num_Tombee&#39;]).index.difference(autreDateFab_NumTombee_Dataset.dataset.set_index([&#39;Date_Fab&#39;, &#39;Num_Tombee&#39;]).index)
+        index_droite = autreDateFab_NumTombee_Dataset.dataset.set_index([&#39;Date_Fab&#39;, &#39;Num_Tombee&#39;]).index.difference(self.dataset.set_index([&#39;Date_Fab&#39;, &#39;Num_Tombee&#39;]).index)
+
+        if (len(index_commun)==0):
+            dataset_commun=pd.DataFrame(columns=self.dataset.columns)
+        else:
+            dataset_commun = self.dataset.set_index([&#39;Date_Fab&#39;, &#39;Num_Tombee&#39;]).loc[index_commun].reset_index()
+
+        if (len(index_gauche)==0):
+            dataset_difference_gauche = pd.DataFrame(columns=self.dataset.columns)
+        else:
+            dataset_difference_gauche = self.dataset.set_index([&#39;Date_Fab&#39;, &#39;Num_Tombee&#39;]).loc[index_gauche].reset_index()
+
+        if (len(index_droite)==0):
+            dataset_difference_droite = pd.DataFrame(columns=autreDateFab_NumTombee_Dataset.dataset.columns)
+        else:
+            dataset_difference_droite = autreDateFab_NumTombee_Dataset.dataset.set_index([&#39;Date_Fab&#39;, &#39;Num_Tombee&#39;]).loc[index_droite].reset_index()
+
+        dataset_commun_obj = DateFab_NumTombee_Dataset(dataset_commun, self.name+&#39; inter &#39;+autreDateFab_NumTombee_Dataset.name, &#39;Intersection des 2 datasets : \n&#39;+self.description+&#39;\n&#39;+autreDateFab_NumTombee_Dataset.description)
+        dataset_difference_gauche_obj = DateFab_NumTombee_Dataset(dataset_difference_gauche, self.name+&#39; diff &#39;+autreDateFab_NumTombee_Dataset.name, &#39;Différence des 2 datasets : \n&#39;+self.description+&#39;\n&#39;+autreDateFab_NumTombee_Dataset.description)
+        dataset_difference_droite_obj = DateFab_NumTombee_Dataset(dataset_difference_droite, autreDateFab_NumTombee_Dataset.name+&#39; diff &#39;+self.name, &#39;Différence des 2 datasets : \n&#39;+autreDateFab_NumTombee_Dataset.description+&#39;\n&#39;+self.description)
+        print(f&#39;couverture commune : {100*dataset_commun_obj.dataset.shape[0]/(dataset_commun_obj.dataset.shape[0]+dataset_difference_gauche_obj.dataset.shape[0]+dataset_difference_droite_obj.dataset.shape[0]):0.02f} %&#39;)
+        return dataset_commun_obj, dataset_difference_gauche_obj, dataset_difference_droite_obj
+
+
+    def comparaison_plot_density_matplotlib(self, autreDateFab_NumTombee_Dataset):
+        &#39;&#39;&#39;affiche le nombre d&#39;observations par semaine
+        3 informations :
+        - en bleu : les données uniquement dans self
+        - en vert: les données (index) communes aux 2 datasets
+        - en rouge : les données uniquement dans autreDateFab_NumTombee_Dataset
+        &#39;&#39;&#39;
+        obj_commun, obj_gauche, obj_droite = self.comparaison(autreDateFab_NumTombee_Dataset)
+        for dataset in [obj_commun.dataset, obj_gauche.dataset, obj_droite.dataset]:
+            # add columns for week and year of the date
+            dataset[&#39;date_week&#39;] = dataset[&#39;Date_Fab&#39;].apply(lambda x: x.isocalendar()[1])
+            dataset[&#39;date_year&#39;] = dataset[&#39;Date_Fab&#39;].apply(lambda x: x.isocalendar()[0])
+
+        groupage_commun = obj_commun.dataset.groupby([obj_commun.dataset[&#39;date_year&#39;],obj_commun.dataset[&#39;date_week&#39;]])[&#39;Num_Tombee&#39;].count()
+        groupage_gauche = obj_gauche.dataset.groupby([obj_gauche.dataset[&#39;date_year&#39;],obj_gauche.dataset[&#39;date_week&#39;]])[&#39;Num_Tombee&#39;].count()
+        groupage_droite = obj_droite.dataset.groupby([obj_droite.dataset[&#39;date_year&#39;],obj_droite.dataset[&#39;date_week&#39;]])[&#39;Num_Tombee&#39;].count()
+
+
+        graph_rft = pd.concat([groupage_gauche, groupage_commun, groupage_droite], axis=1)
+        graph_rft.columns=[obj_gauche.name, obj_commun.name, obj_droite.name]
+        graph_rft=graph_rft[[obj_gauche.name, obj_commun.name, obj_droite.name]]
+
+        graph_rft=graph_rft.reindex(self._create_tempo_df(obj_commun.dataset).index.union(self._create_tempo_df(obj_gauche.dataset).index.union(self._create_tempo_df(obj_droite.dataset).index)))
+
+        colors = [&#34;blue&#34;, &#34;green&#34; , &#34;red&#34;]
+        barWidth = 0.85
+        graph_rft.plot.bar(stacked=True, color=colors, figsize=(17,7),width=barWidth)
+        plt.show()
+
+    def comparaison_plot_density(self, autreDateFab_NumTombee_Dataset):
+        &#39;&#39;&#39;affiche le nombre d&#39;observations par semaine
+        3 informations :
+        - en bleu : les données uniquement dans self
+        - en vert: les données (index) communes aux 2 datasets
+        - en rouge : les données uniquement dans autreDateFab_NumTombee_Dataset
+        &#39;&#39;&#39;
+        obj_commun, obj_gauche, obj_droite = self.comparaison(autreDateFab_NumTombee_Dataset)
+
+        for dataset in [obj_commun.dataset, obj_gauche.dataset, obj_droite.dataset]:
+            # add columns for week and year of the date
+            if (dataset.empty):
+                dataset[&#39;date_week&#39;] = dataset[&#39;Date_Fab&#39;]
+                dataset[&#39;date_year&#39;] = dataset[&#39;Date_Fab&#39;]
+            else:
+                dataset[&#39;date_week&#39;] = dataset[&#39;Date_Fab&#39;].apply(lambda x: x.isocalendar()[1])
+                dataset[&#39;date_year&#39;] = dataset[&#39;Date_Fab&#39;].apply(lambda x: x.isocalendar()[0])
+
+        groupage_commun = obj_commun.dataset.groupby([obj_commun.dataset[&#39;date_year&#39;],obj_commun.dataset[&#39;date_week&#39;]])[&#39;Num_Tombee&#39;].count()
+        groupage_gauche = obj_gauche.dataset.groupby([obj_gauche.dataset[&#39;date_year&#39;],obj_gauche.dataset[&#39;date_week&#39;]])[&#39;Num_Tombee&#39;].count()
+        groupage_droite = obj_droite.dataset.groupby([obj_droite.dataset[&#39;date_year&#39;],obj_droite.dataset[&#39;date_week&#39;]])[&#39;Num_Tombee&#39;].count()
+
+
+        graph_rft = pd.concat([groupage_gauche, groupage_commun, groupage_droite], axis=1)
+        graph_rft.columns=[obj_gauche.name, obj_commun.name, obj_droite.name]
+        graph_rft=graph_rft[[obj_gauche.name, obj_commun.name, obj_droite.name]]
+
+        graph_rft=graph_rft.reindex(self._create_tempo_df(obj_commun.dataset).index.union(self._create_tempo_df(obj_gauche.dataset).index.union(self._create_tempo_df(obj_droite.dataset).index)))
+
+        colors = [&#34;blue&#34;, &#34;green&#34; , &#34;red&#34;]
+        barWidth = 0.85
+    #     graph_rft.plot.bar(stacked=True, color=colors, figsize=(17,7),width=barWidth)
+    #     plt.show()
+        graph_rft=graph_rft.reset_index(level=[0,1])
+        graph_rft[&#39;index&#39;]=graph_rft[&#39;date_year&#39;].apply(str)+&#39;-&#39;+graph_rft[&#39;date_week&#39;].apply(str)
+        graph_rft.fillna(0, inplace=True)
+
+        graph_rft[&#39;total&#39;]=graph_rft[graph_rft.columns[2]]+graph_rft[graph_rft.columns[3]]+graph_rft[graph_rft.columns[4]]
+    #     graph_rft[&#39;index&#39;]=graph_rft[&#39;index&#39;].astype(&#39;int64&#39;)
+        graph_rft.set_index([&#39;index&#39;], inplace=True)
+
+        graph_rft.drop([&#39;date_year&#39;, &#39;date_week&#39;], axis=1, inplace=True)
+    #     return graph_rft
+
+    #     return graph_rft
+
+    #     colors = [&#34;green&#34; , &#34;red&#34;]
+        barWidth = 0.7
+    #         graph_rft.plot.bar(stacked=True, color=colors, figsize=(17,7),width=barWidth)
+    #         plt.show()
+
+        graph_rft.columns=[&#39;gauche&#39;, &#39;commun&#39;, &#39;droite&#39;, &#39;total&#39;]
+
+        output_notebook()
+        TOOLS = &#34;xpan,xwheel_zoom,crosshair, reset,save&#34;
+
+        p = figure(x_range=list(graph_rft.index), title=&#34;Density plot &#34;+self.name+&#34; vs &#34;+autreDateFab_NumTombee_Dataset.name,
+                   tools=TOOLS, active_scroll=&#39;xwheel_zoom&#39;, plot_width=900, plot_height=500)
+        v = p.vbar_stack([&#39;gauche&#39;, &#39;commun&#39;, &#39;droite&#39;], x=&#39;index&#39;, width=barWidth, color=colors,
+                     source=graph_rft, line_color=None)
+
+
+
+        tooltips = [
+            (&#34;Total &#34;, &#34;@total&#34;),
+            (obj_gauche.name, &#34;@gauche&#34;),
+            (obj_commun.name, &#34;@commun&#34;),
+            (obj_droite.name, &#34;@droite&#34;),
+            (&#39;# de semaine &#39;, &#34;@index&#34;)
+        ]
+
+        hover = HoverTool(tooltips=tooltips)
+        p.add_tools(hover)
+    #     item1 = LegendItem({&#39;label&#39;:&#39;Unique&#39;, &#39;renderers&#39;:[p.renderers[0]]});
+    #     item2 = LegendItem({&#39;label&#39;:&#39;Doublons&#39;, &#39;renderers&#39;:[p.renderers[1]]});
+    #     legend = Legend(items=[item1, item2])
+    #     p.add_layout(legend)
+
+        legend=Legend(items=[
+            (obj_gauche.name,   [v[0]]),
+            (obj_commun.name,   [v[1]]),
+            (obj_droite.name,   [v[2]])
+        ], location=(0, -30))
+        p.add_layout(legend)
+
+        p.legend.orientation = &#34;horizontal&#34;
+        p.legend.location = &#34;top_center&#34;
+        p.legend.click_policy=&#34;hide&#34;
+
+        p.xaxis.major_label_orientation = 3*pi/8
+        p.xaxis.axis_label_text_font_size = &#34;5pt&#34;
+        p.xaxis.major_label_text_font_size = &#34;5pt&#34;
+        p.xaxis.axis_label_text_font = &#34;times&#34;
+        p.xaxis.axis_label_text_color = &#34;black&#34;
+
+        show(p)
+
+    def plot(self, date_debut=None, date_fin=None):
+        &#39;&#39;&#39;affichage interactif des num_tombee en fonction de la date de fab
+        en precisant date_debut et date_fin, on vient resserrer la fenetre de visualisation
+        les dates peuvent être à structure variable: &#39;2021&#39; (année), &#39;2021-01&#39; (mois), &#39;2021-05-23&#39; (jour)
+        &#39;&#39;&#39;
+        dataset_copy = self.dataset.copy()
+        if (date_debut==None):
+            date_debut=dataset_copy.Date_Fab.min()
+        if (date_fin==None):
+            date_fin=dataset_copy.Date_Fab.max()
+
+        output_notebook()
+        source_donnees = ColumnDataSource(dataset_copy[(dataset_copy.Date_Fab &gt;= pd.to_datetime(date_debut))
+                                                     &amp; (dataset_copy.Date_Fab &lt;= pd.to_datetime(date_fin))])
+        TOOLS = &#34;xpan,xwheel_zoom,box_zoom,crosshair, reset,save&#34;
+        p = figure(x_axis_type=&#39;datetime&#39;, active_scroll=&#39;xwheel_zoom&#39;, tools=TOOLS,plot_width=900, plot_height=500)
+
+        p.line(x=&#39;Date_Fab&#39;, y=&#39;Num_Tombee&#39;, source=source_donnees)
+
+        p.circle(x=&#39;Date_Fab&#39;, y=&#39;Num_Tombee&#39;, size=3, line_color=&#34;green&#34;,
+                 fill_color=&#34;white&#34;, line_width=1, source=source_donnees, legend_label=self.name)
+
+        hover = HoverTool(tooltips=[(&#39;Date tombée&#39;,&#39;@Date_Fab{%Y-%m-%d %H:%M:%S}&#39;),
+                                (&#39;Num tombée&#39;, &#39;@Num_Tombee&#39;)],
+                      formatters={&#39;@Date_Fab&#39;:&#39;datetime&#39;})
+        p.add_tools(hover)
+        p.title.text = &#34;Num_tombee en fonction de la date&#34;
+        show(p)
+
+    def comparaison_plot(self, autreDateFab_NumTombee_Dataset, date_debut=None, date_fin=None):
+        &#39;&#39;&#39;affichage interactif des num_tombee en fonction de la date de fab
+        pour les 3 datasets retournés par comparaison
+        &#39;&#39;&#39;
+        dataset_copy = self.dataset.copy()
+        if (date_debut==None):
+            date_debut=dataset_copy.Date_Fab.min()
+        if (date_fin==None):
+            date_fin=dataset_copy.Date_Fab.max()
+
+        dataset_commun_obj, dataset_difference_gauche_obj, dataset_difference_droite_obj = self.extraire_periode(date_debut, date_fin).comparaison(autreDateFab_NumTombee_Dataset.extraire_periode(date_debut, date_fin))
+
+        output_notebook()
+        source_donnees_commun = ColumnDataSource(dataset_commun_obj.dataset)
+        source_donnees_droite = ColumnDataSource(dataset_difference_droite_obj.dataset)
+        source_donnees_gauche = ColumnDataSource(dataset_difference_gauche_obj.dataset)
+
+        TOOLS = &#34;xpan,xwheel_zoom,box_zoom,crosshair, reset,save&#34;
+        p = figure(x_axis_type=&#39;datetime&#39;, active_scroll=&#39;xwheel_zoom&#39;, tools=TOOLS,plot_width=900, plot_height=500)
+
+#         p.line(x=&#39;Date_Fab&#39;, y=&#39;Num_Tombee&#39;, source=source_donnees)
+
+        p.circle(x=&#39;Date_Fab&#39;, y=&#39;Num_Tombee&#39;, size=3, line_color=&#34;green&#34;,
+                 fill_color=&#34;white&#34;, line_width=1, source=source_donnees_commun, legend_label=dataset_commun_obj.name)
+        p.circle(x=&#39;Date_Fab&#39;, y=&#39;Num_Tombee&#39;, size=3, line_color=&#34;red&#34;,
+                 fill_color=&#34;white&#34;, line_width=1, source=source_donnees_droite, legend_label=dataset_difference_droite_obj.name)
+        p.circle(x=&#39;Date_Fab&#39;, y=&#39;Num_Tombee&#39;, size=3, line_color=&#34;blue&#34;,
+                 fill_color=&#34;white&#34;, line_width=1, source=source_donnees_gauche, legend_label=dataset_difference_gauche_obj.name)
+
+        hover = HoverTool(tooltips=[(&#39;Date tombée&#39;,&#39;@Date_Fab{%Y-%m-%d %H:%M:%S}&#39;),
+                                (&#39;Num tombée&#39;, &#39;@Num_Tombee&#39;)],
+                      formatters={&#39;@Date_Fab&#39;:&#39;datetime&#39;})
+        p.add_tools(hover)
+        p.title.text = &#34;Num_tombee en fonction de la date&#34;
+        p.legend.click_policy=&#34;hide&#34;
+        show(p)</code></pre>
+</details>
+<h3>Subclasses</h3>
+<ul class="hlist">
+<li><a title="DateFab_NumTombee_Dataset.STAM" href="#DateFab_NumTombee_Dataset.STAM">STAM</a></li>
+</ul>
+<h3>Methods</h3>
+<dl>
+<dt id="DateFab_NumTombee_Dataset.DateFab_NumTombee_Dataset.comparaison"><code class="name flex">
+<span>def <span class="ident">comparaison</span></span>(<span>self, autreDateFab_NumTombee_Dataset)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>retourne 3 objets DateFab_NumTombee_Dataset dont les datasets sont:
+- dataset_commun - c'est l'intersection des index (Date_Fab, Num_Tombee) de self et autreDateFab_NumTombee_Dataset
+- dataset_difference_gauche - c'est la difference des index (Date_Fab, Num_Tombee) de self et
+autreDateFab_NumTombee_Dataset en partant de self
+- dataset_difference_droite - c'est la difference des index (Date_Fab, Num_Tombee) de self et
+autreDateFab_NumTombee_Dataset en partant de autreDateFab_NumTombee_Dataset</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def comparaison(self, autreDateFab_NumTombee_Dataset):
+    &#39;&#39;&#39;retourne 3 objets DateFab_NumTombee_Dataset dont les datasets sont:
+    - dataset_commun - c&#39;est l&#39;intersection des index (Date_Fab, Num_Tombee) de self et autreDateFab_NumTombee_Dataset
+    - dataset_difference_gauche - c&#39;est la difference des index (Date_Fab, Num_Tombee) de self et
+                                    autreDateFab_NumTombee_Dataset en partant de self
+    - dataset_difference_droite - c&#39;est la difference des index (Date_Fab, Num_Tombee) de self et
+                                    autreDateFab_NumTombee_Dataset en partant de autreDateFab_NumTombee_Dataset
+    &#39;&#39;&#39;
+    index_commun = self.dataset.set_index([&#39;Date_Fab&#39;, &#39;Num_Tombee&#39;]).index.intersection(autreDateFab_NumTombee_Dataset.dataset.set_index([&#39;Date_Fab&#39;, &#39;Num_Tombee&#39;]).index)
+    index_gauche = self.dataset.set_index([&#39;Date_Fab&#39;, &#39;Num_Tombee&#39;]).index.difference(autreDateFab_NumTombee_Dataset.dataset.set_index([&#39;Date_Fab&#39;, &#39;Num_Tombee&#39;]).index)
+    index_droite = autreDateFab_NumTombee_Dataset.dataset.set_index([&#39;Date_Fab&#39;, &#39;Num_Tombee&#39;]).index.difference(self.dataset.set_index([&#39;Date_Fab&#39;, &#39;Num_Tombee&#39;]).index)
+
+    if (len(index_commun)==0):
+        dataset_commun=pd.DataFrame(columns=self.dataset.columns)
+    else:
+        dataset_commun = self.dataset.set_index([&#39;Date_Fab&#39;, &#39;Num_Tombee&#39;]).loc[index_commun].reset_index()
+
+    if (len(index_gauche)==0):
+        dataset_difference_gauche = pd.DataFrame(columns=self.dataset.columns)
+    else:
+        dataset_difference_gauche = self.dataset.set_index([&#39;Date_Fab&#39;, &#39;Num_Tombee&#39;]).loc[index_gauche].reset_index()
+
+    if (len(index_droite)==0):
+        dataset_difference_droite = pd.DataFrame(columns=autreDateFab_NumTombee_Dataset.dataset.columns)
+    else:
+        dataset_difference_droite = autreDateFab_NumTombee_Dataset.dataset.set_index([&#39;Date_Fab&#39;, &#39;Num_Tombee&#39;]).loc[index_droite].reset_index()
+
+    dataset_commun_obj = DateFab_NumTombee_Dataset(dataset_commun, self.name+&#39; inter &#39;+autreDateFab_NumTombee_Dataset.name, &#39;Intersection des 2 datasets : \n&#39;+self.description+&#39;\n&#39;+autreDateFab_NumTombee_Dataset.description)
+    dataset_difference_gauche_obj = DateFab_NumTombee_Dataset(dataset_difference_gauche, self.name+&#39; diff &#39;+autreDateFab_NumTombee_Dataset.name, &#39;Différence des 2 datasets : \n&#39;+self.description+&#39;\n&#39;+autreDateFab_NumTombee_Dataset.description)
+    dataset_difference_droite_obj = DateFab_NumTombee_Dataset(dataset_difference_droite, autreDateFab_NumTombee_Dataset.name+&#39; diff &#39;+self.name, &#39;Différence des 2 datasets : \n&#39;+autreDateFab_NumTombee_Dataset.description+&#39;\n&#39;+self.description)
+    print(f&#39;couverture commune : {100*dataset_commun_obj.dataset.shape[0]/(dataset_commun_obj.dataset.shape[0]+dataset_difference_gauche_obj.dataset.shape[0]+dataset_difference_droite_obj.dataset.shape[0]):0.02f} %&#39;)
+    return dataset_commun_obj, dataset_difference_gauche_obj, dataset_difference_droite_obj</code></pre>
+</details>
+</dd>
+<dt id="DateFab_NumTombee_Dataset.DateFab_NumTombee_Dataset.comparaison_plot"><code class="name flex">
+<span>def <span class="ident">comparaison_plot</span></span>(<span>self, autreDateFab_NumTombee_Dataset, date_debut=None, date_fin=None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>affichage interactif des num_tombee en fonction de la date de fab
+pour les 3 datasets retournés par comparaison</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">    def comparaison_plot(self, autreDateFab_NumTombee_Dataset, date_debut=None, date_fin=None):
+        &#39;&#39;&#39;affichage interactif des num_tombee en fonction de la date de fab
+        pour les 3 datasets retournés par comparaison
+        &#39;&#39;&#39;
+        dataset_copy = self.dataset.copy()
+        if (date_debut==None):
+            date_debut=dataset_copy.Date_Fab.min()
+        if (date_fin==None):
+            date_fin=dataset_copy.Date_Fab.max()
+
+        dataset_commun_obj, dataset_difference_gauche_obj, dataset_difference_droite_obj = self.extraire_periode(date_debut, date_fin).comparaison(autreDateFab_NumTombee_Dataset.extraire_periode(date_debut, date_fin))
+
+        output_notebook()
+        source_donnees_commun = ColumnDataSource(dataset_commun_obj.dataset)
+        source_donnees_droite = ColumnDataSource(dataset_difference_droite_obj.dataset)
+        source_donnees_gauche = ColumnDataSource(dataset_difference_gauche_obj.dataset)
+
+        TOOLS = &#34;xpan,xwheel_zoom,box_zoom,crosshair, reset,save&#34;
+        p = figure(x_axis_type=&#39;datetime&#39;, active_scroll=&#39;xwheel_zoom&#39;, tools=TOOLS,plot_width=900, plot_height=500)
+
+#         p.line(x=&#39;Date_Fab&#39;, y=&#39;Num_Tombee&#39;, source=source_donnees)
+
+        p.circle(x=&#39;Date_Fab&#39;, y=&#39;Num_Tombee&#39;, size=3, line_color=&#34;green&#34;,
+                 fill_color=&#34;white&#34;, line_width=1, source=source_donnees_commun, legend_label=dataset_commun_obj.name)
+        p.circle(x=&#39;Date_Fab&#39;, y=&#39;Num_Tombee&#39;, size=3, line_color=&#34;red&#34;,
+                 fill_color=&#34;white&#34;, line_width=1, source=source_donnees_droite, legend_label=dataset_difference_droite_obj.name)
+        p.circle(x=&#39;Date_Fab&#39;, y=&#39;Num_Tombee&#39;, size=3, line_color=&#34;blue&#34;,
+                 fill_color=&#34;white&#34;, line_width=1, source=source_donnees_gauche, legend_label=dataset_difference_gauche_obj.name)
+
+        hover = HoverTool(tooltips=[(&#39;Date tombée&#39;,&#39;@Date_Fab{%Y-%m-%d %H:%M:%S}&#39;),
+                                (&#39;Num tombée&#39;, &#39;@Num_Tombee&#39;)],
+                      formatters={&#39;@Date_Fab&#39;:&#39;datetime&#39;})
+        p.add_tools(hover)
+        p.title.text = &#34;Num_tombee en fonction de la date&#34;
+        p.legend.click_policy=&#34;hide&#34;
+        show(p)</code></pre>
+</details>
+</dd>
+<dt id="DateFab_NumTombee_Dataset.DateFab_NumTombee_Dataset.comparaison_plot_density"><code class="name flex">
+<span>def <span class="ident">comparaison_plot_density</span></span>(<span>self, autreDateFab_NumTombee_Dataset)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>affiche le nombre d'observations par semaine
+3 informations :
+- en bleu : les données uniquement dans self
+- en vert: les données (index) communes aux 2 datasets
+- en rouge : les données uniquement dans autreDateFab_NumTombee_Dataset</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def comparaison_plot_density(self, autreDateFab_NumTombee_Dataset):
+    &#39;&#39;&#39;affiche le nombre d&#39;observations par semaine
+    3 informations :
+    - en bleu : les données uniquement dans self
+    - en vert: les données (index) communes aux 2 datasets
+    - en rouge : les données uniquement dans autreDateFab_NumTombee_Dataset
+    &#39;&#39;&#39;
+    obj_commun, obj_gauche, obj_droite = self.comparaison(autreDateFab_NumTombee_Dataset)
+
+    for dataset in [obj_commun.dataset, obj_gauche.dataset, obj_droite.dataset]:
+        # add columns for week and year of the date
+        if (dataset.empty):
+            dataset[&#39;date_week&#39;] = dataset[&#39;Date_Fab&#39;]
+            dataset[&#39;date_year&#39;] = dataset[&#39;Date_Fab&#39;]
+        else:
+            dataset[&#39;date_week&#39;] = dataset[&#39;Date_Fab&#39;].apply(lambda x: x.isocalendar()[1])
+            dataset[&#39;date_year&#39;] = dataset[&#39;Date_Fab&#39;].apply(lambda x: x.isocalendar()[0])
+
+    groupage_commun = obj_commun.dataset.groupby([obj_commun.dataset[&#39;date_year&#39;],obj_commun.dataset[&#39;date_week&#39;]])[&#39;Num_Tombee&#39;].count()
+    groupage_gauche = obj_gauche.dataset.groupby([obj_gauche.dataset[&#39;date_year&#39;],obj_gauche.dataset[&#39;date_week&#39;]])[&#39;Num_Tombee&#39;].count()
+    groupage_droite = obj_droite.dataset.groupby([obj_droite.dataset[&#39;date_year&#39;],obj_droite.dataset[&#39;date_week&#39;]])[&#39;Num_Tombee&#39;].count()
+
+
+    graph_rft = pd.concat([groupage_gauche, groupage_commun, groupage_droite], axis=1)
+    graph_rft.columns=[obj_gauche.name, obj_commun.name, obj_droite.name]
+    graph_rft=graph_rft[[obj_gauche.name, obj_commun.name, obj_droite.name]]
+
+    graph_rft=graph_rft.reindex(self._create_tempo_df(obj_commun.dataset).index.union(self._create_tempo_df(obj_gauche.dataset).index.union(self._create_tempo_df(obj_droite.dataset).index)))
+
+    colors = [&#34;blue&#34;, &#34;green&#34; , &#34;red&#34;]
+    barWidth = 0.85
+#     graph_rft.plot.bar(stacked=True, color=colors, figsize=(17,7),width=barWidth)
+#     plt.show()
+    graph_rft=graph_rft.reset_index(level=[0,1])
+    graph_rft[&#39;index&#39;]=graph_rft[&#39;date_year&#39;].apply(str)+&#39;-&#39;+graph_rft[&#39;date_week&#39;].apply(str)
+    graph_rft.fillna(0, inplace=True)
+
+    graph_rft[&#39;total&#39;]=graph_rft[graph_rft.columns[2]]+graph_rft[graph_rft.columns[3]]+graph_rft[graph_rft.columns[4]]
+#     graph_rft[&#39;index&#39;]=graph_rft[&#39;index&#39;].astype(&#39;int64&#39;)
+    graph_rft.set_index([&#39;index&#39;], inplace=True)
+
+    graph_rft.drop([&#39;date_year&#39;, &#39;date_week&#39;], axis=1, inplace=True)
+#     return graph_rft
+
+#     return graph_rft
+
+#     colors = [&#34;green&#34; , &#34;red&#34;]
+    barWidth = 0.7
+#         graph_rft.plot.bar(stacked=True, color=colors, figsize=(17,7),width=barWidth)
+#         plt.show()
+
+    graph_rft.columns=[&#39;gauche&#39;, &#39;commun&#39;, &#39;droite&#39;, &#39;total&#39;]
+
+    output_notebook()
+    TOOLS = &#34;xpan,xwheel_zoom,crosshair, reset,save&#34;
+
+    p = figure(x_range=list(graph_rft.index), title=&#34;Density plot &#34;+self.name+&#34; vs &#34;+autreDateFab_NumTombee_Dataset.name,
+               tools=TOOLS, active_scroll=&#39;xwheel_zoom&#39;, plot_width=900, plot_height=500)
+    v = p.vbar_stack([&#39;gauche&#39;, &#39;commun&#39;, &#39;droite&#39;], x=&#39;index&#39;, width=barWidth, color=colors,
+                 source=graph_rft, line_color=None)
+
+
+
+    tooltips = [
+        (&#34;Total &#34;, &#34;@total&#34;),
+        (obj_gauche.name, &#34;@gauche&#34;),
+        (obj_commun.name, &#34;@commun&#34;),
+        (obj_droite.name, &#34;@droite&#34;),
+        (&#39;# de semaine &#39;, &#34;@index&#34;)
+    ]
+
+    hover = HoverTool(tooltips=tooltips)
+    p.add_tools(hover)
+#     item1 = LegendItem({&#39;label&#39;:&#39;Unique&#39;, &#39;renderers&#39;:[p.renderers[0]]});
+#     item2 = LegendItem({&#39;label&#39;:&#39;Doublons&#39;, &#39;renderers&#39;:[p.renderers[1]]});
+#     legend = Legend(items=[item1, item2])
+#     p.add_layout(legend)
+
+    legend=Legend(items=[
+        (obj_gauche.name,   [v[0]]),
+        (obj_commun.name,   [v[1]]),
+        (obj_droite.name,   [v[2]])
+    ], location=(0, -30))
+    p.add_layout(legend)
+
+    p.legend.orientation = &#34;horizontal&#34;
+    p.legend.location = &#34;top_center&#34;
+    p.legend.click_policy=&#34;hide&#34;
+
+    p.xaxis.major_label_orientation = 3*pi/8
+    p.xaxis.axis_label_text_font_size = &#34;5pt&#34;
+    p.xaxis.major_label_text_font_size = &#34;5pt&#34;
+    p.xaxis.axis_label_text_font = &#34;times&#34;
+    p.xaxis.axis_label_text_color = &#34;black&#34;
+
+    show(p)</code></pre>
+</details>
+</dd>
+<dt id="DateFab_NumTombee_Dataset.DateFab_NumTombee_Dataset.comparaison_plot_density_matplotlib"><code class="name flex">
+<span>def <span class="ident">comparaison_plot_density_matplotlib</span></span>(<span>self, autreDateFab_NumTombee_Dataset)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>affiche le nombre d'observations par semaine
+3 informations :
+- en bleu : les données uniquement dans self
+- en vert: les données (index) communes aux 2 datasets
+- en rouge : les données uniquement dans autreDateFab_NumTombee_Dataset</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def comparaison_plot_density_matplotlib(self, autreDateFab_NumTombee_Dataset):
+    &#39;&#39;&#39;affiche le nombre d&#39;observations par semaine
+    3 informations :
+    - en bleu : les données uniquement dans self
+    - en vert: les données (index) communes aux 2 datasets
+    - en rouge : les données uniquement dans autreDateFab_NumTombee_Dataset
+    &#39;&#39;&#39;
+    obj_commun, obj_gauche, obj_droite = self.comparaison(autreDateFab_NumTombee_Dataset)
+    for dataset in [obj_commun.dataset, obj_gauche.dataset, obj_droite.dataset]:
+        # add columns for week and year of the date
+        dataset[&#39;date_week&#39;] = dataset[&#39;Date_Fab&#39;].apply(lambda x: x.isocalendar()[1])
+        dataset[&#39;date_year&#39;] = dataset[&#39;Date_Fab&#39;].apply(lambda x: x.isocalendar()[0])
+
+    groupage_commun = obj_commun.dataset.groupby([obj_commun.dataset[&#39;date_year&#39;],obj_commun.dataset[&#39;date_week&#39;]])[&#39;Num_Tombee&#39;].count()
+    groupage_gauche = obj_gauche.dataset.groupby([obj_gauche.dataset[&#39;date_year&#39;],obj_gauche.dataset[&#39;date_week&#39;]])[&#39;Num_Tombee&#39;].count()
+    groupage_droite = obj_droite.dataset.groupby([obj_droite.dataset[&#39;date_year&#39;],obj_droite.dataset[&#39;date_week&#39;]])[&#39;Num_Tombee&#39;].count()
+
+
+    graph_rft = pd.concat([groupage_gauche, groupage_commun, groupage_droite], axis=1)
+    graph_rft.columns=[obj_gauche.name, obj_commun.name, obj_droite.name]
+    graph_rft=graph_rft[[obj_gauche.name, obj_commun.name, obj_droite.name]]
+
+    graph_rft=graph_rft.reindex(self._create_tempo_df(obj_commun.dataset).index.union(self._create_tempo_df(obj_gauche.dataset).index.union(self._create_tempo_df(obj_droite.dataset).index)))
+
+    colors = [&#34;blue&#34;, &#34;green&#34; , &#34;red&#34;]
+    barWidth = 0.85
+    graph_rft.plot.bar(stacked=True, color=colors, figsize=(17,7),width=barWidth)
+    plt.show()</code></pre>
+</details>
+</dd>
+<dt id="DateFab_NumTombee_Dataset.DateFab_NumTombee_Dataset.extraire_periode"><code class="name flex">
+<span>def <span class="ident">extraire_periode</span></span>(<span>self, date_debut, date_fin)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>retourne un objet DateFab_NumTombee_Dataset
+en ne gardant le contenu du dataset obéissant à date_debut&lt;= Date_Fab &lt;= date_fin</p>
+<p>les dates peuvent être à structure variable: '2021' (année), '2021-01' (mois), '2021-05-23' (jour)</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def extraire_periode(self, date_debut, date_fin):
+    &#39;&#39;&#39;
+    retourne un objet DateFab_NumTombee_Dataset
+    en ne gardant le contenu du dataset obéissant à date_debut&lt;= Date_Fab &lt;= date_fin
+
+    les dates peuvent être à structure variable: &#39;2021&#39; (année), &#39;2021-01&#39; (mois), &#39;2021-05-23&#39; (jour)
+    &#39;&#39;&#39;
+    sous_dataset=self.dataset.copy()[(self.dataset.Date_Fab &gt;= pd.to_datetime(date_debut))
+                                                 &amp; (self.dataset.Date_Fab &lt;= pd.to_datetime(date_fin))]
+    nouveauDateFab_NumTombee_Dataset = DateFab_NumTombee_Dataset(sous_dataset, self.name, self.description+f&#39; filtré entre {date_debut} et {date_fin}.&#39;)
+    return nouveauDateFab_NumTombee_Dataset</code></pre>
+</details>
+</dd>
+<dt id="DateFab_NumTombee_Dataset.DateFab_NumTombee_Dataset.get_dates"><code class="name flex">
+<span>def <span class="ident">get_dates</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>retourne l'amplitude temporelle de Date_Fab du dataset</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_dates(self):
+    &#39;&#39;&#39;retourne l&#39;amplitude temporelle de Date_Fab du dataset&#39;&#39;&#39;
+    return f&#34; - amplitude temporelle : ({self.dataset.Date_Fab.min()} - {self.dataset.Date_Fab.max()})\n&#34;</code></pre>
+</details>
+</dd>
+<dt id="DateFab_NumTombee_Dataset.DateFab_NumTombee_Dataset.get_duplicates"><code class="name flex">
+<span>def <span class="ident">get_duplicates</span></span>(<span>self, keep=False)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>retourne les lignes du dataset qui contiennent des doublons sur la base de la clé
+Date_Fab, Num_Tombee
+keep{‘first’, ‘last’, False}, default ‘False’
+Determines which duplicates (if any) to mark.
+first : Mark duplicates as True except for the first occurrence.
+last : Mark duplicates as True except for the last occurrence.
+False : Mark all duplicates as True.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_duplicates(self, keep=False):
+    &#39;&#39;&#39;retourne les lignes du dataset qui contiennent des doublons sur la base de la clé
+    Date_Fab, Num_Tombee
+    keep{‘first’, ‘last’, False}, default ‘False’
+        Determines which duplicates (if any) to mark.
+        first : Mark duplicates as True except for the first occurrence.
+        last : Mark duplicates as True except for the last occurrence.
+        False : Mark all duplicates as True.
+    &#39;&#39;&#39;
+    return self.dataset.loc[self.dataset.duplicated(subset=[&#39;Num_Tombee&#39;, &#39;Date_Fab&#39;], keep=keep)]</code></pre>
+</details>
+</dd>
+<dt id="DateFab_NumTombee_Dataset.DateFab_NumTombee_Dataset.get_info"><code class="name flex">
+<span>def <span class="ident">get_info</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>retourne le nom, la description du dataset</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_info(self):
+    &#39;&#39;&#39;retourne le nom, la description du dataset&#39;&#39;&#39;
+    return f&#34;\n Dataset {self.name} [{self.description}]\n&#34;</code></pre>
+</details>
+</dd>
+<dt id="DateFab_NumTombee_Dataset.DateFab_NumTombee_Dataset.get_shape"><code class="name flex">
+<span>def <span class="ident">get_shape</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>retourne le nombre de lignes et colonnes du dataset</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_shape(self):
+    &#39;&#39;&#39;retourne le nombre de lignes et colonnes du dataset&#39;&#39;&#39;
+    return f&#34; - shape : ({self.dataset.shape})\n&#34;</code></pre>
+</details>
+</dd>
+<dt id="DateFab_NumTombee_Dataset.DateFab_NumTombee_Dataset.plot"><code class="name flex">
+<span>def <span class="ident">plot</span></span>(<span>self, date_debut=None, date_fin=None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>affichage interactif des num_tombee en fonction de la date de fab
+en precisant date_debut et date_fin, on vient resserrer la fenetre de visualisation
+les dates peuvent être à structure variable: '2021' (année), '2021-01' (mois), '2021-05-23' (jour)</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def plot(self, date_debut=None, date_fin=None):
+    &#39;&#39;&#39;affichage interactif des num_tombee en fonction de la date de fab
+    en precisant date_debut et date_fin, on vient resserrer la fenetre de visualisation
+    les dates peuvent être à structure variable: &#39;2021&#39; (année), &#39;2021-01&#39; (mois), &#39;2021-05-23&#39; (jour)
+    &#39;&#39;&#39;
+    dataset_copy = self.dataset.copy()
+    if (date_debut==None):
+        date_debut=dataset_copy.Date_Fab.min()
+    if (date_fin==None):
+        date_fin=dataset_copy.Date_Fab.max()
+
+    output_notebook()
+    source_donnees = ColumnDataSource(dataset_copy[(dataset_copy.Date_Fab &gt;= pd.to_datetime(date_debut))
+                                                 &amp; (dataset_copy.Date_Fab &lt;= pd.to_datetime(date_fin))])
+    TOOLS = &#34;xpan,xwheel_zoom,box_zoom,crosshair, reset,save&#34;
+    p = figure(x_axis_type=&#39;datetime&#39;, active_scroll=&#39;xwheel_zoom&#39;, tools=TOOLS,plot_width=900, plot_height=500)
+
+    p.line(x=&#39;Date_Fab&#39;, y=&#39;Num_Tombee&#39;, source=source_donnees)
+
+    p.circle(x=&#39;Date_Fab&#39;, y=&#39;Num_Tombee&#39;, size=3, line_color=&#34;green&#34;,
+             fill_color=&#34;white&#34;, line_width=1, source=source_donnees, legend_label=self.name)
+
+    hover = HoverTool(tooltips=[(&#39;Date tombée&#39;,&#39;@Date_Fab{%Y-%m-%d %H:%M:%S}&#39;),
+                            (&#39;Num tombée&#39;, &#39;@Num_Tombee&#39;)],
+                  formatters={&#39;@Date_Fab&#39;:&#39;datetime&#39;})
+    p.add_tools(hover)
+    p.title.text = &#34;Num_tombee en fonction de la date&#34;
+    show(p)</code></pre>
+</details>
+</dd>
+<dt id="DateFab_NumTombee_Dataset.DateFab_NumTombee_Dataset.plot_density_per_week"><code class="name flex">
+<span>def <span class="ident">plot_density_per_week</span></span>(<span>self, without_duplicate=False)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>affiche le nombre d'observations par semaine
+si without_duplicate=True, on drop les doublons sur le critere ['Num_Tombee', 'Date_Fab']
+sinon on les affiche en rouge (par défaut)</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def plot_density_per_week(self, without_duplicate=False):
+    &#39;&#39;&#39;affiche le nombre d&#39;observations par semaine
+    si without_duplicate=True, on drop les doublons sur le critere [&#39;Num_Tombee&#39;, &#39;Date_Fab&#39;]
+    sinon on les affiche en rouge (par défaut)
+    &#39;&#39;&#39;
+    dataset_copy = self.dataset.copy()
+    if (without_duplicate):
+        dataset_copy.drop_duplicates(subset=[&#39;Date_Fab&#39;, &#39;Num_Tombee&#39;], inplace=True)
+    # add columns for week and year of the date
+    dataset_copy[&#39;date_week&#39;] = dataset_copy[&#39;Date_Fab&#39;].apply(lambda x: x.isocalendar()[1])
+    dataset_copy[&#39;date_year&#39;] = dataset_copy[&#39;Date_Fab&#39;].apply(lambda x: x.isocalendar()[0])
+
+    dataset_unique = dataset_copy.drop_duplicates(subset=[&#39;Date_Fab&#39;, &#39;Num_Tombee&#39;])
+    dataset_doublon = dataset_copy.loc[dataset_copy.index.difference(dataset_unique.index)]
+    groupage_unique = dataset_unique.groupby([dataset_unique[&#39;date_year&#39;],dataset_unique[&#39;date_week&#39;]])[&#39;Num_Tombee&#39;].count()
+    groupage_doublon = dataset_doublon.groupby([dataset_doublon[&#39;date_year&#39;],dataset_doublon[&#39;date_week&#39;]])[&#39;Num_Tombee&#39;].count()
+
+    graph_rft = pd.concat([groupage_unique, groupage_doublon], axis=1)
+    graph_rft.columns=[&#39;Unique&#39;, &#39;Doublons&#39;]
+    graph_rft=graph_rft[[&#39;Unique&#39;, &#39;Doublons&#39;]]
+
+    graph_rft=graph_rft.reindex(self._create_tempo_df(dataset_copy).index)
+    graph_rft=graph_rft.reset_index(level=[0,1])
+    graph_rft[&#39;index&#39;]=graph_rft[&#39;date_year&#39;].apply(str)+&#39;-&#39;+graph_rft[&#39;date_week&#39;].apply(str)
+    graph_rft.fillna(0, inplace=True)
+    graph_rft[&#39;total&#39;]=graph_rft[&#39;Unique&#39;]+graph_rft[&#39;Doublons&#39;]
+#     graph_rft[&#39;index&#39;]=graph_rft[&#39;index&#39;].astype(&#39;int64&#39;)
+    graph_rft.set_index([&#39;index&#39;], inplace=True)
+
+    graph_rft.drop([&#39;date_year&#39;, &#39;date_week&#39;], axis=1, inplace=True)
+
+#     return graph_rft
+
+    colors = [&#34;green&#34; , &#34;red&#34;]
+    barWidth = 0.7
+#         graph_rft.plot.bar(stacked=True, color=colors, figsize=(17,7),width=barWidth)
+#         plt.show()
+
+    output_notebook()
+    TOOLS = &#34;xpan,xwheel_zoom,crosshair, reset,save&#34;
+
+    p = figure(x_range=list(graph_rft.index), title=&#34;Density plot &#34;+self.name,
+               tools=TOOLS, active_scroll=&#39;xwheel_zoom&#39;, plot_width=900, plot_height=500)
+    v = p.vbar_stack([&#39;Unique&#39;, &#39;Doublons&#39;], x=&#39;index&#39;, width=barWidth, color=colors,
+                 source=graph_rft, line_color=None)
+
+    tooltips = [
+        (&#34;Total &#34;, &#34;@total&#34;),
+        (&#34;Unique &#34;, &#34;@Unique&#34;),
+        (&#34;Doublons &#34;, &#34;@Doublons&#34;),
+        (&#39;# de semaine &#39;, &#34;@index&#34;)
+    ]
+
+    hover = HoverTool(tooltips=tooltips)
+    p.add_tools(hover)
+#     item1 = LegendItem({&#39;label&#39;:&#39;Unique&#39;, &#39;renderers&#39;:[p.renderers[0]]});
+#     item2 = LegendItem({&#39;label&#39;:&#39;Doublons&#39;, &#39;renderers&#39;:[p.renderers[1]]});
+#     legend = Legend(items=[item1, item2])
+#     p.add_layout(legend)
+
+    legend=Legend(items=[
+        (&#34;Unique&#34;,   [v[0]]),
+        (&#34;Doublons&#34;,   [v[1]])
+    ], location=(0, -30))
+    p.add_layout(legend)
+
+    p.legend.orientation = &#34;horizontal&#34;
+    p.legend.location = &#34;top_center&#34;
+    p.legend.click_policy=&#34;hide&#34;
+
+    p.xaxis.major_label_orientation = 3*pi/8
+    p.xaxis.axis_label_text_font_size = &#34;5pt&#34;
+    p.xaxis.major_label_text_font_size = &#34;5pt&#34;
+    p.xaxis.axis_label_text_font = &#34;times&#34;
+    p.xaxis.axis_label_text_color = &#34;black&#34;
+
+    show(p)</code></pre>
+</details>
+</dd>
+<dt id="DateFab_NumTombee_Dataset.DateFab_NumTombee_Dataset.plot_density_per_week_matplotlib"><code class="name flex">
+<span>def <span class="ident">plot_density_per_week_matplotlib</span></span>(<span>self, without_duplicate=False)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>affiche le nombre d'observations par semaine
+si without_duplicate=True, on drop les doublons sur le critere ['Num_Tombee', 'Date_Fab']
+sinon on les affiche en rouge (par défaut)</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def plot_density_per_week_matplotlib(self, without_duplicate=False):
+    &#39;&#39;&#39;affiche le nombre d&#39;observations par semaine
+    si without_duplicate=True, on drop les doublons sur le critere [&#39;Num_Tombee&#39;, &#39;Date_Fab&#39;]
+    sinon on les affiche en rouge (par défaut)
+    &#39;&#39;&#39;
+    dataset_copy = self.dataset.copy()
+    if (without_duplicate):
+        dataset_copy.drop_duplicates(subset=[&#39;Date_Fab&#39;, &#39;Num_Tombee&#39;], inplace=True)
+    # add columns for week and year of the date
+    dataset_copy[&#39;date_week&#39;] = dataset_copy[&#39;Date_Fab&#39;].apply(lambda x: x.isocalendar()[1])
+    dataset_copy[&#39;date_year&#39;] = dataset_copy[&#39;Date_Fab&#39;].apply(lambda x: x.isocalendar()[0])
+
+    dataset_unique = dataset_copy.drop_duplicates(subset=[&#39;Date_Fab&#39;, &#39;Num_Tombee&#39;])
+    dataset_doublon = dataset_copy.loc[dataset_copy.index.difference(dataset_unique.index)]
+    groupage_unique = dataset_unique.groupby([dataset_unique[&#39;date_year&#39;],dataset_unique[&#39;date_week&#39;]])[&#39;Num_Tombee&#39;].count()
+    groupage_doublon = dataset_doublon.groupby([dataset_doublon[&#39;date_year&#39;],dataset_doublon[&#39;date_week&#39;]])[&#39;Num_Tombee&#39;].count()
+
+    graph_rft = pd.concat([groupage_unique, groupage_doublon], axis=1)
+    graph_rft.columns=[&#39;Unique&#39;, &#39;Doublons&#39;]
+    graph_rft=graph_rft[[&#39;Unique&#39;, &#39;Doublons&#39;]]
+
+    graph_rft=graph_rft.reindex(self._create_tempo_df(dataset_copy).index)
+
+    colors = [&#34;green&#34; , &#34;red&#34;]
+    barWidth = 0.85
+    graph_rft.plot.bar(stacked=True, color=colors, figsize=(17,7),width=barWidth)
+    plt.show()</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+<dt id="DateFab_NumTombee_Dataset.STAM"><code class="flex name class">
+<span>class <span class="ident">STAM</span></span>
+<span>(</span><span>dataset, name, description='', date_calendaire=False)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Hérite de DateFab_NumTombee_Dataset
+(Pour stocker les datasets contenant les clés Date_Fab et Num_Tombee)
+Date_Fab_complet est horodatée et permet de faire des passages entre date calendaire et date michelin
+Date_Fab_complet est créé à l'initialisation
+Date_Fab n'est pas horodaté</p>
+<p>les attributs:
+- dataset : une copie du dataframe
+- name : le nom (abrégé) du dataframe
+- description : une description en quelques mots
+- date_calendaire : False si les dates sont stockées en date Michelin, True si stockées en date Calendaire</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class STAM(DateFab_NumTombee_Dataset):
+    &#39;&#39;&#39;
+    Hérite de DateFab_NumTombee_Dataset
+    (Pour stocker les datasets contenant les clés Date_Fab et Num_Tombee)
+    Date_Fab_complet est horodatée et permet de faire des passages entre date calendaire et date michelin
+    Date_Fab_complet est créé à l&#39;initialisation
+    Date_Fab n&#39;est pas horodaté
+    &#39;&#39;&#39;
+    def __init__(self, dataset, name, description=&#39;&#39;, date_calendaire = False):
+        &#39;&#39;&#39;
+        les attributs:
+        - dataset : une copie du dataframe
+        - name : le nom (abrégé) du dataframe
+        - description : une description en quelques mots
+        - date_calendaire : False si les dates sont stockées en date Michelin, True si stockées en date Calendaire
+        &#39;&#39;&#39;
+        super().__init__(dataset, name, description)
+        self._create_dtdate_fom_datecomplet()
+        self.date_calendaire= date_calendaire
+
+    def get_info(self):
+        &#39;&#39;&#39;get_info de DateFab_NumTombee_Dataset complété avec l&#39;info de date_calendaire&#39;&#39;&#39;
+        return super().get_info()+&#39; &#39;+f&#39;Date calendaire: [{self.date_calendaire}]\n&#39;
+
+    def _create_dtdate_fom_datecomplet(self):
+        &#39;&#39;&#39;
+        fonction technique (pas appelable directement)
+        si la colonne Date_Fab_complet existe déjà, on est dans le cas d&#39;un dataset CLEAN
+        donc on ne fait rien
+        &#39;&#39;&#39;
+        if not (&#39;Date_Fab_complet&#39; in self.dataset.columns):
+            self.dataset[&#39;Date_Fab_complet&#39;]=self.dataset[&#39;Date_Fab&#39;]
+            self.dataset[&#39;Date_Fab&#39;]=self.dataset[&#39;Date_Fab_complet&#39;].dt.date
+            self.dataset[&#39;Date_Fab&#39;]=self.dataset[&#39;Date_Fab&#39;].astype(&#39;datetime64&#39;)
+
+    def passage_date_Calendaire(self, heureEquipeA = 6):
+        &#39;&#39;&#39;
+        passe en heure calendaire depuis une heure Michelin
+        seulement si date_calendaire == False
+
+        pour info: la journée Michelin est incrémentée non pas à minuit mais en debut d&#39;équipe A
+        Dates Michelin:
+        2021-01-23 23:00,  2021-01-23 02:00,  2021-01-23 05:59,  2021-01-24 06:05,
+        devient
+        Dates calendaire:
+        2021-01-23 23:00,  2021-01-24 02:00,  2021-01-24 05:59,  2021-01-24 06:05,
+        &#39;&#39;&#39;
+        if (self.date_calendaire):
+            print(self.get_info()+ &#39;déjà en date Calendaire\n&#39;)
+        else:
+            self.dataset[&#39;Date_Fab_complet&#39;]=self.dataset[&#39;Date_Fab_complet&#39;].apply(lambda row:self._ajoute_un_jour(row, heureEquipeA))
+            self.dataset[&#39;Date_Fab_complet&#39;]=self.dataset[&#39;Date_Fab_complet&#39;].astype(&#39;datetime64&#39;)
+            self.date_calendaire = True
+            self.dataset.sort_values(&#39;Date_Fab_complet&#39;, inplace=True)
+            self.dataset[&#39;Date_Fab&#39;]=self.dataset[&#39;Date_Fab_complet&#39;].dt.date
+            self.dataset[&#39;Date_Fab&#39;]=self.dataset[&#39;Date_Fab&#39;].astype(&#39;datetime64&#39;)
+
+    def passage_date_Michelin(self, heureEquipeA = 6):
+        &#39;&#39;&#39;
+        passe en heure Michelin depuis une heure calendaire
+        seulement si date_calendaire == True
+
+        pour info: la journée Michelin est incrémentée non pas à minuit mais en debut d&#39;équipe A
+        Dates calendaire:
+        2021-01-23 23:00,  2021-01-24 02:00,  2021-01-24 05:59,  2021-01-24 06:05,
+        devient
+        Dates Michelin:
+        2021-01-23 23:00,  2021-01-23 02:00,  2021-01-23 05:59,  2021-01-24 06:05,
+        &#39;&#39;&#39;
+        if (not self.date_calendaire):
+            print(self.get_info()+ &#39;déjà en date Michelin\n&#39;)
+        else:
+            self.dataset[&#39;Date_Fab_complet&#39;]=self.dataset[&#39;Date_Fab_complet&#39;].apply(lambda row:self._retire_un_jour(row, heureEquipeA))
+            self.dataset[&#39;Date_Fab_complet&#39;]=self.dataset[&#39;Date_Fab_complet&#39;].astype(&#39;datetime64&#39;)
+            self.date_calendaire = False
+            self.dataset.sort_values(&#39;Date_Fab_complet&#39;, inplace=True)
+            self.dataset[&#39;Date_Fab&#39;]=self.dataset[&#39;Date_Fab_complet&#39;].dt.date
+            self.dataset[&#39;Date_Fab&#39;]=self.dataset[&#39;Date_Fab&#39;].astype(&#39;datetime64&#39;)
+
+
+    def _ajoute_un_jour(self, date, heureEquipeA):
+        &#39;&#39;&#39;
+        fonction technique (pas appelable directement)
+        &#39;&#39;&#39;
+        heure = date.hour
+        if (heure &lt; heureEquipeA):
+            return date+np.timedelta64(24, &#39;h&#39;)
+        return date
+
+    def _retire_un_jour(self, date, heureEquipeA):
+        &#39;&#39;&#39;
+        fonction technique (pas appelable directement)
+        &#39;&#39;&#39;
+        heure = date.hour
+        if (heure &lt; heureEquipeA):
+            return date-np.timedelta64(24, &#39;h&#39;)
+        return date
+
+    def supprime_doublons(self):
+        &#39;&#39;&#39;si 2 lignes ont la meme Date_Fab_complet+Num_Tombee,
+        on ne garde que la dernière mesure (devrait correspondre à CE)
+        (en rediscuter avec Fred)
+        &#39;&#39;&#39;
+        self.dataset.sort_values([&#39;Date_Mes&#39;], inplace=True)
+        self.dataset.drop_duplicates(subset=[&#39;Date_Fab_complet&#39;, &#39;Num_Tombee&#39;], keep=&#39;last&#39;, inplace=True)
+        self.name = self.name+&#39; sans doublon&#39;
+        self.description = self.description + &#39;\n sans doublon&#39;
+        self.dataset.sort_values([&#39;Date_Fab_complet&#39;], inplace=True)
+
+    def extraire_periode(self, date_debut, date_fin):
+        &#39;&#39;&#39;
+        retourne un objet STAM
+        en ne gardant le contenu du dataset obéissant à date_debut&lt;= Date_Fab &lt;= date_fin
+
+        les dates peuvent être à structure variable: &#39;2021&#39; (année), &#39;2021-01&#39; (mois), &#39;2021-05-23&#39; (jour)
+        &#39;&#39;&#39;
+        sous_dataset=self.dataset.copy()[(self.dataset.Date_Fab &gt;= pd.to_datetime(date_debut))
+                                                     &amp; (self.dataset.Date_Fab &lt;= pd.to_datetime(date_fin))]
+        nouveauSTAM = STAM(sous_dataset, self.name, self.description+f&#39; filtré entre {date_debut} et {date_fin}.&#39;, date_calendaire=self.date_calendaire)
+        return nouveauSTAM
+
+
+    def plot(self, date_debut=None, date_fin=None):
+        &#39;&#39;&#39;affichage interactif des num_tombee en fonction de la date de fab complet
+        en precisant date_debut et date_fin, on vient resserrer la fenetre de visualisation
+        les dates peuvent être à structure variable: &#39;2021&#39; (année), &#39;2021-01&#39; (mois), &#39;2021-05-23&#39; (jour)
+
+        il y a 2 courbes, en vert les tests nonCE, en rouge les tests CE
+        si on clique dans la legende on peut venir n&#39;afficher que la courbe de son choix
+        &#39;&#39;&#39;
+        mergeStam_copy = self.dataset.copy()
+        if (date_debut==None):
+            date_debut=mergeStam_copy.Date_Fab_complet.min()
+        if (date_fin==None):
+            date_fin=mergeStam_copy.Date_Fab_complet.max()
+
+        # quand mergeStam_copy[&#39;CE&#39;] est de type object, on est sur un STAM merge (avec des entrées &#39;CE&#39; et nan)
+        # quand mergeStam_copy[&#39;CE&#39;] est de type int64, on est sur un STAM clean (avec des entrées 1 et 0)
+        # on passe tout dans le style clean
+
+        if (mergeStam_copy[&#39;CE&#39;].dtypes == &#39;object&#39;):
+            mergeStam_copy[&#39;CE&#39;] = mergeStam_copy[&#39;CE&#39;].str.strip()
+            mergeStam_copy[&#39;CE&#39;].fillna(0,inplace=True)
+            mergeStam_copy[&#39;CE&#39;].replace(&#39;CE&#39;, 1, inplace=True)
+            mergeStam_copy[&#39;CE&#39;] = mergeStam_copy[&#39;CE&#39;].astype(&#39;int64&#39;)
+
+        output_notebook()
+        source_stam = ColumnDataSource(mergeStam_copy[(mergeStam_copy.Date_Fab_complet &gt;= pd.to_datetime(date_debut))
+                                                     &amp; (mergeStam_copy.Date_Fab_complet &lt;= pd.to_datetime(date_fin))])
+        source_stam_CE = ColumnDataSource(mergeStam_copy[(mergeStam_copy.Date_Fab_complet &gt;= pd.to_datetime(date_debut))
+                                                     &amp; (mergeStam_copy.Date_Fab_complet &lt;= pd.to_datetime(date_fin))
+                                                     &amp; (mergeStam_copy.CE == 1)   ])
+        source_stam_noCE = ColumnDataSource(mergeStam_copy[(mergeStam_copy.Date_Fab_complet &gt;= pd.to_datetime(date_debut))
+                                                     &amp; (mergeStam_copy.Date_Fab_complet &lt;= pd.to_datetime(date_fin))
+                                                     &amp; (mergeStam_copy.CE == 0)   ])
+
+
+        TOOLS = &#34;xpan,xwheel_zoom,box_zoom,crosshair, reset,save&#34;
+        p = figure(x_axis_type=&#39;datetime&#39;, active_scroll=&#39;xwheel_zoom&#39;, tools=TOOLS,plot_width=900, plot_height=500)
+
+        p.line(x=&#39;Date_Fab_complet&#39;, y=&#39;Num_Tombee&#39;, source=source_stam)
+
+        noce = p.circle(x=&#39;Date_Fab_complet&#39;, y=&#39;Num_Tombee&#39;, size=3, line_color=&#34;green&#34;,
+                 fill_color=&#34;white&#34;, line_width=1, source=source_stam_noCE, legend_label=&#39;pas de CE&#39;)
+        ce = p.circle(x=&#39;Date_Fab_complet&#39;, y=&#39;Num_Tombee&#39;, size=3, line_color=&#34;red&#34;,
+                 fill_color=&#34;white&#34;, line_width=1, source=source_stam_CE, legend_label=&#39;avec CE&#39;)
+
+        #le mode vline c&#39;est la barre verticale qui appelle la liste des points à cette date
+        #le mode mouse est plus ciblé et plus performant
+        hover = HoverTool(renderers=[ce, noce],tooltips=[(&#39;Date tombée&#39;,&#39;@Date_Fab_complet{%Y-%m-%d %H:%M:%S}&#39;),
+                                                         (&#39;Date mesure&#39;,&#39;@Date_Mes{%Y-%m-%d %H:%M:%S}&#39;),
+                                                         (&#39;Num tombée&#39;, &#39;@Num_Tombee&#39;), (&#39;CE&#39;, &#39;@CE&#39;)],
+                      formatters={&#39;@Date_Fab_complet&#39;:&#39;datetime&#39;, &#39;@Date_Mes&#39;:&#39;datetime&#39;}, mode=&#39;mouse&#39;)
+        p.add_tools(hover)
+        p.title.text = &#34;Num_tombee en fonction de la date&#34;
+        p.legend.location = &#34;top_left&#34;
+        p.legend.click_policy=&#34;hide&#34;
+        show(p)</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="DateFab_NumTombee_Dataset.DateFab_NumTombee_Dataset" href="#DateFab_NumTombee_Dataset.DateFab_NumTombee_Dataset">DateFab_NumTombee_Dataset</a></li>
+</ul>
+<h3>Methods</h3>
+<dl>
+<dt id="DateFab_NumTombee_Dataset.STAM.extraire_periode"><code class="name flex">
+<span>def <span class="ident">extraire_periode</span></span>(<span>self, date_debut, date_fin)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>retourne un objet STAM
+en ne gardant le contenu du dataset obéissant à date_debut&lt;= Date_Fab &lt;= date_fin</p>
+<p>les dates peuvent être à structure variable: '2021' (année), '2021-01' (mois), '2021-05-23' (jour)</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def extraire_periode(self, date_debut, date_fin):
+    &#39;&#39;&#39;
+    retourne un objet STAM
+    en ne gardant le contenu du dataset obéissant à date_debut&lt;= Date_Fab &lt;= date_fin
+
+    les dates peuvent être à structure variable: &#39;2021&#39; (année), &#39;2021-01&#39; (mois), &#39;2021-05-23&#39; (jour)
+    &#39;&#39;&#39;
+    sous_dataset=self.dataset.copy()[(self.dataset.Date_Fab &gt;= pd.to_datetime(date_debut))
+                                                 &amp; (self.dataset.Date_Fab &lt;= pd.to_datetime(date_fin))]
+    nouveauSTAM = STAM(sous_dataset, self.name, self.description+f&#39; filtré entre {date_debut} et {date_fin}.&#39;, date_calendaire=self.date_calendaire)
+    return nouveauSTAM</code></pre>
+</details>
+</dd>
+<dt id="DateFab_NumTombee_Dataset.STAM.get_info"><code class="name flex">
+<span>def <span class="ident">get_info</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>get_info de DateFab_NumTombee_Dataset complété avec l'info de date_calendaire</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_info(self):
+    &#39;&#39;&#39;get_info de DateFab_NumTombee_Dataset complété avec l&#39;info de date_calendaire&#39;&#39;&#39;
+    return super().get_info()+&#39; &#39;+f&#39;Date calendaire: [{self.date_calendaire}]\n&#39;</code></pre>
+</details>
+</dd>
+<dt id="DateFab_NumTombee_Dataset.STAM.passage_date_Calendaire"><code class="name flex">
+<span>def <span class="ident">passage_date_Calendaire</span></span>(<span>self, heureEquipeA=6)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>passe en heure calendaire depuis une heure Michelin
+seulement si date_calendaire == False</p>
+<p>pour info: la journée Michelin est incrémentée non pas à minuit mais en debut d'équipe A
+Dates Michelin:
+2021-01-23 23:00,
+2021-01-23 02:00,
+2021-01-23 05:59,
+2021-01-24 06:05,
+devient
+Dates calendaire:
+2021-01-23 23:00,
+2021-01-24 02:00,
+2021-01-24 05:59,
+2021-01-24 06:05,</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def passage_date_Calendaire(self, heureEquipeA = 6):
+    &#39;&#39;&#39;
+    passe en heure calendaire depuis une heure Michelin
+    seulement si date_calendaire == False
+
+    pour info: la journée Michelin est incrémentée non pas à minuit mais en debut d&#39;équipe A
+    Dates Michelin:
+    2021-01-23 23:00,  2021-01-23 02:00,  2021-01-23 05:59,  2021-01-24 06:05,
+    devient
+    Dates calendaire:
+    2021-01-23 23:00,  2021-01-24 02:00,  2021-01-24 05:59,  2021-01-24 06:05,
+    &#39;&#39;&#39;
+    if (self.date_calendaire):
+        print(self.get_info()+ &#39;déjà en date Calendaire\n&#39;)
+    else:
+        self.dataset[&#39;Date_Fab_complet&#39;]=self.dataset[&#39;Date_Fab_complet&#39;].apply(lambda row:self._ajoute_un_jour(row, heureEquipeA))
+        self.dataset[&#39;Date_Fab_complet&#39;]=self.dataset[&#39;Date_Fab_complet&#39;].astype(&#39;datetime64&#39;)
+        self.date_calendaire = True
+        self.dataset.sort_values(&#39;Date_Fab_complet&#39;, inplace=True)
+        self.dataset[&#39;Date_Fab&#39;]=self.dataset[&#39;Date_Fab_complet&#39;].dt.date
+        self.dataset[&#39;Date_Fab&#39;]=self.dataset[&#39;Date_Fab&#39;].astype(&#39;datetime64&#39;)</code></pre>
+</details>
+</dd>
+<dt id="DateFab_NumTombee_Dataset.STAM.passage_date_Michelin"><code class="name flex">
+<span>def <span class="ident">passage_date_Michelin</span></span>(<span>self, heureEquipeA=6)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>passe en heure Michelin depuis une heure calendaire
+seulement si date_calendaire == True</p>
+<p>pour info: la journée Michelin est incrémentée non pas à minuit mais en debut d'équipe A
+Dates calendaire:
+2021-01-23 23:00,
+2021-01-24 02:00,
+2021-01-24 05:59,
+2021-01-24 06:05,
+devient
+Dates Michelin:
+2021-01-23 23:00,
+2021-01-23 02:00,
+2021-01-23 05:59,
+2021-01-24 06:05,</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def passage_date_Michelin(self, heureEquipeA = 6):
+    &#39;&#39;&#39;
+    passe en heure Michelin depuis une heure calendaire
+    seulement si date_calendaire == True
+
+    pour info: la journée Michelin est incrémentée non pas à minuit mais en debut d&#39;équipe A
+    Dates calendaire:
+    2021-01-23 23:00,  2021-01-24 02:00,  2021-01-24 05:59,  2021-01-24 06:05,
+    devient
+    Dates Michelin:
+    2021-01-23 23:00,  2021-01-23 02:00,  2021-01-23 05:59,  2021-01-24 06:05,
+    &#39;&#39;&#39;
+    if (not self.date_calendaire):
+        print(self.get_info()+ &#39;déjà en date Michelin\n&#39;)
+    else:
+        self.dataset[&#39;Date_Fab_complet&#39;]=self.dataset[&#39;Date_Fab_complet&#39;].apply(lambda row:self._retire_un_jour(row, heureEquipeA))
+        self.dataset[&#39;Date_Fab_complet&#39;]=self.dataset[&#39;Date_Fab_complet&#39;].astype(&#39;datetime64&#39;)
+        self.date_calendaire = False
+        self.dataset.sort_values(&#39;Date_Fab_complet&#39;, inplace=True)
+        self.dataset[&#39;Date_Fab&#39;]=self.dataset[&#39;Date_Fab_complet&#39;].dt.date
+        self.dataset[&#39;Date_Fab&#39;]=self.dataset[&#39;Date_Fab&#39;].astype(&#39;datetime64&#39;)</code></pre>
+</details>
+</dd>
+<dt id="DateFab_NumTombee_Dataset.STAM.plot"><code class="name flex">
+<span>def <span class="ident">plot</span></span>(<span>self, date_debut=None, date_fin=None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>affichage interactif des num_tombee en fonction de la date de fab complet
+en precisant date_debut et date_fin, on vient resserrer la fenetre de visualisation
+les dates peuvent être à structure variable: '2021' (année), '2021-01' (mois), '2021-05-23' (jour)</p>
+<p>il y a 2 courbes, en vert les tests nonCE, en rouge les tests CE
+si on clique dans la legende on peut venir n'afficher que la courbe de son choix</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def plot(self, date_debut=None, date_fin=None):
+    &#39;&#39;&#39;affichage interactif des num_tombee en fonction de la date de fab complet
+    en precisant date_debut et date_fin, on vient resserrer la fenetre de visualisation
+    les dates peuvent être à structure variable: &#39;2021&#39; (année), &#39;2021-01&#39; (mois), &#39;2021-05-23&#39; (jour)
+
+    il y a 2 courbes, en vert les tests nonCE, en rouge les tests CE
+    si on clique dans la legende on peut venir n&#39;afficher que la courbe de son choix
+    &#39;&#39;&#39;
+    mergeStam_copy = self.dataset.copy()
+    if (date_debut==None):
+        date_debut=mergeStam_copy.Date_Fab_complet.min()
+    if (date_fin==None):
+        date_fin=mergeStam_copy.Date_Fab_complet.max()
+
+    # quand mergeStam_copy[&#39;CE&#39;] est de type object, on est sur un STAM merge (avec des entrées &#39;CE&#39; et nan)
+    # quand mergeStam_copy[&#39;CE&#39;] est de type int64, on est sur un STAM clean (avec des entrées 1 et 0)
+    # on passe tout dans le style clean
+
+    if (mergeStam_copy[&#39;CE&#39;].dtypes == &#39;object&#39;):
+        mergeStam_copy[&#39;CE&#39;] = mergeStam_copy[&#39;CE&#39;].str.strip()
+        mergeStam_copy[&#39;CE&#39;].fillna(0,inplace=True)
+        mergeStam_copy[&#39;CE&#39;].replace(&#39;CE&#39;, 1, inplace=True)
+        mergeStam_copy[&#39;CE&#39;] = mergeStam_copy[&#39;CE&#39;].astype(&#39;int64&#39;)
+
+    output_notebook()
+    source_stam = ColumnDataSource(mergeStam_copy[(mergeStam_copy.Date_Fab_complet &gt;= pd.to_datetime(date_debut))
+                                                 &amp; (mergeStam_copy.Date_Fab_complet &lt;= pd.to_datetime(date_fin))])
+    source_stam_CE = ColumnDataSource(mergeStam_copy[(mergeStam_copy.Date_Fab_complet &gt;= pd.to_datetime(date_debut))
+                                                 &amp; (mergeStam_copy.Date_Fab_complet &lt;= pd.to_datetime(date_fin))
+                                                 &amp; (mergeStam_copy.CE == 1)   ])
+    source_stam_noCE = ColumnDataSource(mergeStam_copy[(mergeStam_copy.Date_Fab_complet &gt;= pd.to_datetime(date_debut))
+                                                 &amp; (mergeStam_copy.Date_Fab_complet &lt;= pd.to_datetime(date_fin))
+                                                 &amp; (mergeStam_copy.CE == 0)   ])
+
+
+    TOOLS = &#34;xpan,xwheel_zoom,box_zoom,crosshair, reset,save&#34;
+    p = figure(x_axis_type=&#39;datetime&#39;, active_scroll=&#39;xwheel_zoom&#39;, tools=TOOLS,plot_width=900, plot_height=500)
+
+    p.line(x=&#39;Date_Fab_complet&#39;, y=&#39;Num_Tombee&#39;, source=source_stam)
+
+    noce = p.circle(x=&#39;Date_Fab_complet&#39;, y=&#39;Num_Tombee&#39;, size=3, line_color=&#34;green&#34;,
+             fill_color=&#34;white&#34;, line_width=1, source=source_stam_noCE, legend_label=&#39;pas de CE&#39;)
+    ce = p.circle(x=&#39;Date_Fab_complet&#39;, y=&#39;Num_Tombee&#39;, size=3, line_color=&#34;red&#34;,
+             fill_color=&#34;white&#34;, line_width=1, source=source_stam_CE, legend_label=&#39;avec CE&#39;)
+
+    #le mode vline c&#39;est la barre verticale qui appelle la liste des points à cette date
+    #le mode mouse est plus ciblé et plus performant
+    hover = HoverTool(renderers=[ce, noce],tooltips=[(&#39;Date tombée&#39;,&#39;@Date_Fab_complet{%Y-%m-%d %H:%M:%S}&#39;),
+                                                     (&#39;Date mesure&#39;,&#39;@Date_Mes{%Y-%m-%d %H:%M:%S}&#39;),
+                                                     (&#39;Num tombée&#39;, &#39;@Num_Tombee&#39;), (&#39;CE&#39;, &#39;@CE&#39;)],
+                  formatters={&#39;@Date_Fab_complet&#39;:&#39;datetime&#39;, &#39;@Date_Mes&#39;:&#39;datetime&#39;}, mode=&#39;mouse&#39;)
+    p.add_tools(hover)
+    p.title.text = &#34;Num_tombee en fonction de la date&#34;
+    p.legend.location = &#34;top_left&#34;
+    p.legend.click_policy=&#34;hide&#34;
+    show(p)</code></pre>
+</details>
+</dd>
+<dt id="DateFab_NumTombee_Dataset.STAM.supprime_doublons"><code class="name flex">
+<span>def <span class="ident">supprime_doublons</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>si 2 lignes ont la meme Date_Fab_complet+Num_Tombee,
+on ne garde que la dernière mesure (devrait correspondre à CE)
+(en rediscuter avec Fred)</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def supprime_doublons(self):
+    &#39;&#39;&#39;si 2 lignes ont la meme Date_Fab_complet+Num_Tombee,
+    on ne garde que la dernière mesure (devrait correspondre à CE)
+    (en rediscuter avec Fred)
+    &#39;&#39;&#39;
+    self.dataset.sort_values([&#39;Date_Mes&#39;], inplace=True)
+    self.dataset.drop_duplicates(subset=[&#39;Date_Fab_complet&#39;, &#39;Num_Tombee&#39;], keep=&#39;last&#39;, inplace=True)
+    self.name = self.name+&#39; sans doublon&#39;
+    self.description = self.description + &#39;\n sans doublon&#39;
+    self.dataset.sort_values([&#39;Date_Fab_complet&#39;], inplace=True)</code></pre>
+</details>
+</dd>
+</dl>
+<h3>Inherited members</h3>
+<ul class="hlist">
+<li><code><b><a title="DateFab_NumTombee_Dataset.DateFab_NumTombee_Dataset" href="#DateFab_NumTombee_Dataset.DateFab_NumTombee_Dataset">DateFab_NumTombee_Dataset</a></b></code>:
+<ul class="hlist">
+<li><code><a title="DateFab_NumTombee_Dataset.DateFab_NumTombee_Dataset.comparaison" href="#DateFab_NumTombee_Dataset.DateFab_NumTombee_Dataset.comparaison">comparaison</a></code></li>
+<li><code><a title="DateFab_NumTombee_Dataset.DateFab_NumTombee_Dataset.comparaison_plot" href="#DateFab_NumTombee_Dataset.DateFab_NumTombee_Dataset.comparaison_plot">comparaison_plot</a></code></li>
+<li><code><a title="DateFab_NumTombee_Dataset.DateFab_NumTombee_Dataset.comparaison_plot_density" href="#DateFab_NumTombee_Dataset.DateFab_NumTombee_Dataset.comparaison_plot_density">comparaison_plot_density</a></code></li>
+<li><code><a title="DateFab_NumTombee_Dataset.DateFab_NumTombee_Dataset.comparaison_plot_density_matplotlib" href="#DateFab_NumTombee_Dataset.DateFab_NumTombee_Dataset.comparaison_plot_density_matplotlib">comparaison_plot_density_matplotlib</a></code></li>
+<li><code><a title="DateFab_NumTombee_Dataset.DateFab_NumTombee_Dataset.get_dates" href="#DateFab_NumTombee_Dataset.DateFab_NumTombee_Dataset.get_dates">get_dates</a></code></li>
+<li><code><a title="DateFab_NumTombee_Dataset.DateFab_NumTombee_Dataset.get_duplicates" href="#DateFab_NumTombee_Dataset.DateFab_NumTombee_Dataset.get_duplicates">get_duplicates</a></code></li>
+<li><code><a title="DateFab_NumTombee_Dataset.DateFab_NumTombee_Dataset.get_shape" href="#DateFab_NumTombee_Dataset.DateFab_NumTombee_Dataset.get_shape">get_shape</a></code></li>
+<li><code><a title="DateFab_NumTombee_Dataset.DateFab_NumTombee_Dataset.plot_density_per_week" href="#DateFab_NumTombee_Dataset.DateFab_NumTombee_Dataset.plot_density_per_week">plot_density_per_week</a></code></li>
+<li><code><a title="DateFab_NumTombee_Dataset.DateFab_NumTombee_Dataset.plot_density_per_week_matplotlib" href="#DateFab_NumTombee_Dataset.DateFab_NumTombee_Dataset.plot_density_per_week_matplotlib">plot_density_per_week_matplotlib</a></code></li>
+</ul>
+</li>
+</ul>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3><a href="#header-functions">Functions</a></h3>
+<ul class="">
+<li><code><a title="DateFab_NumTombee_Dataset.printDateRangeFromWeek" href="#DateFab_NumTombee_Dataset.printDateRangeFromWeek">printDateRangeFromWeek</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="DateFab_NumTombee_Dataset.DateFab_NumTombee_Dataset" href="#DateFab_NumTombee_Dataset.DateFab_NumTombee_Dataset">DateFab_NumTombee_Dataset</a></code></h4>
+<ul class="">
+<li><code><a title="DateFab_NumTombee_Dataset.DateFab_NumTombee_Dataset.comparaison" href="#DateFab_NumTombee_Dataset.DateFab_NumTombee_Dataset.comparaison">comparaison</a></code></li>
+<li><code><a title="DateFab_NumTombee_Dataset.DateFab_NumTombee_Dataset.comparaison_plot" href="#DateFab_NumTombee_Dataset.DateFab_NumTombee_Dataset.comparaison_plot">comparaison_plot</a></code></li>
+<li><code><a title="DateFab_NumTombee_Dataset.DateFab_NumTombee_Dataset.comparaison_plot_density" href="#DateFab_NumTombee_Dataset.DateFab_NumTombee_Dataset.comparaison_plot_density">comparaison_plot_density</a></code></li>
+<li><code><a title="DateFab_NumTombee_Dataset.DateFab_NumTombee_Dataset.comparaison_plot_density_matplotlib" href="#DateFab_NumTombee_Dataset.DateFab_NumTombee_Dataset.comparaison_plot_density_matplotlib">comparaison_plot_density_matplotlib</a></code></li>
+<li><code><a title="DateFab_NumTombee_Dataset.DateFab_NumTombee_Dataset.extraire_periode" href="#DateFab_NumTombee_Dataset.DateFab_NumTombee_Dataset.extraire_periode">extraire_periode</a></code></li>
+<li><code><a title="DateFab_NumTombee_Dataset.DateFab_NumTombee_Dataset.get_dates" href="#DateFab_NumTombee_Dataset.DateFab_NumTombee_Dataset.get_dates">get_dates</a></code></li>
+<li><code><a title="DateFab_NumTombee_Dataset.DateFab_NumTombee_Dataset.get_duplicates" href="#DateFab_NumTombee_Dataset.DateFab_NumTombee_Dataset.get_duplicates">get_duplicates</a></code></li>
+<li><code><a title="DateFab_NumTombee_Dataset.DateFab_NumTombee_Dataset.get_info" href="#DateFab_NumTombee_Dataset.DateFab_NumTombee_Dataset.get_info">get_info</a></code></li>
+<li><code><a title="DateFab_NumTombee_Dataset.DateFab_NumTombee_Dataset.get_shape" href="#DateFab_NumTombee_Dataset.DateFab_NumTombee_Dataset.get_shape">get_shape</a></code></li>
+<li><code><a title="DateFab_NumTombee_Dataset.DateFab_NumTombee_Dataset.plot" href="#DateFab_NumTombee_Dataset.DateFab_NumTombee_Dataset.plot">plot</a></code></li>
+<li><code><a title="DateFab_NumTombee_Dataset.DateFab_NumTombee_Dataset.plot_density_per_week" href="#DateFab_NumTombee_Dataset.DateFab_NumTombee_Dataset.plot_density_per_week">plot_density_per_week</a></code></li>
+<li><code><a title="DateFab_NumTombee_Dataset.DateFab_NumTombee_Dataset.plot_density_per_week_matplotlib" href="#DateFab_NumTombee_Dataset.DateFab_NumTombee_Dataset.plot_density_per_week_matplotlib">plot_density_per_week_matplotlib</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="DateFab_NumTombee_Dataset.STAM" href="#DateFab_NumTombee_Dataset.STAM">STAM</a></code></h4>
+<ul class="">
+<li><code><a title="DateFab_NumTombee_Dataset.STAM.extraire_periode" href="#DateFab_NumTombee_Dataset.STAM.extraire_periode">extraire_periode</a></code></li>
+<li><code><a title="DateFab_NumTombee_Dataset.STAM.get_info" href="#DateFab_NumTombee_Dataset.STAM.get_info">get_info</a></code></li>
+<li><code><a title="DateFab_NumTombee_Dataset.STAM.passage_date_Calendaire" href="#DateFab_NumTombee_Dataset.STAM.passage_date_Calendaire">passage_date_Calendaire</a></code></li>
+<li><code><a title="DateFab_NumTombee_Dataset.STAM.passage_date_Michelin" href="#DateFab_NumTombee_Dataset.STAM.passage_date_Michelin">passage_date_Michelin</a></code></li>
+<li><code><a title="DateFab_NumTombee_Dataset.STAM.plot" href="#DateFab_NumTombee_Dataset.STAM.plot">plot</a></code></li>
+<li><code><a title="DateFab_NumTombee_Dataset.STAM.supprime_doublons" href="#DateFab_NumTombee_Dataset.STAM.supprime_doublons">supprime_doublons</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.9.2</a>.</p>
+</footer>
+</body>
+</html>
