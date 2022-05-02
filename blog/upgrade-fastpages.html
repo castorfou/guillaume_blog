@@ -119,17 +119,16 @@ window.onload = wrap_img;
 <ul>
 <li class="toc-entry toc-h3"><a href="#installation">Installation</a></li>
 <li class="toc-entry toc-h3"><a href="#copy-content">Copy content</a></li>
-<li class="toc-entry toc-h3"><a href="#and-complete-the-configuration-to-keep-our-baseurl">And complete the configuration to keep our baseurl</a></li>
 </ul>
 </li>
 </ul><h2 id="source-of-inspiration">
 <a class="anchor" href="#source-of-inspiration" aria-hidden="true"><span class="octicon octicon-link"></span></a>source of inspiration</h2>
 
-<p>as detailed inhttps://github.com/fastai/fastpages/issues/634</p>
+<p>as detailed in <a href="https://github.com/fastai/fastpages/issues/634">https://github.com/fastai/fastpages/issues/634</a></p>
 
 <p>Hamel asks to restart from a new repo. But how to keep the same blog url?</p>
 
-<p>I would like to keep <a href="https://castorfou.github.io/guillaume_blog/">castorfou.github.io/guillaume_blog</a> and not have to move to  <a href="https://castorfou.github.io/blog/">castorfou.github.io/blog</a></p>
+<p>Easy way is to rename former repo (from <code class="language-plaintext highlighter-rouge">guillaume_blog</code> to <code class="language-plaintext highlighter-rouge">guillaume_blog_old</code>) and initiate new repo as former one (<code class="language-plaintext highlighter-rouge">guillaume_blog</code>).</p>
 
 <p>Here are the steps.</p>
 
@@ -140,7 +139,8 @@ window.onload = wrap_img;
 <a class="anchor" href="#installation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Installation</h3>
 
 <ol>
-  <li>Generate a copy of <a href="https://github.com/fastai/fastpages#setup-instructions">fastpages repo</a>. Just have to follow instructions by clicking at https://github.com/fastai/fastpages/generate</li>
+  <li>Generate a copy of <a href="https://github.com/fastai/fastpages#setup-instructions">fastpages repo</a>. Just have to follow instructions by clicking at https://github.com/fastai/fastpages/generate. Name repo as <code class="language-plaintext highlighter-rouge">guillaume_blog</code>
+</li>
   <li>Click on the PR <code class="language-plaintext highlighter-rouge">Initial Setup</code> in your new repo. There are instructions to create a SSH_DEPLOY_KEY.</li>
   <li>Merge this PR</li>
   <li>Clone this repo locally</li>
@@ -162,15 +162,6 @@ window.onload = wrap_img;
 </li>
 </ol>
 
-<h3 id="and-complete-the-configuration-to-keep-our-baseurl">
-<a class="anchor" href="#and-complete-the-configuration-to-keep-our-baseurl" aria-hidden="true"><span class="octicon octicon-link"></span></a><del>And complete the configuration to keep our baseurl</del>
-</h3>
-
-<p><del>by copying <code class="language-plaintext highlighter-rouge">_config.yml</code></del></p>
-
-<p><del>and editing <code class="language-plaintext highlighter-rouge">_action_files/settings.ini</code> to update <code class="language-plaintext highlighter-rouge">baseurl</code>: fastpages expects a match with <code class="language-plaintext highlighter-rouge">baseurl</code> in <code class="language-plaintext highlighter-rouge">_config.yml</code> and `_action_files/settings.ini</del>`</p>
-
-<p>It doesn’t work… to be continued …</p>
 
   </div><!-- from https://github.com/utterance/utterances -->
 <script src="https://utteranc.es/client.js"
