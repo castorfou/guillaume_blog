@@ -10,13 +10,13 @@ image: images/icons/fastai.png
 
 ## source of inspiration
 
-as detailed inhttps://github.com/fastai/fastpages/issues/634
+as detailed in [https://github.com/fastai/fastpages/issues/634](https://github.com/fastai/fastpages/issues/634)
 
 
 
 Hamel asks to restart from a new repo. But how to keep the same blog url?
 
-I would like to keep [castorfou.github.io/guillaume_blog](https://castorfou.github.io/guillaume_blog/) and not have to move to  [castorfou.github.io/blog](https://castorfou.github.io/blog/) 
+Easy way is to rename former repo (from `guillaume_blog` to `guillaume_blog_old`) and initiate new repo as former one (`guillaume_blog`).
 
 Here are the steps.
 
@@ -28,7 +28,7 @@ Here are the steps.
 
 ### Installation
 
-1. Generate a copy of [fastpages repo](https://github.com/fastai/fastpages#setup-instructions). Just have to follow instructions by clicking at https://github.com/fastai/fastpages/generate
+1. Generate a copy of [fastpages repo](https://github.com/fastai/fastpages#setup-instructions). Just have to follow instructions by clicking at https://github.com/fastai/fastpages/generate. Name repo as `guillaume_blog`
 2. Click on the PR `Initial Setup` in your new repo. There are instructions to create a SSH_DEPLOY_KEY.
 3. Merge this PR
 4. Clone this repo locally
@@ -46,10 +46,3 @@ Here are the steps.
 
 
 
-### ~~And complete the configuration to keep our baseurl~~
-
-~~by copying `_config.yml`~~
-
-~~and editing `_action_files/settings.ini` to update `baseurl`: fastpages expects a match with `baseurl` in `_config.yml` and `_action_files/settings.ini~~`
-
-It doesn't work... to be continued ...
