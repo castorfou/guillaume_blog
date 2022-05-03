@@ -284,6 +284,13 @@ Or alternate download are possible.
 wget -O - https://raw.githubusercontent.com/castorfou/guillaume_blog/master/files/setup_wsl_06_git_credential_manager.sh | bash
 ```
 
+### 07 - install wslu
+
+[wslu](https://wslutiliti.es/wslu/)
+```bash
+wget -O - https://raw.githubusercontent.com/castorfou/guillaume_blog/master/files/setup_wsl_07_wslu.sh | bash
+```
+
 
 
 ## Manual setup (skip if to follow automatic setup)
