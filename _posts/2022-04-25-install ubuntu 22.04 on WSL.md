@@ -276,6 +276,16 @@ Or alternate download are possible.
 
 ![](..\images\GWSL_Dashboard.jpg)
 
+
+
+### 06 - git credential manager
+
+```bash
+wget -O - https://raw.githubusercontent.com/castorfou/guillaume_blog/master/files/setup_wsl_06_git_credential_manager.sh | bash
+```
+
+
+
 ## Manual setup (skip if to follow automatic setup)
 
 ### basic setup
