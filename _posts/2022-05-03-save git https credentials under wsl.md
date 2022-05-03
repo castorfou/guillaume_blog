@@ -31,6 +31,7 @@ Download the latest (v2.0.696 at May/3rd 2022) [.deb package](https://github.com
 ```bash
 sudo dpkg -i <path-to-package>
 git-credential-manager-core configure
+git config --global credential.credentialStore gpg
 ```
 
 or see the step 06 in [install ubuntu 22.04 on WSL](https://castorfou.github.io/guillaume_blog/blog/install-ubuntu-22.04-on-WSL.html)
