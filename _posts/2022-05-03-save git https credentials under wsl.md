@@ -20,9 +20,13 @@ Usefull when one has to use https instead of git(ssl) to connect to git repos. M
 
 ## How to setup it
 
-#### installation inside WSL
+#### create token in github
 
-Download the latest [.deb package](https://github.com/GitCredentialManager/git-credential-manager/releases/latest), and run the following:
+I have to create a token at Settings > Developer Settings > Personal Access Tokens
+
+#### installation of git-credential-manager inside WSL
+
+Download the latest (v2.0.696 at May/3rd 2022) [.deb package](https://github.com/GitCredentialManager/git-credential-manager/releases/latest), and run the following:
 
 ```bash
 sudo dpkg -i <path-to-package>
