@@ -293,6 +293,40 @@ wget -O - https://raw.githubusercontent.com/castorfou/guillaume_blog/master/file
 
 
 
+Some examples:
+
+```bash
+$ wslfetch
+
+               .-/+oossssoo+/-.               Windows Subsystem for Linux (WSL2)
+           `:+ssssssssssssssssss+:`           guillaume@LL11LPC0PQARQ
+         -+ssssssssssssssssssyyssss+-         Build: 19044
+       .ossssssssssssssssssdMMMNysssso.       Branch: vb_release
+      /ssssssssssshdmmNNmmyNMMMMhssssss/      Release: Ubuntu 22.04 LTS
+     +ssssssssshmydMMMMMMMNddddyssssssss+     Kernel: Linux 5.10.102.1-microsoft-standard-WSL2
+    /sssssssshNMMMyhhyyyyhmNMMMNhssssssss/    Uptime: 0d 3h 44m
+   .ssssssssdMMMNhsssssssssshNMMMdssssssss.
+   +sssshhhyNMMNyssssssssssssyNMMMysssssss+
+   ossyNMMMNyMMhsssssssssssssshmmmhssssssso
+   ossyNMMMNyMMhsssssssssssssshmmmhssssssso
+   +sssshhhyNMMNyssssssssssssyNMMMysssssss+
+   .ssssssssdMMMNhsssssssssshNMMMdssssssss.
+    /sssssssshNMMMyhhyyyyhdNMMMNhssssssss/
+     +sssssssssdmydMMMMMMMMddddyssssssss+
+      /ssssssssssshdmNNNNmyNMMMMhssssss/
+       .ossssssssssssssssssdMMMNysssso.
+         -+sssssssssssssssssyyyssss+-
+           `:+ssssssssssssssssss+:`
+               .-/+oossssoo+/-.
+               
+$ wslpath -u "C:\Program Files\Typora\Typora.exe"
+/mnt/c/Program Files/Typora/Typora.exe
+```
+
+
+
+
+
 ## Manual setup (skip if to follow automatic setup)
 
 ### basic setup
