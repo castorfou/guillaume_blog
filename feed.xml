@@ -1,4 +1,22 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.1.1">Jekyll</generator><link href="https://castorfou.github.io/guillaume_blog/feed.xml" rel="self" type="application/atom+xml" /><link href="https://castorfou.github.io/guillaume_blog/" rel="alternate" type="text/html" /><updated>2022-05-03T01:45:11-05:00</updated><id>https://castorfou.github.io/guillaume_blog/feed.xml</id><title type="html">Guillaume’s blog</title><subtitle>Journey for a datascientist</subtitle><entry><title type="html">upgrade to last version of fastpages</title><link href="https://castorfou.github.io/guillaume_blog/blog/upgrade-fastpages.html" rel="alternate" type="text/html" title="upgrade to last version of fastpages" /><published>2022-05-02T00:00:00-05:00</published><updated>2022-05-02T00:00:00-05:00</updated><id>https://castorfou.github.io/guillaume_blog/blog/upgrade-fastpages</id><content type="html" xml:base="https://castorfou.github.io/guillaume_blog/blog/upgrade-fastpages.html"><![CDATA[<h2 id="source-of-inspiration">source of inspiration</h2>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.1.1">Jekyll</generator><link href="https://castorfou.github.io/guillaume_blog/feed.xml" rel="self" type="application/atom+xml" /><link href="https://castorfou.github.io/guillaume_blog/" rel="alternate" type="text/html" /><updated>2022-05-03T02:03:00-05:00</updated><id>https://castorfou.github.io/guillaume_blog/feed.xml</id><title type="html">Guillaume’s blog</title><subtitle>Journey for a datascientist</subtitle><entry><title type="html">save git https credentials under wsl</title><link href="https://castorfou.github.io/guillaume_blog/blog/save-git-https-credentials-under-wsl.html" rel="alternate" type="text/html" title="save git https credentials under wsl" /><published>2022-05-03T00:00:00-05:00</published><updated>2022-05-03T00:00:00-05:00</updated><id>https://castorfou.github.io/guillaume_blog/blog/save%20git%20https%20credentials%20under%20wsl</id><content type="html" xml:base="https://castorfou.github.io/guillaume_blog/blog/save-git-https-credentials-under-wsl.html"><![CDATA[<h2 id="source-of-inspiration">source of inspiration</h2>
+
+<p>Microsoft has released a tool to securely keep https credentials:</p>
+
+<p><a href="https://github.com/GitCredentialManager/git-credential-manager">git-credential-manager</a></p>
+
+<p>Usefull when one has to use https instead of git(ssl) to connect to git repos. My case when I am behing my corporate firewall and has to link to github repos (such as this blog)</p>
+
+<h2 id="how-to-setup-it">How to setup it</h2>
+
+<h4 id="installation-inside-wsl">installation inside WSL</h4>
+
+<p>Download the latest <a href="https://github.com/GitCredentialManager/git-credential-manager/releases/latest">.deb package</a>, and run the following:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>dpkg <span class="nt">-i</span> &lt;path-to-package&gt;
+git-credential-manager-core configure
+</code></pre></div></div>
+
+<p>or see the step 06 in <a href="https://castorfou.github.io/guillaume_blog/blog/install-ubuntu-22.04-on-WSL.html">install ubuntu 22.04 on WSL</a></p>]]></content><author><name></name></author><category term="git" /><summary type="html"><![CDATA[git-credential-manager]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://castorfou.github.io/guillaume_blog/images/git.png" /><media:content medium="image" url="https://castorfou.github.io/guillaume_blog/images/git.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">upgrade to last version of fastpages</title><link href="https://castorfou.github.io/guillaume_blog/blog/upgrade-fastpages.html" rel="alternate" type="text/html" title="upgrade to last version of fastpages" /><published>2022-05-02T00:00:00-05:00</published><updated>2022-05-02T00:00:00-05:00</updated><id>https://castorfou.github.io/guillaume_blog/blog/upgrade-fastpages</id><content type="html" xml:base="https://castorfou.github.io/guillaume_blog/blog/upgrade-fastpages.html"><![CDATA[<h2 id="source-of-inspiration">source of inspiration</h2>
 
 <p>as detailed in <a href="https://github.com/fastai/fastpages/issues/634">https://github.com/fastai/fastpages/issues/634</a></p>
 
@@ -265,6 +283,11 @@ wget <span class="nt">-O</span> - https://raw.githubusercontent.com/castorfou/gu
 <p>Or alternate download are possible.</p>
 
 <p><img src="..\images\GWSL_Dashboard.jpg" alt="" /></p>
+
+<h3 id="06---git-credential-manager">06 - git credential manager</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>wget <span class="nt">-O</span> - https://raw.githubusercontent.com/castorfou/guillaume_blog/master/files/setup_wsl_06_git_credential_manager.sh | bash
+</code></pre></div></div>
 
 <h2 id="manual-setup-skip-if-to-follow-automatic-setup">Manual setup (skip if to follow automatic setup)</h2>
 
@@ -896,34 +919,4 @@ git commit <span class="nt">--amend</span> <span class="nt">-C</span> HEAD
 
 <p>exporting to html will integrate these plotly graphs (but not exporting to pdf)</p>]]></content><author><name></name></author><category term="logbook" /><summary type="html"><![CDATA[Week 47 - November 21]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://castorfou.github.io/guillaume_blog/images/logbook.jpg" /><media:content medium="image" url="https://castorfou.github.io/guillaume_blog/images/logbook.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Just some usefull keyboard shortcuts</title><link href="https://castorfou.github.io/guillaume_blog/blog/Just-some-usefull-keyboard-shortcuts.html" rel="alternate" type="text/html" title="Just some usefull keyboard shortcuts" /><published>2021-10-21T00:00:00-05:00</published><updated>2021-10-21T00:00:00-05:00</updated><id>https://castorfou.github.io/guillaume_blog/blog/Just-some-usefull-keyboard-shortcuts</id><content type="html" xml:base="https://castorfou.github.io/guillaume_blog/blog/Just-some-usefull-keyboard-shortcuts.html"><![CDATA[<p>I cannot believe I have been using linux for more than 20 years as my main system and have never configured keyboard shortcuts to launch explorer files.</p>
 
-<p><img src="../images/keyboard_shortcuts.png" alt="" /></p>]]></content><author><name></name></author><category term="linux" /><summary type="html"><![CDATA[launch Gnome files, firefox]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://castorfou.github.io/guillaume_blog/images/image_linux.jpg" /><media:content medium="image" url="https://castorfou.github.io/guillaume_blog/images/image_linux.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Logbook for October 21</title><link href="https://castorfou.github.io/guillaume_blog/blog/logbook-October.html" rel="alternate" type="text/html" title="Logbook for October 21" /><published>2021-10-01T00:00:00-05:00</published><updated>2021-10-01T00:00:00-05:00</updated><id>https://castorfou.github.io/guillaume_blog/blog/logbook-October</id><content type="html" xml:base="https://castorfou.github.io/guillaume_blog/blog/logbook-October.html"><![CDATA[<h2 id="week-40---october-21">Week 40 - October 21</h2>
-
-<p><strong>Monday 10/4</strong></p>
-
-<p>Jupyter Lab is now packaged as a <a href="https://github.com/jupyterlab/jupyterlab_app">desktop app</a>. Gave a try 2 minutes but <a href="https://github.com/jupyterlab/jupyterlab_app/issues/228">issue</a> with my running environment</p>
-
-<p>To do: read and handson <a href="https://towardsdatascience.com/understanding-variational-autoencoders-vaes-f70510919f73">Understanding Variational Autoencoders (VAEs)</a></p>
-
-<p>To do: reand and handson <a href="https://towardsdatascience.com/patsy-build-powerful-features-with-arbitrary-python-code-bb4bb98db67a">Patsy: Build Powerful Features with Arbitrary Python Code</a></p>
-
-<p><strong>Thursday 10/7</strong></p>
-
-<blockquote>
-  <p>Deep learning seems unstoppable! I’m particularly impressed by the recent progress of deep learning on tabular data. This new survey paper provides an overview of the SOTA deep learning methods on tabular data. A great read for students and practitioners.</p>
-
-  <p><a href="https://arxiv.org/abs/2110.01889">Deep Neural Networks and Tabular Data: A Survey - arxiv 2110.01889</a></p>
-</blockquote>
-
-<h2 id="week-42---october-21">Week 42 - October 21</h2>
-
-<p><strong>Wednesday 10/20</strong></p>
-
-<p>Using <a href="https://forums.fast.ai/search?q=vae">fastai forums</a> to get inspirational content for VAE with tabular data. This one sounds good: <a href="https://blog.paperspace.com/adversarial-autoencoders-with-pytorch/">Adversarial Autoencoders (with Pytorch)</a>. And this talk <a href="https://www.youtube.com/watch?v=s0S6HFdPtlA&amp;ab_channel=PyData">demystifying bayesian</a> stuff.</p>
-
-<blockquote>
-  <p>“Most of human and animal learning is unsupervised learning. If intelligence was a cake, unsupervised learning would be the cake [base], supervised learning would be the icing on the cake, and reinforcement learning would be the cherry on the cake. We know how to make the icing and the cherry, but we don’t know how to make the cake.”</p>
-
-  <p>Yann LeCunn</p>
-</blockquote>
-
-<p>And <a href="https://towardsdatascience.com/intuitively-understanding-variational-autoencoders-1bfe67eb5daf?gi=3eb2b735d1d4">Intuitively Understanding Variational Autoencoders</a> mentioned by Jeremy Howard</p>]]></content><author><name></name></author><category term="logbook" /><summary type="html"><![CDATA[Week 40 - October 21]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://castorfou.github.io/guillaume_blog/images/logbook.jpg" /><media:content medium="image" url="https://castorfou.github.io/guillaume_blog/images/logbook.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry></feed>
+<p><img src="../images/keyboard_shortcuts.png" alt="" /></p>]]></content><author><name></name></author><category term="linux" /><summary type="html"><![CDATA[launch Gnome files, firefox]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://castorfou.github.io/guillaume_blog/images/image_linux.jpg" /><media:content medium="image" url="https://castorfou.github.io/guillaume_blog/images/image_linux.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry></feed>
