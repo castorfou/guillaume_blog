@@ -11,9 +11,12 @@ sudo apt install -y pass
 key_id=`gpg --list-keys | awk -F: '/^ / { print $0 }' | cut -d" " -f7`
 pass init $key_id
 
+echo "export GPG_TTY=$(tty)"  >> ~/.bashrc
+
 if [ -e "/.cfg" ]; then
 		config='/usr/bin/git --git-dir=/.cfg/ --work-tree=/'
 		$config add ~/.git_config
+		$config add ~/.bashrc		
 		$config commit -m'git credential manager'	
 		$config push		
 fi
