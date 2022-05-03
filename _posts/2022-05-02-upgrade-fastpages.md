@@ -33,7 +33,7 @@ Here are the steps.
 3. Merge this PR
 4. Clone this repo locally
 5. Because I use https, I have to create a token at Settings > Developer Settings > Personal Access Tokens
-6. and to keep this token locally, I enter `git config --global credential.helper cache` before pushing
+6. and to keep this token locally, I enter `git config --global credential.helper manager` before pushing
 
 
 
