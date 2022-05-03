@@ -35,7 +35,8 @@ git config --global credential.credentialStore gpg
 export GPG_TTY=$(tty)
 gpg --full-generate-key
 sudo apt install -y pass
-pass init 53678326B507576EEE07E341CF56FB960555459C
+key_id=`gpg --list-keys | awk -F: '/^ / { print $0 }' | cut -d" " -f7`
+pass init $key_id
 ```
 
 or see the step 06 in [install ubuntu 22.04 on WSL](https://castorfou.github.io/guillaume_blog/blog/install-ubuntu-22.04-on-WSL.html)
