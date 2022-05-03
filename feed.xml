@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.1.1">Jekyll</generator><link href="https://castorfou.github.io/guillaume_blog/feed.xml" rel="self" type="application/atom+xml" /><link href="https://castorfou.github.io/guillaume_blog/" rel="alternate" type="text/html" /><updated>2022-05-03T02:03:00-05:00</updated><id>https://castorfou.github.io/guillaume_blog/feed.xml</id><title type="html">Guillaume’s blog</title><subtitle>Journey for a datascientist</subtitle><entry><title type="html">save git https credentials under wsl</title><link href="https://castorfou.github.io/guillaume_blog/blog/save-git-https-credentials-under-wsl.html" rel="alternate" type="text/html" title="save git https credentials under wsl" /><published>2022-05-03T00:00:00-05:00</published><updated>2022-05-03T00:00:00-05:00</updated><id>https://castorfou.github.io/guillaume_blog/blog/save%20git%20https%20credentials%20under%20wsl</id><content type="html" xml:base="https://castorfou.github.io/guillaume_blog/blog/save-git-https-credentials-under-wsl.html"><![CDATA[<h2 id="source-of-inspiration">source of inspiration</h2>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.1.1">Jekyll</generator><link href="https://castorfou.github.io/guillaume_blog/feed.xml" rel="self" type="application/atom+xml" /><link href="https://castorfou.github.io/guillaume_blog/" rel="alternate" type="text/html" /><updated>2022-05-03T02:11:14-05:00</updated><id>https://castorfou.github.io/guillaume_blog/feed.xml</id><title type="html">Guillaume’s blog</title><subtitle>Journey for a datascientist</subtitle><entry><title type="html">save git https credentials under wsl</title><link href="https://castorfou.github.io/guillaume_blog/blog/save-git-https-credentials-under-wsl.html" rel="alternate" type="text/html" title="save git https credentials under wsl" /><published>2022-05-03T00:00:00-05:00</published><updated>2022-05-03T00:00:00-05:00</updated><id>https://castorfou.github.io/guillaume_blog/blog/save%20git%20https%20credentials%20under%20wsl</id><content type="html" xml:base="https://castorfou.github.io/guillaume_blog/blog/save-git-https-credentials-under-wsl.html"><![CDATA[<h2 id="source-of-inspiration">source of inspiration</h2>
 
 <p>Microsoft has released a tool to securely keep https credentials:</p>
 
@@ -8,9 +8,13 @@
 
 <h2 id="how-to-setup-it">How to setup it</h2>
 
-<h4 id="installation-inside-wsl">installation inside WSL</h4>
+<h4 id="create-token-in-github">create token in github</h4>
 
-<p>Download the latest <a href="https://github.com/GitCredentialManager/git-credential-manager/releases/latest">.deb package</a>, and run the following:</p>
+<p>I have to create a token at Settings &gt; Developer Settings &gt; Personal Access Tokens</p>
+
+<h4 id="installation-of-git-credential-manager-inside-wsl">installation of git-credential-manager inside WSL</h4>
+
+<p>Download the latest (v2.0.696 at May/3rd 2022) <a href="https://github.com/GitCredentialManager/git-credential-manager/releases/latest">.deb package</a>, and run the following:</p>
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>dpkg <span class="nt">-i</span> &lt;path-to-package&gt;
 git-credential-manager-core configure
