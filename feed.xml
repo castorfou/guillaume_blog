@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.1.1">Jekyll</generator><link href="https://castorfou.github.io/guillaume_blog/feed.xml" rel="self" type="application/atom+xml" /><link href="https://castorfou.github.io/guillaume_blog/" rel="alternate" type="text/html" /><updated>2022-05-03T01:37:02-05:00</updated><id>https://castorfou.github.io/guillaume_blog/feed.xml</id><title type="html">Guillaume’s blog</title><subtitle>Journey for a datascientist</subtitle><entry><title type="html">upgrade to last version of fastpages</title><link href="https://castorfou.github.io/guillaume_blog/blog/upgrade-fastpages.html" rel="alternate" type="text/html" title="upgrade to last version of fastpages" /><published>2022-05-02T00:00:00-05:00</published><updated>2022-05-02T00:00:00-05:00</updated><id>https://castorfou.github.io/guillaume_blog/blog/upgrade-fastpages</id><content type="html" xml:base="https://castorfou.github.io/guillaume_blog/blog/upgrade-fastpages.html"><![CDATA[<h2 id="source-of-inspiration">source of inspiration</h2>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.1.1">Jekyll</generator><link href="https://castorfou.github.io/guillaume_blog/feed.xml" rel="self" type="application/atom+xml" /><link href="https://castorfou.github.io/guillaume_blog/" rel="alternate" type="text/html" /><updated>2022-05-03T01:45:11-05:00</updated><id>https://castorfou.github.io/guillaume_blog/feed.xml</id><title type="html">Guillaume’s blog</title><subtitle>Journey for a datascientist</subtitle><entry><title type="html">upgrade to last version of fastpages</title><link href="https://castorfou.github.io/guillaume_blog/blog/upgrade-fastpages.html" rel="alternate" type="text/html" title="upgrade to last version of fastpages" /><published>2022-05-02T00:00:00-05:00</published><updated>2022-05-02T00:00:00-05:00</updated><id>https://castorfou.github.io/guillaume_blog/blog/upgrade-fastpages</id><content type="html" xml:base="https://castorfou.github.io/guillaume_blog/blog/upgrade-fastpages.html"><![CDATA[<h2 id="source-of-inspiration">source of inspiration</h2>
 
 <p>as detailed in <a href="https://github.com/fastai/fastpages/issues/634">https://github.com/fastai/fastpages/issues/634</a></p>
 
@@ -18,7 +18,7 @@
   <li>Merge this PR</li>
   <li>Clone this repo locally</li>
   <li>Because I use https, I have to create a token at Settings &gt; Developer Settings &gt; Personal Access Tokens</li>
-  <li>and to keep this token locally, I enter <code class="language-plaintext highlighter-rouge">git config --global credential.helper cache</code> before pushing</li>
+  <li>and to keep this token locally, I enter <code class="language-plaintext highlighter-rouge">git config --global credential.helper manager</code> before pushing</li>
 </ol>
 
 <h3 id="copy-content">Copy content</h3>
