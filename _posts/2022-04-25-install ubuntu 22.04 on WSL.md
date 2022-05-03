@@ -229,6 +229,8 @@ It restarts from your user and it will install:
 
 ## And now we can install other parts
 
+all the scripts are in [https://github.com/castorfou/guillaume_blog/tree/master/files](https://github.com/castorfou/guillaume_blog/tree/master/files)
+
 ### 00 - keep config files in git
 
 ```bash
