@@ -325,6 +325,12 @@ $ wslpath -u "C:\Program Files\Typora\Typora.exe"
 
 
 
+### 08 - configure pip
+
+```bash
+wget -O - https://raw.githubusercontent.com/castorfou/guillaume_blog/master/files/setup_wsl_08_pip.sh | bash
+```
+
 
 
 ## Manual setup (skip if to follow automatic setup)
