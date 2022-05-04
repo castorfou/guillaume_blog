@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.1.1">Jekyll</generator><link href="https://castorfou.github.io/guillaume_blog/feed.xml" rel="self" type="application/atom+xml" /><link href="https://castorfou.github.io/guillaume_blog/" rel="alternate" type="text/html" /><updated>2022-05-03T09:31:48-05:00</updated><id>https://castorfou.github.io/guillaume_blog/feed.xml</id><title type="html">Guillaume’s blog</title><subtitle>Journey for a datascientist</subtitle><entry><title type="html">save git https credentials under wsl</title><link href="https://castorfou.github.io/guillaume_blog/blog/save-git-https-credentials-under-wsl.html" rel="alternate" type="text/html" title="save git https credentials under wsl" /><published>2022-05-03T00:00:00-05:00</published><updated>2022-05-03T00:00:00-05:00</updated><id>https://castorfou.github.io/guillaume_blog/blog/save%20git%20https%20credentials%20under%20wsl</id><content type="html" xml:base="https://castorfou.github.io/guillaume_blog/blog/save-git-https-credentials-under-wsl.html"><![CDATA[<h2 id="source-of-inspiration">source of inspiration</h2>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.1.1">Jekyll</generator><link href="https://castorfou.github.io/guillaume_blog/feed.xml" rel="self" type="application/atom+xml" /><link href="https://castorfou.github.io/guillaume_blog/" rel="alternate" type="text/html" /><updated>2022-05-04T01:42:26-05:00</updated><id>https://castorfou.github.io/guillaume_blog/feed.xml</id><title type="html">Guillaume’s blog</title><subtitle>Journey for a datascientist</subtitle><entry><title type="html">save git https credentials under wsl</title><link href="https://castorfou.github.io/guillaume_blog/blog/save-git-https-credentials-under-wsl.html" rel="alternate" type="text/html" title="save git https credentials under wsl" /><published>2022-05-03T00:00:00-05:00</published><updated>2022-05-03T00:00:00-05:00</updated><id>https://castorfou.github.io/guillaume_blog/blog/save%20git%20https%20credentials%20under%20wsl</id><content type="html" xml:base="https://castorfou.github.io/guillaume_blog/blog/save-git-https-credentials-under-wsl.html"><![CDATA[<h2 id="source-of-inspiration">source of inspiration</h2>
 
 <p>Microsoft has released a tool to securely keep https credentials:</p>
 
@@ -332,6 +332,11 @@ wget <span class="nt">-O</span> - https://raw.githubusercontent.com/castorfou/gu
                
 <span class="nv">$ </span>wslpath <span class="nt">-u</span> <span class="s2">"C:</span><span class="se">\P</span><span class="s2">rogram Files</span><span class="se">\T</span><span class="s2">ypora</span><span class="se">\T</span><span class="s2">ypora.exe"</span>
 /mnt/c/Program Files/Typora/Typora.exe
+</code></pre></div></div>
+
+<h3 id="08---configure-pip">08 - configure pip</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>wget <span class="nt">-O</span> - https://raw.githubusercontent.com/castorfou/guillaume_blog/master/files/setup_wsl_08_pip.sh | bash
 </code></pre></div></div>
 
 <h2 id="manual-setup-skip-if-to-follow-automatic-setup">Manual setup (skip if to follow automatic setup)</h2>
