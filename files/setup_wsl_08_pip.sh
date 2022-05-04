@@ -1,4 +1,4 @@
-echo "configure pip v1"
+echo "configure pip v2"
 
 mkdir -p ~/.config/pip
 tee ~/.config/pip/pip.conf << EOF
