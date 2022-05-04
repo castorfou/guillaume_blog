@@ -5,13 +5,11 @@ tee ~/.config/pip/pip.conf << EOF
 [global]
 timeout = 1000
 index-url = https://pypi.org/simple/
-​
 trusted-host = download.pytorch.org
                pypi.python.org
                files.pythonhosted.org
                pypi.org
                artifactory.michelin.com
-​
 extra-index-url= https://artifactory.michelin.com/api/pypi/pypi/simple
 EOF
 
