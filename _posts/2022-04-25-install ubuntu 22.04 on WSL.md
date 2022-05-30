@@ -234,29 +234,29 @@ all the scripts are in [https://github.com/castorfou/guillaume_blog/tree/master/
 ### 00 - keep config files in git
 
 ```bash
-wget -O - https://raw.githubusercontent.com/castorfou/guillaume_blog/master/files/setup_wsl_00_config_files_in_git.sh | bash
+wget --no-check-certificate --content-disposition -O - https://raw.githubusercontent.com/castorfou/guillaume_blog/master/files/setup_wsl_00_config_files_in_git.sh | bash
 source .bashrc
 ```
 
 ### 01 - automount secured vbox
 
 ```bash
-wget -O - https://raw.githubusercontent.com/castorfou/guillaume_blog/master/files/setup_wsl_01_automount_secured_vbox.sh | bash
+wget --no-check-certificate --content-disposition -O - https://raw.githubusercontent.com/castorfou/guillaume_blog/master/files/setup_wsl_01_automount_secured_vbox.sh | bash
 ```
 
 ### 02 - python with conda and configure base environment (jupyterlab, mamba)
 
 ```bash
-wget -O - https://raw.githubusercontent.com/castorfou/guillaume_blog/master/files/setup_wsl_02_install_python_conda_part1.sh | bash
+wget --no-check-certificate --content-disposition -O - https://raw.githubusercontent.com/castorfou/guillaume_blog/master/files/setup_wsl_02_install_python_conda_part1.sh | bash
 cd 
 source .bashrc
-wget -O - https://raw.githubusercontent.com/castorfou/guillaume_blog/master/files/setup_wsl_02_install_python_conda_part2.sh | bash
+wget --no-check-certificate --content-disposition -O - https://raw.githubusercontent.com/castorfou/guillaume_blog/master/files/setup_wsl_02_install_python_conda_part2.sh | bash
 ```
 
 ### 03 - bat cat
 
 ```bash
-wget -O - https://raw.githubusercontent.com/castorfou/guillaume_blog/master/files/setup_wsl_03_install_batcat.sh | bash
+wget --no-check-certificate --content-disposition -O - https://raw.githubusercontent.com/castorfou/guillaume_blog/master/files/setup_wsl_03_install_batcat.sh | bash
 source .bashrc
 ```
 
@@ -281,14 +281,14 @@ Or alternate download are possible.
 ### 06 - git credential manager
 
 ```bash
-wget -O - https://raw.githubusercontent.com/castorfou/guillaume_blog/master/files/setup_wsl_06_git_credential_manager.sh | bash
+wget --no-check-certificate --content-disposition -O - https://raw.githubusercontent.com/castorfou/guillaume_blog/master/files/setup_wsl_06_git_credential_manager.sh | bash
 ```
 
 ### 07 - install wslu
 
 [wslu](https://wslutiliti.es/wslu/)
 ```bash
-wget -O - https://raw.githubusercontent.com/castorfou/guillaume_blog/master/files/setup_wsl_07_wslu.sh | bash
+wget --no-check-certificate --content-disposition -O - https://raw.githubusercontent.com/castorfou/guillaume_blog/master/files/setup_wsl_07_wslu.sh | bash
 ```
 
 
@@ -328,10 +328,20 @@ $ wslpath -u "C:\Program Files\Typora\Typora.exe"
 ### 08 - configure pip
 
 ```bash
-wget -O - https://raw.githubusercontent.com/castorfou/guillaume_blog/master/files/setup_wsl_08_pip.sh | bash
+wget --no-check-certificate --content-disposition -O - https://raw.githubusercontent.com/castorfou/guillaume_blog/master/files/setup_wsl_08_pip.sh | bash
 ```
 
 
+
+### 09 - install vscode
+
+```bash
+code .
+```
+
+(given [Visual Studio Code is installed on the **Windows** side (not in WSL)](https://code.visualstudio.com/))
+
+(and if needed install [Remote development](https://aka.ms/vscode-remote/download/extension))
 
 ## Manual setup (skip if to follow automatic setup)
 
