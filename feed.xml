@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.1.1">Jekyll</generator><link href="https://castorfou.github.io/guillaume_blog/feed.xml" rel="self" type="application/atom+xml" /><link href="https://castorfou.github.io/guillaume_blog/" rel="alternate" type="text/html" /><updated>2022-06-15T09:35:32-05:00</updated><id>https://castorfou.github.io/guillaume_blog/feed.xml</id><title type="html">Guillaume’s blog</title><subtitle>Journey for a datascientist</subtitle><entry><title type="html">Introduction to Reinforcement Learning with David Silver</title><link href="https://castorfou.github.io/guillaume_blog/blog/deep-rl-class-with-huggingface.html" rel="alternate" type="text/html" title="Introduction to Reinforcement Learning with David Silver" /><published>2022-06-15T00:00:00-05:00</published><updated>2022-06-15T00:00:00-05:00</updated><id>https://castorfou.github.io/guillaume_blog/blog/deep-rl-class-with-huggingface</id><content type="html" xml:base="https://castorfou.github.io/guillaume_blog/blog/deep-rl-class-with-huggingface.html"><![CDATA[<p>Didn’t mention that but I have started <a href="https://github.com/huggingface/deep-rl-class">The Hugging Face Deep Reinforcement Learning Class</a> by Thomas Simonini.</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.1.1">Jekyll</generator><link href="https://castorfou.github.io/guillaume_blog/feed.xml" rel="self" type="application/atom+xml" /><link href="https://castorfou.github.io/guillaume_blog/" rel="alternate" type="text/html" /><updated>2022-06-15T09:41:27-05:00</updated><id>https://castorfou.github.io/guillaume_blog/feed.xml</id><title type="html">Guillaume’s blog</title><subtitle>Journey for a datascientist</subtitle><entry><title type="html">Deep RL class - huggingface</title><link href="https://castorfou.github.io/guillaume_blog/blog/deep-rl-class-with-huggingface.html" rel="alternate" type="text/html" title="Deep RL class - huggingface" /><published>2022-06-15T00:00:00-05:00</published><updated>2022-06-15T00:00:00-05:00</updated><id>https://castorfou.github.io/guillaume_blog/blog/deep-rl-class-with-huggingface</id><content type="html" xml:base="https://castorfou.github.io/guillaume_blog/blog/deep-rl-class-with-huggingface.html"><![CDATA[<p>Didn’t mention that but I have started <a href="https://github.com/huggingface/deep-rl-class">The Hugging Face Deep Reinforcement Learning Class</a> by Thomas Simonini.</p>
 
 <p>Thomas is now part of HuggingFace.</p>
 
@@ -6,12 +6,13 @@
 
 <p>And clone it locally: <code class="language-plaintext highlighter-rouge">git clone git@github.com:castorfou/deep-rl-class.git</code></p>
 
-<p>I followed the 1st unit in May.</p>
+<p>I followed the 1st unit in May/11.</p>
+
+<p>there is a community on discord at <a href="https://discord.gg/aYka4Yhff9">https://discord.gg/aYka4Yhff9</a>, with a lounge about RL.</p>
 
 <h1 id="unit-1---introduction-to-deep-reinforcement-learning">Unit 1 - Introduction to Deep Reinforcement Learning</h1>
 
 <ul>
-  <li>there is a community on discord at <a href="https://discord.gg/aYka4Yhff9">https://discord.gg/aYka4Yhff9</a>, with a lounge about RL.</li>
   <li>1st practice uses this lunar lander environment, and you train a PPO agent to get the highest score,</li>
   <li>and this runs on colab : <a href="https://github.com/huggingface/deep-rl-class/blob/main/unit1/unit1.ipynb">https://github.com/huggingface/deep-rl-class/blob/main/unit1/unit1.ipynb</a> (just by clicking on <img src="https://camo.githubusercontent.com/84f0493939e0c4de4e6dbe113251b4bfb5353e57134ffd9fcab6b8714514d4d1/68747470733a2f2f636f6c61622e72657365617263682e676f6f676c652e636f6d2f6173736574732f636f6c61622d62616467652e737667" alt="https://camo.githubusercontent.com/84f0493939e0c4de4e6dbe113251b4bfb5353e57134ffd9fcab6b8714514d4d1/68747470733a2f2f636f6c61622e72657365617263682e676f6f676c652e636f6d2f6173736574732f636f6c61622d62616467652e737667" />)</li>
   <li>there is a leaderboard running under huggingface (one can publish models to huggingface) <a href="https://huggingface.co/spaces/ThomasSimonini/Lunar-Lander-Leaderboard">https://huggingface.co/spaces/ThomasSimonini/Lunar-Lander-Leaderboard</a> . Just need an huggingface account for that (used my Michelin account)</li>
@@ -30,7 +31,7 @@
 <p><strong>Wednesday 6/15</strong></p>
 
 <ul>
-  <li>continue <a href="">deep rl class</a></li>
+  <li>continue <a href="">deep rl class</a> with unit 2, interesting notebook to leanr about using optuna to tune hyperparameters</li>
 </ul>]]></content><author><name></name></author><category term="logbook" /><summary type="html"><![CDATA[Week 24 - June 22]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://castorfou.github.io/guillaume_blog/images/logbook.jpg" /><media:content medium="image" url="https://castorfou.github.io/guillaume_blog/images/logbook.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">save git https credentials under wsl</title><link href="https://castorfou.github.io/guillaume_blog/blog/save-git-https-credentials-under-wsl.html" rel="alternate" type="text/html" title="save git https credentials under wsl" /><published>2022-05-03T00:00:00-05:00</published><updated>2022-05-03T00:00:00-05:00</updated><id>https://castorfou.github.io/guillaume_blog/blog/save%20git%20https%20credentials%20under%20wsl</id><content type="html" xml:base="https://castorfou.github.io/guillaume_blog/blog/save-git-https-credentials-under-wsl.html"><![CDATA[<h2 id="source-of-inspiration">source of inspiration</h2>
 
 <p>Microsoft has released a tool to securely keep https credentials:</p>
