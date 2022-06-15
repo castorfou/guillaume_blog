@@ -1,8 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.1.1">Jekyll</generator><link href="https://castorfou.github.io/guillaume_blog/feed.xml" rel="self" type="application/atom+xml" /><link href="https://castorfou.github.io/guillaume_blog/" rel="alternate" type="text/html" /><updated>2022-06-15T09:30:26-05:00</updated><id>https://castorfou.github.io/guillaume_blog/feed.xml</id><title type="html">Guillaume’s blog</title><subtitle>Journey for a datascientist</subtitle><entry><title type="html">Logbook for June 22</title><link href="https://castorfou.github.io/guillaume_blog/blog/logbook-June.html" rel="alternate" type="text/html" title="Logbook for June 22" /><published>2022-06-01T00:00:00-05:00</published><updated>2022-06-01T00:00:00-05:00</updated><id>https://castorfou.github.io/guillaume_blog/blog/logbook-June</id><content type="html" xml:base="https://castorfou.github.io/guillaume_blog/blog/logbook-June.html"><![CDATA[<h2 id="week-24---june-22">Week 24 - June 22</h2>
-
-<p><strong>Wednesday 6/15</strong></p>
-
-<p>Didn’t mention that but I have started <a href="https://github.com/huggingface/deep-rl-class">The Hugging Face Deep Reinforcement Learning Class</a> by Thomas Simonini.</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.1.1">Jekyll</generator><link href="https://castorfou.github.io/guillaume_blog/feed.xml" rel="self" type="application/atom+xml" /><link href="https://castorfou.github.io/guillaume_blog/" rel="alternate" type="text/html" /><updated>2022-06-15T09:35:32-05:00</updated><id>https://castorfou.github.io/guillaume_blog/feed.xml</id><title type="html">Guillaume’s blog</title><subtitle>Journey for a datascientist</subtitle><entry><title type="html">Introduction to Reinforcement Learning with David Silver</title><link href="https://castorfou.github.io/guillaume_blog/blog/deep-rl-class-with-huggingface.html" rel="alternate" type="text/html" title="Introduction to Reinforcement Learning with David Silver" /><published>2022-06-15T00:00:00-05:00</published><updated>2022-06-15T00:00:00-05:00</updated><id>https://castorfou.github.io/guillaume_blog/blog/deep-rl-class-with-huggingface</id><content type="html" xml:base="https://castorfou.github.io/guillaume_blog/blog/deep-rl-class-with-huggingface.html"><![CDATA[<p>Didn’t mention that but I have started <a href="https://github.com/huggingface/deep-rl-class">The Hugging Face Deep Reinforcement Learning Class</a> by Thomas Simonini.</p>
 
 <p>Thomas is now part of HuggingFace.</p>
 
@@ -11,6 +7,8 @@
 <p>And clone it locally: <code class="language-plaintext highlighter-rouge">git clone git@github.com:castorfou/deep-rl-class.git</code></p>
 
 <p>I followed the 1st unit in May.</p>
+
+<h1 id="unit-1---introduction-to-deep-reinforcement-learning">Unit 1 - Introduction to Deep Reinforcement Learning</h1>
 
 <ul>
   <li>there is a community on discord at <a href="https://discord.gg/aYka4Yhff9">https://discord.gg/aYka4Yhff9</a>, with a lounge about RL.</li>
@@ -21,11 +19,18 @@
 
 <p>A guide has been recently added explaining how to tune hyperparameters using optuna. <img src="https://github.githubassets.com/images/icons/emoji/unicode/1f449.png" alt="point_right" style="zoom:25%;" /> <a href="https://github.com/huggingface/deep-rl-class/blob/main/unit1/unit1_optuna_guide.ipynb">https://github.com/huggingface/deep-rl-class/blob/main/unit1/unit1_optuna_guide.ipynb</a>. Should do it!</p>
 
-<p>To start unit2.</p>
+<p>To start unit2. Introduction to Q-Learning</p>
 
 <ul>
   <li>first update from fork just by clicking<img src="https://docs.github.com/assets/cb-33131/images/help/repository/fetch-upstream-drop-down.png" alt="&quot;Fetch upstream&quot; drop-down" style="zoom:15%;" /></li>
-  <li></li>
+</ul>
+
+<h1 id="unit-2---introduction-to-q-learning">Unit 2 - Introduction to Q-Learning</h1>]]></content><author><name></name></author><category term="reinforcement learning" /><category term="huggingface" /><summary type="html"><![CDATA[par Thomas Simonini]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://castorfou.github.io/guillaume_blog/images/RL.png" /><media:content medium="image" url="https://castorfou.github.io/guillaume_blog/images/RL.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Logbook for June 22</title><link href="https://castorfou.github.io/guillaume_blog/blog/logbook-June.html" rel="alternate" type="text/html" title="Logbook for June 22" /><published>2022-06-01T00:00:00-05:00</published><updated>2022-06-01T00:00:00-05:00</updated><id>https://castorfou.github.io/guillaume_blog/blog/logbook-June</id><content type="html" xml:base="https://castorfou.github.io/guillaume_blog/blog/logbook-June.html"><![CDATA[<h2 id="week-24---june-22">Week 24 - June 22</h2>
+
+<p><strong>Wednesday 6/15</strong></p>
+
+<ul>
+  <li>continue <a href="">deep rl class</a></li>
 </ul>]]></content><author><name></name></author><category term="logbook" /><summary type="html"><![CDATA[Week 24 - June 22]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://castorfou.github.io/guillaume_blog/images/logbook.jpg" /><media:content medium="image" url="https://castorfou.github.io/guillaume_blog/images/logbook.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">save git https credentials under wsl</title><link href="https://castorfou.github.io/guillaume_blog/blog/save-git-https-credentials-under-wsl.html" rel="alternate" type="text/html" title="save git https credentials under wsl" /><published>2022-05-03T00:00:00-05:00</published><updated>2022-05-03T00:00:00-05:00</updated><id>https://castorfou.github.io/guillaume_blog/blog/save%20git%20https%20credentials%20under%20wsl</id><content type="html" xml:base="https://castorfou.github.io/guillaume_blog/blog/save-git-https-credentials-under-wsl.html"><![CDATA[<h2 id="source-of-inspiration">source of inspiration</h2>
 
 <p>Microsoft has released a tool to securely keep https credentials:</p>
@@ -976,32 +981,4 @@ conda update fastai <span class="nt">-c</span> fastai <span class="nt">-c</span>
 
 <p><strong>Monday 12/13</strong></p>
 
-<p>NeurIPS tutorial: <a href="https://nips.cc/virtual/2021/tutorial/21892">Real-Time Optimization for Fast and Complex Control Systems</a></p>]]></content><author><name></name></author><category term="logbook" /><summary type="html"><![CDATA[Week 49 - December 21]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://castorfou.github.io/guillaume_blog/images/logbook.jpg" /><media:content medium="image" url="https://castorfou.github.io/guillaume_blog/images/logbook.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Logbook for November 21</title><link href="https://castorfou.github.io/guillaume_blog/blog/logbook-November.html" rel="alternate" type="text/html" title="Logbook for November 21" /><published>2021-11-01T00:00:00-05:00</published><updated>2021-11-01T00:00:00-05:00</updated><id>https://castorfou.github.io/guillaume_blog/blog/logbook-November</id><content type="html" xml:base="https://castorfou.github.io/guillaume_blog/blog/logbook-November.html"><![CDATA[<h2 id="week-47---november-21">Week 47 - November 21</h2>
-
-<p><strong>Monday 11/22</strong></p>
-
-<p>back after a nice vacation break + some catchup to do for work.</p>
-
-<p>to use iphone as a webcam on linux or windows: https://www.iriun.com/ (but not detected as a webcam in linux)</p>
-
-<p><strong>Wednesday 11/24</strong></p>
-
-<p>getting this message when pushing to gitlab: remote: GitLab: File <my_large_file>  is larger than the allowed size of 100 MB</my_large_file></p>
-
-<p>if from the most recent commit:</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git <span class="nb">rm</span> <span class="nt">--cached</span> &lt;my large file&gt;
-git commit <span class="nt">--amend</span> <span class="nt">-C</span> HEAD
-</code></pre></div></div>
-
-<p>otherwise follow <a href="https://medium.com/analytics-vidhya/tutorial-removing-large-files-from-git-78dbf4cf83a">Tutorial: Removing Large Files from Git</a> on medium (or <a href="https://castorfou.github.io/guillaume_blog/blog/git-clean-large-files.html">git clean repo with BFG</a> on this blog)</p>
-
-<p><strong>Thursday 11/25</strong></p>
-
-<p>when exporting notebooks with plotly graphs, it can help to use</p>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">plotly</span>
-<span class="n">plotly</span><span class="p">.</span><span class="n">offline</span><span class="p">.</span><span class="n">init_notebook_mode</span><span class="p">()</span>
-</code></pre></div></div>
-
-<p>exporting to html will integrate these plotly graphs (but not exporting to pdf)</p>]]></content><author><name></name></author><category term="logbook" /><summary type="html"><![CDATA[Week 47 - November 21]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://castorfou.github.io/guillaume_blog/images/logbook.jpg" /><media:content medium="image" url="https://castorfou.github.io/guillaume_blog/images/logbook.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry></feed>
+<p>NeurIPS tutorial: <a href="https://nips.cc/virtual/2021/tutorial/21892">Real-Time Optimization for Fast and Complex Control Systems</a></p>]]></content><author><name></name></author><category term="logbook" /><summary type="html"><![CDATA[Week 49 - December 21]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://castorfou.github.io/guillaume_blog/images/logbook.jpg" /><media:content medium="image" url="https://castorfou.github.io/guillaume_blog/images/logbook.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry></feed>
