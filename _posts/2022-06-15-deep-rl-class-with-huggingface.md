@@ -35,5 +35,8 @@ A guide has been recently added explaining how to tune hyperparameters using opt
 To start unit2. Introduction to Q-Learning
 
 * first update from fork just by clicking<img src="https://docs.github.com/assets/cb-33131/images/help/repository/fetch-upstream-drop-down.png" alt="&quot;Fetch upstream&quot; drop-down" style="zoom:15%;" />
+* and update your local repo (`git fetch` `git pull`)
+
+
 
 # Unit 2 - Introduction to Q-Learning
