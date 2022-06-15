@@ -40,3 +40,8 @@ To start unit2. Introduction to Q-Learning
 
 
 # Unit 2 - Introduction to Q-Learning
+
+* [part 1 ](https://huggingface.co/blog/deep-rl-q-part1)- we learned about the value-based methods and the difference between Monte Carlo and Temporal Difference Learning. Then a quizz (easy one)
+* [part 2](https://huggingface.co/blog/deep-rl-q-part2) - and then Q-learning which is an **off-policy value-based method that uses a TD approach to train its action-value function**. Then a quizz (less easier)
+* and [hands-on](https://colab.research.google.com/github/huggingface/deep-rl-class/blob/main/unit2/unit2.ipynb). 1st algo is published in [Guillaume63/q-FrozenLake-v1-4x4-noSlippery](https://huggingface.co/Guillaume63/q-FrozenLake-v1-4x4-noSlippery)
+
