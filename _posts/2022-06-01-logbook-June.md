@@ -14,4 +14,4 @@ image: images/logbook.jpg
 
 **Wednesday 6/15**
 
-* continue [deep rl class]()
+* continue [deep rl class]() with unit 2, interesting notebook to leanr about using optuna to tune hyperparameters
