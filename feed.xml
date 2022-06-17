@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.1.1">Jekyll</generator><link href="https://castorfou.github.io/guillaume_blog/feed.xml" rel="self" type="application/atom+xml" /><link href="https://castorfou.github.io/guillaume_blog/" rel="alternate" type="text/html" /><updated>2022-06-17T01:27:11-05:00</updated><id>https://castorfou.github.io/guillaume_blog/feed.xml</id><title type="html">Guillaume’s blog</title><subtitle>Journey for a datascientist</subtitle><entry><title type="html">Deep RL class - huggingface</title><link href="https://castorfou.github.io/guillaume_blog/blog/deep-rl-class-with-huggingface.html" rel="alternate" type="text/html" title="Deep RL class - huggingface" /><published>2022-06-15T00:00:00-05:00</published><updated>2022-06-15T00:00:00-05:00</updated><id>https://castorfou.github.io/guillaume_blog/blog/deep-rl-class-with-huggingface</id><content type="html" xml:base="https://castorfou.github.io/guillaume_blog/blog/deep-rl-class-with-huggingface.html"><![CDATA[<p>Didn’t mention that but I have started <a href="https://github.com/huggingface/deep-rl-class">The Hugging Face Deep Reinforcement Learning Class</a> by Thomas Simonini.</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.1.1">Jekyll</generator><link href="https://castorfou.github.io/guillaume_blog/feed.xml" rel="self" type="application/atom+xml" /><link href="https://castorfou.github.io/guillaume_blog/" rel="alternate" type="text/html" /><updated>2022-06-17T07:36:09-05:00</updated><id>https://castorfou.github.io/guillaume_blog/feed.xml</id><title type="html">Guillaume’s blog</title><subtitle>Journey for a datascientist</subtitle><entry><title type="html">Deep RL class - huggingface</title><link href="https://castorfou.github.io/guillaume_blog/blog/deep-rl-class-with-huggingface.html" rel="alternate" type="text/html" title="Deep RL class - huggingface" /><published>2022-06-15T00:00:00-05:00</published><updated>2022-06-15T00:00:00-05:00</updated><id>https://castorfou.github.io/guillaume_blog/blog/deep-rl-class-with-huggingface</id><content type="html" xml:base="https://castorfou.github.io/guillaume_blog/blog/deep-rl-class-with-huggingface.html"><![CDATA[<p>Didn’t mention that but I have started <a href="https://github.com/huggingface/deep-rl-class">The Hugging Face Deep Reinforcement Learning Class</a> by Thomas Simonini.</p>
 
 <p>Thomas is now part of HuggingFace.</p>
 
@@ -10,7 +10,7 @@
 
 <p>there is a community on discord at <a href="https://discord.gg/aYka4Yhff9">https://discord.gg/aYka4Yhff9</a>, with a lounge about RL.</p>
 
-<h1 id="unit-1---introduction-to-deep-reinforcement-learning">Unit 1 - Introduction to Deep Reinforcement Learning</h1>
+<h1 id="unit-1---introduction-to-deep-reinforcement-learning"><a href="https://github.com/huggingface/deep-rl-class/tree/main/unit1">Unit 1</a> - Introduction to Deep Reinforcement Learning</h1>
 
 <ul>
   <li>It starts with some <a href="https://huggingface.co/blog/deep-rl-intro">general introduction to deep RL</a> and then a quizz.</li>
@@ -28,12 +28,12 @@
   <li>and update your local repo (<code class="language-plaintext highlighter-rouge">git fetch</code> <code class="language-plaintext highlighter-rouge">git pull</code>)</li>
 </ul>
 
-<h1 id="unit-2---introduction-to-q-learning">Unit 2 - Introduction to Q-Learning</h1>
+<h1 id="unit-2---introduction-to-q-learning"><a href="https://github.com/huggingface/deep-rl-class/tree/main/unit2">Unit 2</a> - Introduction to Q-Learning</h1>
 
 <ul>
-  <li><a href="https://huggingface.co/blog/deep-rl-q-part1">part 1 </a>- we learned about the value-based methods and the difference between Monte Carlo and Temporal Difference Learning. Then a quizz (easy one)</li>
+  <li><a href="https://huggingface.co/blog/deep-rl-q-part1">part 1</a> - we learned about the value-based methods and the difference between Monte Carlo and Temporal Difference Learning. Then a quizz (easy one)</li>
   <li><a href="https://huggingface.co/blog/deep-rl-q-part2">part 2</a> - and then Q-learning which is an <strong>off-policy value-based method that uses a TD approach to train its action-value function</strong>. Then a quizz (less easier)</li>
-  <li>and <a href="https://colab.research.google.com/github/huggingface/deep-rl-class/blob/main/unit2/unit2.ipynb">hands-on</a>. 1st algo is published in <a href="https://huggingface.co/Guillaume63/q-FrozenLake-v1-4x4-noSlippery">Guillaume63/q-FrozenLake-v1-4x4-noSlippery</a></li>
+  <li>and <a href="https://colab.research.google.com/github/huggingface/deep-rl-class/blob/main/unit2/unit2.ipynb">hands-on</a>. 1st algo (FrozenLake) is published in <a href="https://huggingface.co/Guillaume63/q-FrozenLake-v1-4x4-noSlippery">Guillaume63/q-FrozenLake-v1-4x4-noSlippery</a>. 2nd algo (Taxi) is published in <a href="https://huggingface.co/Guillaume63/q-Taxi-v3">Guillaume63/q-Taxi-v3</a>. Leaderboard is <a href="https://huggingface.co/spaces/chrisjay/Deep-Reinforcement-Learning-Leaderboard">here</a></li>
 </ul>]]></content><author><name></name></author><category term="reinforcement learning" /><category term="huggingface" /><summary type="html"><![CDATA[par Thomas Simonini]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://castorfou.github.io/guillaume_blog/images/RL.png" /><media:content medium="image" url="https://castorfou.github.io/guillaume_blog/images/RL.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Logbook for June 22</title><link href="https://castorfou.github.io/guillaume_blog/blog/logbook-June.html" rel="alternate" type="text/html" title="Logbook for June 22" /><published>2022-06-01T00:00:00-05:00</published><updated>2022-06-01T00:00:00-05:00</updated><id>https://castorfou.github.io/guillaume_blog/blog/logbook-June</id><content type="html" xml:base="https://castorfou.github.io/guillaume_blog/blog/logbook-June.html"><![CDATA[<h2 id="week-24---june-22">Week 24 - June 22</h2>
 
 <p><strong>Wednesday 6/15</strong></p>
