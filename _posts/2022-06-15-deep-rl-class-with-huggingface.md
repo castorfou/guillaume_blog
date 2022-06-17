@@ -22,7 +22,7 @@ I followed the 1st unit in May/11.
 
 there is a community on discord at [https://discord.gg/aYka4Yhff9](https://discord.gg/aYka4Yhff9), with a lounge about RL.
 
-# Unit 1 - Introduction to Deep Reinforcement Learning
+# [Unit 1](https://github.com/huggingface/deep-rl-class/tree/main/unit1) - Introduction to Deep Reinforcement Learning
 
 * It starts with some [general introduction to deep RL](https://huggingface.co/blog/deep-rl-intro) and then a quizz.
 * 1st practice uses this lunar lander environment, and you train a PPO agent to get the highest score, 
@@ -40,9 +40,9 @@ To start unit2. Introduction to Q-Learning
 
 
 
-# Unit 2 - Introduction to Q-Learning
+# [Unit 2](https://github.com/huggingface/deep-rl-class/tree/main/unit2) - Introduction to Q-Learning
 
-* [part 1 ](https://huggingface.co/blog/deep-rl-q-part1)- we learned about the value-based methods and the difference between Monte Carlo and Temporal Difference Learning. Then a quizz (easy one)
+* [part 1](https://huggingface.co/blog/deep-rl-q-part1) - we learned about the value-based methods and the difference between Monte Carlo and Temporal Difference Learning. Then a quizz (easy one)
 * [part 2](https://huggingface.co/blog/deep-rl-q-part2) - and then Q-learning which is an **off-policy value-based method that uses a TD approach to train its action-value function**. Then a quizz (less easier)
-* and [hands-on](https://colab.research.google.com/github/huggingface/deep-rl-class/blob/main/unit2/unit2.ipynb). 1st algo is published in [Guillaume63/q-FrozenLake-v1-4x4-noSlippery](https://huggingface.co/Guillaume63/q-FrozenLake-v1-4x4-noSlippery)
+* and [hands-on](https://colab.research.google.com/github/huggingface/deep-rl-class/blob/main/unit2/unit2.ipynb). 1st algo (FrozenLake) is published in [Guillaume63/q-FrozenLake-v1-4x4-noSlippery](https://huggingface.co/Guillaume63/q-FrozenLake-v1-4x4-noSlippery). 2nd algo (Taxi) is published in [Guillaume63/q-Taxi-v3](https://huggingface.co/Guillaume63/q-Taxi-v3). Leaderboard is [here](https://huggingface.co/spaces/chrisjay/Deep-Reinforcement-Learning-Leaderboard)
 
