@@ -18,4 +18,4 @@ image: images/logbook.jpg
 
 **Friday 6/17**
 
-* Sylvain pointed me to a paper from X: [Robust Reinforcement Learning with Distributional Risk-averse formulation](https://arxiv.org/abs/2206.06841) now in zotero to use distribution information to strengthen RL epxloration. To be read and tested
+* Sylvain pointed me to a paper from X: [Robust Reinforcement Learning with Distributional Risk-averse formulation](https://arxiv.org/abs/2206.06841) now in [zotero](https://www.zotero.org/guillaumeramelet/collections/P7DX6A6B/items/EB3XCB4Z/collection) to use distribution information to strengthen RL epxloration. To be read and tested
