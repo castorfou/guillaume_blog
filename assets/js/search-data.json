@@ -14,7 +14,7 @@
     
         ,"post1": {
             "title": "Logbook for June 22",
-            "content": "Week 24 - June 22 . Wednesday 6/15 . continue deep rl class with unit 2, interesting notebook to leanr about using optuna to tune hyperparameters | .",
+            "content": "Week 24 - June 22 . Wednesday 6/15 . continue deep rl class with unit 2, interesting notebook to leanr about using optuna to tune hyperparameters | . Friday 6/17 . Sylvain pointed me to a paper from X: Robust Reinforcement Learning with Distributional Risk-averse formulation now in zotero to use distribution information to strengthen RL epxloration. To be read and tested | .",
             "url": "https://castorfou.github.io/guillaume_blog/blog/logbook-June.html",
             "relUrl": "/blog/logbook-June.html",
             "date": " • Jun 1, 2022"
