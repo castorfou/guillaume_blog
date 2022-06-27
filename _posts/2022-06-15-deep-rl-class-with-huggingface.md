@@ -51,8 +51,8 @@ To start unit2. Introduction to Q-Learning
 # [Unit 3](https://github.com/huggingface/deep-rl-class/tree/main/unit3) - Deep Q-Learning with Atari Games
 
 * The Deep Q-Learning chapter 👾 👉  [https://huggingface.co/blog/deep-rl-dqn](https://huggingface.co/blog/deep-rl-dqn)
-* Start the tutorial here 👉 https://colab.research.google.com/github/huggingface/deep-rl-class/blob/main/unit3/unit3.ipynb
+* Start the tutorial here 👉 [https://colab.research.google.com/github/huggingface/deep-rl-class/blob/main/unit3/unit3.ipynb](https://colab.research.google.com/github/huggingface/deep-rl-class/blob/main/unit3/unit3.ipynb)
 
-from discord, a video (30') by Antonin Raffin about [Automatic Hyperparameter Optimization @ ICRA 22 | Tools for Robotic RL 6/8](https://www.youtube.com/watch?v=AidFTOdGNFQ). Never thought about it that way, it can help to speed training phase.
+from discord, a video (30') by Antonin Raffin about [Automatic Hyperparameter Optimization @ ICRA 22 - Tools for Robotic RL 6/8](https://www.youtube.com/watch?v=AidFTOdGNFQ). Never thought about it that way, it can help to speed training phase.
 
 from discord as well a video to build a [doom ai model](https://www.youtube.com/watch?v=eBCU-tqLGfQ) (3 hours!)
