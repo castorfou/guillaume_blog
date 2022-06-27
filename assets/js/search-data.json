@@ -15,8 +15,8 @@
         ,"post1": {
             "title": "Logbook for June 22",
             "content": "Week 24 - June 22 . Wednesday 6/15 . continue deep rl class with unit 2, interesting notebook to leanr about using optuna to tune hyperparameters | . Friday 6/17 . Sylvain pointed me to a paper from X: Robust Reinforcement Learning with Distributional Risk-averse formulation now in zotero to use distribution information to strengthen RL epxloration. To be read and tested | .",
-            "url": "https://castorfou.github.io/guillaume_blog/blog/logbook-June.html",
-            "relUrl": "/blog/logbook-June.html",
+            "url": "https://castorfou.github.io/guillaume_blog/blog/logbook-June-22.html",
+            "relUrl": "/blog/logbook-June-22.html",
             "date": " • Jun 1, 2022"
         }
         
@@ -70,8 +70,8 @@
         ,"post6": {
             "title": "Logbook for February 22",
             "content": "Week 5 - February 22 . Thursday 2/3 . Stephane Mallat - collège de France - Information et complexité video n°2: Estimation par maximum de vraisemblance . Week 8 - February 22 . Monday 2/21 . Stephane Mallat - collège de France - Information et complexité video n°3: Optimisation et modèles exponentiels . Tuesday 2/22 . Antonin Raffin (Stable Baselines 3 author) explains how to better evaluate RL agents using Rliable. Would like to test that. .",
-            "url": "https://castorfou.github.io/guillaume_blog/blog/logbook-February.html",
-            "relUrl": "/blog/logbook-February.html",
+            "url": "https://castorfou.github.io/guillaume_blog/blog/logbook-February-22.html",
+            "relUrl": "/blog/logbook-February-22.html",
             "date": " • Feb 1, 2022"
         }
         
@@ -92,8 +92,8 @@
         ,"post8": {
             "title": "Logbook for January 22",
             "content": "Week 1 - January 22 . Monday 1/3 . Will try to use Zotero for managing research papers. Can sync between PC. Seems helpful. My lib . Tuesday 1/4 . Git revert a file to a previous commit . git log 00 - my_lib.ipynb git checkout f97406b026bfdf529d2dc4de96224bdfbaa576a8 00 - my_lib.ipynb . Week 2 - January 22 . Monday 1/17 . To update fastai from an existing envt under windows . conda update -n base -c defaults conda (from base) conda update fastai -c fastai -c pytorch -c conda-forge -c nvidia (from fastai) . To install mamba under WSL2 . conda install mamba -n base -c conda-forge (from base) then mamba init . To use system CA certificate in WSL2 . export REQUESTS_CA_BUNDLE=/etc/ssl/certs/ca-certificates.crt . To install fastai in WSL2 using mamba . mamba install -c fastchan fastai . Thursday 1/20 . Stephane Mallat - collège de France - Information et complexité but unfortunately video is not yet available. . Re-read of arXiv:2110.01889 Deep Neural Networks and Tabular Data: A Survey (here on zotero) . Week 3 - January 22 . Tuesday 1/26 . Video of 1st lecture of Stephane Mallat 2022 is now available. .",
-            "url": "https://castorfou.github.io/guillaume_blog/blog/logbook-January.html",
-            "relUrl": "/blog/logbook-January.html",
+            "url": "https://castorfou.github.io/guillaume_blog/blog/logbook-January-22.html",
+            "relUrl": "/blog/logbook-January-22.html",
             "date": " • Jan 1, 2022"
         }
         
