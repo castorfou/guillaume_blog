@@ -97,7 +97,7 @@ window.onload = wrap_img;
        • <span class="read-time" title="Estimated read time">
     
     
-      3 min read
+      4 min read
     
 </span></p>
 
@@ -256,10 +256,21 @@ pip <span class="nb">install</span> <span class="nt">-e</span> ./ml-agents
   <li>train</li>
 </ul>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mlagents-learn config/ppo/PyramidsRND.yaml <span class="nt">--env</span><span class="o">=</span>training-envs-executables/linux/Pyramids <span class="nt">--run-id</span><span class="o">=</span><span class="s2">"First Training"</span> <span class="nt">--no-graphics</span>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mlagents-learn config/ppo/PyramidsRND.yaml <span class="nt">--env</span><span class="o">=</span>training-envs-executables/linux/Pyramids/Pyramids <span class="nt">--run-id</span><span class="o">=</span><span class="s2">"First Training"</span> <span class="nt">--no-graphics</span>
 </code></pre></div></div>
 
-<p>but error for the moment. I have posted on discord to see if others have the same issue.</p>
+<p>but error for the moment. I have posted on discord to see if others have the same issue. Maybe linked to <a href="https://github.com/Unity-Technologies/ml-agents/issues/5689">      Python 3.9.10 causes mlagents-learn not to work      #5689    </a> - revert to python 3.8</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>conda activate base
+conda remove <span class="nt">--name</span> ml-agents  <span class="nt">--all</span>
+conda create  <span class="nt">--name</span> ml-agents <span class="nv">python</span><span class="o">=</span>3.8
+conda activate ml-agents
+<span class="c"># Go inside the repository and install the package </span>
+<span class="nb">cd </span>ml-agents 
+pip <span class="nb">install</span> <span class="nt">-e</span> ./ml-agents-envs 
+pip <span class="nb">install</span> <span class="nt">-e</span> ./ml-agents
+</code></pre></div></div>
+
 
   </div><!-- from https://github.com/utterance/utterances -->
 <script src="https://utteranc.es/client.js"
