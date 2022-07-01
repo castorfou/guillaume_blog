@@ -94,6 +94,7 @@ l(w,b)=\frac{1}{N}\displaystyle\sum_{n=1}^{N}(y_n-(x_nw+b))^2
 \\
 \nabla l(w,b) = \begin{bmatrix}\frac{\partial l(w,b)}{\partial w_1}\\ \vdots \\\frac{\partial l(w,b)}{\partial w_d}\end{bmatrix}
 \\
+\\ H(X) = – \sum_{x \in X} P(x) * \log(P(x))
 $$
 
 

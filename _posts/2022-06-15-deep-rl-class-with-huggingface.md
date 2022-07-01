@@ -69,21 +69,41 @@ And then a video explaining [Deep RL at the Edge of the Statistical Precipice](h
 
 ![unity ML-Agents toolkit](https://miro.medium.com/max/1400/0*kYixBHKWwmY65Mg_)
 
-Interesting idea to introduce [curiosity](https://medium.com/data-from-the-trenches/curiosity-driven-learning-through-next-state-prediction-f7f4e2f592fa) and to make it real as an intrinsic reward. It guided me to gentle introductions to [cross-entropy for machine learning](https://machinelearningmastery.com/cross-entropy-for-machine-learning/) and [information entropy](https://machinelearningmastery.com/what-is-information-entropy/).
+Interesting idea to introduce [curiosity](https://medium.com/data-from-the-trenches/curiosity-driven-learning-through-next-state-prediction-f7f4e2f592fa) and to make it real as an intrinsic reward. 
 
-- **Low Probability Event** (*surprising*): More information. High entropy.
-- **Higher Probability Event** (*unsurprising*): Less information. Low entropy.
-- **Skewed Probability Distribution** (*unsurprising*): Low entropy.
-- **Balanced Probability Distribution** (*surprising*): High entropy.
 
-$$
-Information:
 
-\\h(x)=-\log(P(x))
-$$
-
-$$
-Entropy:
-\\H(X) = – \sum_{x \in X} P(x)  \log(P(x))
-$$
+> *Note: It guided me to gentle introductions to [cross-entropy for machine learning](https://machinelearningmastery.com/cross-entropy-for-machine-learning/) and [information entropy](https://machinelearningmastery.com/what-is-information-entropy/).*
+>
+> - ***Low Probability Event** (surprising): More information. High entropy.*
+>
+> - ***Higher Probability Event** (unsurprising): Less information. Low entropy.*
+>
+> - ***Skewed Probability Distribution** (unsurprising): Low entropy.*
+>
+> - ***Balanced Probability Distribution** (surprising): High entropy.*
+>
+> 
+>
+> $$
+> Information:
+> 
+> \\h(x)=-\log(P(x))
+> $$
+>
+> $$
+> Entropy:
+> \\H(X) = – \sum_{x \in X} P(x)  \log(P(x))
+> $$
+>
+> $$
+> Cross-Entropy:\\H(P, Q) = – \sum_{x \in X} P(x)  \log(Q(x))
+> $$
+> Cross-Entropy and KL divergence are similar but not exactly the same. Specifically, the KL divergence measures a very similar quantity to  cross-entropy. It measures the average number of extra bits required to  represent a message with Q instead of P, not the total number of bits.
+> $$
+> KL\ Divergence\ (relative\ entropy):
+> \\KL(P||Q)=– \sum_{x \in X} P(x)  \frac{\log(Q(x))}{\log(P(x))}
+> \\H(P, Q) = H(P) + KL(P || Q)
+> $$
+> 
 
