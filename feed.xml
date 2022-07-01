@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.1.1">Jekyll</generator><link href="https://castorfou.github.io/guillaume_blog/feed.xml" rel="self" type="application/atom+xml" /><link href="https://castorfou.github.io/guillaume_blog/" rel="alternate" type="text/html" /><updated>2022-07-01T07:43:40-05:00</updated><id>https://castorfou.github.io/guillaume_blog/feed.xml</id><title type="html">Guillaume’s blog</title><subtitle>Journey for a datascientist</subtitle><entry><title type="html">Logbook for July 22</title><link href="https://castorfou.github.io/guillaume_blog/blog/logbook-July-22.html" rel="alternate" type="text/html" title="Logbook for July 22" /><published>2022-07-01T00:00:00-05:00</published><updated>2022-07-01T00:00:00-05:00</updated><id>https://castorfou.github.io/guillaume_blog/blog/logbook-July-22</id><content type="html" xml:base="https://castorfou.github.io/guillaume_blog/blog/logbook-July-22.html"><![CDATA[<h2 id="week-26---july-22">Week 26 - July 22</h2>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.1.1">Jekyll</generator><link href="https://castorfou.github.io/guillaume_blog/feed.xml" rel="self" type="application/atom+xml" /><link href="https://castorfou.github.io/guillaume_blog/" rel="alternate" type="text/html" /><updated>2022-07-01T09:20:41-05:00</updated><id>https://castorfou.github.io/guillaume_blog/feed.xml</id><title type="html">Guillaume’s blog</title><subtitle>Journey for a datascientist</subtitle><entry><title type="html">Logbook for July 22</title><link href="https://castorfou.github.io/guillaume_blog/blog/logbook-July-22.html" rel="alternate" type="text/html" title="Logbook for July 22" /><published>2022-07-01T00:00:00-05:00</published><updated>2022-07-01T00:00:00-05:00</updated><id>https://castorfou.github.io/guillaume_blog/blog/logbook-July-22</id><content type="html" xml:base="https://castorfou.github.io/guillaume_blog/blog/logbook-July-22.html"><![CDATA[<h2 id="week-26---july-22">Week 26 - July 22</h2>
 
 <p><strong>Friday 7/1</strong></p>
 
@@ -108,7 +108,8 @@
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># from ~/git/guillaume</span>
 git clone https://github.com/huggingface/ml-agents/
-conda create  <span class="nt">--name</span> ml-agents <span class="nv">python</span><span class="o">=</span>3.9
+<span class="c"># bug with python 3.9 - https://github.com/Unity-Technologies/ml-agents/issues/5689</span>
+conda create  <span class="nt">--name</span> ml-agents <span class="nv">python</span><span class="o">=</span>3.8
 conda activate ml-agents
 <span class="c"># Go inside the repository and install the package </span>
 <span class="nb">cd </span>ml-agents 
@@ -130,17 +131,29 @@ pip <span class="nb">install</span> <span class="nt">-e</span> ./ml-agents
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mlagents-learn config/ppo/PyramidsRND.yaml <span class="nt">--env</span><span class="o">=</span>training-envs-executables/linux/Pyramids/Pyramids <span class="nt">--run-id</span><span class="o">=</span><span class="s2">"First Training"</span> <span class="nt">--no-graphics</span>
 </code></pre></div></div>
 
-<p>but error for the moment. I have posted on discord to see if others have the same issue. Maybe linked to <a href="https://github.com/Unity-Technologies/ml-agents/issues/5689">      Python 3.9.10 causes mlagents-learn not to work      #5689    </a> - revert to python 3.8</p>
+<ul>
+  <li>monitor training</li>
+</ul>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>conda activate base
-conda remove <span class="nt">--name</span> ml-agents  <span class="nt">--all</span>
-conda create  <span class="nt">--name</span> ml-agents <span class="nv">python</span><span class="o">=</span>3.8
-conda activate ml-agents
-<span class="c"># Go inside the repository and install the package </span>
-<span class="nb">cd </span>ml-agents 
-pip <span class="nb">install</span> <span class="nt">-e</span> ./ml-agents-envs 
-pip <span class="nb">install</span> <span class="nt">-e</span> ./ml-agents
-</code></pre></div></div>]]></content><author><name></name></author><category term="reinforcement learning" /><category term="huggingface" /><summary type="html"><![CDATA[par Thomas Simonini]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://castorfou.github.io/guillaume_blog/images/RL.png" /><media:content medium="image" url="https://castorfou.github.io/guillaume_blog/images/RL.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Logbook for June 22</title><link href="https://castorfou.github.io/guillaume_blog/blog/logbook-June-22.html" rel="alternate" type="text/html" title="Logbook for June 22" /><published>2022-06-01T00:00:00-05:00</published><updated>2022-06-01T00:00:00-05:00</updated><id>https://castorfou.github.io/guillaume_blog/blog/logbook-June-22</id><content type="html" xml:base="https://castorfou.github.io/guillaume_blog/blog/logbook-June-22.html"><![CDATA[<h2 id="week-24---june-22">Week 24 - June 22</h2>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>tensorboard <span class="nt">--logdir</span> results <span class="nt">--port</span> 6006
+</code></pre></div></div>
+
+<p>(auto reload is off by default this day, click settings and check Reload data) (because I have installed v2.3.0 and not 2.4.0, there is <a href="https://github.com/tensorflow/tensorboard/issues/1946">no autofit domain to data</a> and it is annoying)</p>
+
+<ul>
+  <li>push to 🤗 Hub</li>
+</ul>
+
+<p>Create a new token (https://huggingface.co/settings/tokens) <strong>with write role</strong></p>
+
+<p>Copy the token, Run this and past the token <code class="language-plaintext highlighter-rouge">huggingface-cli login</code></p>
+
+<p>Push to Hub</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mlagents-push-to-hf <span class="nt">--run-id</span><span class="o">=</span><span class="s1">'First Training'</span> <span class="nt">--local-dir</span><span class="o">=</span><span class="s1">'results/First Training'</span> <span class="nt">--repo-id</span><span class="o">=</span><span class="s1">'Guillaume63/MLAgents-Pyramids'</span> <span class="nt">--commit-message</span><span class="o">=</span><span class="s1">'Trained pyramids agent upload'</span>
+</code></pre></div></div>
+
+<p>and now I can play it from <a href="https://huggingface.co/Guillaume63/MLAgents-Pyramids">https://huggingface.co/Guillaume63/MLAgents-Pyramids</a> and watch your Agent play…</p>]]></content><author><name></name></author><category term="reinforcement learning" /><category term="huggingface" /><summary type="html"><![CDATA[par Thomas Simonini]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://castorfou.github.io/guillaume_blog/images/RL.png" /><media:content medium="image" url="https://castorfou.github.io/guillaume_blog/images/RL.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Logbook for June 22</title><link href="https://castorfou.github.io/guillaume_blog/blog/logbook-June-22.html" rel="alternate" type="text/html" title="Logbook for June 22" /><published>2022-06-01T00:00:00-05:00</published><updated>2022-06-01T00:00:00-05:00</updated><id>https://castorfou.github.io/guillaume_blog/blog/logbook-June-22</id><content type="html" xml:base="https://castorfou.github.io/guillaume_blog/blog/logbook-June-22.html"><![CDATA[<h2 id="week-24---june-22">Week 24 - June 22</h2>
 
 <p><strong>Wednesday 6/15</strong></p>
 
