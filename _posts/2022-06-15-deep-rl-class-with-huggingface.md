@@ -99,11 +99,17 @@ Interesting idea to introduce [curiosity](https://medium.com/data-from-the-trenc
 > $$
 > Cross-Entropy:\\H(P, Q) = – \sum_{x \in X} P(x)  \log(Q(x))
 > $$
+> 
+>
 > Cross-Entropy and KL divergence are similar but not exactly the same. Specifically, the KL divergence measures a very similar quantity to  cross-entropy. It measures the average number of extra bits required to  represent a message with Q instead of P, not the total number of bits.
+
+
+
 > $$
 > KL\ Divergence\ (relative\ entropy):
 > \\KL(P||Q)=– \sum_{x \in X} P(x)  \frac{\log(Q(x))}{\log(P(x))}
 > \\H(P, Q) = H(P) + KL(P || Q)
 > $$
+>
 > 
 
