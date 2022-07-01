@@ -120,7 +120,8 @@ Here are the steps for the training:
 ```bash
 # from ~/git/guillaume
 git clone https://github.com/huggingface/ml-agents/
-conda create  --name ml-agents python=3.9
+# bug with python 3.9 - https://github.com/Unity-Technologies/ml-agents/issues/5689
+conda create  --name ml-agents python=3.8
 conda activate ml-agents
 # Go inside the repository and install the package 
 cd ml-agents 
@@ -139,16 +140,25 @@ Unzip it and place it inside the MLAgents cloned repo **in a new folder called t
 mlagents-learn config/ppo/PyramidsRND.yaml --env=training-envs-executables/linux/Pyramids/Pyramids --run-id="First Training" --no-graphics
 ```
 
-but error for the moment. I have posted on discord to see if others have the same issue. Maybe linked to [      Python 3.9.10 causes mlagents-learn not to work      #5689    ](https://github.com/Unity-Technologies/ml-agents/issues/5689) - revert to python 3.8
+* monitor training
 
 ```bash
-conda activate base
-conda remove --name ml-agents  --all
-conda create  --name ml-agents python=3.8
-conda activate ml-agents
-# Go inside the repository and install the package 
-cd ml-agents 
-pip install -e ./ml-agents-envs 
-pip install -e ./ml-agents
+tensorboard --logdir results --port 6006
 ```
+
+(auto reload is off by default this day, click settings and check Reload data) (because I have installed v2.3.0 and not 2.4.0, there is [no autofit domain to data](https://github.com/tensorflow/tensorboard/issues/1946) and it is annoying)
+
+* push to 🤗 Hub
+
+Create a new token (https://huggingface.co/settings/tokens) **with write role**
+
+Copy the token, Run this and past the token `huggingface-cli login`
+
+Push to Hub
+
+```bash
+mlagents-push-to-hf --run-id='First Training' --local-dir='results/First Training' --repo-id='Guillaume63/MLAgents-Pyramids' --commit-message='Trained pyramids agent upload'
+```
+
+and now I can play it from [https://huggingface.co/Guillaume63/MLAgents-Pyramids](https://huggingface.co/Guillaume63/MLAgents-Pyramids) and watch your Agent play...
 
