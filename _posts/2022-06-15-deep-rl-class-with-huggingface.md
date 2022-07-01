@@ -102,14 +102,41 @@ Interesting idea to introduce [curiosity](https://medium.com/data-from-the-trenc
 > 
 >
 > Cross-Entropy and KL divergence are similar but not exactly the same. Specifically, the KL divergence measures a very similar quantity to  cross-entropy. It measures the average number of extra bits required to  represent a message with Q instead of P, not the total number of bits.
-
-
-
-> $$
-> KL\ Divergence\ (relative\ entropy):
+>
+>
+>
+>$$
+>KL\ Divergence\ (relative\ entropy):
 > \\KL(P||Q)=– \sum_{x \in X} P(x)  \frac{\log(Q(x))}{\log(P(x))}
 > \\H(P, Q) = H(P) + KL(P || Q)
 > $$
->
+> 
 > 
 
+Here are the steps for the training:
+
+* clone repo and install environment
+
+```bash
+# from ~/git/guillaume
+git clone https://github.com/huggingface/ml-agents/
+conda create  --name ml-agents python=3.9
+conda activate ml-agents
+# Go inside the repository and install the package 
+cd ml-agents 
+pip install -e ./ml-agents-envs 
+pip install -e ./ml-agents
+```
+
+* download the Environment Executable (pyramids from [google drive](https://drive.google.com/drive/folders/1cjUOCB6gikJHmOnoQ5R9oM7-_zAFXuA2))
+
+Unzip it and place it inside the MLAgents cloned repo **in a new folder called trained-envs-executables/linux**
+
+* modify nbr of steps to 1000000 in `config/ppo/PyramidsRND.yaml`
+* train
+
+```bash
+mlagents-learn config/ppo/PyramidsRND.yaml --env=training-envs-executables/linux/Pyramids --run-id="First Training" --no-graphics
+```
+
+but error for the moment. I have posted on discord to see if others have the same issue.
