@@ -67,4 +67,6 @@ And then a video explaining [Deep RL at the Edge of the Statistical Precipice](h
 
 (no post in github for this one) Thomas starts with evolutions on RL domain, citing [Decision Transformers](https://huggingface.co/blog/decision-transformers) as one of the last hot topic. And then introduces Unity and how it can now be used with RL agents.
 
+
+
 ![unity ML-Agents toolkit](https://miro.medium.com/max/1400/0*kYixBHKWwmY65Mg_)
