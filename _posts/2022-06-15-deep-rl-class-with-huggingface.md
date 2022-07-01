@@ -60,3 +60,11 @@ from discord as well a video to build a [doom ai model](https://www.youtube.com/
 and from discord a lecture from Pieter Abbeel explaining Q-value to DQN and why we have this double network at [L2 Deep Q-Learning (Foundations of Deep RL Series](https://www.youtube.com/watch?v=Psrhxy88zww). This is part of a larger lecture available at [Foundations of Deep RL -- 6-lecture series by Pieter Abbeel](https://www.youtube.com/watch?v=2GwBez0D20A&list=PLwRJQ4m4UJjNymuBM9RdmB3Z9N5-0IlY0)
 
 And then a video explaining [Deep RL at the Edge of the Statistical Precipice](https://agarwl.github.io/rliable/). This was from a paper at Neurips.
+
+
+
+# [Unit 4](https://thomassimonini.medium.com/an-introduction-to-unity-ml-agents-with-hugging-face-efbac62c8c80) - An Introduction to **Unity ML-Agents with Hugging Face 🤗**
+
+(no post in github for this one) Thomas starts with evolutions on RL domain, citing [Decision Transformers](https://huggingface.co/blog/decision-transformers) as one of the last hot topic. And then introduces Unity and how it can now be used with RL agents.
+
+![unity ML-Agents toolkit](https://miro.medium.com/max/1400/0*kYixBHKWwmY65Mg_)
