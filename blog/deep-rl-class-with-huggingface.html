@@ -117,17 +117,44 @@ window.onload = wrap_img;
 
   <div class="post-content e-content" itemprop="articleBody">
     <ul id="toc" class="section-nav">
-<li class="toc-entry toc-h1"><a href="#unit-1---introduction-to-deep-reinforcement-learning">Unit 1 - Introduction to Deep Reinforcement Learning</a></li>
-<li class="toc-entry toc-h1"><a href="#unit-2---introduction-to-q-learning">Unit 2 - Introduction to Q-Learning</a></li>
-<li class="toc-entry toc-h1"><a href="#unit-3---deep-q-learning-with-atari-games">Unit 3 - Deep Q-Learning with Atari Games</a></li>
-<li class="toc-entry toc-h1"><a href="#unit-4---an-introduction-to-unity-ml-agents-with-hugging-face-">Unit 4 - An Introduction to Unity ML-Agents with Hugging Face 🤗</a></li>
+<li class="toc-entry toc-h1"><a href="#unit-1---introduction-to-deep-reinforcement-learning">Unit 1 - Introduction to Deep Reinforcement Learning</a>
+<ul>
+<li class="toc-entry toc-h6"><a href="#-it-starts-with-some-general-introduction-to-deep-rl-and-then-a-quizz">📖 It starts with some general introduction to deep RL and then a quizz.</a></li>
+<li class="toc-entry toc-h6"><a href="#-1st-practice-uses-this-lunar-lander-environment-and-you-train-a-ppo-agent-to-get-the-highest-score">👩‍💻 1st practice uses this lunar lander environment, and you train a PPO agent to get the highest score,</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h1"><a href="#unit-2---introduction-to-q-learning">Unit 2 - Introduction to Q-Learning</a>
+<ul>
+<li class="toc-entry toc-h6"><a href="#-part-1---we-learned-about-the-value-based-methods-and-the-difference-between-monte-carlo-and-temporal-difference-learning-then-a-quizz-easy-one">📖 part 1 - we learned about the value-based methods and the difference between Monte Carlo and Temporal Difference Learning. Then a quizz (easy one)</a></li>
+<li class="toc-entry toc-h6"><a href="#-part-2---and-then-q-learning-which-is-an-off-policy-value-based-method-that-uses-a-td-approach-to-train-its-action-value-function-then-a-quizz-less-easier">📖 part 2 - and then Q-learning which is an off-policy value-based method that uses a TD approach to train its action-value function. Then a quizz (less easier)</a></li>
+<li class="toc-entry toc-h6"><a href="#-hands-on-1st-algo-frozenlake-is-published-in-guillaume63q-frozenlake-v1-4x4-noslippery-2nd-algo-taxi-is-published-in-guillaume63q-taxi-v3-leaderboard-is-here">👩‍💻 hands-on. 1st algo (FrozenLake) is published in Guillaume63/q-FrozenLake-v1-4x4-noSlippery. 2nd algo (Taxi) is published in Guillaume63/q-Taxi-v3. Leaderboard is here</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h1"><a href="#unit-3---deep-q-learning-with-atari-games">Unit 3 - Deep Q-Learning with Atari Games</a>
+<ul>
+<li class="toc-entry toc-h6"><a href="#-the-deep-q-learning-chapter----httpshuggingfacecoblogdeep-rl-dqn">📖 The Deep Q-Learning chapter 👾 👉  https://huggingface.co/blog/deep-rl-dqn</a></li>
+<li class="toc-entry toc-h6"><a href="#-start-the-hands-on-here--httpscolabresearchgooglecomgithubhuggingfacedeep-rl-classblobmainunit3unit3ipynb">👩‍💻 Start the hands-on here 👉 https://colab.research.google.com/github/huggingface/deep-rl-class/blob/main/unit3/unit3.ipynb</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h1"><a href="#unit-4---an-introduction-to-unity-ml-agents-with-hugging-face-">Unit 4 - An Introduction to Unity ML-Agents with Hugging Face 🤗</a>
+<ul>
+<li class="toc-entry toc-h6"><a href="#-tutorial--httpslinkmediumcomkopvpdyz4qb">📖 tutorial 👉 https://link.medium.com/KOpvPdyz4qb</a></li>
+<li class="toc-entry toc-h6"><a href="#-here-are-the-steps-for-the-training">👩‍💻 Here are the steps for the training:</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h1"><a href="#unit-5---policy-gradient-with-pytorch">Unit 5 - Policy Gradient with PyTorch</a>
+<ul>
+<li class="toc-entry toc-h6"><a href="#1️⃣--read-policy-gradient-with-pytorch-chapter">1️⃣ 📖 Read Policy Gradient with PyTorch Chapter.</a></li>
+<li class="toc-entry toc-h6"><a href="#2️⃣--then-dive-on-the-hands-on-where-youll-code-your-first-deep-reinforcement-learning-algorithm-from-scratch-reinforce">2️⃣ 👩‍💻 Then dive on the hands-on where you’ll code your first Deep Reinforcement Learning algorithm from scratch: Reinforce.</a></li>
+</ul>
+</li>
 </ul><p>Didn’t mention that but I have started <a href="https://github.com/huggingface/deep-rl-class">The Hugging Face Deep Reinforcement Learning Class</a> by Thomas Simonini.</p>
 
 <p>Thomas is now part of HuggingFace.</p>
 
 <p>1st step is to fork the repo, and for mine it is <a href="https://github.com/castorfou/deep-rl-class">here</a>.</p>
 
-<p>And clone it locally: <code class="language-plaintext highlighter-rouge">git clone git@github.com:castorfou/deep-rl-class.git</code></p>
+<p>And clone it locally: <code class="language-plaintext highlighter-rouge">git clone git@github.com:castorfou/deep-rl-class.git</code> ou <code class="language-plaintext highlighter-rouge">git clone https://github.com/castorfou/deep-rl-class.git</code></p>
 
 <p>I followed the 1st unit in May/11.</p>
 
@@ -136,9 +163,13 @@ window.onload = wrap_img;
 <h1 id="unit-1---introduction-to-deep-reinforcement-learning">
 <a class="anchor" href="#unit-1---introduction-to-deep-reinforcement-learning" aria-hidden="true"><span class="octicon octicon-link"></span></a><a href="https://github.com/huggingface/deep-rl-class/tree/main/unit1">Unit 1</a> - Introduction to Deep Reinforcement Learning</h1>
 
+<h6 id="-it-starts-with-some-general-introduction-to-deep-rl-and-then-a-quizz">
+<a class="anchor" href="#-it-starts-with-some-general-introduction-to-deep-rl-and-then-a-quizz" aria-hidden="true"><span class="octicon octicon-link"></span></a>📖 It starts with some <a href="https://huggingface.co/blog/deep-rl-intro">general introduction to deep RL</a> and then a quizz.</h6>
+
+<h6 id="-1st-practice-uses-this-lunar-lander-environment-and-you-train-a-ppo-agent-to-get-the-highest-score">
+<a class="anchor" href="#-1st-practice-uses-this-lunar-lander-environment-and-you-train-a-ppo-agent-to-get-the-highest-score" aria-hidden="true"><span class="octicon octicon-link"></span></a>👩‍💻 1st practice uses this lunar lander environment, and you train a PPO agent to get the highest score,</h6>
+
 <ul>
-  <li>It starts with some <a href="https://huggingface.co/blog/deep-rl-intro">general introduction to deep RL</a> and then a quizz.</li>
-  <li>1st practice uses this lunar lander environment, and you train a PPO agent to get the highest score,</li>
   <li>and this runs on colab : <a href="https://github.com/huggingface/deep-rl-class/blob/main/unit1/unit1.ipynb">https://github.com/huggingface/deep-rl-class/blob/main/unit1/unit1.ipynb</a> (just by clicking on <img src="https://camo.githubusercontent.com/84f0493939e0c4de4e6dbe113251b4bfb5353e57134ffd9fcab6b8714514d4d1/68747470733a2f2f636f6c61622e72657365617263682e676f6f676c652e636f6d2f6173736574732f636f6c61622d62616467652e737667" alt="https://camo.githubusercontent.com/84f0493939e0c4de4e6dbe113251b4bfb5353e57134ffd9fcab6b8714514d4d1/68747470733a2f2f636f6c61622e72657365617263682e676f6f676c652e636f6d2f6173736574732f636f6c61622d62616467652e737667">)</li>
   <li>there is a leaderboard running under huggingface (one can publish models to huggingface) <a href="https://huggingface.co/spaces/chrisjay/Deep-Reinforcement-Learning-Leaderboard">https://huggingface.co/spaces/chrisjay/Deep-Reinforcement-Learning-Leaderboard</a> . Just need an huggingface account for that (used my Michelin account)</li>
 </ul>
@@ -156,24 +187,26 @@ window.onload = wrap_img;
 <h1 id="unit-2---introduction-to-q-learning">
 <a class="anchor" href="#unit-2---introduction-to-q-learning" aria-hidden="true"><span class="octicon octicon-link"></span></a><a href="https://github.com/huggingface/deep-rl-class/tree/main/unit2">Unit 2</a> - Introduction to Q-Learning</h1>
 
-<ul>
-  <li>
-<a href="https://huggingface.co/blog/deep-rl-q-part1">part 1</a> - we learned about the value-based methods and the difference between Monte Carlo and Temporal Difference Learning. Then a quizz (easy one)</li>
-  <li>
-<a href="https://huggingface.co/blog/deep-rl-q-part2">part 2</a> - and then Q-learning which is an <strong>off-policy value-based method that uses a TD approach to train its action-value function</strong>. Then a quizz (less easier)</li>
-  <li>and <a href="https://colab.research.google.com/github/huggingface/deep-rl-class/blob/main/unit2/unit2.ipynb">hands-on</a>. 1st algo (FrozenLake) is published in <a href="https://huggingface.co/Guillaume63/q-FrozenLake-v1-4x4-noSlippery">Guillaume63/q-FrozenLake-v1-4x4-noSlippery</a>. 2nd algo (Taxi) is published in <a href="https://huggingface.co/Guillaume63/q-Taxi-v3">Guillaume63/q-Taxi-v3</a>. Leaderboard is <a href="https://huggingface.co/spaces/chrisjay/Deep-Reinforcement-Learning-Leaderboard">here</a>
-</li>
-</ul>
+<h6 id="-part-1---we-learned-about-the-value-based-methods-and-the-difference-between-monte-carlo-and-temporal-difference-learning-then-a-quizz-easy-one">
+<a class="anchor" href="#-part-1---we-learned-about-the-value-based-methods-and-the-difference-between-monte-carlo-and-temporal-difference-learning-then-a-quizz-easy-one" aria-hidden="true"><span class="octicon octicon-link"></span></a>📖 <a href="https://huggingface.co/blog/deep-rl-q-part1">part 1</a> - we learned about the value-based methods and the difference between Monte Carlo and Temporal Difference Learning. Then a quizz (easy one)</h6>
+
+<h6 id="-part-2---and-then-q-learning-which-is-an-off-policy-value-based-method-that-uses-a-td-approach-to-train-its-action-value-function-then-a-quizz-less-easier">
+<a class="anchor" href="#-part-2---and-then-q-learning-which-is-an-off-policy-value-based-method-that-uses-a-td-approach-to-train-its-action-value-function-then-a-quizz-less-easier" aria-hidden="true"><span class="octicon octicon-link"></span></a>📖 <a href="https://huggingface.co/blog/deep-rl-q-part2">part 2</a> - and then Q-learning which is an <strong>off-policy value-based method that uses a TD approach to train its action-value function</strong>. Then a quizz (less easier)</h6>
+
+<h6 id="-hands-on-1st-algo-frozenlake-is-published-in-guillaume63q-frozenlake-v1-4x4-noslippery-2nd-algo-taxi-is-published-in-guillaume63q-taxi-v3-leaderboard-is-here">
+<a class="anchor" href="#-hands-on-1st-algo-frozenlake-is-published-in-guillaume63q-frozenlake-v1-4x4-noslippery-2nd-algo-taxi-is-published-in-guillaume63q-taxi-v3-leaderboard-is-here" aria-hidden="true"><span class="octicon octicon-link"></span></a>👩‍💻 <a href="https://colab.research.google.com/github/huggingface/deep-rl-class/blob/main/unit2/unit2.ipynb">hands-on</a>. 1st algo (FrozenLake) is published in <a href="https://huggingface.co/Guillaume63/q-FrozenLake-v1-4x4-noSlippery">Guillaume63/q-FrozenLake-v1-4x4-noSlippery</a>. 2nd algo (Taxi) is published in <a href="https://huggingface.co/Guillaume63/q-Taxi-v3">Guillaume63/q-Taxi-v3</a>. Leaderboard is <a href="https://huggingface.co/spaces/chrisjay/Deep-Reinforcement-Learning-Leaderboard">here</a>
+</h6>
 
 <h1 id="unit-3---deep-q-learning-with-atari-games">
 <a class="anchor" href="#unit-3---deep-q-learning-with-atari-games" aria-hidden="true"><span class="octicon octicon-link"></span></a><a href="https://github.com/huggingface/deep-rl-class/tree/main/unit3">Unit 3</a> - Deep Q-Learning with Atari Games</h1>
 
-<ul>
-  <li>The Deep Q-Learning chapter 👾 👉  <a href="https://huggingface.co/blog/deep-rl-dqn">https://huggingface.co/blog/deep-rl-dqn</a>
-</li>
-  <li>Start the tutorial here 👉 <a href="https://colab.research.google.com/github/huggingface/deep-rl-class/blob/main/unit3/unit3.ipynb">https://colab.research.google.com/github/huggingface/deep-rl-class/blob/main/unit3/unit3.ipynb</a>
-</li>
-</ul>
+<h6 id="-the-deep-q-learning-chapter----httpshuggingfacecoblogdeep-rl-dqn">
+<a class="anchor" href="#-the-deep-q-learning-chapter----httpshuggingfacecoblogdeep-rl-dqn" aria-hidden="true"><span class="octicon octicon-link"></span></a>📖 The Deep Q-Learning chapter 👾 👉  <a href="https://huggingface.co/blog/deep-rl-dqn">https://huggingface.co/blog/deep-rl-dqn</a>
+</h6>
+
+<h6 id="-start-the-hands-on-here--httpscolabresearchgooglecomgithubhuggingfacedeep-rl-classblobmainunit3unit3ipynb">
+<a class="anchor" href="#-start-the-hands-on-here--httpscolabresearchgooglecomgithubhuggingfacedeep-rl-classblobmainunit3unit3ipynb" aria-hidden="true"><span class="octicon octicon-link"></span></a>👩‍💻 Start the hands-on here 👉 <a href="https://colab.research.google.com/github/huggingface/deep-rl-class/blob/main/unit3/unit3.ipynb">https://colab.research.google.com/github/huggingface/deep-rl-class/blob/main/unit3/unit3.ipynb</a>
+</h6>
 
 <p>from discord, a video (30’) by Antonin Raffin about <a href="https://www.youtube.com/watch?v=AidFTOdGNFQ">Automatic Hyperparameter Optimization @ ICRA 22 - Tools for Robotic RL 6/8</a>. Never thought about it that way, it can help to speed training phase.</p>
 
@@ -184,10 +217,13 @@ window.onload = wrap_img;
 <p>And then a video explaining <a href="https://agarwl.github.io/rliable/">Deep RL at the Edge of the Statistical Precipice</a>. This was from a paper at Neurips.</p>
 
 <h1 id="unit-4---an-introduction-to-unity-ml-agents-with-hugging-face-">
-<a class="anchor" href="#unit-4---an-introduction-to-unity-ml-agents-with-hugging-face-" aria-hidden="true"><span class="octicon octicon-link"></span></a><a href="https://thomassimonini.medium.com/an-introduction-to-unity-ml-agents-with-hugging-face-efbac62c8c80">Unit 4</a> - An Introduction to <strong>Unity ML-Agents with Hugging Face 🤗</strong>
+<a class="anchor" href="#unit-4---an-introduction-to-unity-ml-agents-with-hugging-face-" aria-hidden="true"><span class="octicon octicon-link"></span></a><a href="https://github.com/huggingface/deep-rl-class/tree/main/unit4">Unit 4</a> - An Introduction to <strong>Unity ML-Agents with Hugging Face 🤗</strong>
 </h1>
 
-<p>(no post in github for this one) Thomas starts with evolutions on RL domain, citing <a href="https://huggingface.co/blog/decision-transformers">Decision Transformers</a> as one of the last hot topic. And then introduces Unity and how it can now be used with RL agents.</p>
+<h6 id="-tutorial--httpslinkmediumcomkopvpdyz4qb">
+<a class="anchor" href="#-tutorial--httpslinkmediumcomkopvpdyz4qb" aria-hidden="true"><span class="octicon octicon-link"></span></a>📖 <strong>tutorial</strong> 👉 https://link.medium.com/KOpvPdyz4qb</h6>
+
+<p>Thomas starts with evolutions on RL domain, citing <a href="https://huggingface.co/blog/decision-transformers">Decision Transformers</a> as one of the last hot topic. And then introduces Unity and how it can now be used with RL agents.</p>
 
 <p><img src="https://miro.medium.com/max/1400/0*kYixBHKWwmY65Mg_" alt="unity ML-Agents toolkit"></p>
 
@@ -228,7 +264,8 @@ window.onload = wrap_img;
 
 </blockquote>
 
-<p>Here are the steps for the training:</p>
+<h6 id="-here-are-the-steps-for-the-training">
+<a class="anchor" href="#-here-are-the-steps-for-the-training" aria-hidden="true"><span class="octicon octicon-link"></span></a>👩‍💻 Here are the steps for the training:</h6>
 
 <ul>
   <li>clone repo and install environment</li>
@@ -284,6 +321,14 @@ pip <span class="nb">install</span> <span class="nt">-e</span> ./ml-agents
 
 <p>and now I can play it from <a href="https://huggingface.co/Guillaume63/MLAgents-Pyramids">https://huggingface.co/Guillaume63/MLAgents-Pyramids</a> and watch your Agent play…</p>
 
+<h1 id="unit-5---policy-gradient-with-pytorch">
+<a class="anchor" href="#unit-5---policy-gradient-with-pytorch" aria-hidden="true"><span class="octicon octicon-link"></span></a><a href="https://github.com/huggingface/deep-rl-class/tree/main/unit5">Unit 5</a> - Policy Gradient with PyTorch</h1>
+
+<h6 id="1️⃣--read-policy-gradient-with-pytorch-chapter">
+<a class="anchor" href="#1%EF%B8%8F%E2%83%A3--read-policy-gradient-with-pytorch-chapter" aria-hidden="true"><span class="octicon octicon-link"></span></a>1️⃣ 📖 <strong>Read <a href="https://huggingface.co/blog/deep-rl-pg">Policy Gradient with PyTorch Chapter</a></strong>.</h6>
+
+<h6 id="2️⃣--then-dive-on-the-hands-on-where-youll-code-your-first-deep-reinforcement-learning-algorithm-from-scratch-reinforce">
+<a class="anchor" href="#2%EF%B8%8F%E2%83%A3--then-dive-on-the-hands-on-where-youll-code-your-first-deep-reinforcement-learning-algorithm-from-scratch-reinforce" aria-hidden="true"><span class="octicon octicon-link"></span></a>2️⃣ 👩‍💻 Then dive on the hands-on where you’ll <strong>code your first Deep Reinforcement Learning algorithm from scratch: Reinforce</strong>.</h6>
 
   </div><!-- from https://github.com/utterance/utterances -->
 <script src="https://utteranc.es/client.js"

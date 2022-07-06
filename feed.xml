@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.1.1">Jekyll</generator><link href="https://castorfou.github.io/guillaume_blog/feed.xml" rel="self" type="application/atom+xml" /><link href="https://castorfou.github.io/guillaume_blog/" rel="alternate" type="text/html" /><updated>2022-07-06T02:38:42-05:00</updated><id>https://castorfou.github.io/guillaume_blog/feed.xml</id><title type="html">Guillaume’s blog</title><subtitle>Journey for a datascientist</subtitle><entry><title type="html">Logbook for July 22</title><link href="https://castorfou.github.io/guillaume_blog/blog/logbook-July-22.html" rel="alternate" type="text/html" title="Logbook for July 22" /><published>2022-07-01T00:00:00-05:00</published><updated>2022-07-01T00:00:00-05:00</updated><id>https://castorfou.github.io/guillaume_blog/blog/logbook-July-22</id><content type="html" xml:base="https://castorfou.github.io/guillaume_blog/blog/logbook-July-22.html"><![CDATA[<h2 id="week-26---july-22">Week 26 - July 22</h2>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.1.1">Jekyll</generator><link href="https://castorfou.github.io/guillaume_blog/feed.xml" rel="self" type="application/atom+xml" /><link href="https://castorfou.github.io/guillaume_blog/" rel="alternate" type="text/html" /><updated>2022-07-06T03:00:10-05:00</updated><id>https://castorfou.github.io/guillaume_blog/feed.xml</id><title type="html">Guillaume’s blog</title><subtitle>Journey for a datascientist</subtitle><entry><title type="html">Logbook for July 22</title><link href="https://castorfou.github.io/guillaume_blog/blog/logbook-July-22.html" rel="alternate" type="text/html" title="Logbook for July 22" /><published>2022-07-01T00:00:00-05:00</published><updated>2022-07-01T00:00:00-05:00</updated><id>https://castorfou.github.io/guillaume_blog/blog/logbook-July-22</id><content type="html" xml:base="https://castorfou.github.io/guillaume_blog/blog/logbook-July-22.html"><![CDATA[<h2 id="week-26---july-22">Week 26 - July 22</h2>
 
 <p><strong>Friday 7/1</strong></p>
 
@@ -18,7 +18,7 @@
 
 <p>1st step is to fork the repo, and for mine it is <a href="https://github.com/castorfou/deep-rl-class">here</a>.</p>
 
-<p>And clone it locally: <code class="language-plaintext highlighter-rouge">git clone git@github.com:castorfou/deep-rl-class.git</code></p>
+<p>And clone it locally: <code class="language-plaintext highlighter-rouge">git clone git@github.com:castorfou/deep-rl-class.git</code> ou <code class="language-plaintext highlighter-rouge">git clone https://github.com/castorfou/deep-rl-class.git</code></p>
 
 <p>I followed the 1st unit in May/11.</p>
 
@@ -26,9 +26,11 @@
 
 <h1 id="unit-1---introduction-to-deep-reinforcement-learning"><a href="https://github.com/huggingface/deep-rl-class/tree/main/unit1">Unit 1</a> - Introduction to Deep Reinforcement Learning</h1>
 
+<h6 id="-it-starts-with-some-general-introduction-to-deep-rl-and-then-a-quizz">📖 It starts with some <a href="https://huggingface.co/blog/deep-rl-intro">general introduction to deep RL</a> and then a quizz.</h6>
+
+<h6 id="-1st-practice-uses-this-lunar-lander-environment-and-you-train-a-ppo-agent-to-get-the-highest-score">👩‍💻 1st practice uses this lunar lander environment, and you train a PPO agent to get the highest score,</h6>
+
 <ul>
-  <li>It starts with some <a href="https://huggingface.co/blog/deep-rl-intro">general introduction to deep RL</a> and then a quizz.</li>
-  <li>1st practice uses this lunar lander environment, and you train a PPO agent to get the highest score,</li>
   <li>and this runs on colab : <a href="https://github.com/huggingface/deep-rl-class/blob/main/unit1/unit1.ipynb">https://github.com/huggingface/deep-rl-class/blob/main/unit1/unit1.ipynb</a> (just by clicking on <img src="https://camo.githubusercontent.com/84f0493939e0c4de4e6dbe113251b4bfb5353e57134ffd9fcab6b8714514d4d1/68747470733a2f2f636f6c61622e72657365617263682e676f6f676c652e636f6d2f6173736574732f636f6c61622d62616467652e737667" alt="https://camo.githubusercontent.com/84f0493939e0c4de4e6dbe113251b4bfb5353e57134ffd9fcab6b8714514d4d1/68747470733a2f2f636f6c61622e72657365617263682e676f6f676c652e636f6d2f6173736574732f636f6c61622d62616467652e737667" />)</li>
   <li>there is a leaderboard running under huggingface (one can publish models to huggingface) <a href="https://huggingface.co/spaces/chrisjay/Deep-Reinforcement-Learning-Leaderboard">https://huggingface.co/spaces/chrisjay/Deep-Reinforcement-Learning-Leaderboard</a> . Just need an huggingface account for that (used my Michelin account)</li>
 </ul>
@@ -44,18 +46,17 @@
 
 <h1 id="unit-2---introduction-to-q-learning"><a href="https://github.com/huggingface/deep-rl-class/tree/main/unit2">Unit 2</a> - Introduction to Q-Learning</h1>
 
-<ul>
-  <li><a href="https://huggingface.co/blog/deep-rl-q-part1">part 1</a> - we learned about the value-based methods and the difference between Monte Carlo and Temporal Difference Learning. Then a quizz (easy one)</li>
-  <li><a href="https://huggingface.co/blog/deep-rl-q-part2">part 2</a> - and then Q-learning which is an <strong>off-policy value-based method that uses a TD approach to train its action-value function</strong>. Then a quizz (less easier)</li>
-  <li>and <a href="https://colab.research.google.com/github/huggingface/deep-rl-class/blob/main/unit2/unit2.ipynb">hands-on</a>. 1st algo (FrozenLake) is published in <a href="https://huggingface.co/Guillaume63/q-FrozenLake-v1-4x4-noSlippery">Guillaume63/q-FrozenLake-v1-4x4-noSlippery</a>. 2nd algo (Taxi) is published in <a href="https://huggingface.co/Guillaume63/q-Taxi-v3">Guillaume63/q-Taxi-v3</a>. Leaderboard is <a href="https://huggingface.co/spaces/chrisjay/Deep-Reinforcement-Learning-Leaderboard">here</a></li>
-</ul>
+<h6 id="-part-1---we-learned-about-the-value-based-methods-and-the-difference-between-monte-carlo-and-temporal-difference-learning-then-a-quizz-easy-one">📖 <a href="https://huggingface.co/blog/deep-rl-q-part1">part 1</a> - we learned about the value-based methods and the difference between Monte Carlo and Temporal Difference Learning. Then a quizz (easy one)</h6>
+
+<h6 id="-part-2---and-then-q-learning-which-is-an-off-policy-value-based-method-that-uses-a-td-approach-to-train-its-action-value-function-then-a-quizz-less-easier">📖 <a href="https://huggingface.co/blog/deep-rl-q-part2">part 2</a> - and then Q-learning which is an <strong>off-policy value-based method that uses a TD approach to train its action-value function</strong>. Then a quizz (less easier)</h6>
+
+<h6 id="-hands-on-1st-algo-frozenlake-is-published-in-guillaume63q-frozenlake-v1-4x4-noslippery-2nd-algo-taxi-is-published-in-guillaume63q-taxi-v3-leaderboard-is-here">👩‍💻 <a href="https://colab.research.google.com/github/huggingface/deep-rl-class/blob/main/unit2/unit2.ipynb">hands-on</a>. 1st algo (FrozenLake) is published in <a href="https://huggingface.co/Guillaume63/q-FrozenLake-v1-4x4-noSlippery">Guillaume63/q-FrozenLake-v1-4x4-noSlippery</a>. 2nd algo (Taxi) is published in <a href="https://huggingface.co/Guillaume63/q-Taxi-v3">Guillaume63/q-Taxi-v3</a>. Leaderboard is <a href="https://huggingface.co/spaces/chrisjay/Deep-Reinforcement-Learning-Leaderboard">here</a></h6>
 
 <h1 id="unit-3---deep-q-learning-with-atari-games"><a href="https://github.com/huggingface/deep-rl-class/tree/main/unit3">Unit 3</a> - Deep Q-Learning with Atari Games</h1>
 
-<ul>
-  <li>The Deep Q-Learning chapter 👾 👉  <a href="https://huggingface.co/blog/deep-rl-dqn">https://huggingface.co/blog/deep-rl-dqn</a></li>
-  <li>Start the tutorial here 👉 <a href="https://colab.research.google.com/github/huggingface/deep-rl-class/blob/main/unit3/unit3.ipynb">https://colab.research.google.com/github/huggingface/deep-rl-class/blob/main/unit3/unit3.ipynb</a></li>
-</ul>
+<h6 id="-the-deep-q-learning-chapter----httpshuggingfacecoblogdeep-rl-dqn">📖 The Deep Q-Learning chapter 👾 👉  <a href="https://huggingface.co/blog/deep-rl-dqn">https://huggingface.co/blog/deep-rl-dqn</a></h6>
+
+<h6 id="-start-the-hands-on-here--httpscolabresearchgooglecomgithubhuggingfacedeep-rl-classblobmainunit3unit3ipynb">👩‍💻 Start the hands-on here 👉 <a href="https://colab.research.google.com/github/huggingface/deep-rl-class/blob/main/unit3/unit3.ipynb">https://colab.research.google.com/github/huggingface/deep-rl-class/blob/main/unit3/unit3.ipynb</a></h6>
 
 <p>from discord, a video (30’) by Antonin Raffin about <a href="https://www.youtube.com/watch?v=AidFTOdGNFQ">Automatic Hyperparameter Optimization @ ICRA 22 - Tools for Robotic RL 6/8</a>. Never thought about it that way, it can help to speed training phase.</p>
 
@@ -65,9 +66,11 @@
 
 <p>And then a video explaining <a href="https://agarwl.github.io/rliable/">Deep RL at the Edge of the Statistical Precipice</a>. This was from a paper at Neurips.</p>
 
-<h1 id="unit-4---an-introduction-to-unity-ml-agents-with-hugging-face-"><a href="https://thomassimonini.medium.com/an-introduction-to-unity-ml-agents-with-hugging-face-efbac62c8c80">Unit 4</a> - An Introduction to <strong>Unity ML-Agents with Hugging Face 🤗</strong></h1>
+<h1 id="unit-4---an-introduction-to-unity-ml-agents-with-hugging-face-"><a href="https://github.com/huggingface/deep-rl-class/tree/main/unit4">Unit 4</a> - An Introduction to <strong>Unity ML-Agents with Hugging Face 🤗</strong></h1>
 
-<p>(no post in github for this one) Thomas starts with evolutions on RL domain, citing <a href="https://huggingface.co/blog/decision-transformers">Decision Transformers</a> as one of the last hot topic. And then introduces Unity and how it can now be used with RL agents.</p>
+<h6 id="-tutorial--httpslinkmediumcomkopvpdyz4qb">📖 <strong>tutorial</strong> 👉 https://link.medium.com/KOpvPdyz4qb</h6>
+
+<p>Thomas starts with evolutions on RL domain, citing <a href="https://huggingface.co/blog/decision-transformers">Decision Transformers</a> as one of the last hot topic. And then introduces Unity and how it can now be used with RL agents.</p>
 
 <p><img src="https://miro.medium.com/max/1400/0*kYixBHKWwmY65Mg_" alt="unity ML-Agents toolkit" /></p>
 
@@ -108,7 +111,7 @@
 
 </blockquote>
 
-<p>Here are the steps for the training:</p>
+<h6 id="-here-are-the-steps-for-the-training">👩‍💻 Here are the steps for the training:</h6>
 
 <ul>
   <li>clone repo and install environment</li>
@@ -161,7 +164,13 @@ pip <span class="nb">install</span> <span class="nt">-e</span> ./ml-agents
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mlagents-push-to-hf <span class="nt">--run-id</span><span class="o">=</span><span class="s1">'First Training'</span> <span class="nt">--local-dir</span><span class="o">=</span><span class="s1">'results/First Training'</span> <span class="nt">--repo-id</span><span class="o">=</span><span class="s1">'Guillaume63/MLAgents-Pyramids'</span> <span class="nt">--commit-message</span><span class="o">=</span><span class="s1">'Trained pyramids agent upload'</span>
 </code></pre></div></div>
 
-<p>and now I can play it from <a href="https://huggingface.co/Guillaume63/MLAgents-Pyramids">https://huggingface.co/Guillaume63/MLAgents-Pyramids</a> and watch your Agent play…</p>]]></content><author><name></name></author><category term="reinforcement learning" /><category term="huggingface" /><summary type="html"><![CDATA[par Thomas Simonini]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://castorfou.github.io/guillaume_blog/images/RL.png" /><media:content medium="image" url="https://castorfou.github.io/guillaume_blog/images/RL.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Logbook for June 22</title><link href="https://castorfou.github.io/guillaume_blog/blog/logbook-June-22.html" rel="alternate" type="text/html" title="Logbook for June 22" /><published>2022-06-01T00:00:00-05:00</published><updated>2022-06-01T00:00:00-05:00</updated><id>https://castorfou.github.io/guillaume_blog/blog/logbook-June-22</id><content type="html" xml:base="https://castorfou.github.io/guillaume_blog/blog/logbook-June-22.html"><![CDATA[<h2 id="week-24---june-22">Week 24 - June 22</h2>
+<p>and now I can play it from <a href="https://huggingface.co/Guillaume63/MLAgents-Pyramids">https://huggingface.co/Guillaume63/MLAgents-Pyramids</a> and watch your Agent play…</p>
+
+<h1 id="unit-5---policy-gradient-with-pytorch"><a href="https://github.com/huggingface/deep-rl-class/tree/main/unit5">Unit 5</a> - Policy Gradient with PyTorch</h1>
+
+<h6 id="1️⃣--read-policy-gradient-with-pytorch-chapter">1️⃣ 📖 <strong>Read <a href="https://huggingface.co/blog/deep-rl-pg">Policy Gradient with PyTorch Chapter</a></strong>.</h6>
+
+<h6 id="2️⃣--then-dive-on-the-hands-on-where-youll-code-your-first-deep-reinforcement-learning-algorithm-from-scratch-reinforce">2️⃣ 👩‍💻 Then dive on the hands-on where you’ll <strong>code your first Deep Reinforcement Learning algorithm from scratch: Reinforce</strong>.</h6>]]></content><author><name></name></author><category term="reinforcement learning" /><category term="huggingface" /><summary type="html"><![CDATA[par Thomas Simonini]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://castorfou.github.io/guillaume_blog/images/RL.png" /><media:content medium="image" url="https://castorfou.github.io/guillaume_blog/images/RL.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Logbook for June 22</title><link href="https://castorfou.github.io/guillaume_blog/blog/logbook-June-22.html" rel="alternate" type="text/html" title="Logbook for June 22" /><published>2022-06-01T00:00:00-05:00</published><updated>2022-06-01T00:00:00-05:00</updated><id>https://castorfou.github.io/guillaume_blog/blog/logbook-June-22</id><content type="html" xml:base="https://castorfou.github.io/guillaume_blog/blog/logbook-June-22.html"><![CDATA[<h2 id="week-24---june-22">Week 24 - June 22</h2>
 
 <p><strong>Wednesday 6/15</strong></p>
 
