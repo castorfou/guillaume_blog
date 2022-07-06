@@ -97,7 +97,7 @@ window.onload = wrap_img;
        • <span class="read-time" title="Estimated read time">
     
     
-      4 min read
+      5 min read
     
 </span></p>
 
@@ -327,8 +327,40 @@ pip <span class="nb">install</span> <span class="nt">-e</span> ./ml-agents
 <h6 id="1️⃣--read-policy-gradient-with-pytorch-chapter">
 <a class="anchor" href="#1%EF%B8%8F%E2%83%A3--read-policy-gradient-with-pytorch-chapter" aria-hidden="true"><span class="octicon octicon-link"></span></a>1️⃣ 📖 <strong>Read <a href="https://huggingface.co/blog/deep-rl-pg">Policy Gradient with PyTorch Chapter</a></strong>.</h6>
 
+<p>Advantage and disadvantage of policy gradient vs DQN.</p>
+
+<p>Reinforce algorithm (Monte Carlo policy gradient): it uses an estimated return from an entire episode to update the policy parameters.</p>
+
+<p>The output of it is a probability distribution of actions. And we try to maximize J(θ) which is this estimated return. (details of Policy Gradient theorem in this <a href="https://www.youtube.com/watch?v=AKbX1Zvo7r8&amp;ab_channel=PieterAbbeel">video</a> from Pieter Abbeel)</p>
+
+<p>We will update weights using this gradient: 
+<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>θ</mi><mo>←</mo><mi>θ</mi><mo>+</mo><mi>α</mi><msub><mi mathvariant="normal">∇</mi><mi>θ</mi></msub><mi>J</mi><mo stretchy="false">(</mo><mi>θ</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\theta \gets  \theta + \alpha\nabla_\theta J(\theta)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">θ</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">←</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7778em;vertical-align:-0.0833em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">θ</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.0037em;">α</span><span class="mord"><span class="mord">∇</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.02778em;">θ</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord mathnormal" style="margin-right:0.09618em;">J</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.02778em;">θ</span><span class="mclose">)</span></span></span></span>
+<img src="https://huggingface.co/blog/assets/85_policy_gradient/pg.jpg" alt=""></p>
+
+<ul>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td>$\nabla_\theta\log\pi_\theta(a_t</td>
+          <td>s_t)$ is the direction of <strong>steepest increase of the (log) probability</strong> of selecting action at from state $s_t$. =&gt; This tells use <strong>how we should change the weights of policy</strong> if we want to increase/decrease the log probability of selecting action at state $s_t$.</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>
+    <p>$R(\tau)$ is the scoring function:</p>
+
+    <ul>
+      <li>If the return is high, it will push up the probabilities of the (state, action) combinations.</li>
+    </ul>
+  </li>
+  <li>Else, if the return is low, it will push down the probabilities of the (state, action) combinations.</li>
+</ul>
+
 <h6 id="2️⃣--then-dive-on-the-hands-on-where-youll-code-your-first-deep-reinforcement-learning-algorithm-from-scratch-reinforce">
 <a class="anchor" href="#2%EF%B8%8F%E2%83%A3--then-dive-on-the-hands-on-where-youll-code-your-first-deep-reinforcement-learning-algorithm-from-scratch-reinforce" aria-hidden="true"><span class="octicon octicon-link"></span></a>2️⃣ 👩‍💻 Then dive on the hands-on where you’ll <strong>code your first Deep Reinforcement Learning algorithm from scratch: Reinforce</strong>.</h6>
+
 
   </div><!-- from https://github.com/utterance/utterances -->
 <script src="https://utteranc.es/client.js"
