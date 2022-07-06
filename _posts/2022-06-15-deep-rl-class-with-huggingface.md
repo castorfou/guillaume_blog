@@ -192,7 +192,7 @@ $$
 - $R(\tau)$ is the scoring function:
 
   - If the return is high, it will push up the probabilities of the (state, action) combinations.
-- Else, if the return is low, it will push down the probabilities of the (state, action) combinations.
+  - Else, if the return is low, it will push down the probabilities of the (state, action) combinations.
 
 ###### 2️⃣ 👩‍💻 Then dive on the hands-on where you'll **code your first Deep Reinforcement Learning algorithm from scratch: Reinforce**.
 
