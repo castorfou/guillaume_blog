@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.1.1">Jekyll</generator><link href="https://castorfou.github.io/guillaume_blog/feed.xml" rel="self" type="application/atom+xml" /><link href="https://castorfou.github.io/guillaume_blog/" rel="alternate" type="text/html" /><updated>2022-07-06T07:27:29-05:00</updated><id>https://castorfou.github.io/guillaume_blog/feed.xml</id><title type="html">Guillaume’s blog</title><subtitle>Journey for a datascientist</subtitle><entry><title type="html">Logbook for July 22</title><link href="https://castorfou.github.io/guillaume_blog/blog/logbook-July-22.html" rel="alternate" type="text/html" title="Logbook for July 22" /><published>2022-07-01T00:00:00-05:00</published><updated>2022-07-01T00:00:00-05:00</updated><id>https://castorfou.github.io/guillaume_blog/blog/logbook-July-22</id><content type="html" xml:base="https://castorfou.github.io/guillaume_blog/blog/logbook-July-22.html"><![CDATA[<h2 id="week-26---july-22">Week 26 - July 22</h2>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.1.1">Jekyll</generator><link href="https://castorfou.github.io/guillaume_blog/feed.xml" rel="self" type="application/atom+xml" /><link href="https://castorfou.github.io/guillaume_blog/" rel="alternate" type="text/html" /><updated>2022-07-06T07:33:09-05:00</updated><id>https://castorfou.github.io/guillaume_blog/feed.xml</id><title type="html">Guillaume’s blog</title><subtitle>Journey for a datascientist</subtitle><entry><title type="html">Logbook for July 22</title><link href="https://castorfou.github.io/guillaume_blog/blog/logbook-July-22.html" rel="alternate" type="text/html" title="Logbook for July 22" /><published>2022-07-01T00:00:00-05:00</published><updated>2022-07-01T00:00:00-05:00</updated><id>https://castorfou.github.io/guillaume_blog/blog/logbook-July-22</id><content type="html" xml:base="https://castorfou.github.io/guillaume_blog/blog/logbook-July-22.html"><![CDATA[<h2 id="week-26---july-22">Week 26 - July 22</h2>
 
 <p><strong>Friday 7/1</strong></p>
 
@@ -189,10 +189,8 @@ pip <span class="nb">install</span> <span class="nt">-e</span> ./ml-agents
 
     <ul>
       <li>If the return is high, it will push up the probabilities of the (state, action) combinations.</li>
+      <li>Else, if the return is low, it will push down the probabilities of the (state, action) combinations.</li>
     </ul>
-  </li>
-  <li>
-    <p>Else, if the return is low, it will push down the probabilities of the (state, action) combinations.</p>
   </li>
 </ul>
 
