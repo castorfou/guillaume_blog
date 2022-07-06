@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.1.1">Jekyll</generator><link href="https://castorfou.github.io/guillaume_blog/feed.xml" rel="self" type="application/atom+xml" /><link href="https://castorfou.github.io/guillaume_blog/" rel="alternate" type="text/html" /><updated>2022-07-06T03:32:50-05:00</updated><id>https://castorfou.github.io/guillaume_blog/feed.xml</id><title type="html">Guillaume’s blog</title><subtitle>Journey for a datascientist</subtitle><entry><title type="html">Logbook for July 22</title><link href="https://castorfou.github.io/guillaume_blog/blog/logbook-July-22.html" rel="alternate" type="text/html" title="Logbook for July 22" /><published>2022-07-01T00:00:00-05:00</published><updated>2022-07-01T00:00:00-05:00</updated><id>https://castorfou.github.io/guillaume_blog/blog/logbook-July-22</id><content type="html" xml:base="https://castorfou.github.io/guillaume_blog/blog/logbook-July-22.html"><![CDATA[<h2 id="week-26---july-22">Week 26 - July 22</h2>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.1.1">Jekyll</generator><link href="https://castorfou.github.io/guillaume_blog/feed.xml" rel="self" type="application/atom+xml" /><link href="https://castorfou.github.io/guillaume_blog/" rel="alternate" type="text/html" /><updated>2022-07-06T07:27:29-05:00</updated><id>https://castorfou.github.io/guillaume_blog/feed.xml</id><title type="html">Guillaume’s blog</title><subtitle>Journey for a datascientist</subtitle><entry><title type="html">Logbook for July 22</title><link href="https://castorfou.github.io/guillaume_blog/blog/logbook-July-22.html" rel="alternate" type="text/html" title="Logbook for July 22" /><published>2022-07-01T00:00:00-05:00</published><updated>2022-07-01T00:00:00-05:00</updated><id>https://castorfou.github.io/guillaume_blog/blog/logbook-July-22</id><content type="html" xml:base="https://castorfou.github.io/guillaume_blog/blog/logbook-July-22.html"><![CDATA[<h2 id="week-26---july-22">Week 26 - July 22</h2>
 
 <p><strong>Friday 7/1</strong></p>
 
@@ -182,14 +182,7 @@ pip <span class="nb">install</span> <span class="nt">-e</span> ./ml-agents
 
 <ul>
   <li>
-    <table>
-      <tbody>
-        <tr>
-          <td>$\nabla_\theta\log\pi_\theta(a_t</td>
-          <td>s_t)$ is the direction of <strong>steepest increase of the (log) probability</strong> of selecting action at from state $s_t$. =&gt; This tells use <strong>how we should change the weights of policy</strong> if we want to increase/decrease the log probability of selecting action at state $s_t$.</td>
-        </tr>
-      </tbody>
-    </table>
+    <p>$\nabla_\theta\log\pi_\theta(a_t | s_t)$ is the direction of <strong>steepest increase of the (log) probability</strong> of selecting action at from state $s_t$. =&gt; This tells use <strong>how we should change the weights of policy</strong> if we want to increase/decrease the log probability of selecting action at state $s_t$.</p>
   </li>
   <li>
     <p>$R(\tau)$ is the scoring function:</p>
@@ -198,10 +191,14 @@ pip <span class="nb">install</span> <span class="nt">-e</span> ./ml-agents
       <li>If the return is high, it will push up the probabilities of the (state, action) combinations.</li>
     </ul>
   </li>
-  <li>Else, if the return is low, it will push down the probabilities of the (state, action) combinations.</li>
+  <li>
+    <p>Else, if the return is low, it will push down the probabilities of the (state, action) combinations.</p>
+  </li>
 </ul>
 
-<h6 id="2️⃣--then-dive-on-the-hands-on-where-youll-code-your-first-deep-reinforcement-learning-algorithm-from-scratch-reinforce">2️⃣ 👩‍💻 Then dive on the hands-on where you’ll <strong>code your first Deep Reinforcement Learning algorithm from scratch: Reinforce</strong>.</h6>]]></content><author><name></name></author><category term="reinforcement learning" /><category term="huggingface" /><summary type="html"><![CDATA[par Thomas Simonini]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://castorfou.github.io/guillaume_blog/images/RL.png" /><media:content medium="image" url="https://castorfou.github.io/guillaume_blog/images/RL.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Logbook for June 22</title><link href="https://castorfou.github.io/guillaume_blog/blog/logbook-June-22.html" rel="alternate" type="text/html" title="Logbook for June 22" /><published>2022-06-01T00:00:00-05:00</published><updated>2022-06-01T00:00:00-05:00</updated><id>https://castorfou.github.io/guillaume_blog/blog/logbook-June-22</id><content type="html" xml:base="https://castorfou.github.io/guillaume_blog/blog/logbook-June-22.html"><![CDATA[<h2 id="week-24---june-22">Week 24 - June 22</h2>
+<h6 id="2️⃣--then-dive-on-the-hands-on-where-youll-code-your-first-deep-reinforcement-learning-algorithm-from-scratch-reinforce">2️⃣ 👩‍💻 Then dive on the hands-on where you’ll <strong>code your first Deep Reinforcement Learning algorithm from scratch: Reinforce</strong>.</h6>
+
+<p>👉 <a href="https://colab.research.google.com/github/huggingface/deep-rl-class/blob/main/unit5/unit5.ipynb">https://colab.research.google.com/github/huggingface/deep-rl-class/blob/main/unit5/unit5.ipynb</a></p>]]></content><author><name></name></author><category term="reinforcement learning" /><category term="huggingface" /><summary type="html"><![CDATA[par Thomas Simonini]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://castorfou.github.io/guillaume_blog/images/RL.png" /><media:content medium="image" url="https://castorfou.github.io/guillaume_blog/images/RL.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Logbook for June 22</title><link href="https://castorfou.github.io/guillaume_blog/blog/logbook-June-22.html" rel="alternate" type="text/html" title="Logbook for June 22" /><published>2022-06-01T00:00:00-05:00</published><updated>2022-06-01T00:00:00-05:00</updated><id>https://castorfou.github.io/guillaume_blog/blog/logbook-June-22</id><content type="html" xml:base="https://castorfou.github.io/guillaume_blog/blog/logbook-June-22.html"><![CDATA[<h2 id="week-24---june-22">Week 24 - June 22</h2>
 
 <p><strong>Wednesday 6/15</strong></p>
 

@@ -339,14 +339,7 @@ pip <span class="nb">install</span> <span class="nt">-e</span> ./ml-agents
 
 <ul>
   <li>
-    <table>
-      <tbody>
-        <tr>
-          <td>$\nabla_\theta\log\pi_\theta(a_t</td>
-          <td>s_t)$ is the direction of <strong>steepest increase of the (log) probability</strong> of selecting action at from state $s_t$. =&gt; This tells use <strong>how we should change the weights of policy</strong> if we want to increase/decrease the log probability of selecting action at state $s_t$.</td>
-        </tr>
-      </tbody>
-    </table>
+    <p>$\nabla_\theta\log\pi_\theta(a_t | s_t)$ is the direction of <strong>steepest increase of the (log) probability</strong> of selecting action at from state $s_t$. =&gt; This tells use <strong>how we should change the weights of policy</strong> if we want to increase/decrease the log probability of selecting action at state $s_t$.</p>
   </li>
   <li>
     <p>$R(\tau)$ is the scoring function:</p>
@@ -355,11 +348,15 @@ pip <span class="nb">install</span> <span class="nt">-e</span> ./ml-agents
       <li>If the return is high, it will push up the probabilities of the (state, action) combinations.</li>
     </ul>
   </li>
-  <li>Else, if the return is low, it will push down the probabilities of the (state, action) combinations.</li>
+  <li>
+    <p>Else, if the return is low, it will push down the probabilities of the (state, action) combinations.</p>
+  </li>
 </ul>
 
 <h6 id="2️⃣--then-dive-on-the-hands-on-where-youll-code-your-first-deep-reinforcement-learning-algorithm-from-scratch-reinforce">
 <a class="anchor" href="#2%EF%B8%8F%E2%83%A3--then-dive-on-the-hands-on-where-youll-code-your-first-deep-reinforcement-learning-algorithm-from-scratch-reinforce" aria-hidden="true"><span class="octicon octicon-link"></span></a>2️⃣ 👩‍💻 Then dive on the hands-on where you’ll <strong>code your first Deep Reinforcement Learning algorithm from scratch: Reinforce</strong>.</h6>
+
+<p>👉 <a href="https://colab.research.google.com/github/huggingface/deep-rl-class/blob/main/unit5/unit5.ipynb">https://colab.research.google.com/github/huggingface/deep-rl-class/blob/main/unit5/unit5.ipynb</a></p>
 
 
   </div><!-- from https://github.com/utterance/utterances -->
