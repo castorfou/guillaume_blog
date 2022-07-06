@@ -198,3 +198,8 @@ $$
 
 👉 [https://colab.research.google.com/github/huggingface/deep-rl-class/blob/main/unit5/unit5.ipynb](https://colab.research.google.com/github/huggingface/deep-rl-class/blob/main/unit5/unit5.ipynb)
 
+1st model is Cartpole. After training on 10'000 episodes, perfect score of 500 +- 0. Thomas pointed me to a [video](https://www.youtube.com/watch?v=Ikngt0_DXJg&ab_channel=ANITIToulouse) from Aniti where Antonin Raffin gives some tips and tricks.
+
+2nd model is Pixelcopter
+
+3rd model is Pong
