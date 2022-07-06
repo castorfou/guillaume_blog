@@ -175,6 +175,24 @@ and now I can play it from [https://huggingface.co/Guillaume63/MLAgents-Pyramids
 
 ###### 1️⃣ 📖 **Read [Policy Gradient with PyTorch Chapter](https://huggingface.co/blog/deep-rl-pg)**.
 
+Advantage and disadvantage of policy gradient vs DQN.
 
+Reinforce algorithm (Monte Carlo policy gradient): it uses an estimated return from an entire episode to update the policy parameters.
+
+The output of it is a probability distribution of actions. And we try to maximize J(θ) which is this estimated return. (details of Policy Gradient theorem in this [video](https://www.youtube.com/watch?v=AKbX1Zvo7r8&ab_channel=PieterAbbeel) from Pieter Abbeel)
+
+We will update weights using this gradient: 
+$$
+\theta \gets  \theta + \alpha\nabla_\theta J(\theta)
+$$
+![](https://huggingface.co/blog/assets/85_policy_gradient/pg.jpg)
+
+- $\nabla_\theta\log\pi_\theta(a_t|s_t)$ is the direction of **steepest increase of the (log) probability** of selecting action at from state $s_t$. => This tells use **how we should change the weights of policy** if we want to increase/decrease the log probability of selecting action at state $s_t$.
+
+- $R(\tau)$ is the scoring function:
+
+  - If the return is high, it will push up the probabilities of the (state, action) combinations.
+- Else, if the return is low, it will push down the probabilities of the (state, action) combinations.
 
 ###### 2️⃣ 👩‍💻 Then dive on the hands-on where you'll **code your first Deep Reinforcement Learning algorithm from scratch: Reinforce**.
+
