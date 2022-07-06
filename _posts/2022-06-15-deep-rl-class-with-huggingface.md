@@ -187,7 +187,7 @@ $$
 $$
 ![](https://huggingface.co/blog/assets/85_policy_gradient/pg.jpg)
 
-- $\nabla_\theta\log\pi_\theta(a_t|s_t)$ is the direction of **steepest increase of the (log) probability** of selecting action at from state $s_t$. => This tells use **how we should change the weights of policy** if we want to increase/decrease the log probability of selecting action at state $s_t$.
+- $\nabla_\theta\log\pi_\theta(a_t \| s_t)$ is the direction of **steepest increase of the (log) probability** of selecting action at from state $s_t$. => This tells use **how we should change the weights of policy** if we want to increase/decrease the log probability of selecting action at state $s_t$.
 
 - $R(\tau)$ is the scoring function:
 
@@ -195,4 +195,6 @@ $$
 - Else, if the return is low, it will push down the probabilities of the (state, action) combinations.
 
 ###### 2️⃣ 👩‍💻 Then dive on the hands-on where you'll **code your first Deep Reinforcement Learning algorithm from scratch: Reinforce**.
+
+👉 [https://colab.research.google.com/github/huggingface/deep-rl-class/blob/main/unit5/unit5.ipynb](https://colab.research.google.com/github/huggingface/deep-rl-class/blob/main/unit5/unit5.ipynb)
 
