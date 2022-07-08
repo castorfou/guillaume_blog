@@ -200,6 +200,6 @@ $$
 
 1st model is Cartpole. After training on 10'000 episodes, perfect score of 500 +- 0. Thomas pointed me to a [video](https://www.youtube.com/watch?v=Ikngt0_DXJg&ab_channel=ANITIToulouse) (3h) from Aniti where Antonin Raffin gives some tips and tricks. And points to many papers such as [Deep Reinforcement Learning that Matters](https://arxiv.org/abs/1709.06560) (in zotero)
 
-2nd model is Pixelcopter
+2nd model is Pixelcopter. High level of variance in perf. Recommended by Thomas to tune hyper parameters (optuna?).
 
-3rd model is Pong
+3rd model is Pong.
