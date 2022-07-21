@@ -79,7 +79,7 @@ enter username and password
 From powershell, stop ubuntu-docker
 
 ```powershell
-wsl --shutdown ubuntu-docker
+wsl -t ubuntu-docker
 ```
 
 ### setup user configuration
@@ -160,9 +160,24 @@ sudo service docker start
 
 
 
+Before restarting, ensure your `wsl.conf` is correct:
+
+```bash
+guillaume@LL11LPC0PQARQ:~$ cat /etc/wsl.conf
+[network]
+generateResolvConf = false
+
+[user]
+default=guillaume
+```
+
+Restart
+
 # Test installation
 
 ```bash
 docker run docker.artifactory.michelin.com/hello-world
+> Hello from Docker!
+> This message shows that your installation appears to be working correctly.
 ```
 
