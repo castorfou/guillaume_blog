@@ -31,3 +31,4 @@ image: images/logbook.jpg
 **Thursday 7/21**
 
 * I would like to host kaggle-like competitions. I have found [EvalAI](https://github.com/Cloud-CV/EvalAI) which could be an option. I could push a competition for my data manufacturing colleagues and for other areas in my company. There is a [comparison](https://github.com/Cloud-CV/EvalAI/tree/202001b582fdc332a062b85c02be228c3dcf2cd2#platform-comparison) with other kind of platforms (both closed and open sourced)
+* installing [rancher desktop](https://dev.michelin.com/wsl2/docker-rancher) to test EvalAI
