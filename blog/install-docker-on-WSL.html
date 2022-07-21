@@ -195,7 +195,7 @@ window.onload = wrap_img;
 
 <p>From powershell, stop ubuntu-docker</p>
 
-<div class="language-powershell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">wsl</span><span class="w"> </span><span class="nt">--shutdown</span><span class="w"> </span><span class="nx">ubuntu-docker</span><span class="w">
+<div class="language-powershell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">wsl</span><span class="w"> </span><span class="nt">-t</span><span class="w"> </span><span class="nx">ubuntu-docker</span><span class="w">
 </span></code></pre></div></div>
 
 <h3 id="setup-user-configuration">
@@ -264,10 +264,24 @@ curl <span class="nt">-fsSL</span> https://download.docker.com/linux/<span class
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>service docker start
 </code></pre></div></div>
 
+<p>Before restarting, ensure your <code class="language-plaintext highlighter-rouge">wsl.conf</code> is correct:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>guillaume@LL11LPC0PQARQ:~<span class="nv">$ </span><span class="nb">cat</span> /etc/wsl.conf
+<span class="o">[</span>network]
+generateResolvConf <span class="o">=</span> <span class="nb">false</span>
+
+<span class="o">[</span>user]
+<span class="nv">default</span><span class="o">=</span>guillaume
+</code></pre></div></div>
+
+<p>Restart</p>
+
 <h1 id="test-installation">
 <a class="anchor" href="#test-installation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Test installation</h1>
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker run docker.artifactory.michelin.com/hello-world
+<span class="o">&gt;</span> Hello from Docker!
+<span class="o">&gt;</span> This message shows that your installation appears to be working correctly.
 </code></pre></div></div>
 
 
