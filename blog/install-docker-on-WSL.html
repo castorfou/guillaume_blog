@@ -126,6 +126,7 @@ window.onload = wrap_img;
 </ul>
 </li>
 <li class="toc-entry toc-h1"><a href="#docker-installation">Docker installation</a></li>
+<li class="toc-entry toc-h1"><a href="#test-installation">Test installation</a></li>
 </ul><h2 id="source-of-inspiration">
 <a class="anchor" href="#source-of-inspiration" aria-hidden="true"><span class="octicon octicon-link"></span></a>source of inspiration</h2>
 
@@ -204,10 +205,70 @@ window.onload = wrap_img;
 
 <p>Follow instructions, don’t skip the integration of ssh key in gitlab</p>
 
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>guillaume@LL11LPC0PQARQ:~<span class="nv">$ </span>host google.fr
+google.fr has address 142.250.75.227
+google.fr has IPv6 address 2a00:1450:4007:811::2003
+Host google.fr not found: 3<span class="o">(</span>NXDOMAIN<span class="o">)</span>
+</code></pre></div></div>
+
 <p>That’s it for WSL setup, docker can now be installed</p>
 
 <h1 id="docker-installation">
 <a class="anchor" href="#docker-installation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Docker installation</h1>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>curl  https://artifactory.michelin.com/artifactory/mt-generic-prod/devops-environment/install.sh <span class="nt">-o</span> install.sh
+</code></pre></div></div>
+
+<p>Edit install.sh</p>
+
+<ul>
+  <li>line 246: add 22 as a support for ubuntu 22.04</li>
+</ul>
+
+<p><code class="language-plaintext highlighter-rouge">declare -A support_matrix=(["debian"]="10 11" ["ubuntu"]="18 20")</code></p>
+
+<ul>
+  <li>comment lines 297 to 301</li>
+</ul>
+
+<p><code class="language-plaintext highlighter-rouge">#configure_vpn_kit
+#configure_wsl_dns
+#install_cacert
+#configure_apt_global "$os"
+#configure_apt_artifactory "$os"</code></p>
+
+<ul>
+  <li>insert docker list (line 40)</li>
+</ul>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">source</span> /etc/os-release
+curl <span class="nt">-fsSL</span> https://download.docker.com/linux/<span class="k">${</span><span class="nv">ID</span><span class="k">}</span>/gpg | <span class="nb">sudo </span>apt-key add -
+<span class="nb">echo</span> <span class="s2">"deb [arch=amd64] https://artifactory.michelin.com/artifactory/ubuntu-docker-remote jammy stable"</span> | <span class="nb">sudo tee</span> /etc/apt/sources.list.d/docker.list
+<span class="nb">sudo </span>apt-get update
+</code></pre></div></div>
+
+<p>And run it</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">chmod</span> +x install.sh
+./install.sh <span class="nt">--no-dev</span> <span class="nt">--no-dev-tools</span> <span class="nt">--no-swag</span> <span class="nt">--no-swagerino</span> <span class="nt">--no-kube</span> <span class="nt">--skip-update</span>
+</code></pre></div></div>
+
+<p>Activate legacy for iptables</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>update-alternatives <span class="nt">--set</span> iptables /usr/sbin/iptables-legacy
+<span class="nb">sudo </span>update-alternatives <span class="nt">--set</span> ip6tables /usr/sbin/ip6tables-legacy
+</code></pre></div></div>
+
+<p>Then start docker service</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>service docker start
+</code></pre></div></div>
+
+<h1 id="test-installation">
+<a class="anchor" href="#test-installation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Test installation</h1>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker run docker.artifactory.michelin.com/hello-world
+</code></pre></div></div>
 
 
   </div><!-- from https://github.com/utterance/utterances -->
