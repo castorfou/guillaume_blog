@@ -90,7 +90,79 @@ Follow instructions, don't skip the integration of ssh key in gitlab
 
 
 
+```bash
+guillaume@LL11LPC0PQARQ:~$ host google.fr
+google.fr has address 142.250.75.227
+google.fr has IPv6 address 2a00:1450:4007:811::2003
+Host google.fr not found: 3(NXDOMAIN)
+```
+
+
+
 That's it for WSL setup, docker can now be installed
 
+
+
 # Docker installation
+
+```bash
+curl  https://artifactory.michelin.com/artifactory/mt-generic-prod/devops-environment/install.sh -o install.sh
+```
+
+Edit install.sh
+
+- line 246: add 22 as a support for ubuntu 22.04
+
+`declare -A support_matrix=(["debian"]="10 11" ["ubuntu"]="18 20")`
+
+* comment lines 297 to 301 
+
+`#configure_vpn_kit
+#configure_wsl_dns
+#install_cacert
+#configure_apt_global "$os"
+#configure_apt_artifactory "$os"`
+
+* insert docker list (line 40) 
+
+```bash
+source /etc/os-release
+curl -fsSL https://download.docker.com/linux/${ID}/gpg | sudo apt-key add -
+echo "deb [arch=amd64] https://artifactory.michelin.com/artifactory/ubuntu-docker-remote jammy stable" | sudo tee /etc/apt/sources.list.d/docker.list
+sudo apt-get update
+```
+
+
+
+And run it
+
+```bash
+chmod +x install.sh
+./install.sh --no-dev --no-dev-tools --no-swag --no-swagerino --no-kube --skip-update
+```
+
+
+
+Activate legacy for iptables
+
+```bash
+sudo update-alternatives --set iptables /usr/sbin/iptables-legacy
+sudo update-alternatives --set ip6tables /usr/sbin/ip6tables-legacy
+```
+
+
+
+Then start docker service
+
+```bash
+sudo service docker start
+```
+
+
+
+# Test installation
+
+```bash
+docker run docker.artifactory.michelin.com/hello-world
+```
 
