@@ -160,13 +160,10 @@ sudo service docker start
 
 
 
-Before restarting, ensure your `wsl.conf` is correct:
+Before restarting, ensure your `wsl.conf` is correct (remove network-generateResolvConf entry and add user-default one):
 
 ```bash
 guillaume@LL11LPC0PQARQ:~$ cat /etc/wsl.conf
-[network]
-generateResolvConf = false
-
 [user]
 default=guillaume
 ```
