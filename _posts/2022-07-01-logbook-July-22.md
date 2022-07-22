@@ -32,3 +32,7 @@ image: images/logbook.jpg
 
 * I would like to host kaggle-like competitions. I have found [EvalAI](https://github.com/Cloud-CV/EvalAI) which could be an option. I could push a competition for my data manufacturing colleagues and for other areas in my company. There is a [comparison](https://github.com/Cloud-CV/EvalAI/tree/202001b582fdc332a062b85c02be228c3dcf2cd2#platform-comparison) with other kind of platforms (both closed and open sourced)
 * ~~installing [rancher desktop](https://dev.michelin.com/wsl2/docker-rancher) to test EvalAI~~ I don't have administrator rights anymore, so I have moved to installing [docker in WSL](/guillaume_blog/blog/install-docker-on-WSL.html).
+
+**Friday 7/22**
+
+* based on my docker in WSL installation, I tried to follow [EvalAI](https://github.com/Cloud-CV/EvalAI) instructions. It fails at docker-compose build phase. I have opened a [ticket](https://github.com/Cloud-CV/EvalAI/issues/3775).
