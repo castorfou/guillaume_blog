@@ -264,12 +264,9 @@ curl <span class="nt">-fsSL</span> https://download.docker.com/linux/<span class
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>service docker start
 </code></pre></div></div>
 
-<p>Before restarting, ensure your <code class="language-plaintext highlighter-rouge">wsl.conf</code> is correct:</p>
+<p>Before restarting, ensure your <code class="language-plaintext highlighter-rouge">wsl.conf</code> is correct (remove network-generateResolvConf entry and add user-default one):</p>
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>guillaume@LL11LPC0PQARQ:~<span class="nv">$ </span><span class="nb">cat</span> /etc/wsl.conf
-<span class="o">[</span>network]
-generateResolvConf <span class="o">=</span> <span class="nb">false</span>
-
 <span class="o">[</span>user]
 <span class="nv">default</span><span class="o">=</span>guillaume
 </code></pre></div></div>
