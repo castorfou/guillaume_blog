@@ -36,3 +36,11 @@ image: images/logbook.jpg
 **Friday 7/22**
 
 * based on my docker in WSL installation, I tried to follow [EvalAI](https://github.com/Cloud-CV/EvalAI) instructions. It fails at docker-compose build phase. I have opened a [ticket](https://github.com/Cloud-CV/EvalAI/issues/3775).
+
+
+
+## Week 30 - July 22
+
+**Monday 7/25**
+
+As a matter of test, installation of [EvalAI](https://github.com/Cloud-CV/EvalAI) on my linux machine (no issue with corporate FW)
