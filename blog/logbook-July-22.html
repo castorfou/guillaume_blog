@@ -97,7 +97,7 @@ window.onload = wrap_img;
        • <span class="read-time" title="Estimated read time">
     
     
-      1 min read
+      2 min read
     
 </span></p>
 
@@ -117,7 +117,13 @@ window.onload = wrap_img;
 <li class="toc-entry toc-h2"><a href="#week-26---july-22">Week 26 - July 22</a></li>
 <li class="toc-entry toc-h2"><a href="#week-27---july-22">Week 27 - July 22</a></li>
 <li class="toc-entry toc-h2"><a href="#week-29---july-22">Week 29 - July 22</a></li>
-<li class="toc-entry toc-h2"><a href="#week-30---july-22">Week 30 - July 22</a></li>
+<li class="toc-entry toc-h2"><a href="#week-30---july-22">Week 30 - July 22</a>
+<ul>
+<li class="toc-entry toc-h6"><a href="#step-1-install-prerequisites">Step 1: Install prerequisites</a></li>
+<li class="toc-entry toc-h6"><a href="#step-2-get-evalai-code">Step 2: Get EvalAI code</a></li>
+<li class="toc-entry toc-h6"><a href="#step-3-setup-codebase">Step 3: Setup codebase</a></li>
+</ul>
+</li>
 </ul><h2 id="week-26---july-22">
 <a class="anchor" href="#week-26---july-22" aria-hidden="true"><span class="octicon octicon-link"></span></a>Week 26 - July 22</h2>
 
@@ -164,6 +170,91 @@ window.onload = wrap_img;
 <p><strong>Tuesday 7/26</strong></p>
 
 <p>As a matter of test, installation of <a href="https://evalai.readthedocs.io/en/stable/setup.html#ubuntu-installation-instructions">EvalAI</a> on my wsl machine using virtualenv (no docker) to try a gitlab connectivity instead of github</p>
+
+<h6 id="step-1-install-prerequisites">
+<a class="anchor" href="#step-1-install-prerequisites" aria-hidden="true"><span class="octicon octicon-link"></span></a>Step 1: Install prerequisites</h6>
+
+<ul>
+  <li>Install git - postgres</li>
+</ul>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sudo apt-get install git postgresql libpq-dev
+</code></pre></div></div>
+
+<ul>
+  <li>install rabbit-mq</li>
+</ul>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>apt-get <span class="nt">-y</span> <span class="nb">install </span>socat logrotate init-system-helpers adduser erlang-base erlang-base-hipe esl-erlang
+<span class="c"># download the package</span>
+wget https://github.com/rabbitmq/rabbitmq-server/releases/download/v3.10.6/rabbitmq-server_3.10.6-1_all.deb
+
+<span class="c"># install the package with dpkg</span>
+<span class="nb">sudo </span>dpkg <span class="nt">-i</span> rabbitmq-server_3.10.6-1_all.deb
+<span class="nb">rm </span>rabbitmq-server_3.10.6-1_all.deb
+</code></pre></div></div>
+<ul>
+  <li>install virtualenv
+    <div class="language-bash highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code><span class="c"># only if pip is not installed</span>
+<span class="nb">sudo </span>apt-get <span class="nb">install </span>python3-pip build-essential
+<span class="c"># upgrade pip, not necessary</span>
+<span class="nb">sudo </span>pip <span class="nb">install</span> <span class="nt">--upgrade</span> pip
+<span class="c"># upgrade virtualenv</span>
+pip <span class="nb">install</span> <span class="nt">--upgrade</span> virtualenv
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<h6 id="step-2-get-evalai-code">
+<a class="anchor" href="#step-2-get-evalai-code" aria-hidden="true"><span class="octicon octicon-link"></span></a>Step 2: Get EvalAI code</h6>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git clone https://github.com/Cloud-CV/EvalAI.git
+</code></pre></div></div>
+
+<h6 id="step-3-setup-codebase">
+<a class="anchor" href="#step-3-setup-codebase" aria-hidden="true"><span class="octicon octicon-link"></span></a>Step 3: Setup codebase</h6>
+
+<ul>
+  <li>Create a python virtual environment and install python dependencies.</li>
+</ul>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>#pour curl-config
+sudo apt install libcurl4-openssl-dev libssl-dev
+cd evalai
+virtualenv venv
+source venv/bin/activate
+pip --trusted-host pypi.org --trusted-host pypi.python.org --trusted-host files.pythonhosted.org install -r requirements/dev.txt
+# issue on django-autofixture 
+# https://github.com/gregmuellegger/django-autofixture/issues/117
+</code></pre></div></div>
+
+<ul>
+  <li>Rename <code class="language-plaintext highlighter-rouge">settings/dev.sample.py</code> as <code class="language-plaintext highlighter-rouge">dev.py</code>
+</li>
+</ul>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cp settings/dev.sample.py settings/dev.py
+</code></pre></div></div>
+
+<ul>
+  <li>Create an empty postgres database and run database migration.</li>
+</ul>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>createdb evalai -U postgres
+# update postgres user password
+psql -U postgres -c "ALTER USER postgres PASSWORD 'postgres';"
+# run migrations
+python manage.py migrate
+</code></pre></div></div>
+
+<ul>
+  <li>For setting up frontend, please make sure that node(<code class="language-plaintext highlighter-rouge">&gt;=7.x.x</code>), npm(<code class="language-plaintext highlighter-rouge">&gt;=5.x.x</code>) and bower(<code class="language-plaintext highlighter-rouge">&gt;=1.8.x</code>) are installed globally on your machine. Install npm and bower dependencies by running</li>
+</ul>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm install
+bower install
+</code></pre></div></div>
 
   </div><!-- from https://github.com/utterance/utterances -->
 <script src="https://utteranc.es/client.js"
