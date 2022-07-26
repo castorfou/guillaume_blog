@@ -43,4 +43,8 @@ image: images/logbook.jpg
 
 **Monday 7/25**
 
-As a matter of test, installation of [EvalAI](https://github.com/Cloud-CV/EvalAI) on my linux machine (no issue with corporate FW)
+As a matter of test, installation of [EvalAI](https://github.com/Cloud-CV/EvalAI) on my linux machine (no issue with corporate FW) using docker
+
+**Tuesday 7/26**
+
+As a matter of test, installation of [EvalAI](https://evalai.readthedocs.io/en/stable/setup.html#ubuntu-installation-instructions) on my wsl machine using virtualenv (no docker) to try a gitlab connectivity instead of github
