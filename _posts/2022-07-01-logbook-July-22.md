@@ -68,6 +68,21 @@ wget https://github.com/rabbitmq/rabbitmq-server/releases/download/v3.10.6/rabbi
 sudo dpkg -i rabbitmq-server_3.10.6-1_all.deb
 rm rabbitmq-server_3.10.6-1_all.deb
 ```
+* installing conda
+```
+tmpdir=$(mktemp -d)
+cd $tmpdir
+wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
+chmod +x Miniconda3-latest-Linux-x86_64.sh
+# answer yes to question Do you wish the installer to initialize Miniconda3 by running conda init?
+bash Miniconda3-latest-Linux-x86_64.sh -p $HOME/miniconda3
+
+cat .condarc
+ssl_verify: false
+shortcuts: false
+report_errors: false
+```
+
 * install virtualenv
 ```bash
 # only if pip is not installed
@@ -91,9 +106,32 @@ git clone https://github.com/Cloud-CV/EvalAI.git
 ```
 #pour curl-config
 sudo apt install libcurl4-openssl-dev libssl-dev
+sudo apt install uwsgi-plugin-python3
+
 cd evalai
-virtualenv venv
-source venv/bin/activate
+# virtualenv venv
+# source venv/bin/activate
+conda create --name evalai_37  python=3.7
+conda activate evalai_37
+
+conda install -c conda-forge uwsgi
+conda install -c conda-forge/label/gcc7 uwsgi
+conda install -c conda-forge/label/broken uwsgi
+conda install -c conda-forge/label/cf201901 uwsgi
+conda install -c conda-forge/label/cf202003 uwsgi
+
+sudo apt install gcc-9 gcc-10
+sudo rm /usr/bin/gcc
+sudo ln -s /usr/bin/gcc-9 /usr/bin/gcc 
+sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-11 80 --slave /usr/bin/g++ g++ /usr/bin/g++-11 --slave /usr/bin/gcov gcov /usr/bin/gcov-11
+sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-10 60 --slave /usr/bin/g++ g++ /usr/bin/g++-10 --slave /usr/bin/gcov gcov /usr/bin/gcov-10
+sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-9 40 --slave /usr/bin/g++ g++ /usr/bin/g++-9 --slave /usr/bin/gcov gcov /usr/bin/gcov-9
+sudo update-alternatives --config gcc
+
+conda install -c anaconda gcc_linux-64
+conda install -c anaconda  gcc_linux-64==8.2.0
+
+
 pip --trusted-host pypi.org --trusted-host pypi.python.org --trusted-host files.pythonhosted.org install -r requirements/dev.txt
 # issue on django-autofixture 
 # https://github.com/gregmuellegger/django-autofixture/issues/117
