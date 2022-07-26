@@ -1,4 +1,318 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.1.1">Jekyll</generator><link href="https://castorfou.github.io/guillaume_blog/feed.xml" rel="self" type="application/atom+xml" /><link href="https://castorfou.github.io/guillaume_blog/" rel="alternate" type="text/html" /><updated>2022-07-26T02:30:01-05:00</updated><id>https://castorfou.github.io/guillaume_blog/feed.xml</id><title type="html">Guillaume’s blog</title><subtitle>Journey for a datascientist</subtitle><entry><title type="html">Auto export python code from jupyter lab</title><link href="https://castorfou.github.io/guillaume_blog/blog/jupyter-export-lab-as-py.html" rel="alternate" type="text/html" title="Auto export python code from jupyter lab" /><published>2022-07-21T00:00:00-05:00</published><updated>2022-07-21T00:00:00-05:00</updated><id>https://castorfou.github.io/guillaume_blog/blog/jupyter-export-lab-as-py</id><content type="html" xml:base="https://castorfou.github.io/guillaume_blog/blog/jupyter-export-lab-as-py.html"><![CDATA[<!--
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.1.1">Jekyll</generator><link href="https://castorfou.github.io/guillaume_blog/feed.xml" rel="self" type="application/atom+xml" /><link href="https://castorfou.github.io/guillaume_blog/" rel="alternate" type="text/html" /><updated>2022-07-26T09:43:28-05:00</updated><id>https://castorfou.github.io/guillaume_blog/feed.xml</id><title type="html">Guillaume’s blog</title><subtitle>Journey for a datascientist</subtitle><entry><title type="html">install ubuntu 18.04 on WSL and then evalai</title><link href="https://castorfou.github.io/guillaume_blog/blog/install-ubuntu-18.04-on-WSL.html" rel="alternate" type="text/html" title="install ubuntu 18.04 on WSL and then evalai" /><published>2022-07-26T00:00:00-05:00</published><updated>2022-07-26T00:00:00-05:00</updated><id>https://castorfou.github.io/guillaume_blog/blog/install%20ubuntu%2018.04%20on%20WSL</id><content type="html" xml:base="https://castorfou.github.io/guillaume_blog/blog/install-ubuntu-18.04-on-WSL.html"><![CDATA[<h2 id="source-of-inspiration">source of inspiration</h2>
+
+<p><a href="/guillaume_blog/blog/install-ubuntu-22.04-on-WSL.html">install ubuntu 22.04 on WSL</a></p>
+
+<p><a href="https://evalai.readthedocs.io/en/stable/setup.html#ubuntu-installation-instructions">install evalai in ubuntu</a></p>
+
+<h2 id="installation-ubuntu-1804">Installation ubuntu-18.04</h2>
+
+<h3 id="uninstall-image-if-needed">uninstall image (if needed)</h3>
+
+<div class="language-powershell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># wsl --unregister &lt;distroName&gt;</span><span class="w">
+</span><span class="n">wsl</span><span class="w"> </span><span class="nt">--unregister</span><span class="w"> </span><span class="nx">ubuntu-18.04</span><span class="w">
+</span></code></pre></div></div>
+
+<h3 id="download-images">download images</h3>
+
+<p>From <a href="https://cloud-images.ubuntu.com/bionic/current/">cloud images ubuntu</a> (cloud-images &gt; bionic&gt; current), now there are wsl images:</p>
+
+<p><img src="https://www.windowscentral.com/sites/wpcentral.com/files/styles/larger/public/field/image/2022/01/ubuntu-cloud-images-website.png" alt="ubuntu cloud images" /></p>
+
+<p>I just have to download the last bionic (18.04) image <code class="language-plaintext highlighter-rouge">bionic-server-cloudimg-amd64-wsl.rootfs.tar.gz</code></p>
+
+<h3 id="install-and-setup-from-powershell">install and setup from powershell</h3>
+
+<p>I have downloaded this ubuntu image to <code class="language-plaintext highlighter-rouge">D:\wsl\ubuntu-18.04\download</code></p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">(</span>base<span class="o">)</span> guillaume@LL11LPC0PQARQ:/mnt/d/wsl<span class="nv">$ </span>tree
+<span class="nb">.</span>
+├── Ubuntu-20.04
+│   └── ext4.vhdx
+├── Ubuntu-22.04
+│   ├── download
+│   │   └── jammy-server-cloudimg-amd64-wsl.rootfs.tar.gz
+│   └── instance
+</code></pre></div></div>
+
+<p>and my <code class="language-plaintext highlighter-rouge">ubuntu-18.04</code> instance will stand in <code class="language-plaintext highlighter-rouge">D:\wsl\ubuntu-18.04\instance</code></p>
+
+<p>Install with this command from powershell</p>
+
+<div class="language-powershell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># wsl --import &lt;distroname&gt; &lt;location of instance&gt; &lt;location of download&gt;</span><span class="w">
+</span><span class="n">wsl</span><span class="w"> </span><span class="nt">--import</span><span class="w"> </span><span class="nx">ubuntu-18.04</span><span class="w"> </span><span class="nx">D:\wsl\ubuntu-18.04\instance</span><span class="w"> </span><span class="nx">D:\wsl\ubuntu-18.04\download\bionic-server-cloudimg-amd64-wsl.rootfs.tar.gz</span><span class="w">
+</span></code></pre></div></div>
+
+<p>It takes 3-4 minutes to install. and should be visible in your wsl instances.</p>
+
+<div class="language-powershell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="w"> </span><span class="n">wsl</span><span class="w"> </span><span class="nt">--list</span><span class="w"> </span><span class="nt">--all</span><span class="w"> </span><span class="nt">-v</span><span class="w">
+  </span><span class="n">NAME</span><span class="w">            </span><span class="nx">STATE</span><span class="w">           </span><span class="nx">VERSION</span><span class="w">
+  </span><span class="n">ubuntu-22.04</span><span class="w">    </span><span class="nx">Stopped</span><span class="w">         </span><span class="nx">2</span><span class="w">
+</span></code></pre></div></div>
+
+<p>then to run it</p>
+
+<div class="language-powershell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># wsl -d &lt;distroname&gt;</span><span class="w">
+</span><span class="n">wsl</span><span class="w"> </span><span class="nt">-d</span><span class="w"> </span><span class="nx">ubuntu-18.04</span><span class="w">
+</span></code></pre></div></div>
+
+<p>or</p>
+
+<h4 id="use-windows-terminal-as-a-launcher">use Windows Terminal as a launcher</h4>
+
+<p>Windows Terminal is a smart way to group all terminals (powershell, and all your wsl instances)</p>
+
+<p><img src="../images/windows_terminal.jpg" alt="windows terminal" /></p>
+
+<p>It can be installed even with limited windows store access by clicking install in <a href="https://docs.microsoft.com/fr-fr/windows/terminal/install">Installer le Terminal Windows et commencer à le configurer</a></p>
+
+<p>Automatically all wsl instances appear in Settings.</p>
+
+<h2 id="automatic-setup">Automatic setup</h2>
+
+<p>copy these 2 <a href="https://github.com/castorfou/guillaume_blog/tree/master/files">scripts</a> in /root/ (given they are in <code class="language-plaintext highlighter-rouge">D:\wsl\ubuntu-18.04\download</code>)</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cp</span> /mnt/d/wsl/Ubuntu-18.04/download/setup_wsl_<span class="k">*</span> <span class="nb">.</span>
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">setup_wsl_root.sh</code> <a href="../files/setup_wsl_root.sh">download</a></p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">#!/bin/bash</span>
+
+<span class="nb">echo</span> <span class="s2">"0. get username: "</span>
+<span class="nb">read </span>user_name
+
+<span class="nb">.</span> /etc/lsb-release
+
+<span class="nb">echo </span>Configuration <span class="k">for </span>user <span class="o">[</span><span class="nv">$user_name</span><span class="o">]</span>
+<span class="nb">echo </span>of distribution <span class="nv">$DISTRIB_CODENAME</span>
+<span class="nb">echo
+
+echo</span> <span class="s2">"1. create user and add in sudo"</span>
+<span class="c">#adduser --disabled-password --gecos "" $user_name</span>
+adduser <span class="nt">--gecos</span> <span class="s2">""</span> <span class="nv">$user_name</span>
+usermod <span class="nt">-aG</span> <span class="nb">sudo</span> <span class="nv">$user_name</span>
+<span class="nb">echo
+
+echo</span> <span class="s2">"2. create wsl.conf file"</span>
+<span class="nb">rm</span> <span class="nt">-rf</span> /etc/wsl.conf
+<span class="nb">tee</span> /etc/wsl.conf <span class="o">&lt;&lt;</span> <span class="no">EOF</span><span class="sh">
+# Set the user when launching a distribution with WSL.
+[user]
+default=</span><span class="nv">$user_name</span><span class="sh">
+</span><span class="no">EOF
+</span><span class="nb">echo
+
+echo</span> <span class="s2">"3. prepare setup by user"</span>
+<span class="nb">cp </span>setup_wsl_user.sh /home/<span class="nv">$user_name</span>
+<span class="nb">chown</span> <span class="nv">$user_name</span>:users /home/<span class="nv">$user_name</span>/setup_wsl_user.sh
+<span class="nb">chmod </span>750  /home/<span class="nv">$user_name</span>/setup_wsl_user.sh
+<span class="nb">tee</span> <span class="nt">-a</span> /home/<span class="nv">$user_name</span>/.bashrc <span class="o">&lt;&lt;</span> <span class="no">EOF</span><span class="sh">
+if [ ! -e ".wsl_configured" ]; then
+		./setup_wsl_user.sh
+        touch .wsl_configured
+fi
+</span><span class="no">EOF
+</span><span class="nb">echo
+
+echo</span> <span class="s2">"end of configuration for root"</span>
+<span class="nb">echo</span> <span class="s2">"stop wsl instance by running 'wsl --shutdown &lt;distroname&gt;' from powershell"</span>
+<span class="nb">echo</span> <span class="s2">"and start from Windows Terminal"</span>
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">setup_wsl_user.sh</code> <a href="../files/setup_wsl_user.sh">download</a></p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">#!/bin/bash</span>
+
+<span class="nb">echo</span> <span class="s2">"1. setup wsl-vpnkit"</span>
+<span class="k">if </span><span class="nb">grep</span> <span class="nt">-Fxq</span> <span class="s2">"wsl-vpnkit"</span> ~/.profile
+<span class="k">then</span>
+    <span class="c"># code if found</span>
+	<span class="nb">echo</span> <span class="s2">"   wsl-vpnkit already setup"</span>
+<span class="k">else</span>
+    <span class="c"># code if not found</span>
+	<span class="nb">echo</span> <span class="s1">'wsl.exe -d wsl-vpnkit service wsl-vpnkit start'</span> <span class="o">&gt;&gt;</span> ~/.profile
+<span class="k">fi
+</span>wsl.exe <span class="nt">-d</span> wsl-vpnkit service wsl-vpnkit start
+<span class="nb">source</span> ./.bashrc
+<span class="nb">echo
+
+echo</span> <span class="s2">"2. create ssh key to copy to gitlab"</span>
+<span class="nb">.</span> /etc/lsb-release
+<span class="k">if</span> <span class="o">[</span> <span class="o">!</span> <span class="nt">-e</span> <span class="s2">".ssh/id_rsa.pub"</span> <span class="o">]</span><span class="p">;</span> <span class="k">then
+		</span>ssh-keygen <span class="nt">-t</span> rsa <span class="nt">-b</span> 4096 <span class="nt">-C</span> <span class="s2">"WSL2 ubuntu </span><span class="nv">$DISTRIB_RELEASE</span><span class="s2">"</span>
+		<span class="nb">cat</span> .ssh/id_rsa.pub
+		<span class="nb">echo</span> <span class="s2">"copy this content to gitlab &gt; preferences &gt; SSH Keys"</span>
+		<span class="nb">read</span> <span class="nt">-p</span> <span class="s2">"Press any key to resume ..."</span>
+<span class="k">fi
+</span><span class="nb">echo
+
+echo</span> <span class="s2">"3. update certificates"</span>
+git clone git@gitlab.michelin.com:devops-foundation/devops_environment.git /tmp/devops_environment
+<span class="nb">sudo cp</span> /tmp/devops_environment/certs/<span class="k">*</span> /usr/local/share/ca-certificates/
+<span class="nb">sudo </span>update-ca-certificates
+<span class="nb">rm</span> <span class="nt">-rf</span> /tmp/devops_environment
+<span class="k">if</span> <span class="o">[</span> <span class="nv">$DISTRIB_RELEASE</span> <span class="o">==</span> <span class="s2">"22.04"</span> <span class="o">]</span>
+<span class="k">then
+</span><span class="nb">echo</span> <span class="s1">'bug SSL with ubuntu 22.04 - https://bugs.launchpad.net/ubuntu/+source/openssl/+bug/1963834/comments/7'</span>
+<span class="nb">sudo tee</span> <span class="nt">-a</span> /etc/ssl/openssl.cnf <span class="o">&lt;&lt;</span> <span class="no">EOF</span><span class="sh">
+[openssl_init]
+ssl_conf = ssl_sect
+
+[ssl_sect]
+system_default = system_default_sect
+
+[system_default_sect]
+Options = UnsafeLegacyRenegotiation
+</span><span class="no">EOF
+</span><span class="k">fi
+</span><span class="nb">echo
+
+echo</span> <span class="s2">"4. update apt sources with artifactory"</span>
+<span class="nb">echo</span> <span class="s1">'Acquire { http::User-Agent "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:13.37) Gecko/20100101 Firefox/31.33.7"; };'</span> | <span class="nb">sudo tee</span> /etc/apt/apt.conf.d/90globalprotectconf
+<span class="nb">sudo sed</span> <span class="nt">-i</span> <span class="s1">'s,http://archive.ubuntu.com/ubuntu,https://artifactory.michelin.com/artifactory/ubuntu-archive-remote,g'</span> /etc/apt/sources.list
+<span class="nb">sudo sed</span> <span class="nt">-i</span> <span class="s1">'s,http://security.ubuntu.com/ubuntu,https://artifactory.michelin.com/artifactory/ubuntu-archive-remote,g'</span> /etc/apt/sources.list
+<span class="nb">sudo </span>apt update
+<span class="nb">sudo </span>apt upgrade <span class="nt">-y</span>
+<span class="nb">echo</span>
+</code></pre></div></div>
+
+<p>Then</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">chmod</span> +x setup_wsl_root.sh
+./setup_wsl_root.sh
+</code></pre></div></div>
+
+<p>As explained stop wsl instance by running <code class="language-plaintext highlighter-rouge">wsl --shutdown ubuntu-22.04</code> from powershell
+and start from Windows Terminal</p>
+
+<p>It restarts from your user and it will install:</p>
+
+<ul>
+  <li>setup wsl-vpnkit</li>
+  <li>create ssh key to copy to gitlab</li>
+  <li>update certificates</li>
+  <li>update apt sources with artifactory</li>
+</ul>
+
+<h2 id="installation-evalai">Installation EvalAI</h2>
+
+<h6 id="step-1-install-prerequisites">Step 1: Install prerequisites</h6>
+
+<ul>
+  <li>Install git - postgres</li>
+</ul>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sudo apt-get install git postgresql libpq-dev
+</code></pre></div></div>
+
+<ul>
+  <li>install rabbit-mq</li>
+</ul>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>apt-get <span class="nt">-y</span> <span class="nb">install </span>socat logrotate init-system-helpers adduser erlang-base erlang-base-hipe esl-erlang
+<span class="c"># download the package</span>
+wget https://github.com/rabbitmq/rabbitmq-server/releases/download/v3.10.6/rabbitmq-server_3.10.6-1_all.deb
+
+<span class="c"># install the package with dpkg</span>
+<span class="nb">sudo </span>dpkg <span class="nt">-i</span> rabbitmq-server_3.10.6-1_all.deb
+<span class="nb">rm </span>rabbitmq-server_3.10.6-1_all.deb
+</code></pre></div></div>
+<ul>
+  <li>installing conda
+```
+tmpdir=$(mktemp -d)
+cd $tmpdir
+wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
+chmod +x Miniconda3-latest-Linux-x86_64.sh
+    <h1 id="answer-yes-to-question-do-you-wish-the-installer-to-initialize-miniconda3-by-running-conda-init">answer yes to question Do you wish the installer to initialize Miniconda3 by running conda init?</h1>
+    <p>bash Miniconda3-latest-Linux-x86_64.sh -p $HOME/miniconda3</p>
+  </li>
+</ul>
+
+<p>cat .condarc
+ssl_verify: false
+shortcuts: false
+report_errors: false</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+* install virtualenv
+```bash
+# only if pip is not installed
+sudo apt-get install python3-pip build-essential
+# upgrade pip, not necessary
+sudo pip install --upgrade pip
+# upgrade virtualenv
+pip install --upgrade virtualenv
+</code></pre></div></div>
+
+<h6 id="step-2-get-evalai-code">Step 2: Get EvalAI code</h6>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git clone https://github.com/Cloud-CV/EvalAI.git
+</code></pre></div></div>
+
+<h6 id="step-3-setup-codebase">Step 3: Setup codebase</h6>
+
+<ul>
+  <li>Create a python virtual environment and install python dependencies.</li>
+</ul>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>#pour curl-config
+sudo apt install libcurl4-openssl-dev libssl-dev
+sudo apt install uwsgi-plugin-python3
+
+cd evalai
+# virtualenv venv
+# source venv/bin/activate
+conda create --name evalai_37  python=3.7
+conda activate evalai_37
+
+conda install -c conda-forge uwsgi
+conda install -c conda-forge/label/gcc7 uwsgi
+conda install -c conda-forge/label/broken uwsgi
+conda install -c conda-forge/label/cf201901 uwsgi
+conda install -c conda-forge/label/cf202003 uwsgi
+
+sudo apt install gcc-9 gcc-10
+sudo rm /usr/bin/gcc
+sudo ln -s /usr/bin/gcc-9 /usr/bin/gcc 
+sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-11 80 --slave /usr/bin/g++ g++ /usr/bin/g++-11 --slave /usr/bin/gcov gcov /usr/bin/gcov-11
+sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-10 60 --slave /usr/bin/g++ g++ /usr/bin/g++-10 --slave /usr/bin/gcov gcov /usr/bin/gcov-10
+sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-9 40 --slave /usr/bin/g++ g++ /usr/bin/g++-9 --slave /usr/bin/gcov gcov /usr/bin/gcov-9
+sudo update-alternatives --config gcc
+
+conda install -c anaconda gcc_linux-64
+conda install -c anaconda  gcc_linux-64==8.2.0
+
+
+pip --trusted-host pypi.org --trusted-host pypi.python.org --trusted-host files.pythonhosted.org install -r requirements/dev.txt
+# issue on django-autofixture 
+# https://github.com/gregmuellegger/django-autofixture/issues/117
+</code></pre></div></div>
+
+<ul>
+  <li>Rename <code class="language-plaintext highlighter-rouge">settings/dev.sample.py</code> as <code class="language-plaintext highlighter-rouge">dev.py</code></li>
+</ul>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cp settings/dev.sample.py settings/dev.py
+</code></pre></div></div>
+
+<ul>
+  <li>Create an empty postgres database and run database migration.</li>
+</ul>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>createdb evalai -U postgres
+# update postgres user password
+psql -U postgres -c "ALTER USER postgres PASSWORD 'postgres';"
+# run migrations
+python manage.py migrate
+</code></pre></div></div>
+
+<ul>
+  <li>For setting up frontend, please make sure that node(<code class="language-plaintext highlighter-rouge">&gt;=7.x.x</code>), npm(<code class="language-plaintext highlighter-rouge">&gt;=5.x.x</code>) and bower(<code class="language-plaintext highlighter-rouge">&gt;=1.8.x</code>) are installed globally on your machine. Install npm and bower dependencies by running</li>
+</ul>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm install
+bower install
+</code></pre></div></div>]]></content><author><name></name></author><category term="wsl" /><summary type="html"><![CDATA[could be useful to install evalai]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://castorfou.github.io/guillaume_blog/images/icons/wsl2.jpeg" /><media:content medium="image" url="https://castorfou.github.io/guillaume_blog/images/icons/wsl2.jpeg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Auto export python code from jupyter lab</title><link href="https://castorfou.github.io/guillaume_blog/blog/jupyter-export-lab-as-py.html" rel="alternate" type="text/html" title="Auto export python code from jupyter lab" /><published>2022-07-21T00:00:00-05:00</published><updated>2022-07-21T00:00:00-05:00</updated><id>https://castorfou.github.io/guillaume_blog/blog/jupyter-export-lab-as-py</id><content type="html" xml:base="https://castorfou.github.io/guillaume_blog/blog/jupyter-export-lab-as-py.html"><![CDATA[<!--
 #################################################
 ### THIS FILE WAS AUTOGENERATED! DO NOT EDIT! ###
 #################################################
@@ -416,16 +730,31 @@ wget https://github.com/rabbitmq/rabbitmq-server/releases/download/v3.10.6/rabbi
 <span class="nb">rm </span>rabbitmq-server_3.10.6-1_all.deb
 </code></pre></div></div>
 <ul>
-  <li>install virtualenv
-    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># only if pip is not installed</span>
-<span class="nb">sudo </span>apt-get <span class="nb">install </span>python3-pip build-essential
-<span class="c"># upgrade pip, not necessary</span>
-<span class="nb">sudo </span>pip <span class="nb">install</span> <span class="nt">--upgrade</span> pip
-<span class="c"># upgrade virtualenv</span>
-pip <span class="nb">install</span> <span class="nt">--upgrade</span> virtualenv
-</code></pre></div>    </div>
+  <li>installing conda
+```
+tmpdir=$(mktemp -d)
+cd $tmpdir
+wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
+chmod +x Miniconda3-latest-Linux-x86_64.sh
+    <h1 id="answer-yes-to-question-do-you-wish-the-installer-to-initialize-miniconda3-by-running-conda-init">answer yes to question Do you wish the installer to initialize Miniconda3 by running conda init?</h1>
+    <p>bash Miniconda3-latest-Linux-x86_64.sh -p $HOME/miniconda3</p>
   </li>
 </ul>
+
+<p>cat .condarc
+ssl_verify: false
+shortcuts: false
+report_errors: false</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+* install virtualenv
+```bash
+# only if pip is not installed
+sudo apt-get install python3-pip build-essential
+# upgrade pip, not necessary
+sudo pip install --upgrade pip
+# upgrade virtualenv
+pip install --upgrade virtualenv
+</code></pre></div></div>
 
 <h6 id="step-2-get-evalai-code">Step 2: Get EvalAI code</h6>
 
@@ -440,9 +769,32 @@ pip <span class="nb">install</span> <span class="nt">--upgrade</span> virtualenv
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>#pour curl-config
 sudo apt install libcurl4-openssl-dev libssl-dev
+sudo apt install uwsgi-plugin-python3
+
 cd evalai
-virtualenv venv
-source venv/bin/activate
+# virtualenv venv
+# source venv/bin/activate
+conda create --name evalai_37  python=3.7
+conda activate evalai_37
+
+conda install -c conda-forge uwsgi
+conda install -c conda-forge/label/gcc7 uwsgi
+conda install -c conda-forge/label/broken uwsgi
+conda install -c conda-forge/label/cf201901 uwsgi
+conda install -c conda-forge/label/cf202003 uwsgi
+
+sudo apt install gcc-9 gcc-10
+sudo rm /usr/bin/gcc
+sudo ln -s /usr/bin/gcc-9 /usr/bin/gcc 
+sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-11 80 --slave /usr/bin/g++ g++ /usr/bin/g++-11 --slave /usr/bin/gcov gcov /usr/bin/gcov-11
+sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-10 60 --slave /usr/bin/g++ g++ /usr/bin/g++-10 --slave /usr/bin/gcov gcov /usr/bin/gcov-10
+sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-9 40 --slave /usr/bin/g++ g++ /usr/bin/g++-9 --slave /usr/bin/gcov gcov /usr/bin/gcov-9
+sudo update-alternatives --config gcc
+
+conda install -c anaconda gcc_linux-64
+conda install -c anaconda  gcc_linux-64==8.2.0
+
+
 pip --trusted-host pypi.org --trusted-host pypi.python.org --trusted-host files.pythonhosted.org install -r requirements/dev.txt
 # issue on django-autofixture 
 # https://github.com/gregmuellegger/django-autofixture/issues/117
@@ -1164,109 +1516,4 @@ config commit <span class="nt">-m</span> <span class="s1">'init with .bashrc'</s
 config branch GR_WSL2_ubuntu22.04
 config checkout GR_WSL2_ubuntu22.04
 config push <span class="nt">--set-upstream</span> origin GR_WSL2_ubuntu22.04
-</code></pre></div></div>]]></content><author><name></name></author><category term="wsl" /><summary type="html"><![CDATA[even if not available in Windows Store]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://castorfou.github.io/guillaume_blog/images/icons/wsl2.jpeg" /><media:content medium="image" url="https://castorfou.github.io/guillaume_blog/images/icons/wsl2.jpeg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">keep dotfiles in git</title><link href="https://castorfou.github.io/guillaume_blog/blog/keep-dotfiles-in-git.html" rel="alternate" type="text/html" title="keep dotfiles in git" /><published>2022-04-07T00:00:00-05:00</published><updated>2022-04-07T00:00:00-05:00</updated><id>https://castorfou.github.io/guillaume_blog/blog/keep%20dotfiles%20in%20git</id><content type="html" xml:base="https://castorfou.github.io/guillaume_blog/blog/keep-dotfiles-in-git.html"><![CDATA[<h2 id="source-of-inspiration">source of inspiration</h2>
-
-<p>as <a href="https://www.atlassian.com/git/tutorials/dotfiles">pointed</a> by Jeremy Howard.</p>
-
-<h2 id="how-to-setup-it">How to setup it</h2>
-
-<h4 id="prerequisites">prerequisites</h4>
-
-<p>I consider I already have a git repo with my dotfiles from other machines.</p>
-
-<p>Repo: <code class="language-plaintext highlighter-rouge">git@&lt;your_gitlab_address&gt;:&lt;your_id&gt;/dotfiles.git</code></p>
-
-<p>I keep one separate branch per machine. Current branches: master (empty), and WSL2.</p>
-
-<p>I am going to add a machine called iolab.</p>
-
-<h4 id="from-iolab">from iolab</h4>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git init <span class="nt">--bare</span> <span class="nv">$HOME</span>/.cfg
-<span class="nb">alias </span><span class="nv">config</span><span class="o">=</span><span class="s1">'/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'</span>
-config config <span class="nt">--local</span> status.showUntrackedFiles no
-<span class="nb">echo</span> <span class="s2">"alias config='/usr/bin/git --git-dir=</span><span class="nv">$HOME</span><span class="s2">/.cfg/ --work-tree=</span><span class="nv">$HOME</span><span class="s2">'"</span> <span class="o">&gt;&gt;</span> <span class="nv">$HOME</span>/.bash_aliases
-</code></pre></div></div>
-
-<p>And we can now run <code class="language-plaintext highlighter-rouge">config status</code></p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">(</span>base<span class="o">)</span> <span class="o">[</span> 09:53:56 <span class="o">][</span> <span class="nb">id</span>: ~ <span class="o">]</span><span class="nv">$ </span>config status
-<span class="c"># On branch master</span>
-<span class="c">#</span>
-<span class="c"># Initial commit</span>
-<span class="c">#</span>
-nothing to commit <span class="o">(</span>create/copy files and use <span class="s2">"git add"</span> to track<span class="o">)</span>
-</code></pre></div></div>
-
-<p>but now we would like to create a new branch, and push all this to our central repo.</p>
-
-<p>First we have to set this central repo.</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>config remote add origin git@&lt;your_gitlab_address&gt;:&lt;your_id&gt;/dotfiles.git
-config fetch
-</code></pre></div></div>
-
-<p>Before creating our branch, we have to commit something (to really create our local branch master)</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>config add .bashrc
-config commit <span class="nt">-m</span> <span class="s1">'init with .bashrc'</span>
-</code></pre></div></div>
-
-<p>And then only we can create our branch iolab</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>config branch iolab
-config checkout iolab
-config push <span class="nt">--set-upstream</span> origin iolab
-</code></pre></div></div>
-
-<p>we are now ready to use it</p>
-
-<h2 id="how-to-use-it">How to use it</h2>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>config add .bash_aliases
-config commit <span class="nt">-m</span><span class="s1">'bash aliases'</span>
-config push
-</code></pre></div></div>
-
-<h2 id="how-to-setup-2-remote-repo">How to setup 2 remote repo</h2>
-
-<p>There is a nice explanation abut how to work with multiple repos in <a href="https://jigarius.com/blog/multiple-git-remote-repositories">https://jigarius.com/blog/multiple-git-remote-repositories</a>.</p>
-
-<p>To follow that, I will configure my dotfile repo from WSL2 to push to 2 remotes, one on gitlab (internal) and one on github.</p>
-
-<p>For the moment it is only connected to gitlab.</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>config remote <span class="nt">-v</span>
-origin	git@gitlab.michelin.com:janus/dotfiles.git <span class="o">(</span>fetch<span class="o">)</span>
-origin	git@gitlab.michelin.com:janus/dotfiles.git <span class="o">(</span>push<span class="o">)</span>
-</code></pre></div></div>
-
-<p>My github repo is at: https://github.com/castorfou/dotfiles.git (I use https, because of my local firewall)</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>config remote set-url <span class="nt">--add</span> <span class="nt">--push</span> origin git@gitlab.michelin.com:janus/dotfiles.git
-<span class="nv">$ </span>config remote set-url <span class="nt">--add</span> <span class="nt">--push</span> origin https://github.com/castorfou/dotfiles.git
-<span class="nv">$ </span>config push origin GR_WSL2
-</code></pre></div></div>
-
-<p>I have to get a token from github to access in https</p>
-
-<p>To generate a token:</p>
-
-<ol>
-  <li>Log into <strong>GitHub</strong></li>
-  <li>Click on your name / Avatar in the upper right corner and select <strong>Settings</strong></li>
-  <li>On the left, click <strong>Developer settings</strong></li>
-  <li>Select <strong>Personal access tokens</strong> and click <strong>Generate new token</strong></li>
-  <li>Give the token a description/name and select the scope of the token
-    <ul>
-      <li>I selected <strong>repo</strong> only to facilitate pull, push, clone, and commit actions</li>
-      <li>Click the link <strong>Read more about OAuth scopes</strong> for details about the permission sets</li>
-    </ul>
-  </li>
-  <li>Click <strong>Generate token</strong></li>
-  <li>Copy the token – this is your new password!</li>
-</ol>
-
-<p>Lastly, to ensure the local computer remembers the token, we can  enable caching of the credentials. This configures the computer to  remember the complex token so that we dont have too.</p>
-
-<p><code class="language-plaintext highlighter-rouge">git config --global credential.helper cache</code></p>]]></content><author><name></name></author><category term="git" /><summary type="html"><![CDATA[as pointed by Jeremy Howard]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://castorfou.github.io/guillaume_blog/images/git.png" /><media:content medium="image" url="https://castorfou.github.io/guillaume_blog/images/git.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry></feed>
+</code></pre></div></div>]]></content><author><name></name></author><category term="wsl" /><summary type="html"><![CDATA[even if not available in Windows Store]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://castorfou.github.io/guillaume_blog/images/icons/wsl2.jpeg" /><media:content medium="image" url="https://castorfou.github.io/guillaume_blog/images/icons/wsl2.jpeg" xmlns:media="http://search.yahoo.com/mrss/" /></entry></feed>

@@ -97,7 +97,7 @@ window.onload = wrap_img;
        • <span class="read-time" title="Estimated read time">
     
     
-      2 min read
+      3 min read
     
 </span></p>
 
@@ -120,6 +120,10 @@ window.onload = wrap_img;
 <li class="toc-entry toc-h2"><a href="#week-30---july-22">Week 30 - July 22</a>
 <ul>
 <li class="toc-entry toc-h6"><a href="#step-1-install-prerequisites">Step 1: Install prerequisites</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h1"><a href="#answer-yes-to-question-do-you-wish-the-installer-to-initialize-miniconda3-by-running-conda-init">answer yes to question Do you wish the installer to initialize Miniconda3 by running conda init?</a>
+<ul>
 <li class="toc-entry toc-h6"><a href="#step-2-get-evalai-code">Step 2: Get EvalAI code</a></li>
 <li class="toc-entry toc-h6"><a href="#step-3-setup-codebase">Step 3: Setup codebase</a></li>
 </ul>
@@ -194,17 +198,32 @@ wget https://github.com/rabbitmq/rabbitmq-server/releases/download/v3.10.6/rabbi
 <span class="nb">rm </span>rabbitmq-server_3.10.6-1_all.deb
 </code></pre></div></div>
 <ul>
-  <li>install virtualenv
-    <div class="language-bash highlighter-rouge">
-<div class="highlight"><pre class="highlight"><code><span class="c"># only if pip is not installed</span>
-<span class="nb">sudo </span>apt-get <span class="nb">install </span>python3-pip build-essential
-<span class="c"># upgrade pip, not necessary</span>
-<span class="nb">sudo </span>pip <span class="nb">install</span> <span class="nt">--upgrade</span> pip
-<span class="c"># upgrade virtualenv</span>
-pip <span class="nb">install</span> <span class="nt">--upgrade</span> virtualenv
-</code></pre></div>    </div>
+  <li>installing conda
+```
+tmpdir=$(mktemp -d)
+cd $tmpdir
+wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
+chmod +x Miniconda3-latest-Linux-x86_64.sh
+    <h1 id="answer-yes-to-question-do-you-wish-the-installer-to-initialize-miniconda3-by-running-conda-init">
+<a class="anchor" href="#answer-yes-to-question-do-you-wish-the-installer-to-initialize-miniconda3-by-running-conda-init" aria-hidden="true"><span class="octicon octicon-link"></span></a>answer yes to question Do you wish the installer to initialize Miniconda3 by running conda init?</h1>
+    <p>bash Miniconda3-latest-Linux-x86_64.sh -p $HOME/miniconda3</p>
   </li>
 </ul>
+
+<p>cat .condarc
+ssl_verify: false
+shortcuts: false
+report_errors: false</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+* install virtualenv
+```bash
+# only if pip is not installed
+sudo apt-get install python3-pip build-essential
+# upgrade pip, not necessary
+sudo pip install --upgrade pip
+# upgrade virtualenv
+pip install --upgrade virtualenv
+</code></pre></div></div>
 
 <h6 id="step-2-get-evalai-code">
 <a class="anchor" href="#step-2-get-evalai-code" aria-hidden="true"><span class="octicon octicon-link"></span></a>Step 2: Get EvalAI code</h6>
@@ -221,9 +240,32 @@ pip <span class="nb">install</span> <span class="nt">--upgrade</span> virtualenv
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>#pour curl-config
 sudo apt install libcurl4-openssl-dev libssl-dev
+sudo apt install uwsgi-plugin-python3
+
 cd evalai
-virtualenv venv
-source venv/bin/activate
+# virtualenv venv
+# source venv/bin/activate
+conda create --name evalai_37  python=3.7
+conda activate evalai_37
+
+conda install -c conda-forge uwsgi
+conda install -c conda-forge/label/gcc7 uwsgi
+conda install -c conda-forge/label/broken uwsgi
+conda install -c conda-forge/label/cf201901 uwsgi
+conda install -c conda-forge/label/cf202003 uwsgi
+
+sudo apt install gcc-9 gcc-10
+sudo rm /usr/bin/gcc
+sudo ln -s /usr/bin/gcc-9 /usr/bin/gcc 
+sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-11 80 --slave /usr/bin/g++ g++ /usr/bin/g++-11 --slave /usr/bin/gcov gcov /usr/bin/gcov-11
+sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-10 60 --slave /usr/bin/g++ g++ /usr/bin/g++-10 --slave /usr/bin/gcov gcov /usr/bin/gcov-10
+sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-9 40 --slave /usr/bin/g++ g++ /usr/bin/g++-9 --slave /usr/bin/gcov gcov /usr/bin/gcov-9
+sudo update-alternatives --config gcc
+
+conda install -c anaconda gcc_linux-64
+conda install -c anaconda  gcc_linux-64==8.2.0
+
+
 pip --trusted-host pypi.org --trusted-host pypi.python.org --trusted-host files.pythonhosted.org install -r requirements/dev.txt
 # issue on django-autofixture 
 # https://github.com/gregmuellegger/django-autofixture/issues/117
