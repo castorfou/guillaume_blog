@@ -54,6 +54,12 @@ As a matter of test, installation of [EvalAI](https://evalai.readthedocs.io/en/s
 Not giving up 😓. Will try this: build docker image from linux, save it. Moved it to my wsl image. Restore it. Pray. [How to copy a Docker image from one server to another without pushing it to a repository first?](https://www.digitalocean.com/community/questions/how-to-copy-a-docker-image-from-one-server-to-another-without-pushing-it-to-a-repository-first)
 
 - from linux: `sudo docker save -o /tmp/evalai_nodejs.tar evalai_nodejs`
-- from wsl: `sudo docker load -i evalai_nodejs.tar`
-- 
+- from wsl: 
+```bash
+sudo mkdir /mnt/e
+sudo mount -t drvfs E: /mnt/e
+# pv to copy with a progress bar
+pv /mnt/e/janus/evalai_nodejs.tar > ~/tmp/evalai_nodejs.tar
+sudo docker load -i evalai_nodejs.tar
+```
 
