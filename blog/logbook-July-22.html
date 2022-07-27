@@ -169,6 +169,14 @@ window.onload = wrap_img;
 
 <p>Not giving up 😓. Will try this: build docker image from linux, save it. Moved it to my wsl image. Restore it. Pray. <a href="https://www.digitalocean.com/community/questions/how-to-copy-a-docker-image-from-one-server-to-another-without-pushing-it-to-a-repository-first">How to copy a Docker image from one server to another without pushing it to a repository first?</a></p>
 
+<ul>
+  <li>from linux: <code class="language-plaintext highlighter-rouge">sudo docker save -o /tmp/evalai_nodejs.tar evalai_nodejs</code>
+</li>
+  <li>from wsl: <code class="language-plaintext highlighter-rouge">sudo docker load -i evalai_nodejs.tar</code>
+</li>
+  <li>
+</ul>
+
 
   </div><!-- from https://github.com/utterance/utterances -->
 <script src="https://utteranc.es/client.js"
