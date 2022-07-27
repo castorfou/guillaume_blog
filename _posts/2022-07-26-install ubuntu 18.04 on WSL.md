@@ -146,7 +146,7 @@ EOF
 echo
 
 echo "end of configuration for root"
-echo "stop wsl instance by running 'wsl --shutdown <distroname>' from powershell"
+echo "stop wsl instance by running 'wsl -t <distro-name>' from powershell"
 echo "and start from Windows Terminal"
 ```
 
@@ -240,7 +240,7 @@ sudo apt-get install git postgresql libpq-dev
 * install rabbit-mq
 
 ```bash
-sudo apt-get -y install socat logrotate init-system-helpers adduser erlang-base erlang-base-hipe esl-erlang
+sudo apt-get -y install socat logrotate init-system-helpers adduser erlang-base 
 # download the package
 wget https://github.com/rabbitmq/rabbitmq-server/releases/download/v3.10.6/rabbitmq-server_3.10.6-1_all.deb
 
@@ -248,35 +248,32 @@ wget https://github.com/rabbitmq/rabbitmq-server/releases/download/v3.10.6/rabbi
 sudo dpkg -i rabbitmq-server_3.10.6-1_all.deb
 rm rabbitmq-server_3.10.6-1_all.deb
 ```
-* installing conda
+* install python 3.7
+```bash
+sudo apt install python3.7
+sudo update-alternatives --install /usr/bin/python python /usr/bin/python3.7 1
+sudo update-alternatives --install /usr/bin/python python /usr/bin/python3.6 2
+update-alternatives --list python
+sudo update-alternatives --config python
 ```
-tmpdir=$(mktemp -d)
-cd $tmpdir
-wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
-chmod +x Miniconda3-latest-Linux-x86_64.sh
-# answer yes to question Do you wish the installer to initialize Miniconda3 by running conda init?
-bash Miniconda3-latest-Linux-x86_64.sh -p $HOME/miniconda3
 
-cat .condarc
-ssl_verify: false
-shortcuts: false
-report_errors: false
-```
+
 
 * install virtualenv
 ```bash
 # only if pip is not installed
 sudo apt-get install python3-pip build-essential
-# upgrade pip, not necessary
-sudo pip install --upgrade pip
+# upgrade pip
+pip3 install --upgrade pip
 # upgrade virtualenv
-pip install --upgrade virtualenv
+pip --trusted-host pypi.org --trusted-host pypi.python.org --trusted-host files.pythonhosted.org install --upgrade virtualenv
+source .profile
 ```
 
 ###### Step 2: Get EvalAI code
 
 ```bash
-git clone https://github.com/Cloud-CV/EvalAI.git
+git clone https://github.com/Cloud-CV/EvalAI.git evalai
 ```
 
 ###### Step 3: Setup codebase
@@ -286,36 +283,20 @@ git clone https://github.com/Cloud-CV/EvalAI.git
 ```
 #pour curl-config
 sudo apt install libcurl4-openssl-dev libssl-dev
-sudo apt install uwsgi-plugin-python3
 
 cd evalai
-# virtualenv venv
-# source venv/bin/activate
-conda create --name evalai_37  python=3.7
-conda activate evalai_37
-
-conda install -c conda-forge uwsgi
-conda install -c conda-forge/label/gcc7 uwsgi
-conda install -c conda-forge/label/broken uwsgi
-conda install -c conda-forge/label/cf201901 uwsgi
-conda install -c conda-forge/label/cf202003 uwsgi
-
-sudo apt install gcc-9 gcc-10
-sudo rm /usr/bin/gcc
-sudo ln -s /usr/bin/gcc-9 /usr/bin/gcc 
-sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-11 80 --slave /usr/bin/g++ g++ /usr/bin/g++-11 --slave /usr/bin/gcov gcov /usr/bin/gcov-11
-sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-10 60 --slave /usr/bin/g++ g++ /usr/bin/g++-10 --slave /usr/bin/gcov gcov /usr/bin/gcov-10
-sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-9 40 --slave /usr/bin/g++ g++ /usr/bin/g++-9 --slave /usr/bin/gcov gcov /usr/bin/gcov-9
-sudo update-alternatives --config gcc
-
-conda install -c anaconda gcc_linux-64
-conda install -c anaconda  gcc_linux-64==8.2.0
-
+virtualenv -p python3.7 venv
+source venv/bin/activate
 
 pip --trusted-host pypi.org --trusted-host pypi.python.org --trusted-host files.pythonhosted.org install -r requirements/dev.txt
 # issue on django-autofixture 
 # https://github.com/gregmuellegger/django-autofixture/issues/117
 ```
+
+<div class="alert alert-block alert-danger">
+cannot go further due to this error.
+at some time in setuptools, dist.py has been introduced long_description ends-with, and it is not managed by 'UltraMagicString' in django-autofixture
+</div>
 
 - Rename `settings/dev.sample.py` as `dev.py`
 

@@ -146,7 +146,7 @@ EOF
 echo
 
 echo "end of configuration for root"
-echo "stop wsl instance by running 'wsl --shutdown <distroname>' from powershell"
+echo "stop wsl instance by running 'wsl -t <distro-name>' from powershell"
 echo "and start from Windows Terminal"
 ```
 
