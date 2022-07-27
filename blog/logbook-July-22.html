@@ -172,9 +172,15 @@ window.onload = wrap_img;
 <ul>
   <li>from linux: <code class="language-plaintext highlighter-rouge">sudo docker save -o /tmp/evalai_nodejs.tar evalai_nodejs</code>
 </li>
-  <li>from wsl: <code class="language-plaintext highlighter-rouge">sudo docker load -i evalai_nodejs.tar</code>
-</li>
-  <li>
+  <li>from wsl:
+    <div class="language-bash highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code><span class="nb">sudo mkdir</span> /mnt/e
+<span class="nb">sudo </span>mount <span class="nt">-t</span> drvfs E: /mnt/e
+<span class="c"># pv to copy with a progress bar</span>
+pv /mnt/e/janus/evalai_nodejs.tar <span class="o">&gt;</span> ~/tmp/evalai_nodejs.tar
+<span class="nb">sudo </span>docker load <span class="nt">-i</span> evalai_nodejs.tar
+</code></pre></div>    </div>
+  </li>
 </ul>
 
 
