@@ -63,3 +63,4 @@ pv /mnt/e/janus/evalai_nodejs.tar > ~/tmp/evalai_nodejs.tar
 sudo docker load -i evalai_nodejs.tar
 ```
 
+but I don't know how to go further as explained in [this evalai issue](https://github.com/Cloud-CV/EvalAI/issues/3777)
