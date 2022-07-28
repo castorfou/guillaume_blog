@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.1.1">Jekyll</generator><link href="https://castorfou.github.io/guillaume_blog/feed.xml" rel="self" type="application/atom+xml" /><link href="https://castorfou.github.io/guillaume_blog/" rel="alternate" type="text/html" /><updated>2022-07-27T04:43:07-05:00</updated><id>https://castorfou.github.io/guillaume_blog/feed.xml</id><title type="html">Guillaume’s blog</title><subtitle>Journey for a datascientist</subtitle><entry><title type="html">install ubuntu 18.04 on WSL and then evalai</title><link href="https://castorfou.github.io/guillaume_blog/blog/install-ubuntu-18.04-on-WSL.html" rel="alternate" type="text/html" title="install ubuntu 18.04 on WSL and then evalai" /><published>2022-07-26T00:00:00-05:00</published><updated>2022-07-26T00:00:00-05:00</updated><id>https://castorfou.github.io/guillaume_blog/blog/install%20ubuntu%2018.04%20on%20WSL</id><content type="html" xml:base="https://castorfou.github.io/guillaume_blog/blog/install-ubuntu-18.04-on-WSL.html"><![CDATA[<h2 id="source-of-inspiration">source of inspiration</h2>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.1.1">Jekyll</generator><link href="https://castorfou.github.io/guillaume_blog/feed.xml" rel="self" type="application/atom+xml" /><link href="https://castorfou.github.io/guillaume_blog/" rel="alternate" type="text/html" /><updated>2022-07-28T10:22:27-05:00</updated><id>https://castorfou.github.io/guillaume_blog/feed.xml</id><title type="html">Guillaume’s blog</title><subtitle>Journey for a datascientist</subtitle><entry><title type="html">install ubuntu 18.04 on WSL and then evalai</title><link href="https://castorfou.github.io/guillaume_blog/blog/install-ubuntu-18.04-on-WSL.html" rel="alternate" type="text/html" title="install ubuntu 18.04 on WSL and then evalai" /><published>2022-07-26T00:00:00-05:00</published><updated>2022-07-26T00:00:00-05:00</updated><id>https://castorfou.github.io/guillaume_blog/blog/install%20ubuntu%2018.04%20on%20WSL</id><content type="html" xml:base="https://castorfou.github.io/guillaume_blog/blog/install-ubuntu-18.04-on-WSL.html"><![CDATA[<h2 id="source-of-inspiration">source of inspiration</h2>
 
 <p><a href="/guillaume_blog/blog/install-ubuntu-22.04-on-WSL.html">install ubuntu 22.04 on WSL</a></p>
 
@@ -698,6 +698,8 @@ curl <span class="nt">-fsSL</span> https://download.docker.com/linux/ubuntu/gpg 
 <span class="c"># pv to copy with a progress bar</span>
 pv /mnt/e/janus/evalai_nodejs.tar <span class="o">&gt;</span> ~/tmp/evalai_nodejs.tar
 <span class="nb">sudo </span>docker load <span class="nt">-i</span> evalai_nodejs.tar
+<span class="nb">cd</span> ~/evalai
+docker-compose up
 </code></pre></div>    </div>
   </li>
 </ul>
