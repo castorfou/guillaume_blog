@@ -61,6 +61,8 @@ sudo mount -t drvfs E: /mnt/e
 # pv to copy with a progress bar
 pv /mnt/e/janus/evalai_nodejs.tar > ~/tmp/evalai_nodejs.tar
 sudo docker load -i evalai_nodejs.tar
+cd ~/evalai
+docker-compose up
 ```
 
 but I don't know how to go further as explained in [this evalai issue](https://github.com/Cloud-CV/EvalAI/issues/3777)
