@@ -65,4 +65,4 @@ cd ~/evalai
 docker-compose up
 ```
 
-but I don't know how to go further as explained in [this evalai issue](https://github.com/Cloud-CV/EvalAI/issues/3777)
+~~but I don't know how to go further as explained in [this evalai issue](https://github.com/Cloud-CV/EvalAI/issues/3777)~~
