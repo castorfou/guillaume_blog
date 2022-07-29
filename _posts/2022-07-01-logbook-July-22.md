@@ -45,9 +45,7 @@ image: images/logbook.jpg
 
 As a matter of test, installation of [EvalAI](https://github.com/Cloud-CV/EvalAI) on my linux machine (no issue with corporate FW) using [docker](/guillaume_blog/blog/install-docker-on-linux.html).
 
-When starting, this error: `ERROR: for db Cannot start service db: [...] listen tcp 0.0.0.0:5432: bind: address already in use`
-
-Which is explained and solved at [Evalai - Common Errors during installation](https://evalai.readthedocs.io/en/latest/faq(developers).html#q-getting-the-following-error)
+When starting, this error: `ERROR: for db Cannot start service db: [...] listen tcp 0.0.0.0:5432: bind: address already in use`. Just kill the running postgres process as explained in [Evalai - Common Errors during installation](https://evalai.readthedocs.io/en/latest/faq(developers).html#q-getting-the-following-error)
 
 **Tuesday 7/26**
 
