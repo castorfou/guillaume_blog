@@ -4,23 +4,21 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="twitter:card" content="summary_large_image" /><!-- Begin Jekyll SEO tag v2.8.0 -->
-<title>install docker within linux | Guillaume’s blog</title>
+<title>EvalAI and gitlab | Guillaume’s blog</title>
 <meta name="generator" content="Jekyll v4.1.1" />
-<meta property="og:title" content="install docker within linux" />
+<meta property="og:title" content="EvalAI and gitlab" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="under ubuntu 20.04" />
-<meta property="og:description" content="under ubuntu 20.04" />
-<link rel="canonical" href="https://castorfou.github.io/guillaume_blog/blog/install-docker-on-linux.html" />
-<meta property="og:url" content="https://castorfou.github.io/guillaume_blog/blog/install-docker-on-linux.html" />
+<meta name="description" content="host evalai fully internally (UI and code)" />
+<meta property="og:description" content="host evalai fully internally (UI and code)" />
+<link rel="canonical" href="https://castorfou.github.io/guillaume_blog/blog/evalai-and-gitlab.html" />
+<meta property="og:url" content="https://castorfou.github.io/guillaume_blog/blog/evalai-and-gitlab.html" />
 <meta property="og:site_name" content="Guillaume’s blog" />
-<meta property="og:image" content="https://castorfou.github.io/guillaume_blog/images/icons/image_linux.jpg" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2022-07-21T00:00:00-05:00" />
-<meta name="twitter:card" content="summary_large_image" />
-<meta property="twitter:image" content="https://castorfou.github.io/guillaume_blog/images/icons/image_linux.jpg" />
-<meta property="twitter:title" content="install docker within linux" />
+<meta property="article:published_time" content="2022-07-29T00:00:00-05:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="EvalAI and gitlab" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2022-07-21T00:00:00-05:00","datePublished":"2022-07-21T00:00:00-05:00","description":"under ubuntu 20.04","headline":"install docker within linux","image":"https://castorfou.github.io/guillaume_blog/images/icons/image_linux.jpg","mainEntityOfPage":{"@type":"WebPage","@id":"https://castorfou.github.io/guillaume_blog/blog/install-docker-on-linux.html"},"url":"https://castorfou.github.io/guillaume_blog/blog/install-docker-on-linux.html"}</script>
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2022-07-29T00:00:00-05:00","datePublished":"2022-07-29T00:00:00-05:00","description":"host evalai fully internally (UI and code)","headline":"EvalAI and gitlab","mainEntityOfPage":{"@type":"WebPage","@id":"https://castorfou.github.io/guillaume_blog/blog/evalai-and-gitlab.html"},"url":"https://castorfou.github.io/guillaume_blog/blog/evalai-and-gitlab.html"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/guillaume_blog/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="https://castorfou.github.io/guillaume_blog/feed.xml" title="Guillaume's blog" /><link rel="shortcut icon" type="image/x-icon" href="/guillaume_blog/images/favicon.ico"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Primer/15.2.0/primer.css" integrity="sha512-xTz2ys4coGAOz8vuV1NcQBkgVmKhsSEtjbqyMJbBHRplFuvKIUo6xhLHpAyPt9mfR6twHJgn9OgVLuqOvjeBhg==" crossorigin="anonymous" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" />
@@ -91,8 +89,8 @@ window.onload = wrap_img;
         <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
 
   <header class="post-header">
-    <h1 class="post-title p-name" itemprop="name headline">install docker within linux</h1><p class="page-description">under ubuntu 20.04</p><p class="post-meta post-meta-title"><time class="dt-published" datetime="2022-07-21T00:00:00-05:00" itemprop="datePublished">
-        Jul 21, 2022
+    <h1 class="post-title p-name" itemprop="name headline">EvalAI and gitlab</h1><p class="page-description">host evalai fully internally (UI and code)</p><p class="post-meta post-meta-title"><time class="dt-published" datetime="2022-07-29T00:00:00-05:00" itemprop="datePublished">
+        Jul 29, 2022
       </time>
        • <span class="read-time" title="Estimated read time">
     
@@ -104,10 +102,16 @@ window.onload = wrap_img;
     
       <p class="category-tags"><i class="fas fa-tags category-tags-icon"></i></i> 
       
-        <a class="category-tags-link" href="/guillaume_blog/categories/#linux">linux</a>
+        <a class="category-tags-link" href="/guillaume_blog/categories/#docker">docker</a>
         &nbsp;
       
-        <a class="category-tags-link" href="/guillaume_blog/categories/#docker">docker</a>
+        <a class="category-tags-link" href="/guillaume_blog/categories/#evalai">evalai</a>
+        &nbsp;
+      
+        <a class="category-tags-link" href="/guillaume_blog/categories/#gitlab">gitlab</a>
+        &nbsp;
+      
+        <a class="category-tags-link" href="/guillaume_blog/categories/#wsl">wsl</a>
         
       
       </p>
@@ -118,56 +122,32 @@ window.onload = wrap_img;
   <div class="post-content e-content" itemprop="articleBody">
     <ul id="toc" class="section-nav">
 <li class="toc-entry toc-h2"><a href="#source-of-inspiration">source of inspiration</a></li>
-<li class="toc-entry toc-h2"><a href="#installation-and-test">Installation and test</a>
-<ul>
-<li class="toc-entry toc-h4"><a href="#set-up-the-repository">Set up the repository</a></li>
-<li class="toc-entry toc-h4"><a href="#install-docker-engine">Install Docker Engine</a></li>
-<li class="toc-entry toc-h4"><a href="#test">Test</a></li>
-</ul>
-</li>
+<li class="toc-entry toc-h2"><a href="#run-docker-from-wsl">Run docker from wsl</a></li>
+<li class="toc-entry toc-h1"><a href="#host-challenge-using-gitlab">Host challenge using gitlab</a></li>
 </ul><h2 id="source-of-inspiration">
 <a class="anchor" href="#source-of-inspiration" aria-hidden="true"><span class="octicon octicon-link"></span></a>source of inspiration</h2>
 
-<p><a href="https://docs.docker.com/engine/install/ubuntu/#install-using-the-repository">Install Docker Engine on Ubuntu</a></p>
+<p>Deploy evalai docker images by <a href="/guillaume_blog/blog/logbook-July-22.html#week-30---july-22">copying from another PC</a></p>
 
-<h2 id="installation-and-test">
-<a class="anchor" href="#installation-and-test" aria-hidden="true"><span class="octicon octicon-link"></span></a>Installation and test</h2>
+<p><a href="https://evalai.readthedocs.io/en/latest/host_challenge.html#host-challenge-using-github">Host challenge using github</a></p>
 
-<h4 id="set-up-the-repository">
-<a class="anchor" href="#set-up-the-repository" aria-hidden="true"><span class="octicon octicon-link"></span></a>Set up the repository</h4>
+<h2 id="run-docker-from-wsl">
+<a class="anchor" href="#run-docker-from-wsl" aria-hidden="true"><span class="octicon octicon-link"></span></a>Run docker from wsl</h2>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>apt-get update
-<span class="nb">sudo </span>apt-get <span class="nb">install</span> <span class="se">\</span>
-    ca-certificates <span class="se">\</span>
-    curl <span class="se">\</span>
-    gnupg <span class="se">\</span>
-    lsb-release
-
-<span class="c"># Add Docker’s official GPG key</span>
-<span class="nb">sudo mkdir</span> <span class="nt">-p</span> /etc/apt/keyrings
-curl <span class="nt">-fsSL</span> https://download.docker.com/linux/ubuntu/gpg | <span class="nb">sudo </span>gpg <span class="nt">--dearmor</span> <span class="nt">-o</span> /etc/apt/keyrings/docker.gpg
-
-<span class="c"># set up the Docker repository</span>
-<span class="nb">echo</span> <span class="se">\</span>
-  <span class="s2">"deb [arch=</span><span class="si">$(</span>dpkg <span class="nt">--print-architecture</span><span class="si">)</span><span class="s2"> signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu </span><span class="se">\</span><span class="s2">
-  </span><span class="si">$(</span>lsb_release <span class="nt">-cs</span><span class="si">)</span><span class="s2"> stable"</span> | <span class="nb">sudo tee</span> /etc/apt/sources.list.d/docker.list <span class="o">&gt;</span> /dev/null
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cd</span> ~/evalai
+docker-compose up
 </code></pre></div></div>
 
-<h4 id="install-docker-engine">
-<a class="anchor" href="#install-docker-engine" aria-hidden="true"><span class="octicon octicon-link"></span></a>Install Docker Engine</h4>
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Install Docker Engine</span>
-<span class="nb">sudo </span>apt-get update
-<span class="nb">sudo </span>apt-get <span class="nb">install </span>docker-ce docker-ce-cli containerd.io docker-compose-plugin
-</code></pre></div></div>
+<p>In case of errors:</p>
 
-<h4 id="test">
-<a class="anchor" href="#test" aria-hidden="true"><span class="octicon octicon-link"></span></a>Test</h4>
+<ul>
+  <li>
+<code class="language-plaintext highlighter-rouge">ERROR: for nodejs UnixHTTPConnectionPool(host='localhost', port=None): Read timed out.</code> Restart docker service and rerun evalai: <code class="language-plaintext highlighter-rouge">sudo service docker restart</code>
+</li>
+</ul>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>docker run hello-world
-<span class="o">&gt;</span> Hello from Docker!
-<span class="o">&gt;</span> <span class="o">[</span>...]
-</code></pre></div></div>
-
+<h1 id="host-challenge-using-gitlab">
+<a class="anchor" href="#host-challenge-using-gitlab" aria-hidden="true"><span class="octicon octicon-link"></span></a>Host challenge using gitlab</h1>
 
   </div><!-- from https://github.com/utterance/utterances -->
 <script src="https://utteranc.es/client.js"
@@ -177,7 +157,7 @@ curl <span class="nt">-fsSL</span> https://download.docker.com/linux/ubuntu/gpg 
         theme="github-light"
         crossorigin="anonymous"
         async>
-</script><a class="u-url" href="/guillaume_blog/blog/install-docker-on-linux.html" hidden></a>
+</script><a class="u-url" href="/guillaume_blog/blog/evalai-and-gitlab.html" hidden></a>
 </article>
 
       </div>

@@ -1,4 +1,22 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.1.1">Jekyll</generator><link href="https://castorfou.github.io/guillaume_blog/feed.xml" rel="self" type="application/atom+xml" /><link href="https://castorfou.github.io/guillaume_blog/" rel="alternate" type="text/html" /><updated>2022-07-29T01:51:01-05:00</updated><id>https://castorfou.github.io/guillaume_blog/feed.xml</id><title type="html">Guillaume’s blog</title><subtitle>Journey for a datascientist</subtitle><entry><title type="html">install ubuntu 18.04 on WSL and then evalai</title><link href="https://castorfou.github.io/guillaume_blog/blog/install-ubuntu-18.04-on-WSL.html" rel="alternate" type="text/html" title="install ubuntu 18.04 on WSL and then evalai" /><published>2022-07-26T00:00:00-05:00</published><updated>2022-07-26T00:00:00-05:00</updated><id>https://castorfou.github.io/guillaume_blog/blog/install%20ubuntu%2018.04%20on%20WSL</id><content type="html" xml:base="https://castorfou.github.io/guillaume_blog/blog/install-ubuntu-18.04-on-WSL.html"><![CDATA[<h2 id="source-of-inspiration">source of inspiration</h2>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.1.1">Jekyll</generator><link href="https://castorfou.github.io/guillaume_blog/feed.xml" rel="self" type="application/atom+xml" /><link href="https://castorfou.github.io/guillaume_blog/" rel="alternate" type="text/html" /><updated>2022-07-29T03:12:23-05:00</updated><id>https://castorfou.github.io/guillaume_blog/feed.xml</id><title type="html">Guillaume’s blog</title><subtitle>Journey for a datascientist</subtitle><entry><title type="html">EvalAI and gitlab</title><link href="https://castorfou.github.io/guillaume_blog/blog/evalai-and-gitlab.html" rel="alternate" type="text/html" title="EvalAI and gitlab" /><published>2022-07-29T00:00:00-05:00</published><updated>2022-07-29T00:00:00-05:00</updated><id>https://castorfou.github.io/guillaume_blog/blog/evalai%20and%20gitlab</id><content type="html" xml:base="https://castorfou.github.io/guillaume_blog/blog/evalai-and-gitlab.html"><![CDATA[<h2 id="source-of-inspiration">source of inspiration</h2>
+
+<p>Deploy evalai docker images by <a href="/guillaume_blog/blog/logbook-July-22.html#week-30---july-22">copying from another PC</a></p>
+
+<p><a href="https://evalai.readthedocs.io/en/latest/host_challenge.html#host-challenge-using-github">Host challenge using github</a></p>
+
+<h2 id="run-docker-from-wsl">Run docker from wsl</h2>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cd</span> ~/evalai
+docker-compose up
+</code></pre></div></div>
+
+<p>In case of errors:</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">ERROR: for nodejs UnixHTTPConnectionPool(host='localhost', port=None): Read timed out.</code> Restart docker service and rerun evalai: <code class="language-plaintext highlighter-rouge">sudo service docker restart</code></li>
+</ul>
+
+<h1 id="host-challenge-using-gitlab">Host challenge using gitlab</h1>]]></content><author><name></name></author><category term="docker" /><category term="evalai" /><category term="gitlab" /><category term="wsl" /><summary type="html"><![CDATA[host evalai fully internally (UI and code)]]></summary></entry><entry><title type="html">install ubuntu 18.04 on WSL and then evalai</title><link href="https://castorfou.github.io/guillaume_blog/blog/install-ubuntu-18.04-on-WSL.html" rel="alternate" type="text/html" title="install ubuntu 18.04 on WSL and then evalai" /><published>2022-07-26T00:00:00-05:00</published><updated>2022-07-26T00:00:00-05:00</updated><id>https://castorfou.github.io/guillaume_blog/blog/install%20ubuntu%2018.04%20on%20WSL</id><content type="html" xml:base="https://castorfou.github.io/guillaume_blog/blog/install-ubuntu-18.04-on-WSL.html"><![CDATA[<h2 id="source-of-inspiration">source of inspiration</h2>
 
 <p><a href="/guillaume_blog/blog/install-ubuntu-22.04-on-WSL.html">install ubuntu 22.04 on WSL</a></p>
 
@@ -503,7 +521,7 @@ curl <span class="nt">-fsSL</span> https://download.docker.com/linux/ubuntu/gpg 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>docker run hello-world
 <span class="o">&gt;</span> Hello from Docker!
 <span class="o">&gt;</span> <span class="o">[</span>...]
-</code></pre></div></div>]]></content><author><name></name></author><category term="wsl" /><summary type="html"><![CDATA[under ubuntu 20.04]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://castorfou.github.io/guillaume_blog/images/icons/image_linux.jpg" /><media:content medium="image" url="https://castorfou.github.io/guillaume_blog/images/icons/image_linux.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">install docker within WSL</title><link href="https://castorfou.github.io/guillaume_blog/blog/install-docker-on-WSL.html" rel="alternate" type="text/html" title="install docker within WSL" /><published>2022-07-21T00:00:00-05:00</published><updated>2022-07-21T00:00:00-05:00</updated><id>https://castorfou.github.io/guillaume_blog/blog/install%20docker%20on%20WSL</id><content type="html" xml:base="https://castorfou.github.io/guillaume_blog/blog/install-docker-on-WSL.html"><![CDATA[<h2 id="source-of-inspiration">source of inspiration</h2>
+</code></pre></div></div>]]></content><author><name></name></author><category term="linux" /><category term="docker" /><summary type="html"><![CDATA[under ubuntu 20.04]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://castorfou.github.io/guillaume_blog/images/icons/image_linux.jpg" /><media:content medium="image" url="https://castorfou.github.io/guillaume_blog/images/icons/image_linux.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">install docker within WSL</title><link href="https://castorfou.github.io/guillaume_blog/blog/install-docker-on-WSL.html" rel="alternate" type="text/html" title="install docker within WSL" /><published>2022-07-21T00:00:00-05:00</published><updated>2022-07-21T00:00:00-05:00</updated><id>https://castorfou.github.io/guillaume_blog/blog/install%20docker%20on%20WSL</id><content type="html" xml:base="https://castorfou.github.io/guillaume_blog/blog/install-docker-on-WSL.html"><![CDATA[<h2 id="source-of-inspiration">source of inspiration</h2>
 
 <p><a href="https://dev.michelin.com/wsl2/docker">WSL 2 Docker inside WSL 2</a></p>
 
@@ -645,7 +663,7 @@ curl <span class="nt">-fsSL</span> https://download.docker.com/linux/<span class
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker run docker.artifactory.michelin.com/hello-world
 <span class="o">&gt;</span> Hello from Docker!
 <span class="o">&gt;</span> This message shows that your installation appears to be working correctly.
-</code></pre></div></div>]]></content><author><name></name></author><category term="wsl" /><summary type="html"><![CDATA[based on my automatic wsl installation]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://castorfou.github.io/guillaume_blog/images/icons/wsl2.jpeg" /><media:content medium="image" url="https://castorfou.github.io/guillaume_blog/images/icons/wsl2.jpeg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Logbook for July 22</title><link href="https://castorfou.github.io/guillaume_blog/blog/logbook-July-22.html" rel="alternate" type="text/html" title="Logbook for July 22" /><published>2022-07-01T00:00:00-05:00</published><updated>2022-07-01T00:00:00-05:00</updated><id>https://castorfou.github.io/guillaume_blog/blog/logbook-July-22</id><content type="html" xml:base="https://castorfou.github.io/guillaume_blog/blog/logbook-July-22.html"><![CDATA[<h2 id="week-26---july-22">Week 26 - July 22</h2>
+</code></pre></div></div>]]></content><author><name></name></author><category term="wsl" /><category term="docker" /><summary type="html"><![CDATA[based on my automatic wsl installation]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://castorfou.github.io/guillaume_blog/images/icons/wsl2.jpeg" /><media:content medium="image" url="https://castorfou.github.io/guillaume_blog/images/icons/wsl2.jpeg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Logbook for July 22</title><link href="https://castorfou.github.io/guillaume_blog/blog/logbook-July-22.html" rel="alternate" type="text/html" title="Logbook for July 22" /><published>2022-07-01T00:00:00-05:00</published><updated>2022-07-01T00:00:00-05:00</updated><id>https://castorfou.github.io/guillaume_blog/blog/logbook-July-22</id><content type="html" xml:base="https://castorfou.github.io/guillaume_blog/blog/logbook-July-22.html"><![CDATA[<h2 id="week-26---july-22">Week 26 - July 22</h2>
 
 <p><strong>Friday 7/1</strong></p>
 
@@ -706,7 +724,19 @@ docker-compose up
   </li>
 </ul>
 
-<p><del>but I don’t know how to go further as explained in <a href="https://github.com/Cloud-CV/EvalAI/issues/3777">this evalai issue</a></del></p>]]></content><author><name></name></author><category term="logbook" /><summary type="html"><![CDATA[Week 26 - July 22]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://castorfou.github.io/guillaume_blog/images/logbook.jpg" /><media:content medium="image" url="https://castorfou.github.io/guillaume_blog/images/logbook.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Deep RL class - huggingface</title><link href="https://castorfou.github.io/guillaume_blog/blog/deep-rl-class-with-huggingface.html" rel="alternate" type="text/html" title="Deep RL class - huggingface" /><published>2022-06-15T00:00:00-05:00</published><updated>2022-06-15T00:00:00-05:00</updated><id>https://castorfou.github.io/guillaume_blog/blog/deep-rl-class-with-huggingface</id><content type="html" xml:base="https://castorfou.github.io/guillaume_blog/blog/deep-rl-class-with-huggingface.html"><![CDATA[<p>Didn’t mention that but I have started <a href="https://github.com/huggingface/deep-rl-class">The Hugging Face Deep Reinforcement Learning Class</a> by Thomas Simonini.</p>
+<p><del>but I don’t know how to go further as explained in <a href="https://github.com/Cloud-CV/EvalAI/issues/3777">this evalai issue</a></del></p>
+
+<p>Ok this works with the following images:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>evalai_django.tar  
+evalai_nodejs.tar  
+evalai_nodejs_v2.tar  
+evalai_worker.tar
+</code></pre></div></div>
+
+<p><strong>Friday7/29</strong></p>
+
+<p>Now that I can start Evalai on my corporate machine, how to setup it with gitlab.</p>]]></content><author><name></name></author><category term="logbook" /><summary type="html"><![CDATA[Week 26 - July 22]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://castorfou.github.io/guillaume_blog/images/logbook.jpg" /><media:content medium="image" url="https://castorfou.github.io/guillaume_blog/images/logbook.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Deep RL class - huggingface</title><link href="https://castorfou.github.io/guillaume_blog/blog/deep-rl-class-with-huggingface.html" rel="alternate" type="text/html" title="Deep RL class - huggingface" /><published>2022-06-15T00:00:00-05:00</published><updated>2022-06-15T00:00:00-05:00</updated><id>https://castorfou.github.io/guillaume_blog/blog/deep-rl-class-with-huggingface</id><content type="html" xml:base="https://castorfou.github.io/guillaume_blog/blog/deep-rl-class-with-huggingface.html"><![CDATA[<p>Didn’t mention that but I have started <a href="https://github.com/huggingface/deep-rl-class">The Hugging Face Deep Reinforcement Learning Class</a> by Thomas Simonini.</p>
 
 <p>Thomas is now part of HuggingFace.</p>
 
@@ -966,436 +996,4 @@ pass init <span class="nv">$key_id</span>
   <li>Clean content from directories (examples) in  <code class="language-plaintext highlighter-rouge">_notebooks</code>, <code class="language-plaintext highlighter-rouge">_posts</code>, <code class="language-plaintext highlighter-rouge">_words</code></li>
   <li>Pages: <code class="language-plaintext highlighter-rouge">_pages/about.md</code>, <code class="language-plaintext highlighter-rouge">index.html</code>, <code class="language-plaintext highlighter-rouge">README.md</code></li>
   <li>and utils: <code class="language-plaintext highlighter-rouge">refresh_blog_content.sh</code>, <code class="language-plaintext highlighter-rouge">publish.sh</code></li>
-</ol>]]></content><author><name></name></author><category term="fastpages" /><summary type="html"><![CDATA[following bug with pyYaml]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://castorfou.github.io/guillaume_blog/images/icons/fastai.png" /><media:content medium="image" url="https://castorfou.github.io/guillaume_blog/images/icons/fastai.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">install ubuntu 22.04 on WSL</title><link href="https://castorfou.github.io/guillaume_blog/blog/install-ubuntu-22.04-on-WSL.html" rel="alternate" type="text/html" title="install ubuntu 22.04 on WSL" /><published>2022-04-25T00:00:00-05:00</published><updated>2022-04-25T00:00:00-05:00</updated><id>https://castorfou.github.io/guillaume_blog/blog/install%20ubuntu%2022.04%20on%20WSL</id><content type="html" xml:base="https://castorfou.github.io/guillaume_blog/blog/install-ubuntu-22.04-on-WSL.html"><![CDATA[<h2 id="source-of-inspiration">source of inspiration</h2>
-
-<p><a href="https://www.windowscentral.com/how-install-ubuntu-2110-wsl-windows-10-and-11">How to install Ubuntu 21.10 on WSL for Windows 10 and 11</a></p>
-
-<h2 id="installation">Installation</h2>
-
-<h3 id="uninstall-image-if-needed">uninstall image (if needed)</h3>
-
-<div class="language-powershell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># wsl --unregister &lt;distroName&gt;</span><span class="w">
-</span><span class="n">wsl</span><span class="w"> </span><span class="nt">--unregister</span><span class="w"> </span><span class="nx">ubuntu-22.04</span><span class="w">
-</span></code></pre></div></div>
-
-<h3 id="download-images">download images</h3>
-
-<p>From <a href="https://cloud-images.ubuntu.com/jammy/current/">cloud images ubuntu</a> (cloud-images &gt; jammy &gt; current), now there are wsl images:</p>
-
-<p><img src="https://www.windowscentral.com/sites/wpcentral.com/files/styles/larger/public/field/image/2022/01/ubuntu-cloud-images-website.png" alt="ubuntu cloud images" /></p>
-
-<p>I just have to download the last jammy (22.04) image <code class="language-plaintext highlighter-rouge">jammy-server-cloudimg-amd64-wsl.rootfs.tar.gz</code></p>
-
-<h3 id="install-and-setup-from-powershell">install and setup from powershell</h3>
-
-<p>I have downloaded this ubuntu image to <code class="language-plaintext highlighter-rouge">D:\wsl\ubuntu-22.04\download</code></p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">(</span>base<span class="o">)</span> guillaume@LL11LPC0PQARQ:/mnt/d/wsl<span class="nv">$ </span>tree
-<span class="nb">.</span>
-├── Ubuntu-20.04
-│   └── ext4.vhdx
-├── Ubuntu-22.04
-│   ├── download
-│   │   └── jammy-server-cloudimg-amd64-wsl.rootfs.tar.gz
-│   └── instance
-</code></pre></div></div>
-
-<p>and my <code class="language-plaintext highlighter-rouge">ubuntu-22.04</code> instance will stand in <code class="language-plaintext highlighter-rouge">D:\wsl\ubuntu-22.04\instance</code></p>
-
-<p>Install with this command from powershell</p>
-
-<div class="language-powershell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># wsl --import &lt;distroname&gt; &lt;location of instance&gt; &lt;location of download&gt;</span><span class="w">
-</span><span class="n">wsl</span><span class="w"> </span><span class="nt">--import</span><span class="w"> </span><span class="nx">ubuntu-22.04</span><span class="w"> </span><span class="nx">D:\wsl\ubuntu-22.04\instance</span><span class="w"> </span><span class="nx">D:\wsl\ubuntu-22.04\download\jammy-server-cloudimg-amd64-wsl.rootfs.tar.gz</span><span class="w">
-</span></code></pre></div></div>
-
-<p>It takes 3-4 minutes to install. and should be visible in your wsl instances.</p>
-
-<div class="language-powershell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="w"> </span><span class="n">wsl</span><span class="w"> </span><span class="nt">--list</span><span class="w"> </span><span class="nt">--all</span><span class="w"> </span><span class="nt">-v</span><span class="w">
-  </span><span class="n">NAME</span><span class="w">            </span><span class="nx">STATE</span><span class="w">           </span><span class="nx">VERSION</span><span class="w">
-  </span><span class="n">ubuntu-22.04</span><span class="w">    </span><span class="nx">Stopped</span><span class="w">         </span><span class="nx">2</span><span class="w">
-</span></code></pre></div></div>
-
-<p>then to run it</p>
-
-<div class="language-powershell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># wsl -d &lt;distroname&gt;</span><span class="w">
-</span><span class="n">wsl</span><span class="w"> </span><span class="nt">-d</span><span class="w"> </span><span class="nx">ubuntu-22.04</span><span class="w">
-</span></code></pre></div></div>
-
-<p>or</p>
-
-<h4 id="use-windows-terminal-as-a-launcher">use Windows Terminal as a launcher</h4>
-
-<p>Windows Terminal is a smart way to group all terminals (powershell, and all your wsl instances)</p>
-
-<p><img src="../images/windows_terminal.jpg" alt="windows terminal" /></p>
-
-<p>It can be installed even with limited windows store access by clicking install in <a href="https://docs.microsoft.com/fr-fr/windows/terminal/install">Installer le Terminal Windows et commencer à le configurer</a></p>
-
-<p>Automatically all wsl instances appear in Settings.</p>
-
-<h2 id="automatic-setup">Automatic setup</h2>
-
-<p>copy these 2 <a href="https://github.com/castorfou/guillaume_blog/tree/master/files">scripts</a> in /root/ (given they are in <code class="language-plaintext highlighter-rouge">D:\wsl\ubuntu-22.04\download</code>)</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cp</span> /mnt/d/wsl/Ubuntu-22.04/download/setup_wsl_<span class="k">*</span> <span class="nb">.</span>
-</code></pre></div></div>
-
-<p><code class="language-plaintext highlighter-rouge">setup_wsl_root.sh</code> <a href="../files/setup_wsl_root.sh">download</a></p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">#!/bin/bash</span>
-
-<span class="nb">echo</span> <span class="s2">"0. get username: "</span>
-<span class="nb">read </span>user_name
-
-<span class="nb">.</span> /etc/lsb-release
-
-<span class="nb">echo </span>Configuration <span class="k">for </span>user <span class="o">[</span><span class="nv">$user_name</span><span class="o">]</span>
-<span class="nb">echo </span>of distribution <span class="nv">$DISTRIB_CODENAME</span>
-<span class="nb">echo
-
-echo</span> <span class="s2">"1. create user and add in sudo"</span>
-<span class="c">#adduser --disabled-password --gecos "" $user_name</span>
-adduser <span class="nt">--gecos</span> <span class="s2">""</span> <span class="nv">$user_name</span>
-usermod <span class="nt">-aG</span> <span class="nb">sudo</span> <span class="nv">$user_name</span>
-<span class="nb">echo
-
-echo</span> <span class="s2">"2. create wsl.conf file"</span>
-<span class="nb">rm</span> <span class="nt">-rf</span> /etc/wsl.conf
-<span class="nb">tee</span> /etc/wsl.conf <span class="o">&lt;&lt;</span> <span class="no">EOF</span><span class="sh">
-# Set the user when launching a distribution with WSL.
-[user]
-default=</span><span class="nv">$user_name</span><span class="sh">
-</span><span class="no">EOF
-</span><span class="nb">echo
-
-echo</span> <span class="s2">"3. prepare setup by user"</span>
-<span class="nb">cp </span>setup_wsl_user.sh /home/<span class="nv">$user_name</span>
-<span class="nb">chown</span> <span class="nv">$user_name</span>:users /home/<span class="nv">$user_name</span>/setup_wsl_user.sh
-<span class="nb">chmod </span>750  /home/<span class="nv">$user_name</span>/setup_wsl_user.sh
-<span class="nb">tee</span> <span class="nt">-a</span> /home/<span class="nv">$user_name</span>/.bashrc <span class="o">&lt;&lt;</span> <span class="no">EOF</span><span class="sh">
-if [ ! -e ".wsl_configured" ]; then
-		./setup_wsl_user.sh
-        touch .wsl_configured
-fi
-</span><span class="no">EOF
-</span><span class="nb">echo
-
-echo</span> <span class="s2">"end of configuration for root"</span>
-<span class="nb">echo</span> <span class="s2">"stop wsl instance by running 'wsl -t &lt;distro-name&gt;' from powershell"</span>
-<span class="nb">echo</span> <span class="s2">"and start from Windows Terminal"</span>
-</code></pre></div></div>
-
-<p><code class="language-plaintext highlighter-rouge">setup_wsl_user.sh</code> <a href="../files/setup_wsl_user.sh">download</a></p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">#!/bin/bash</span>
-
-<span class="nb">echo</span> <span class="s2">"1. setup wsl-vpnkit"</span>
-<span class="k">if </span><span class="nb">grep</span> <span class="nt">-Fxq</span> <span class="s2">"wsl-vpnkit"</span> ~/.profile
-<span class="k">then</span>
-    <span class="c"># code if found</span>
-	<span class="nb">echo</span> <span class="s2">"   wsl-vpnkit already setup"</span>
-<span class="k">else</span>
-    <span class="c"># code if not found</span>
-	<span class="nb">echo</span> <span class="s1">'wsl.exe -d wsl-vpnkit service wsl-vpnkit start'</span> <span class="o">&gt;&gt;</span> ~/.profile
-<span class="k">fi
-</span>wsl.exe <span class="nt">-d</span> wsl-vpnkit service wsl-vpnkit start
-<span class="nb">source</span> ./.bashrc
-<span class="nb">echo
-
-echo</span> <span class="s2">"2. create ssh key to copy to gitlab"</span>
-<span class="nb">.</span> /etc/lsb-release
-<span class="k">if</span> <span class="o">[</span> <span class="o">!</span> <span class="nt">-e</span> <span class="s2">".ssh/id_rsa.pub"</span> <span class="o">]</span><span class="p">;</span> <span class="k">then
-		</span>ssh-keygen <span class="nt">-t</span> rsa <span class="nt">-b</span> 4096 <span class="nt">-C</span> <span class="s2">"WSL2 ubuntu </span><span class="nv">$DISTRIB_RELEASE</span><span class="s2">"</span>
-		<span class="nb">cat</span> .ssh/id_rsa.pub
-		<span class="nb">echo</span> <span class="s2">"copy this content to gitlab &gt; preferences &gt; SSH Keys"</span>
-		<span class="nb">read</span> <span class="nt">-p</span> <span class="s2">"Press any key to resume ..."</span>
-<span class="k">fi
-</span><span class="nb">echo
-
-echo</span> <span class="s2">"3. update certificates"</span>
-git clone git@gitlab.michelin.com:devops-foundation/devops_environment.git /tmp/devops_environment
-<span class="nb">sudo cp</span> /tmp/devops_environment/certs/<span class="k">*</span> /usr/local/share/ca-certificates/
-<span class="nb">sudo </span>update-ca-certificates
-<span class="nb">rm</span> <span class="nt">-rf</span> /tmp/devops_environment
-<span class="k">if</span> <span class="o">[</span> <span class="nv">$DISTRIB_RELEASE</span> <span class="o">==</span> <span class="s2">"22.04"</span> <span class="o">]</span>
-<span class="k">then
-</span><span class="nb">echo</span> <span class="s1">'bug SSL with ubuntu 22.04 - https://bugs.launchpad.net/ubuntu/+source/openssl/+bug/1963834/comments/7'</span>
-<span class="nb">sudo tee</span> <span class="nt">-a</span> /etc/ssl/openssl.cnf <span class="o">&lt;&lt;</span> <span class="no">EOF</span><span class="sh">
-[openssl_init]
-ssl_conf = ssl_sect
-
-[ssl_sect]
-system_default = system_default_sect
-
-[system_default_sect]
-Options = UnsafeLegacyRenegotiation
-</span><span class="no">EOF
-</span><span class="k">fi
-</span><span class="nb">echo
-
-echo</span> <span class="s2">"4. update apt sources with artifactory"</span>
-<span class="nb">echo</span> <span class="s1">'Acquire { http::User-Agent "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:13.37) Gecko/20100101 Firefox/31.33.7"; };'</span> | <span class="nb">sudo tee</span> /etc/apt/apt.conf.d/90globalprotectconf
-<span class="nb">sudo sed</span> <span class="nt">-i</span> <span class="s1">'s,http://archive.ubuntu.com/ubuntu,https://artifactory.michelin.com/artifactory/ubuntu-archive-remote,g'</span> /etc/apt/sources.list
-<span class="nb">sudo sed</span> <span class="nt">-i</span> <span class="s1">'s,http://security.ubuntu.com/ubuntu,https://artifactory.michelin.com/artifactory/ubuntu-archive-remote,g'</span> /etc/apt/sources.list
-<span class="nb">sudo </span>apt update
-<span class="nb">sudo </span>apt upgrade <span class="nt">-y</span>
-<span class="nb">echo</span>
-</code></pre></div></div>
-
-<p>Then</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">chmod</span> +x setup_wsl_root.sh
-./setup_wsl_root.sh
-</code></pre></div></div>
-
-<p>As explained stop wsl instance by running <code class="language-plaintext highlighter-rouge">wsl --shutdown ubuntu-22.04</code> from powershell
-and start from Windows Terminal</p>
-
-<p>It restarts from your user and it will install:</p>
-
-<ul>
-  <li>setup wsl-vpnkit</li>
-  <li>create ssh key to copy to gitlab</li>
-  <li>update certificates</li>
-  <li>update apt sources with artifactory</li>
-</ul>
-
-<h2 id="and-now-we-can-install-other-parts">And now we can install other parts</h2>
-
-<p>all the scripts are in <a href="https://github.com/castorfou/guillaume_blog/tree/master/files">https://github.com/castorfou/guillaume_blog/tree/master/files</a></p>
-
-<h3 id="00---keep-config-files-in-git">00 - keep config files in git</h3>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>wget <span class="nt">--no-check-certificate</span> <span class="nt">--content-disposition</span> <span class="nt">-O</span> - https://raw.githubusercontent.com/castorfou/guillaume_blog/master/files/setup_wsl_00_config_files_in_git.sh | bash
-<span class="nb">source</span> .bashrc
-</code></pre></div></div>
-
-<h3 id="01---automount-secured-vbox">01 - automount secured vbox</h3>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>wget <span class="nt">--no-check-certificate</span> <span class="nt">--content-disposition</span> <span class="nt">-O</span> - https://raw.githubusercontent.com/castorfou/guillaume_blog/master/files/setup_wsl_01_automount_secured_vbox.sh | bash
-</code></pre></div></div>
-
-<h3 id="02---python-with-conda-and-configure-base-environment-jupyterlab-mamba">02 - python with conda and configure base environment (jupyterlab, mamba)</h3>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>wget <span class="nt">--no-check-certificate</span> <span class="nt">--content-disposition</span> <span class="nt">-O</span> - https://raw.githubusercontent.com/castorfou/guillaume_blog/master/files/setup_wsl_02_install_python_conda_part1.sh | bash
-<span class="nb">cd 
-source</span> .bashrc
-wget <span class="nt">--no-check-certificate</span> <span class="nt">--content-disposition</span> <span class="nt">-O</span> - https://raw.githubusercontent.com/castorfou/guillaume_blog/master/files/setup_wsl_02_install_python_conda_part2.sh | bash
-</code></pre></div></div>
-
-<h3 id="03---bat-cat">03 - bat cat</h3>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>wget <span class="nt">--no-check-certificate</span> <span class="nt">--content-disposition</span> <span class="nt">-O</span> - https://raw.githubusercontent.com/castorfou/guillaume_blog/master/files/setup_wsl_03_install_batcat.sh | bash
-<span class="nb">source</span> .bashrc
-</code></pre></div></div>
-
-<h3 id="04---git-access">04 - git access</h3>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">ln</span> <span class="nt">-s</span> /mnt/d/git/ ~/
-</code></pre></div></div>
-
-<h3 id="05---x-access-with-gwsl">05 - X access with GWSL</h3>
-
-<p><a href="https://opticos.github.io/gwsl/">GWSL Homepage</a></p>
-
-<p>if you have access to <a href="https://apps.microsoft.com/store/detail/gwsl/9NL6KD1H33V3?hl=fr-fr&amp;gl=FR">Windows Store</a>, it is available.</p>
-
-<p>Or alternate download are possible.</p>
-
-<p><img src="..\images\GWSL_Dashboard.jpg" alt="" /></p>
-
-<h3 id="06---git-credential-manager">06 - git credential manager</h3>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>wget <span class="nt">--no-check-certificate</span> <span class="nt">--content-disposition</span> <span class="nt">-O</span> - https://raw.githubusercontent.com/castorfou/guillaume_blog/master/files/setup_wsl_06_git_credential_manager.sh | bash
-</code></pre></div></div>
-
-<h3 id="07---install-wslu">07 - install wslu</h3>
-
-<p><a href="https://wslutiliti.es/wslu/">wslu</a></p>
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>wget <span class="nt">--no-check-certificate</span> <span class="nt">--content-disposition</span> <span class="nt">-O</span> - https://raw.githubusercontent.com/castorfou/guillaume_blog/master/files/setup_wsl_07_wslu.sh | bash
-</code></pre></div></div>
-
-<p>Some examples:</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>wslfetch
-
-               .-/+oossssoo+/-.               Windows Subsystem <span class="k">for </span>Linux <span class="o">(</span>WSL2<span class="o">)</span>
-           <span class="sb">`</span>:+ssssssssssssssssss+:<span class="sb">`</span>           guillaume@LL11LPC0PQARQ
-         -+ssssssssssssssssssyyssss+-         Build: 19044
-       .ossssssssssssssssssdMMMNysssso.       Branch: vb_release
-      /ssssssssssshdmmNNmmyNMMMMhssssss/      Release: Ubuntu 22.04 LTS
-     +ssssssssshmydMMMMMMMNddddyssssssss+     Kernel: Linux 5.10.102.1-microsoft-standard-WSL2
-    /sssssssshNMMMyhhyyyyhmNMMMNhssssssss/    Uptime: 0d 3h 44m
-   .ssssssssdMMMNhsssssssssshNMMMdssssssss.
-   +sssshhhyNMMNyssssssssssssyNMMMysssssss+
-   ossyNMMMNyMMhsssssssssssssshmmmhssssssso
-   ossyNMMMNyMMhsssssssssssssshmmmhssssssso
-   +sssshhhyNMMNyssssssssssssyNMMMysssssss+
-   .ssssssssdMMMNhsssssssssshNMMMdssssssss.
-    /sssssssshNMMMyhhyyyyhdNMMMNhssssssss/
-     +sssssssssdmydMMMMMMMMddddyssssssss+
-      /ssssssssssshdmNNNNmyNMMMMhssssss/
-       .ossssssssssssssssssdMMMNysssso.
-         -+sssssssssssssssssyyyssss+-
-           <span class="sb">`</span>:+ssssssssssssssssss+:<span class="sb">`</span>
-               .-/+oossssoo+/-.
-               
-<span class="nv">$ </span>wslpath <span class="nt">-u</span> <span class="s2">"C:</span><span class="se">\P</span><span class="s2">rogram Files</span><span class="se">\T</span><span class="s2">ypora</span><span class="se">\T</span><span class="s2">ypora.exe"</span>
-/mnt/c/Program Files/Typora/Typora.exe
-</code></pre></div></div>
-
-<h3 id="08---configure-pip">08 - configure pip</h3>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>wget <span class="nt">--no-check-certificate</span> <span class="nt">--content-disposition</span> <span class="nt">-O</span> - https://raw.githubusercontent.com/castorfou/guillaume_blog/master/files/setup_wsl_08_pip.sh | bash
-</code></pre></div></div>
-
-<h3 id="09---install-vscode">09 - install vscode</h3>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>code <span class="nb">.</span>
-</code></pre></div></div>
-
-<p>(given <a href="https://code.visualstudio.com/">Visual Studio Code is installed on the <strong>Windows</strong> side (not in WSL)</a>)</p>
-
-<p>(and if needed install <a href="https://aka.ms/vscode-remote/download/extension">Remote development</a>)</p>
-
-<h2 id="manual-setup-skip-if-to-follow-automatic-setup">Manual setup (skip if to follow automatic setup)</h2>
-
-<h3 id="basic-setup">basic setup</h3>
-
-<p>With this way to install, you don’t have any user, you don’t have any launcher within Windows.</p>
-
-<p>Create a user and add it to sudo:</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># adduser &lt;yourusername&gt;</span>
-<span class="c"># usermod -aG sudo &lt;yourusername&gt;</span>
-adduser guillaume
-usermod <span class="nt">-aG</span> <span class="nb">sudo </span>guillaume
-</code></pre></div></div>
-
-<p>and I can switch to this user simply with</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># su &lt;yourusername&gt;</span>
-su guillaume
-</code></pre></div></div>
-
-<h3 id="launch-distro-with-yourusername---update-wslconf">launch distro with yourusername - update <code class="language-plaintext highlighter-rouge">wsl.conf</code></h3>
-
-<p>Manually you can now start your distro with your username from powershell</p>
-
-<div class="language-powershell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># wsl -d &lt;distroname&gt; -u &lt;yourusername&gt;</span><span class="w">
-</span><span class="n">wsl</span><span class="w"> </span><span class="nt">-d</span><span class="w"> </span><span class="nx">ubuntu-22.04</span><span class="w"> </span><span class="nt">-u</span><span class="w"> </span><span class="nx">guillaume</span><span class="w">
-</span></code></pre></div></div>
-
-<p>Or from another wsl (huge avantage to run in linux terminal instead of powershell)</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>wsl.exe <span class="nt">-d</span> ubuntu-22.04 <span class="nt">-u</span> guillaume
-</code></pre></div></div>
-
-<p>but you can better keep this username setting by updating <code class="language-plaintext highlighter-rouge">wsl.conf</code></p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># /etc/wsl.conf</span>
-<span class="c"># Set the user when launching a distribution with WSL.</span>
-<span class="o">[</span>user]
-<span class="nv">default</span><span class="o">=</span>YourUserName
-</code></pre></div></div>
-
-<p>It is now setup. You can now shutdown this instance from powershell.</p>
-
-<div class="language-powershell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># wsl --shutdown &lt;distroname&gt;</span><span class="w">
-</span><span class="n">wsl</span><span class="w"> </span><span class="nt">--shutdown</span><span class="w"> </span><span class="nx">ubuntu-22.04</span><span class="w">
-</span></code></pre></div></div>
-
-<p>and when starting <code class="language-plaintext highlighter-rouge">wsl -d ubuntu-22.04</code>, you reach your username.</p>
-
-<h3 id="wsl-vpnkit">wsl-vpnkit</h3>
-
-<p>As wsl-vpnkit is already installed, I just have to</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">echo</span> <span class="s1">'wsl.exe -d wsl-vpnkit service wsl-vpnkit start'</span> <span class="o">&gt;&gt;</span> ~/.profile
-<span class="nb">source</span> .bashrc
-</code></pre></div></div>
-
-<h3 id="gitlab">gitlab</h3>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ssh-keygen <span class="nt">-t</span> rsa <span class="nt">-b</span> 4096 <span class="nt">-C</span> <span class="s2">"WSL2 ubuntu 22.04"</span>
-</code></pre></div></div>
-
-<p>and copy <code class="language-plaintext highlighter-rouge">id_rsa.pub</code> into gitlab &gt; preferences &gt; SSH Keys</p>
-
-<h3 id="corporate-ca-certificates">corporate CA certificates</h3>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git clone git@gitlab.michelin.com:devops-foundation/devops_environment.git /tmp/devops_environment
-<span class="nb">sudo cp</span> /tmp/devops_environment/certs/<span class="k">*</span> /usr/local/share/ca-certificates/
-<span class="nb">sudo </span>update-ca-certificates
-<span class="nb">rm</span> <span class="nt">-rf</span> /tmp/devops_environment
-</code></pre></div></div>
-
-<h3 id="apt-sources">apt sources</h3>
-
-<p>had to replace focal (20.04) to jammy (22.04)</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">echo</span> <span class="s1">'Acquire { http::User-Agent "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:13.37) Gecko/20100101 Firefox/31.33.7"; };'</span> | <span class="nb">sudo tee</span> /etc/apt/apt.conf.d/90globalprotectconf
-<span class="nb">sudo sed</span> <span class="nt">-i</span> <span class="s1">'s@^\(deb \)http://archive.ubuntu.com/ubuntu/\( jammy\(-updates\)\?.*\)$@\1https://artifactory.michelin.com/artifactory/ubuntu-archive-remote\2\n# &amp;@'</span> /etc/apt/sources.list
-<span class="nb">sudo sed</span> <span class="nt">-i</span> <span class="s1">'s@^\(deb \)http://security.ubuntu.com/ubuntu/\( jammy\(-updates\)\?.*\)$@\1https://artifactory.michelin.com/artifactory/ubuntu-security-remote\2\n# &amp;@'</span> /etc/apt/sources.list
-</code></pre></div></div>
-
-<h3 id="check-everything-is-ok">check everything is ok</h3>
-
-<ul>
-  <li>This command must return google ip:</li>
-</ul>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  host google.fr
-</code></pre></div></div>
-
-<ul>
-  <li>This command must return artifactory ip:</li>
-</ul>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  host artifactory.michelin.com
-</code></pre></div></div>
-
-<ul>
-  <li>You are able to update your distribution without error:</li>
-</ul>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="nb">sudo </span>apt update
-  <span class="nb">sudo </span>apt upgrade <span class="nt">-y</span>
-</code></pre></div></div>
-
-<h3 id="setup-config-dotfiles-with-whole-filesystem-">Setup config dotfiles with whole filesystem (/)</h3>
-
-<p>as detailed in <a href="https://castorfou.github.io/guillaume_blog/blog/keep-dotfiles-in-git.html">keep dotfiles in git</a></p>
-
-<p>but to manage the whole filesystem.</p>
-
-<h4 id="init-local-repo">init local repo</h4>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo mkdir</span> <span class="nt">-p</span> /.cfg
-<span class="nb">sudo chown</span> <span class="nv">$USER</span>:users /.cfg
-git init <span class="nt">--bare</span> /.cfg
-<span class="nb">alias </span><span class="nv">config</span><span class="o">=</span><span class="s1">'/usr/bin/git --git-dir=/.cfg/ --work-tree=/'</span>
-config config <span class="nt">--local</span> status.showUntrackedFiles no
-<span class="nb">echo</span> <span class="s2">"alias config='/usr/bin/git --git-dir=/.cfg/ --work-tree=/'"</span> <span class="o">&gt;&gt;</span> <span class="nv">$HOME</span>/.bash_aliases
-<span class="nb">cd
-source</span> .bashrc
-</code></pre></div></div>
-
-<h4 id="git-default-identity-if-needed">git default identity (if needed)</h4>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>config config <span class="nt">--global</span> user.email <span class="s2">"guillaume.ramelet@michelin.com"</span>
-config config <span class="nt">--global</span> user.name <span class="s2">"guillaume"</span>
-</code></pre></div></div>
-
-<h4 id="setup-branch-and-push-to-central-repo">setup branch and push to central repo</h4>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>config remote add origin git@gitlab.michelin.com:janus/dotfiles.git
-config fetch
-<span class="nb">cd
-</span>config add .bashrc
-config commit <span class="nt">-m</span> <span class="s1">'init with .bashrc'</span>
-
-config branch GR_WSL2_ubuntu22.04
-config checkout GR_WSL2_ubuntu22.04
-config push <span class="nt">--set-upstream</span> origin GR_WSL2_ubuntu22.04
-</code></pre></div></div>]]></content><author><name></name></author><category term="wsl" /><summary type="html"><![CDATA[even if not available in Windows Store]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://castorfou.github.io/guillaume_blog/images/icons/wsl2.jpeg" /><media:content medium="image" url="https://castorfou.github.io/guillaume_blog/images/icons/wsl2.jpeg" xmlns:media="http://search.yahoo.com/mrss/" /></entry></feed>
+</ol>]]></content><author><name></name></author><category term="fastpages" /><summary type="html"><![CDATA[following bug with pyYaml]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://castorfou.github.io/guillaume_blog/images/icons/fastai.png" /><media:content medium="image" url="https://castorfou.github.io/guillaume_blog/images/icons/fastai.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry></feed>
