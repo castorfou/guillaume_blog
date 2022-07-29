@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.1.1">Jekyll</generator><link href="https://castorfou.github.io/guillaume_blog/feed.xml" rel="self" type="application/atom+xml" /><link href="https://castorfou.github.io/guillaume_blog/" rel="alternate" type="text/html" /><updated>2022-07-29T03:12:23-05:00</updated><id>https://castorfou.github.io/guillaume_blog/feed.xml</id><title type="html">Guillaume’s blog</title><subtitle>Journey for a datascientist</subtitle><entry><title type="html">EvalAI and gitlab</title><link href="https://castorfou.github.io/guillaume_blog/blog/evalai-and-gitlab.html" rel="alternate" type="text/html" title="EvalAI and gitlab" /><published>2022-07-29T00:00:00-05:00</published><updated>2022-07-29T00:00:00-05:00</updated><id>https://castorfou.github.io/guillaume_blog/blog/evalai%20and%20gitlab</id><content type="html" xml:base="https://castorfou.github.io/guillaume_blog/blog/evalai-and-gitlab.html"><![CDATA[<h2 id="source-of-inspiration">source of inspiration</h2>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.1.1">Jekyll</generator><link href="https://castorfou.github.io/guillaume_blog/feed.xml" rel="self" type="application/atom+xml" /><link href="https://castorfou.github.io/guillaume_blog/" rel="alternate" type="text/html" /><updated>2022-07-29T08:03:28-05:00</updated><id>https://castorfou.github.io/guillaume_blog/feed.xml</id><title type="html">Guillaume’s blog</title><subtitle>Journey for a datascientist</subtitle><entry><title type="html">EvalAI and gitlab</title><link href="https://castorfou.github.io/guillaume_blog/blog/evalai-and-gitlab.html" rel="alternate" type="text/html" title="EvalAI and gitlab" /><published>2022-07-29T00:00:00-05:00</published><updated>2022-07-29T00:00:00-05:00</updated><id>https://castorfou.github.io/guillaume_blog/blog/evalai%20and%20gitlab</id><content type="html" xml:base="https://castorfou.github.io/guillaume_blog/blog/evalai-and-gitlab.html"><![CDATA[<h2 id="source-of-inspiration">source of inspiration</h2>
 
 <p>Deploy evalai docker images by <a href="/guillaume_blog/blog/logbook-July-22.html#week-30---july-22">copying from another PC</a></p>
 
@@ -16,7 +16,110 @@ docker-compose up
   <li><code class="language-plaintext highlighter-rouge">ERROR: for nodejs UnixHTTPConnectionPool(host='localhost', port=None): Read timed out.</code> Restart docker service and rerun evalai: <code class="language-plaintext highlighter-rouge">sudo service docker restart</code></li>
 </ul>
 
-<h1 id="host-challenge-using-gitlab">Host challenge using gitlab</h1>]]></content><author><name></name></author><category term="docker" /><category term="evalai" /><category term="gitlab" /><category term="wsl" /><summary type="html"><![CDATA[host evalai fully internally (UI and code)]]></summary></entry><entry><title type="html">install ubuntu 18.04 on WSL and then evalai</title><link href="https://castorfou.github.io/guillaume_blog/blog/install-ubuntu-18.04-on-WSL.html" rel="alternate" type="text/html" title="install ubuntu 18.04 on WSL and then evalai" /><published>2022-07-26T00:00:00-05:00</published><updated>2022-07-26T00:00:00-05:00</updated><id>https://castorfou.github.io/guillaume_blog/blog/install%20ubuntu%2018.04%20on%20WSL</id><content type="html" xml:base="https://castorfou.github.io/guillaume_blog/blog/install-ubuntu-18.04-on-WSL.html"><![CDATA[<h2 id="source-of-inspiration">source of inspiration</h2>
+<h1 id="host-challenge-using-gitlab">Host challenge using gitlab</h1>
+
+<h3 id="create-evalai-starters-project-in-gitlab">Create EvalAI-Starters project in gitlab</h3>
+
+<p>This project is hosted at <a href="https://github.com/Cloud-CV/EvalAI-Starters">github</a></p>
+
+<p>Create a blank project at <a href="https://gitlab.michelin.com/janus/EvalAI-Starters">gitlab</a></p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">#from a WSL image</span>
+git clone https://github.com/Cloud-CV/EvalAI-Starters.git
+<span class="nb">cd </span>EvalAI-Starters
+git remote rename origin origin-github
+git remote add origin-gitlab git@gitlab.michelin.com:janus/EvalAI-Starters.git
+git push <span class="nt">-u</span> origin-gitlab <span class="nt">--all</span>
+git push <span class="nt">-u</span> origin-gitlab <span class="nt">--tags</span>
+</code></pre></div></div>
+
+<h3 id="create-challenge-using-gitlab">Create challenge using gitlab</h3>
+
+<ol>
+  <li>create a repo <code class="language-plaintext highlighter-rouge">test_evalai</code>for challenge by importing from github</li>
+</ol>
+
+<p><del>Create new project &gt; Create from template &gt; Sample GitLab Project &gt; Use template</del></p>
+
+<p>from github: clone evalai-starters</p>
+
+<p>from gitlab: create new project &gt; import project &gt; GitHub &gt; integrate token &gt;</p>
+
+<p>select EvalAI-Starters and named it janus/ test_evalai</p>
+
+<p>import</p>
+
+<p>go to project</p>
+
+<ol>
+  <li>create project access token</li>
+</ol>
+
+<p>repo test_evalai &gt; settings &gt; Access Tokens</p>
+
+<p>Token name : evalai_user_auth_token</p>
+
+<p>Create project access token</p>
+
+<p>(glpat-w8GWL4WqqzgfQsCLRaMZ)</p>
+
+<ol>
+  <li>setup host configuration</li>
+</ol>
+
+<p>login as host (for the moment: host/password)</p>
+
+<p>go to profile page, get your auth (eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTY5MDYyMDYxMywianRpIjoiOWVkOTU2YmU2ZTJkNDNmOWI3Y2M0YTZhOGQ1ODY3ZjIiLCJ1c2VyX2lkIjoyfQ.bO9wp7r17uct4KJbt9hixsOT4nzYAUr-wUZR6PHI0jw)</p>
+
+<p>create a new team Host teams &gt; Create a new team</p>
+
+<p>Team Name: janus</p>
+
+<p>ID is 34</p>
+
+<p>and evalai host url is http://localhost:8888/</p>
+
+<ol>
+  <li>setup automated update push</li>
+</ol>
+
+<p>Create a branch with name <code class="language-plaintext highlighter-rouge">challenge</code> in the forked repository from the <code class="language-plaintext highlighter-rouge">master</code> branch. Note: Only changes in <code class="language-plaintext highlighter-rouge">challenge</code> branch will be synchronized with challenge on EvalAI.</p>
+
+<p>Add <code class="language-plaintext highlighter-rouge">evalai_user_auth_token</code> and <code class="language-plaintext highlighter-rouge">host_team_pk</code> in <code class="language-plaintext highlighter-rouge">github/host_config.json</code>.</p>
+
+<ol>
+  <li>update challenge details</li>
+</ol>
+
+<p>Read <a href="https://evalai.readthedocs.io/en/latest/configuration.html">EvalAI challenge creation documentation</a> to know more about how you want to structure your challenge. Once you are ready, start making changes in the yaml file, HTML templates, evaluation script according to your need.</p>
+
+<ol>
+  <li>push changes to the challenge</li>
+</ol>
+
+<p>Here I have to move from github actions to gitlab jobs.</p>
+
+<p>Let’s locally clone this repo</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git clone git@gitlab.michelin.com:janus/test_evalai.git
+<span class="nb">cd </span>test_evalai
+git branch <span class="nt">-a</span>
+git checkout challenge
+</code></pre></div></div>
+
+<ul>
+  <li>Watch <a href="https://www.youtube.com/watch?v=kTNfi5z6Uvk&amp;t=1093s">First time GitLab &amp; CI/CD</a>. This includes a quick introduction to GitLab, the first steps with CI/CD, building a Go project, running tests, using the CI/CD pipeline editor, detecting secrets and security vulnerabilities and offers more exercises for asynchronous practice.</li>
+  <li>Watch <a href="https://www.youtube.com/watch?v=l5705U8s_nQ&amp;t=358s">Intro to GitLab CI</a>. This workshop uses the Web IDE to quickly get going with building source code using CI/CD, and run unit tests.</li>
+</ul>
+
+<p>1st step is to try with a very simple <code class="language-plaintext highlighter-rouge">.gitlab-ci.yml</code> file. And use pipeline editor from gitlab to edit it.</p>
+
+<p>Some questions or errors:</p>
+
+<ul>
+  <li>I have been waiting 1 hour for my job to run, and it was simply pending because I had no tags entry and runners on our gitlab catch only tagged CI.</li>
+  <li>How to know which images are available in artifactory? Would like to use one with python pre-installed (with version 3.7.5)</li>
+</ul>]]></content><author><name></name></author><category term="docker" /><category term="evalai" /><category term="gitlab" /><category term="wsl" /><summary type="html"><![CDATA[host evalai fully internally (UI and code)]]></summary></entry><entry><title type="html">install ubuntu 18.04 on WSL and then evalai</title><link href="https://castorfou.github.io/guillaume_blog/blog/install-ubuntu-18.04-on-WSL.html" rel="alternate" type="text/html" title="install ubuntu 18.04 on WSL and then evalai" /><published>2022-07-26T00:00:00-05:00</published><updated>2022-07-26T00:00:00-05:00</updated><id>https://castorfou.github.io/guillaume_blog/blog/install%20ubuntu%2018.04%20on%20WSL</id><content type="html" xml:base="https://castorfou.github.io/guillaume_blog/blog/install-ubuntu-18.04-on-WSL.html"><![CDATA[<h2 id="source-of-inspiration">source of inspiration</h2>
 
 <p><a href="/guillaume_blog/blog/install-ubuntu-22.04-on-WSL.html">install ubuntu 22.04 on WSL</a></p>
 
