@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.1.1">Jekyll</generator><link href="https://castorfou.github.io/guillaume_blog/feed.xml" rel="self" type="application/atom+xml" /><link href="https://castorfou.github.io/guillaume_blog/" rel="alternate" type="text/html" /><updated>2022-07-28T10:23:06-05:00</updated><id>https://castorfou.github.io/guillaume_blog/feed.xml</id><title type="html">Guillaume’s blog</title><subtitle>Journey for a datascientist</subtitle><entry><title type="html">install ubuntu 18.04 on WSL and then evalai</title><link href="https://castorfou.github.io/guillaume_blog/blog/install-ubuntu-18.04-on-WSL.html" rel="alternate" type="text/html" title="install ubuntu 18.04 on WSL and then evalai" /><published>2022-07-26T00:00:00-05:00</published><updated>2022-07-26T00:00:00-05:00</updated><id>https://castorfou.github.io/guillaume_blog/blog/install%20ubuntu%2018.04%20on%20WSL</id><content type="html" xml:base="https://castorfou.github.io/guillaume_blog/blog/install-ubuntu-18.04-on-WSL.html"><![CDATA[<h2 id="source-of-inspiration">source of inspiration</h2>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.1.1">Jekyll</generator><link href="https://castorfou.github.io/guillaume_blog/feed.xml" rel="self" type="application/atom+xml" /><link href="https://castorfou.github.io/guillaume_blog/" rel="alternate" type="text/html" /><updated>2022-07-29T01:44:02-05:00</updated><id>https://castorfou.github.io/guillaume_blog/feed.xml</id><title type="html">Guillaume’s blog</title><subtitle>Journey for a datascientist</subtitle><entry><title type="html">install ubuntu 18.04 on WSL and then evalai</title><link href="https://castorfou.github.io/guillaume_blog/blog/install-ubuntu-18.04-on-WSL.html" rel="alternate" type="text/html" title="install ubuntu 18.04 on WSL and then evalai" /><published>2022-07-26T00:00:00-05:00</published><updated>2022-07-26T00:00:00-05:00</updated><id>https://castorfou.github.io/guillaume_blog/blog/install%20ubuntu%2018.04%20on%20WSL</id><content type="html" xml:base="https://castorfou.github.io/guillaume_blog/blog/install-ubuntu-18.04-on-WSL.html"><![CDATA[<h2 id="source-of-inspiration">source of inspiration</h2>
 
 <p><a href="/guillaume_blog/blog/install-ubuntu-22.04-on-WSL.html">install ubuntu 22.04 on WSL</a></p>
 
@@ -467,7 +467,43 @@ nbautoexport configure .
 </div>
 </div>
 </div>
-</div>]]></content><author><name></name></author><category term="jupyter" /><summary type="html"><![CDATA[because it is easier to search from .py files in text format. Using nbautoexports in jupyter lab]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://castorfou.github.io/guillaume_blog/images/icons/jupyter.png" /><media:content medium="image" url="https://castorfou.github.io/guillaume_blog/images/icons/jupyter.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">install docker within WSL</title><link href="https://castorfou.github.io/guillaume_blog/blog/install-docker-on-WSL.html" rel="alternate" type="text/html" title="install docker within WSL" /><published>2022-07-21T00:00:00-05:00</published><updated>2022-07-21T00:00:00-05:00</updated><id>https://castorfou.github.io/guillaume_blog/blog/install%20docker%20on%20WSL</id><content type="html" xml:base="https://castorfou.github.io/guillaume_blog/blog/install-docker-on-WSL.html"><![CDATA[<h2 id="source-of-inspiration">source of inspiration</h2>
+</div>]]></content><author><name></name></author><category term="jupyter" /><summary type="html"><![CDATA[because it is easier to search from .py files in text format. Using nbautoexports in jupyter lab]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://castorfou.github.io/guillaume_blog/images/icons/jupyter.png" /><media:content medium="image" url="https://castorfou.github.io/guillaume_blog/images/icons/jupyter.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">install docker within linux</title><link href="https://castorfou.github.io/guillaume_blog/blog/install-docker-on-linux.html" rel="alternate" type="text/html" title="install docker within linux" /><published>2022-07-21T00:00:00-05:00</published><updated>2022-07-21T00:00:00-05:00</updated><id>https://castorfou.github.io/guillaume_blog/blog/install%20docker%20on%20linux</id><content type="html" xml:base="https://castorfou.github.io/guillaume_blog/blog/install-docker-on-linux.html"><![CDATA[<h2 id="source-of-inspiration">source of inspiration</h2>
+
+<p><a href="https://docs.docker.com/engine/install/ubuntu/#install-using-the-repository">Install Docker Engine on Ubuntu</a></p>
+
+<h2 id="installation-and-test">Installation and test</h2>
+
+<h4 id="set-up-the-repository">Set up the repository</h4>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>apt-get update
+<span class="nb">sudo </span>apt-get <span class="nb">install</span> <span class="se">\</span>
+    ca-certificates <span class="se">\</span>
+    curl <span class="se">\</span>
+    gnupg <span class="se">\</span>
+    lsb-release
+
+<span class="c"># Add Docker’s official GPG key</span>
+<span class="nb">sudo mkdir</span> <span class="nt">-p</span> /etc/apt/keyrings
+curl <span class="nt">-fsSL</span> https://download.docker.com/linux/ubuntu/gpg | <span class="nb">sudo </span>gpg <span class="nt">--dearmor</span> <span class="nt">-o</span> /etc/apt/keyrings/docker.gpg
+
+<span class="c"># set up the Docker repository</span>
+<span class="nb">echo</span> <span class="se">\</span>
+  <span class="s2">"deb [arch=</span><span class="si">$(</span>dpkg <span class="nt">--print-architecture</span><span class="si">)</span><span class="s2"> signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu </span><span class="se">\</span><span class="s2">
+  </span><span class="si">$(</span>lsb_release <span class="nt">-cs</span><span class="si">)</span><span class="s2"> stable"</span> | <span class="nb">sudo tee</span> /etc/apt/sources.list.d/docker.list <span class="o">&gt;</span> /dev/null
+</code></pre></div></div>
+
+<h4 id="install-docker-engine">Install Docker Engine</h4>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Install Docker Engine</span>
+<span class="nb">sudo </span>apt-get update
+<span class="nb">sudo </span>apt-get <span class="nb">install </span>docker-ce docker-ce-cli containerd.io docker-compose-plugin
+</code></pre></div></div>
+
+<h4 id="test">Test</h4>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>docker run hello-world
+<span class="o">&gt;</span> Hello from Docker!
+<span class="o">&gt;</span> <span class="o">[</span>...]
+</code></pre></div></div>]]></content><author><name></name></author><category term="wsl" /><summary type="html"><![CDATA[under ubuntu 20.04]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://castorfou.github.io/guillaume_blog/images/icons/image_linux.jpg" /><media:content medium="image" url="https://castorfou.github.io/guillaume_blog/images/icons/image_linux.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">install docker within WSL</title><link href="https://castorfou.github.io/guillaume_blog/blog/install-docker-on-WSL.html" rel="alternate" type="text/html" title="install docker within WSL" /><published>2022-07-21T00:00:00-05:00</published><updated>2022-07-21T00:00:00-05:00</updated><id>https://castorfou.github.io/guillaume_blog/blog/install%20docker%20on%20WSL</id><content type="html" xml:base="https://castorfou.github.io/guillaume_blog/blog/install-docker-on-WSL.html"><![CDATA[<h2 id="source-of-inspiration">source of inspiration</h2>
 
 <p><a href="https://dev.michelin.com/wsl2/docker">WSL 2 Docker inside WSL 2</a></p>
 
@@ -609,43 +645,7 @@ curl <span class="nt">-fsSL</span> https://download.docker.com/linux/<span class
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker run docker.artifactory.michelin.com/hello-world
 <span class="o">&gt;</span> Hello from Docker!
 <span class="o">&gt;</span> This message shows that your installation appears to be working correctly.
-</code></pre></div></div>]]></content><author><name></name></author><category term="wsl" /><summary type="html"><![CDATA[based on my automatic wsl installation]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://castorfou.github.io/guillaume_blog/images/icons/wsl2.jpeg" /><media:content medium="image" url="https://castorfou.github.io/guillaume_blog/images/icons/wsl2.jpeg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">install docker within linux</title><link href="https://castorfou.github.io/guillaume_blog/blog/install-docker-on-WSL-(copy).html" rel="alternate" type="text/html" title="install docker within linux" /><published>2022-07-21T00:00:00-05:00</published><updated>2022-07-21T00:00:00-05:00</updated><id>https://castorfou.github.io/guillaume_blog/blog/install%20docker%20on%20WSL%20(copy)</id><content type="html" xml:base="https://castorfou.github.io/guillaume_blog/blog/install-docker-on-WSL-(copy).html"><![CDATA[<h2 id="source-of-inspiration">source of inspiration</h2>
-
-<p><a href="https://docs.docker.com/engine/install/ubuntu/#install-using-the-repository">Install Docker Engine on Ubuntu</a></p>
-
-<h2 id="installation-and-test">Installation and test</h2>
-
-<h4 id="set-up-the-repository">Set up the repository</h4>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>apt-get update
-<span class="nb">sudo </span>apt-get <span class="nb">install</span> <span class="se">\</span>
-    ca-certificates <span class="se">\</span>
-    curl <span class="se">\</span>
-    gnupg <span class="se">\</span>
-    lsb-release
-
-<span class="c"># Add Docker’s official GPG key</span>
-<span class="nb">sudo mkdir</span> <span class="nt">-p</span> /etc/apt/keyrings
-curl <span class="nt">-fsSL</span> https://download.docker.com/linux/ubuntu/gpg | <span class="nb">sudo </span>gpg <span class="nt">--dearmor</span> <span class="nt">-o</span> /etc/apt/keyrings/docker.gpg
-
-<span class="c"># set up the Docker repository</span>
-<span class="nb">echo</span> <span class="se">\</span>
-  <span class="s2">"deb [arch=</span><span class="si">$(</span>dpkg <span class="nt">--print-architecture</span><span class="si">)</span><span class="s2"> signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu </span><span class="se">\</span><span class="s2">
-  </span><span class="si">$(</span>lsb_release <span class="nt">-cs</span><span class="si">)</span><span class="s2"> stable"</span> | <span class="nb">sudo tee</span> /etc/apt/sources.list.d/docker.list <span class="o">&gt;</span> /dev/null
-</code></pre></div></div>
-
-<h4 id="install-docker-engine">Install Docker Engine</h4>
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Install Docker Engine</span>
-<span class="nb">sudo </span>apt-get update
-<span class="nb">sudo </span>apt-get <span class="nb">install </span>docker-ce docker-ce-cli containerd.io docker-compose-plugin
-</code></pre></div></div>
-
-<h4 id="test">Test</h4>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>docker run hello-world
-<span class="o">&gt;</span> Hello from Docker!
-<span class="o">&gt;</span> <span class="o">[</span>...]
-</code></pre></div></div>]]></content><author><name></name></author><category term="wsl" /><summary type="html"><![CDATA[under ubuntu 20.04]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://castorfou.github.io/guillaume_blog/images/icons/image_linux.jpg" /><media:content medium="image" url="https://castorfou.github.io/guillaume_blog/images/icons/image_linux.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Logbook for July 22</title><link href="https://castorfou.github.io/guillaume_blog/blog/logbook-July-22.html" rel="alternate" type="text/html" title="Logbook for July 22" /><published>2022-07-01T00:00:00-05:00</published><updated>2022-07-01T00:00:00-05:00</updated><id>https://castorfou.github.io/guillaume_blog/blog/logbook-July-22</id><content type="html" xml:base="https://castorfou.github.io/guillaume_blog/blog/logbook-July-22.html"><![CDATA[<h2 id="week-26---july-22">Week 26 - July 22</h2>
+</code></pre></div></div>]]></content><author><name></name></author><category term="wsl" /><summary type="html"><![CDATA[based on my automatic wsl installation]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://castorfou.github.io/guillaume_blog/images/icons/wsl2.jpeg" /><media:content medium="image" url="https://castorfou.github.io/guillaume_blog/images/icons/wsl2.jpeg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Logbook for July 22</title><link href="https://castorfou.github.io/guillaume_blog/blog/logbook-July-22.html" rel="alternate" type="text/html" title="Logbook for July 22" /><published>2022-07-01T00:00:00-05:00</published><updated>2022-07-01T00:00:00-05:00</updated><id>https://castorfou.github.io/guillaume_blog/blog/logbook-July-22</id><content type="html" xml:base="https://castorfou.github.io/guillaume_blog/blog/logbook-July-22.html"><![CDATA[<h2 id="week-26---july-22">Week 26 - July 22</h2>
 
 <p><strong>Friday 7/1</strong></p>
 
@@ -680,7 +680,11 @@ curl <span class="nt">-fsSL</span> https://download.docker.com/linux/ubuntu/gpg 
 
 <p><strong>Monday 7/25</strong></p>
 
-<p>As a matter of test, installation of <a href="https://github.com/Cloud-CV/EvalAI">EvalAI</a> on my linux machine (no issue with corporate FW) using docker</p>
+<p>As a matter of test, installation of <a href="https://github.com/Cloud-CV/EvalAI">EvalAI</a> on my linux machine (no issue with corporate FW) using <a href="/guillaume_blog/blog/install-docker-on-linux.html">docker</a>.</p>
+
+<p>When starting, this error: <code class="language-plaintext highlighter-rouge">ERROR: for db Cannot start service db: [...] listen tcp 0.0.0.0:5432: bind: address already in use</code></p>
+
+<p>Which is explained and solved at <a href="https://evalai.readthedocs.io/en/latest/faq(developers).html#q-getting-the-following-error">Evalai - Common Errors during installation</a></p>
 
 <p><strong>Tuesday 7/26</strong></p>
 
