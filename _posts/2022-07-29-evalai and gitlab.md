@@ -123,3 +123,4 @@ Some questions or errors:
 * I have been waiting 1 hour for my job to run, and it was simply pending because I had no tags entry and runners on our gitlab catch only tagged CI.
 * How to know which images are available in artifactory? Would like to use one with python pre-installed (with version 3.7.5)
 
+I am stuck when having to deal with github action context calls such as ${{ toJSON(github) }}'
