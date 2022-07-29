@@ -68,3 +68,16 @@ docker-compose up
 ```
 
 ~~but I don't know how to go further as explained in [this evalai issue](https://github.com/Cloud-CV/EvalAI/issues/3777)~~
+
+Ok this works with the following images:
+
+```bash
+evalai_django.tar  
+evalai_nodejs.tar  
+evalai_nodejs_v2.tar  
+evalai_worker.tar
+```
+
+**Friday7/29**
+
+Now that I can start Evalai on my corporate machine, how to setup it with gitlab.

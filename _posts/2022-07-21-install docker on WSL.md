@@ -4,9 +4,8 @@ description: based on my automatic wsl installation
 toc: true
 comments: true
 layout: post
-categories: [wsl]
+categories: [wsl, docker]
 image: images/icons/wsl2.jpeg
-
 ---
 
 ## source of inspiration

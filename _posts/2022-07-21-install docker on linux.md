@@ -4,7 +4,7 @@ description: under ubuntu 20.04
 toc: true
 comments: true
 layout: post
-categories: [wsl]
+categories: [linux, docker]
 image: images/icons/image_linux.jpg
 
 ---
