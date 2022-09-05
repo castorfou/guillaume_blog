@@ -1,4 +1,10 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.1.1">Jekyll</generator><link href="https://castorfou.github.io/guillaume_blog/feed.xml" rel="self" type="application/atom+xml" /><link href="https://castorfou.github.io/guillaume_blog/" rel="alternate" type="text/html" /><updated>2022-07-29T09:47:55-05:00</updated><id>https://castorfou.github.io/guillaume_blog/feed.xml</id><title type="html">Guillaume’s blog</title><subtitle>Journey for a datascientist</subtitle><entry><title type="html">EvalAI and gitlab</title><link href="https://castorfou.github.io/guillaume_blog/blog/evalai-and-gitlab.html" rel="alternate" type="text/html" title="EvalAI and gitlab" /><published>2022-07-29T00:00:00-05:00</published><updated>2022-07-29T00:00:00-05:00</updated><id>https://castorfou.github.io/guillaume_blog/blog/evalai%20and%20gitlab</id><content type="html" xml:base="https://castorfou.github.io/guillaume_blog/blog/evalai-and-gitlab.html"><![CDATA[<h2 id="source-of-inspiration">source of inspiration</h2>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.1.1">Jekyll</generator><link href="https://castorfou.github.io/guillaume_blog/feed.xml" rel="self" type="application/atom+xml" /><link href="https://castorfou.github.io/guillaume_blog/" rel="alternate" type="text/html" /><updated>2022-09-05T09:31:04-05:00</updated><id>https://castorfou.github.io/guillaume_blog/feed.xml</id><title type="html">Guillaume’s blog</title><subtitle>Journey for a datascientist</subtitle><entry><title type="html">Logbook for September 22</title><link href="https://castorfou.github.io/guillaume_blog/blog/logbook-September-22.html" rel="alternate" type="text/html" title="Logbook for September 22" /><published>2022-09-01T00:00:00-05:00</published><updated>2022-09-01T00:00:00-05:00</updated><id>https://castorfou.github.io/guillaume_blog/blog/logbook-September-22</id><content type="html" xml:base="https://castorfou.github.io/guillaume_blog/blog/logbook-September-22.html"><![CDATA[<h2 id="week-36---september-22">Week 36 - September 22</h2>
+
+<p><strong>Monday 9/5</strong></p>
+
+<ul>
+  <li>Start with fastai courses version <a href="https://course.fast.ai/">2022</a>. Video of <a href="https://www.youtube.com/watch?v=8SF_h3xF3cE">Lesson 1</a></li>
+</ul>]]></content><author><name></name></author><category term="logbook" /><summary type="html"><![CDATA[Week 36 - September 22]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://castorfou.github.io/guillaume_blog/images/logbook.jpg" /><media:content medium="image" url="https://castorfou.github.io/guillaume_blog/images/logbook.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">EvalAI and gitlab</title><link href="https://castorfou.github.io/guillaume_blog/blog/evalai-and-gitlab.html" rel="alternate" type="text/html" title="EvalAI and gitlab" /><published>2022-07-29T00:00:00-05:00</published><updated>2022-07-29T00:00:00-05:00</updated><id>https://castorfou.github.io/guillaume_blog/blog/evalai%20and%20gitlab</id><content type="html" xml:base="https://castorfou.github.io/guillaume_blog/blog/evalai-and-gitlab.html"><![CDATA[<h2 id="source-of-inspiration">source of inspiration</h2>
 
 <p>Deploy evalai docker images by <a href="/guillaume_blog/blog/logbook-July-22.html#week-30---july-22">copying from another PC</a></p>
 
@@ -1071,34 +1077,4 @@ gpg <span class="nt">--full-generate-key</span>
 pass init <span class="nv">$key_id</span>
 </code></pre></div></div>
 
-<p>or see the step 06 in <a href="https://castorfou.github.io/guillaume_blog/blog/install-ubuntu-22.04-on-WSL.html">install ubuntu 22.04 on WSL</a></p>]]></content><author><name></name></author><category term="git" /><summary type="html"><![CDATA[git-credential-manager]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://castorfou.github.io/guillaume_blog/images/git.png" /><media:content medium="image" url="https://castorfou.github.io/guillaume_blog/images/git.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">upgrade to last version of fastpages</title><link href="https://castorfou.github.io/guillaume_blog/blog/upgrade-fastpages.html" rel="alternate" type="text/html" title="upgrade to last version of fastpages" /><published>2022-05-02T00:00:00-05:00</published><updated>2022-05-02T00:00:00-05:00</updated><id>https://castorfou.github.io/guillaume_blog/blog/upgrade-fastpages</id><content type="html" xml:base="https://castorfou.github.io/guillaume_blog/blog/upgrade-fastpages.html"><![CDATA[<h2 id="source-of-inspiration">source of inspiration</h2>
-
-<p>as detailed in <a href="https://github.com/fastai/fastpages/issues/634">https://github.com/fastai/fastpages/issues/634</a></p>
-
-<p>Hamel asks to restart from a new repo. But how to keep the same blog url?</p>
-
-<p>Easy way is to rename former repo (from <code class="language-plaintext highlighter-rouge">guillaume_blog</code> to <code class="language-plaintext highlighter-rouge">guillaume_blog_old</code>) and initiate new repo as former one (<code class="language-plaintext highlighter-rouge">guillaume_blog</code>).</p>
-
-<p>Here are the steps.</p>
-
-<h2 id="installation-and-setup">Installation and setup</h2>
-
-<h3 id="installation">Installation</h3>
-
-<ol>
-  <li>Generate a copy of <a href="https://github.com/fastai/fastpages#setup-instructions">fastpages repo</a>. Just have to follow instructions by clicking at https://github.com/fastai/fastpages/generate. Name repo as <code class="language-plaintext highlighter-rouge">guillaume_blog</code></li>
-  <li>Click on the PR <code class="language-plaintext highlighter-rouge">Initial Setup</code> in your new repo. There are instructions to create a SSH_DEPLOY_KEY.</li>
-  <li>Merge this PR</li>
-  <li>Clone this repo locally</li>
-  <li>Because I use https, I have to create a token at Settings &gt; Developer Settings &gt; Personal Access Tokens</li>
-  <li>and to keep this token locally, I enter <code class="language-plaintext highlighter-rouge">git config --global credential.helper manager</code> before pushing</li>
-</ol>
-
-<h3 id="copy-content">Copy content</h3>
-
-<ol>
-  <li>Directories: <code class="language-plaintext highlighter-rouge">_notebooks</code>, <code class="language-plaintext highlighter-rouge">_posts</code>, <code class="language-plaintext highlighter-rouge">_files</code>, <code class="language-plaintext highlighter-rouge">_images</code></li>
-  <li>Clean content from directories (examples) in  <code class="language-plaintext highlighter-rouge">_notebooks</code>, <code class="language-plaintext highlighter-rouge">_posts</code>, <code class="language-plaintext highlighter-rouge">_words</code></li>
-  <li>Pages: <code class="language-plaintext highlighter-rouge">_pages/about.md</code>, <code class="language-plaintext highlighter-rouge">index.html</code>, <code class="language-plaintext highlighter-rouge">README.md</code></li>
-  <li>and utils: <code class="language-plaintext highlighter-rouge">refresh_blog_content.sh</code>, <code class="language-plaintext highlighter-rouge">publish.sh</code></li>
-</ol>]]></content><author><name></name></author><category term="fastpages" /><summary type="html"><![CDATA[following bug with pyYaml]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://castorfou.github.io/guillaume_blog/images/icons/fastai.png" /><media:content medium="image" url="https://castorfou.github.io/guillaume_blog/images/icons/fastai.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry></feed>
+<p>or see the step 06 in <a href="https://castorfou.github.io/guillaume_blog/blog/install-ubuntu-22.04-on-WSL.html">install ubuntu 22.04 on WSL</a></p>]]></content><author><name></name></author><category term="git" /><summary type="html"><![CDATA[git-credential-manager]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://castorfou.github.io/guillaume_blog/images/git.png" /><media:content medium="image" url="https://castorfou.github.io/guillaume_blog/images/git.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry></feed>
