@@ -22,7 +22,7 @@ Keep backups on an external drive to upgrade PC. Using freefilesync.
 
 * backup files
 * sbox
-* git
+* git (check with clustergit)
 * wsl
 
 > from [WSL2 Backup and Restore Images using Import and Export](https://www.virtualizationhowto.com/2021/01/wsl2-backup-and-restore-images-using-import-and-export/)
@@ -39,10 +39,19 @@ Keep backups on an external drive to upgrade PC. Using freefilesync.
 > wsl --shutdown
 > 
 > wsl --export <Image Name> <Export location file name.tar>
+> 
+> wsl --export <Image Name> <Export location file name.tar>
 > ```
 
 * installed apps
 
-wsl2, prtscr, vscode, jdiskreport (centre logiciel), accessdatabasenginex64, driver nvidia, freefilesync (centre logiciel), notepad++ (centre logiciel), keepass (centre logiciel)
+wsl2, prtscr, vscode, jdiskreport (centre logiciel), accessdatabasenginex64, driver nvidia, freefilesync (centre logiciel), notepad++ (centre logiciel), keepass (centre logiciel), zotero (centre logiciel), Windows Terminal, barrier, GWSL, typora, 
 
 * version windows - 21H2 19044.1889
+* tree structure
+
+```cmd
+D:\> tree > e:\tree_structure.txt
+D:\> xcopy d: e:\t /t /s
+```
+
