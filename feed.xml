@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.1.1">Jekyll</generator><link href="https://castorfou.github.io/guillaume_blog/feed.xml" rel="self" type="application/atom+xml" /><link href="https://castorfou.github.io/guillaume_blog/" rel="alternate" type="text/html" /><updated>2022-09-06T02:42:13-05:00</updated><id>https://castorfou.github.io/guillaume_blog/feed.xml</id><title type="html">Guillaume’s blog</title><subtitle>Journey for a datascientist</subtitle><entry><title type="html">Logbook for September 22</title><link href="https://castorfou.github.io/guillaume_blog/blog/logbook-September-22.html" rel="alternate" type="text/html" title="Logbook for September 22" /><published>2022-09-01T00:00:00-05:00</published><updated>2022-09-01T00:00:00-05:00</updated><id>https://castorfou.github.io/guillaume_blog/blog/logbook-September-22</id><content type="html" xml:base="https://castorfou.github.io/guillaume_blog/blog/logbook-September-22.html"><![CDATA[<h2 id="week-36---september-22">Week 36 - September 22</h2>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.1.1">Jekyll</generator><link href="https://castorfou.github.io/guillaume_blog/feed.xml" rel="self" type="application/atom+xml" /><link href="https://castorfou.github.io/guillaume_blog/" rel="alternate" type="text/html" /><updated>2022-09-06T06:47:11-05:00</updated><id>https://castorfou.github.io/guillaume_blog/feed.xml</id><title type="html">Guillaume’s blog</title><subtitle>Journey for a datascientist</subtitle><entry><title type="html">Logbook for September 22</title><link href="https://castorfou.github.io/guillaume_blog/blog/logbook-September-22.html" rel="alternate" type="text/html" title="Logbook for September 22" /><published>2022-09-01T00:00:00-05:00</published><updated>2022-09-01T00:00:00-05:00</updated><id>https://castorfou.github.io/guillaume_blog/blog/logbook-September-22</id><content type="html" xml:base="https://castorfou.github.io/guillaume_blog/blog/logbook-September-22.html"><![CDATA[<h2 id="week-36---september-22">Week 36 - September 22</h2>
 
 <p><strong>Monday 9/5</strong></p>
 
@@ -13,7 +13,7 @@
 <ul>
   <li>backup files</li>
   <li>sbox</li>
-  <li>git</li>
+  <li>git (check with clustergit)</li>
   <li>wsl</li>
 </ul>
 
@@ -31,6 +31,8 @@ wsl <span class="nt">--list</span>
 wsl <span class="nt">--shutdown</span>
 
 wsl <span class="nt">--export</span> &lt;Image Name&gt; &lt;Export location file name.tar&gt;
+
+wsl <span class="nt">--export</span> &lt;Image Name&gt; &lt;Export location file name.tar&gt;
 </code></pre></div>  </div>
 </blockquote>
 
@@ -38,11 +40,16 @@ wsl <span class="nt">--export</span> &lt;Image Name&gt; &lt;Export location file
   <li>installed apps</li>
 </ul>
 
-<p>wsl2, prtscr, vscode, jdiskreport (centre logiciel), accessdatabasenginex64, driver nvidia, freefilesync (centre logiciel), notepad++ (centre logiciel), keepass (centre logiciel)</p>
+<p>wsl2, prtscr, vscode, jdiskreport (centre logiciel), accessdatabasenginex64, driver nvidia, freefilesync (centre logiciel), notepad++ (centre logiciel), keepass (centre logiciel), zotero (centre logiciel), Windows Terminal, barrier, GWSL, typora,</p>
 
 <ul>
   <li>version windows - 21H2 19044.1889</li>
-</ul>]]></content><author><name></name></author><category term="logbook" /><summary type="html"><![CDATA[Week 36 - September 22]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://castorfou.github.io/guillaume_blog/images/logbook.jpg" /><media:content medium="image" url="https://castorfou.github.io/guillaume_blog/images/logbook.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">EvalAI and gitlab</title><link href="https://castorfou.github.io/guillaume_blog/blog/evalai-and-gitlab.html" rel="alternate" type="text/html" title="EvalAI and gitlab" /><published>2022-07-29T00:00:00-05:00</published><updated>2022-07-29T00:00:00-05:00</updated><id>https://castorfou.github.io/guillaume_blog/blog/evalai%20and%20gitlab</id><content type="html" xml:base="https://castorfou.github.io/guillaume_blog/blog/evalai-and-gitlab.html"><![CDATA[<h2 id="source-of-inspiration">source of inspiration</h2>
+  <li>tree structure</li>
+</ul>
+
+<pre><code class="language-cmd">D:\&gt; tree &gt; e:\tree_structure.txt
+D:\&gt; xcopy d: e:\t /t /s
+</code></pre>]]></content><author><name></name></author><category term="logbook" /><summary type="html"><![CDATA[Week 36 - September 22]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://castorfou.github.io/guillaume_blog/images/logbook.jpg" /><media:content medium="image" url="https://castorfou.github.io/guillaume_blog/images/logbook.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">EvalAI and gitlab</title><link href="https://castorfou.github.io/guillaume_blog/blog/evalai-and-gitlab.html" rel="alternate" type="text/html" title="EvalAI and gitlab" /><published>2022-07-29T00:00:00-05:00</published><updated>2022-07-29T00:00:00-05:00</updated><id>https://castorfou.github.io/guillaume_blog/blog/evalai%20and%20gitlab</id><content type="html" xml:base="https://castorfou.github.io/guillaume_blog/blog/evalai-and-gitlab.html"><![CDATA[<h2 id="source-of-inspiration">source of inspiration</h2>
 
 <p>Deploy evalai docker images by <a href="/guillaume_blog/blog/logbook-July-22.html#week-30---july-22">copying from another PC</a></p>
 
