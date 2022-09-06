@@ -125,6 +125,45 @@ window.onload = wrap_img;
 </li>
 </ul>
 
+<p><strong>Tuesday 9/6</strong></p>
+
+<p>Keep backups on an external drive to upgrade PC. Using freefilesync.</p>
+
+<ul>
+  <li>backup files</li>
+  <li>sbox</li>
+  <li>git</li>
+  <li>wsl</li>
+</ul>
+
+<blockquote>
+  <p>from <a href="https://www.virtualizationhowto.com/2021/01/wsl2-backup-and-restore-images-using-import-and-export/">WSL2 Backup and Restore Images using Import and Export</a></p>
+
+  <div class="language-bash highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code><span class="c"># from PowerShell</span>
+wsl <span class="nt">--list</span>
+<span class="o">&gt;</span> Ubuntu <span class="o">(</span>par défaut<span class="o">)</span>
+<span class="o">&gt;</span> ubuntu-docker
+<span class="o">&gt;</span> ubuntu-18.04
+<span class="o">&gt;</span> ubuntu-22.04
+<span class="o">&gt;</span> wsl-vpnkit
+
+wsl <span class="nt">--shutdown</span>
+
+wsl <span class="nt">--export</span> &lt;Image Name&gt; &lt;Export location file name.tar&gt;
+</code></pre></div>  </div>
+</blockquote>
+
+<ul>
+  <li>installed apps</li>
+</ul>
+
+<p>wsl2, prtscr, vscode, jdiskreport (centre logiciel), accessdatabasenginex64, driver nvidia, freefilesync (centre logiciel), notepad++ (centre logiciel), keepass (centre logiciel)</p>
+
+<ul>
+  <li>version windows - 21H2 19044.1889</li>
+</ul>
+
   </div><!-- from https://github.com/utterance/utterances -->
 <script src="https://utteranc.es/client.js"
         repo="castorfou/guillaume_blog"

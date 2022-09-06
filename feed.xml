@@ -1,9 +1,47 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.1.1">Jekyll</generator><link href="https://castorfou.github.io/guillaume_blog/feed.xml" rel="self" type="application/atom+xml" /><link href="https://castorfou.github.io/guillaume_blog/" rel="alternate" type="text/html" /><updated>2022-09-05T09:31:04-05:00</updated><id>https://castorfou.github.io/guillaume_blog/feed.xml</id><title type="html">Guillaume’s blog</title><subtitle>Journey for a datascientist</subtitle><entry><title type="html">Logbook for September 22</title><link href="https://castorfou.github.io/guillaume_blog/blog/logbook-September-22.html" rel="alternate" type="text/html" title="Logbook for September 22" /><published>2022-09-01T00:00:00-05:00</published><updated>2022-09-01T00:00:00-05:00</updated><id>https://castorfou.github.io/guillaume_blog/blog/logbook-September-22</id><content type="html" xml:base="https://castorfou.github.io/guillaume_blog/blog/logbook-September-22.html"><![CDATA[<h2 id="week-36---september-22">Week 36 - September 22</h2>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.1.1">Jekyll</generator><link href="https://castorfou.github.io/guillaume_blog/feed.xml" rel="self" type="application/atom+xml" /><link href="https://castorfou.github.io/guillaume_blog/" rel="alternate" type="text/html" /><updated>2022-09-06T02:42:13-05:00</updated><id>https://castorfou.github.io/guillaume_blog/feed.xml</id><title type="html">Guillaume’s blog</title><subtitle>Journey for a datascientist</subtitle><entry><title type="html">Logbook for September 22</title><link href="https://castorfou.github.io/guillaume_blog/blog/logbook-September-22.html" rel="alternate" type="text/html" title="Logbook for September 22" /><published>2022-09-01T00:00:00-05:00</published><updated>2022-09-01T00:00:00-05:00</updated><id>https://castorfou.github.io/guillaume_blog/blog/logbook-September-22</id><content type="html" xml:base="https://castorfou.github.io/guillaume_blog/blog/logbook-September-22.html"><![CDATA[<h2 id="week-36---september-22">Week 36 - September 22</h2>
 
 <p><strong>Monday 9/5</strong></p>
 
 <ul>
   <li>Start with fastai courses version <a href="https://course.fast.ai/">2022</a>. Video of <a href="https://www.youtube.com/watch?v=8SF_h3xF3cE">Lesson 1</a></li>
+</ul>
+
+<p><strong>Tuesday 9/6</strong></p>
+
+<p>Keep backups on an external drive to upgrade PC. Using freefilesync.</p>
+
+<ul>
+  <li>backup files</li>
+  <li>sbox</li>
+  <li>git</li>
+  <li>wsl</li>
+</ul>
+
+<blockquote>
+  <p>from <a href="https://www.virtualizationhowto.com/2021/01/wsl2-backup-and-restore-images-using-import-and-export/">WSL2 Backup and Restore Images using Import and Export</a></p>
+
+  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># from PowerShell</span>
+wsl <span class="nt">--list</span>
+<span class="o">&gt;</span> Ubuntu <span class="o">(</span>par défaut<span class="o">)</span>
+<span class="o">&gt;</span> ubuntu-docker
+<span class="o">&gt;</span> ubuntu-18.04
+<span class="o">&gt;</span> ubuntu-22.04
+<span class="o">&gt;</span> wsl-vpnkit
+
+wsl <span class="nt">--shutdown</span>
+
+wsl <span class="nt">--export</span> &lt;Image Name&gt; &lt;Export location file name.tar&gt;
+</code></pre></div>  </div>
+</blockquote>
+
+<ul>
+  <li>installed apps</li>
+</ul>
+
+<p>wsl2, prtscr, vscode, jdiskreport (centre logiciel), accessdatabasenginex64, driver nvidia, freefilesync (centre logiciel), notepad++ (centre logiciel), keepass (centre logiciel)</p>
+
+<ul>
+  <li>version windows - 21H2 19044.1889</li>
 </ul>]]></content><author><name></name></author><category term="logbook" /><summary type="html"><![CDATA[Week 36 - September 22]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://castorfou.github.io/guillaume_blog/images/logbook.jpg" /><media:content medium="image" url="https://castorfou.github.io/guillaume_blog/images/logbook.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">EvalAI and gitlab</title><link href="https://castorfou.github.io/guillaume_blog/blog/evalai-and-gitlab.html" rel="alternate" type="text/html" title="EvalAI and gitlab" /><published>2022-07-29T00:00:00-05:00</published><updated>2022-07-29T00:00:00-05:00</updated><id>https://castorfou.github.io/guillaume_blog/blog/evalai%20and%20gitlab</id><content type="html" xml:base="https://castorfou.github.io/guillaume_blog/blog/evalai-and-gitlab.html"><![CDATA[<h2 id="source-of-inspiration">source of inspiration</h2>
 
 <p>Deploy evalai docker images by <a href="/guillaume_blog/blog/logbook-July-22.html#week-30---july-22">copying from another PC</a></p>
