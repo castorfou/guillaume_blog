@@ -1,6 +1,16 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.1.1">Jekyll</generator><link href="https://castorfou.github.io/guillaume_blog/feed.xml" rel="self" type="application/atom+xml" /><link href="https://castorfou.github.io/guillaume_blog/" rel="alternate" type="text/html" /><updated>2022-09-07T09:47:03-05:00</updated><id>https://castorfou.github.io/guillaume_blog/feed.xml</id><title type="html">Guillaume’s blog</title><subtitle>Journey for a datascientist</subtitle><entry><title type="html">nbdev2 - first steps</title><link href="https://castorfou.github.io/guillaume_blog/blog/nbdev2.html" rel="alternate" type="text/html" title="nbdev2 - first steps" /><published>2022-09-07T00:00:00-05:00</published><updated>2022-09-07T00:00:00-05:00</updated><id>https://castorfou.github.io/guillaume_blog/blog/nbdev2</id><content type="html" xml:base="https://castorfou.github.io/guillaume_blog/blog/nbdev2.html"><![CDATA[<p>fastai has just released <a href="https://nbdev.fast.ai/">nbdev2</a>.</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.1.1">Jekyll</generator><link href="https://castorfou.github.io/guillaume_blog/feed.xml" rel="self" type="application/atom+xml" /><link href="https://castorfou.github.io/guillaume_blog/" rel="alternate" type="text/html" /><updated>2022-09-07T10:07:22-05:00</updated><id>https://castorfou.github.io/guillaume_blog/feed.xml</id><title type="html">Guillaume’s blog</title><subtitle>Journey for a datascientist</subtitle><entry><title type="html">nbdev2 - first steps</title><link href="https://castorfou.github.io/guillaume_blog/blog/nbdev2.html" rel="alternate" type="text/html" title="nbdev2 - first steps" /><published>2022-09-07T00:00:00-05:00</published><updated>2022-09-07T00:00:00-05:00</updated><id>https://castorfou.github.io/guillaume_blog/blog/nbdev2</id><content type="html" xml:base="https://castorfou.github.io/guillaume_blog/blog/nbdev2.html"><![CDATA[<p>fastai has just released <a href="https://nbdev.fast.ai/">nbdev2</a>.</p>
 
-<p>This is a complete rewrite with quarto.</p>
+<p>This is a complete rewrite with quarto. I like how they displayed features in that card</p>
+
+<p><img src="https://nbdev.fast.ai/images/card.png" alt="" /></p>
+
+<h1 id="support">Support</h1>
+
+<p>There is a <a href="https://forums.fast.ai/c/nbdev/48">nbdev section</a> in fastai forum.</p>
+
+<p>There is a channel #nbdev-help at fastai discord. Never posted there.</p>
+
+<p>And <a href="https://github.com/fastai/nbdev/issues">issues page</a> in github fastai/nbdev repo.</p>
 
 <h1 id="walkthrough">Walkthrough</h1>
 
