@@ -55,3 +55,18 @@ D:\> tree > e:\tree_structure.txt
 D:\> xcopy d: e:\t /t /s
 ```
 
+**Wednesday 9/7**
+
+From time to time when running screen from WSL I have the following error:
+
+```bash
+$ screen -dR
+Cannot make directory '/run/screen': Permission denied
+```
+
+then on can run
+
+```bash
+sudo /etc/init.d/screen-cleanup start
+```
+
