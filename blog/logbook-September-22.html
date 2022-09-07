@@ -171,6 +171,19 @@ wsl <span class="nt">--export</span> &lt;Image Name&gt; &lt;Export location file
 D:\&gt; xcopy d: e:\t /t /s
 </code></pre>
 
+<p><strong>Wednesday 9/7</strong></p>
+
+<p>From time to time when running screen from WSL I have the following error:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>screen <span class="nt">-dR</span>
+Cannot make directory <span class="s1">'/run/screen'</span>: Permission denied
+</code></pre></div></div>
+
+<p>then on can run</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo</span> /etc/init.d/screen-cleanup start
+</code></pre></div></div>
+
 
   </div><!-- from https://github.com/utterance/utterances -->
 <script src="https://utteranc.es/client.js"
