@@ -39,8 +39,6 @@ Keep backups on an external drive to upgrade PC. Using freefilesync.
 > wsl --shutdown
 > 
 > wsl --export <Image Name> <Export location file name.tar>
-> 
-> wsl --export <Image Name> <Export location file name.tar>
 > ```
 
 * installed apps
@@ -64,9 +62,15 @@ $ screen -dR
 Cannot make directory '/run/screen': Permission denied
 ```
 
-then on can run
+then one can run
 
 ```bash
 sudo /etc/init.d/screen-cleanup start
 ```
+
+**Thurdsay 9/8**
+
+Restore backups on this new PC and without administrator rights.
+
+Install of wsl2 following [corporate instructions](https://dev.michelin.com/wsl2/fundamentals)
 
