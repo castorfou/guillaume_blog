@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.1.1">Jekyll</generator><link href="https://castorfou.github.io/guillaume_blog/feed.xml" rel="self" type="application/atom+xml" /><link href="https://castorfou.github.io/guillaume_blog/" rel="alternate" type="text/html" /><updated>2022-09-08T02:38:25-05:00</updated><id>https://castorfou.github.io/guillaume_blog/feed.xml</id><title type="html">Guillaume’s blog</title><subtitle>Journey for a datascientist</subtitle><entry><title type="html">nbdev2 - first steps</title><link href="https://castorfou.github.io/guillaume_blog/blog/nbdev2.html" rel="alternate" type="text/html" title="nbdev2 - first steps" /><published>2022-09-07T00:00:00-05:00</published><updated>2022-09-07T00:00:00-05:00</updated><id>https://castorfou.github.io/guillaume_blog/blog/nbdev2</id><content type="html" xml:base="https://castorfou.github.io/guillaume_blog/blog/nbdev2.html"><![CDATA[<p>fastai has just released <a href="https://nbdev.fast.ai/">nbdev2</a>.</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.1.1">Jekyll</generator><link href="https://castorfou.github.io/guillaume_blog/feed.xml" rel="self" type="application/atom+xml" /><link href="https://castorfou.github.io/guillaume_blog/" rel="alternate" type="text/html" /><updated>2022-09-09T00:30:27-05:00</updated><id>https://castorfou.github.io/guillaume_blog/feed.xml</id><title type="html">Guillaume’s blog</title><subtitle>Journey for a datascientist</subtitle><entry><title type="html">nbdev2 - first steps</title><link href="https://castorfou.github.io/guillaume_blog/blog/nbdev2.html" rel="alternate" type="text/html" title="nbdev2 - first steps" /><published>2022-09-07T00:00:00-05:00</published><updated>2022-09-07T00:00:00-05:00</updated><id>https://castorfou.github.io/guillaume_blog/blog/nbdev2</id><content type="html" xml:base="https://castorfou.github.io/guillaume_blog/blog/nbdev2.html"><![CDATA[<p>fastai has just released <a href="https://nbdev.fast.ai/">nbdev2</a>.</p>
 
 <p>This is a complete rewrite with quarto. I like how they displayed features in that card</p>
 
@@ -17,6 +17,36 @@
 <p>There is a 90 min video: <a href="https://www.youtube.com/watch?v=l7zS8Ld4_iA&amp;ab_channel=JeremyHoward">nbdev tutorial</a> – zero to published project in 90 minutes</p>
 
 <p>I follow here this tutorial.</p>
+
+<p>Here are the big steps:</p>
+
+<ul>
+  <li>create a new project with github: <a href="https://github.com/castorfou/dataset_tools">dataset_tools</a>. Give a description it will be reused by nbdev</li>
+  <li>create a local conda env with what is required to develop this library</li>
+</ul>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>conda create <span class="nt">--name</span> dataset_tools <span class="nv">python</span><span class="o">=</span>3.9
+conda activate dataset_tools 
+conda <span class="nb">install </span>ipykernel
+python <span class="nt">-m</span> ipykernel <span class="nb">install</span> <span class="nt">--user</span> <span class="nt">--name</span><span class="o">=</span>dataset_tools
+pip <span class="nb">install </span>nbdev
+pip <span class="nb">install </span>pandas
+</code></pre></div></div>
+
+<ul>
+  <li>clone it and turn it into a nbdev repo</li>
+</ul>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git clone git@github.com:castorfou/dataset_tools.git
+conda activate dataset_tools
+<span class="nb">cd </span>dataset_tools
+</code></pre></div></div>
+
+<ul>
+  <li>nbdev can be used from here. For example <code class="language-plaintext highlighter-rouge">nbdev_help</code>  to display all nbdev_ commands and what it does. And more detail can be got with <code class="language-plaintext highlighter-rouge">-h</code>: <code class="language-plaintext highlighter-rouge">nbdev_new -h</code></li>
+  <li><code class="language-plaintext highlighter-rouge">nbdev_new</code>. It is creating the structure and files such as settings.ini.</li>
+  <li>from base environment we can start <code class="language-plaintext highlighter-rouge">jupyter notebook</code>. It is advised to install nb_extensions (<code class="language-plaintext highlighter-rouge">pip install jupyter_contrib_nbextensions</code>), and activate TOC2. Open <code class="language-plaintext highlighter-rouge">00_core.ipynb</code> with <code class="language-plaintext highlighter-rouge">dataset_tools</code> kernel. Rename <code class="language-plaintext highlighter-rouge">00_core.ipynb</code> –&gt; <code class="language-plaintext highlighter-rouge">00_container.ipynb</code></li>
+</ul>
 
 <h1 id="gitlab-integration">Gitlab integration</h1>
 
