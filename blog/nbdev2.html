@@ -97,7 +97,7 @@ window.onload = wrap_img;
        • <span class="read-time" title="Estimated read time">
     
     
-      3 min read
+      4 min read
     
 </span></p>
 
@@ -438,6 +438,22 @@ conda activate dataset_tools
 <li>the python file -  only the cells with <code>#| export</code> will be published in a python file referenced as <code>#| default_exp &lt;name of python file&gt;</code>. A new file is genreated when <code>nbdev_export</code> is called.</li>
 <li>the documentation - all cells are used, except the one started with <code>#| hide</code>. Seems to be dynamically generated (when <code>nbdev_preview</code> is running?). <code>#| export</code> are handled specifically: if you have import, nothing is displayed. If you have code, definitions and docstrings are exported, and arguments as well.</li>
 </ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>There is an easy way to describe arguments of a function.</p>
+<p>Just make some identation with comments such as in</p>
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> 
+                 <span class="n">cle</span> <span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="c1"># la clé du container</span>
+                 <span class="n">dataset</span> <span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="c1"># le dataset</span>
+                 <span class="n">colonnes_a_masquer</span> <span class="p">:</span> <span class="nb">list</span> <span class="o">=</span> <span class="p">[],</span> <span class="c1"># les colonnes à masquer</span>
+                 <span class="n">colonnes_a_conserver</span> <span class="p">:</span> <span class="nb">list</span> <span class="o">=</span> <span class="p">[]</span> <span class="c1"># les colonnes qui ne seront pas transformées</span>
+                <span class="p">):</span>
+</pre></div>
 
 </div>
 </div>
