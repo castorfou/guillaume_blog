@@ -97,7 +97,7 @@ window.onload = wrap_img;
        • <span class="read-time" title="Estimated read time">
     
     
-      7 min read
+      8 min read
     
 </span></p>
 
@@ -138,6 +138,8 @@ window.onload = wrap_img;
 <li class="toc-entry toc-h3"><a href="#nbdev_export">nbdev_export </a></li>
 <li class="toc-entry toc-h3"><a href="#index.ipynb">index.ipynb </a></li>
 <li class="toc-entry toc-h3"><a href="#nbdev_preview">nbdev_preview </a></li>
+<li class="toc-entry toc-h3"><a href="#nbdev_test">nbdev_test </a></li>
+<li class="toc-entry toc-h3"><a href="#Golden-rule:-don't-mix-imports-and-code">Golden rule: don&#39;t mix imports and code </a></li>
 </ul>
 </li>
 </ul>
@@ -702,6 +704,7 @@ pandas data structure.</p>
 <p>or</p>
 <p><code>conda install -c fastai dataset-tools</code></p>
 <p>NB: see how <code>_</code> has been turned into <code>-</code>, and for that to happen we have to update <code>lib_name</code> and <code>lib_path</code> in <code>settings.ini</code> by replacing <code>_</code>with <code>-</code></p>
+<p>NB2: it is still confusing for me. It looks like modifying <code>lib_path</code> is not a good optiom.</p>
 
 </div>
 </div>
@@ -791,6 +794,97 @@ Homepage: https://github.com/quarto-dev/quarto-cli
 </div>
     
 
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="nbdev_test">
+<a class="anchor" href="#nbdev_test" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>nbdev_test</code><a class="anchor-link" href="#nbdev_test"> </a>
+</h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>As mentionned earlier, one can run <code>nbdev_test</code> to execute all tests in all notebooks.</p>
+<p>If it fails, Hamel has shared his dev workflow. He runs <code>Restart kernel &amp; run All</code>, and use <code>%debug</code> magic command to enter debug mode.</p>
+<p>You then have access to all <code>ipdb</code> commands such as h for help, p <code>var</code> to print content of <code>var</code>, w for stacktraces</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%</span><span class="k">debug</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>&gt; <span class="ansi-green-fg">/tmp/ipykernel_2453/349085080.py</span>(1)<span class="ansi-cyan-fg">&lt;cell line: 1&gt;</span><span class="ansi-blue-fg">()</span>
+<span class="ansi-green-fg">----&gt; 1 </span>show_doc<span class="ansi-blue-fg">(</span>test_eq<span class="ansi-blue-fg">)</span>
+
+ipdb&gt; h
+
+Documented commands (type help &lt;topic&gt;):
+========================================
+EOF    commands   enable    ll        pp       s                until 
+a      condition  exit      longlist  psource  skip_hidden      up    
+alias  cont       h         n         q        skip_predicates  w     
+args   context    help      next      quit     source           whatis
+b      continue   ignore    p         r        step             where 
+break  d          interact  pdef      restart  tbreak         
+bt     debug      j         pdoc      return   u              
+c      disable    jump      pfile     retval   unalias        
+cl     display    l         pinfo     run      undisplay      
+clear  down       list      pinfo2    rv       unt            
+
+Miscellaneous help topics:
+==========================
+exec  pdb
+
+ipdb&gt; q
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Golden-rule:-don't-mix-imports-and-code">
+<a class="anchor" href="#Golden-rule:-don't-mix-imports-and-code" aria-hidden="true"><span class="octicon octicon-link"></span></a>Golden rule: don't mix imports and code<a class="anchor-link" href="#Golden-rule:-don't-mix-imports-and-code"> </a>
+</h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>For a reason it is asked not to mix cells with imports and code.</p>
+<p>I am not sure what is the core reason for that. Something due to show_doc or doc generation?</p>
+<p>During my tests, I have seen something complaining about it after running <code>nbdev_export</code> or <code>nbdev_test</code> but cannot reproduce that. Hmmm</p>
+
+</div>
+</div>
+</div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
