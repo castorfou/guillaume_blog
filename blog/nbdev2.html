@@ -97,7 +97,7 @@ window.onload = wrap_img;
        • <span class="read-time" title="Estimated read time">
     
     
-      6 min read
+      7 min read
     
 </span></p>
 
@@ -137,6 +137,7 @@ window.onload = wrap_img;
 <li class="toc-entry toc-h3"><a href="#@patch---define-method-out-of-its-class">@patch - define method out of its class </a></li>
 <li class="toc-entry toc-h3"><a href="#nbdev_export">nbdev_export </a></li>
 <li class="toc-entry toc-h3"><a href="#index.ipynb">index.ipynb </a></li>
+<li class="toc-entry toc-h3"><a href="#nbdev_preview">nbdev_preview </a></li>
 </ul>
 </li>
 </ul>
@@ -633,6 +634,14 @@ pandas data structure.</p>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+<p>And one can run <code>nbdev_test</code> from the command line.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="@patch---define-method-out-of-its-class">
 <a class="anchor" href="#@patch---define-method-out-of-its-class" aria-hidden="true"><span class="octicon octicon-link"></span></a>@patch - define method out of its class<a class="anchor-link" href="#@patch---define-method-out-of-its-class"> </a>
 </h3>
@@ -688,6 +697,18 @@ pandas data structure.</p>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+<p>When it will be published (pypi or conda), it will be installable by calling</p>
+<p><code>pip install dataset-tools</code></p>
+<p>or</p>
+<p><code>conda install -c fastai dataset-tools</code></p>
+<p>NB: see how <code>_</code> has been turned into <code>-</code>, and for that to happen we have to update <code>lib_name</code> and <code>lib_path</code> in <code>settings.ini</code> by replacing <code>_</code>with <code>-</code></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="index.ipynb">
 <a class="anchor" href="#index.ipynb" aria-hidden="true"><span class="octicon octicon-link"></span></a>index.ipynb<a class="anchor-link" href="#index.ipynb"> </a>
 </h3>
@@ -705,6 +726,71 @@ pandas data structure.</p>
 </div>
 </div>
 </div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="nbdev_preview">
+<a class="anchor" href="#nbdev_preview" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>nbdev_preview</code><a class="anchor-link" href="#nbdev_preview"> </a>
+</h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Just run it from command line</p>
+<div class="highlight"><pre><span></span>nbdev_preview
+</pre></div>
+<p>and it is accessible from <a href="http://localhost:3000">http://localhost:3000</a>.</p>
+<p>This is a quarto webserver. The 1st time you launch it it will install quarto for you. On ubuntu this is a standard package so it will be updated regularly.</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">getpass</span> <span class="kn">import</span> <span class="n">getpass</span>
+<span class="o">!</span><span class="nb">echo</span> <span class="o">{</span>getpass<span class="o">()}</span> <span class="p">|</span> sudo -S apt-cache show quarto
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>········
+[sudo] password for guillaume: Package: quarto
+Status: install ok installed
+Priority: optional
+Section: user/text
+Installed-Size: 242759
+Maintainer: RStudio, PBC &lt;quarto@rstudio.org&gt;
+Architecture: amd64
+Version: 1.1.189
+Description: Quarto is an academic, scientific, and technical publishing system built on Pandoc.
+Description-md5: 516c872f9c3577457bbd01eac38f8130
+Homepage: https://github.com/quarto-dev/quarto-cli
+
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
