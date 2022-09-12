@@ -136,6 +136,7 @@ window.onload = wrap_img;
 <li class="toc-entry toc-h3"><a href="#test_ne">test_ne </a></li>
 <li class="toc-entry toc-h3"><a href="#@patch---define-method-out-of-its-class">@patch - define method out of its class </a></li>
 <li class="toc-entry toc-h3"><a href="#nbdev_export">nbdev_export </a></li>
+<li class="toc-entry toc-h3"><a href="#index.ipynb">index.ipynb </a></li>
 </ul>
 </li>
 </ul>
@@ -624,6 +625,14 @@ pandas data structure.</p>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+<p>This is convenient to integrate all the unit tests that way. When you will export by running <code>Restart &amp; Run All</code>, if an error is met, export won't be done.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="@patch---define-method-out-of-its-class">
 <a class="anchor" href="#@patch---define-method-out-of-its-class" aria-hidden="true"><span class="octicon octicon-link"></span></a>@patch - define method out of its class<a class="anchor-link" href="#@patch---define-method-out-of-its-class"> </a>
 </h3>
@@ -662,6 +671,36 @@ pandas data structure.</p>
 <div class="highlight"><pre><span></span><span class="c1">#| hide</span>
 <span class="kn">import</span> <span class="nn">nbdev</span><span class="p">;</span> <span class="n">nbdev</span><span class="o">.</span><span class="n">nbdev_export</span><span class="p">()</span>
 </pre></div>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>And we can install it to be used directly by running <code>pip install -e .</code></p>
+<p>It means that you can now import your project with</p>
+<p><code>from dataset_tools.container import *</code></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="index.ipynb">
+<a class="anchor" href="#index.ipynb" aria-hidden="true"><span class="octicon octicon-link"></span></a>index.ipynb<a class="anchor-link" href="#index.ipynb"> </a>
+</h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Here it is a good idea to give overview about how to use it.</p>
+<p>By importing your library and start using it.</p>
+<p>And it will be exported as the homepage of your lib.</p>
+<p>Just have to decide what should land in index and what should land in module page.</p>
 
 </div>
 </div>
