@@ -97,7 +97,7 @@ window.onload = wrap_img;
        • <span class="read-time" title="Estimated read time">
     
     
-      1 min read
+      3 min read
     
 </span></p>
 
@@ -210,8 +210,40 @@ conda create --name dataset_tools python=3.9
 conda activate dataset_tools
 conda install ipykernel
 python -m ipykernel install --user --name=dataset_tools
-pip install nbdev
+pip install nbdev -U
 pip install pandas
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
+<span class="o">!{</span>sys.prefix<span class="o">}</span>/bin/pip list<span class="p">|</span>grep nbdev
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>nbdev              2.2.10
 </pre>
 </div>
 </div>
@@ -249,11 +281,88 @@ conda activate dataset_tools
 <ul>
 <li>nbdev can be used from here. For example <code>nbdev_help</code>  to display all nbdev_ commands and what it does. And more detail can be got with <code>-h</code>: <code>nbdev_new -h</code>
 </li>
+</ul>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!{</span>sys.prefix<span class="o">}</span>/bin/nbdev_help
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre><span class="ansi-blue-intense-fg ansi-bold">nbdev_bump_version</span>              Increment version in settings.ini by one
+<span class="ansi-blue-intense-fg ansi-bold">nbdev_changelog</span>                 Create a CHANGELOG.md file from closed and labeled GitHub issues
+<span class="ansi-blue-intense-fg ansi-bold">nbdev_clean</span>                     Clean all notebooks in `fname` to avoid merge conflicts
+<span class="ansi-blue-intense-fg ansi-bold">nbdev_conda</span>                     Create a `meta.yaml` file ready to be built into a package, and optionally build and upload it
+<span class="ansi-blue-intense-fg ansi-bold">nbdev_create_config</span>             Create a config file.
+<span class="ansi-blue-intense-fg ansi-bold">nbdev_deploy</span>                    Deploy docs to GitHub Pages
+<span class="ansi-blue-intense-fg ansi-bold">nbdev_docs</span>                      Create Quarto docs and README.md
+<span class="ansi-blue-intense-fg ansi-bold">nbdev_export</span>                    Export notebooks in `path` to Python modules
+<span class="ansi-blue-intense-fg ansi-bold">nbdev_filter</span>                    A notebook filter for Quarto
+<span class="ansi-blue-intense-fg ansi-bold">nbdev_fix</span>                       Create working notebook from conflicted notebook `nbname`
+<span class="ansi-blue-intense-fg ansi-bold">nbdev_help</span>                      Show help for all console scripts
+<span class="ansi-blue-intense-fg ansi-bold">nbdev_install</span>                   Install Quarto and the current library
+<span class="ansi-blue-intense-fg ansi-bold">nbdev_install_hooks</span>             Install Jupyter and git hooks to automatically clean, trust, and fix merge conflicts in notebooks
+<span class="ansi-blue-intense-fg ansi-bold">nbdev_install_quarto</span>            Install latest Quarto on macOS or Linux, prints instructions for Windows
+<span class="ansi-blue-intense-fg ansi-bold">nbdev_merge</span>                     Git merge driver for notebooks
+<span class="ansi-blue-intense-fg ansi-bold">nbdev_migrate</span>                   Convert all directives and callouts in `fname` from v1 to v2
+<span class="ansi-blue-intense-fg ansi-bold">nbdev_new</span>                       Create an nbdev project.
+<span class="ansi-blue-intense-fg ansi-bold">nbdev_prepare</span>                   Export, test, and clean notebooks, and render README if needed
+<span class="ansi-blue-intense-fg ansi-bold">nbdev_preview</span>                   Preview docs locally
+<span class="ansi-blue-intense-fg ansi-bold">nbdev_pypi</span>                      Create and upload Python package to PyPI
+<span class="ansi-blue-intense-fg ansi-bold">nbdev_quarto</span>                    Create Quarto docs and README.md
+<span class="ansi-blue-intense-fg ansi-bold">nbdev_readme</span>                    Render README.md from index.ipynb
+<span class="ansi-blue-intense-fg ansi-bold">nbdev_release_both</span>              Release both conda and PyPI packages
+<span class="ansi-blue-intense-fg ansi-bold">nbdev_release_gh</span>                Calls `nbdev_changelog`, lets you edit the result, then pushes to git and calls `nbdev_release_git`
+<span class="ansi-blue-intense-fg ansi-bold">nbdev_release_git</span>               Tag and create a release in GitHub for the current version
+<span class="ansi-blue-intense-fg ansi-bold">nbdev_sidebar</span>                   Create sidebar.yml
+<span class="ansi-blue-intense-fg ansi-bold">nbdev_test</span>                      Test in parallel notebooks matching `path`, passing along `flags`
+<span class="ansi-blue-intense-fg ansi-bold">nbdev_trust</span>                     Trust notebooks matching `fname`
+<span class="ansi-blue-intense-fg ansi-bold">nbdev_update</span>                    Propagate change in modules matching `fname` to notebooks that created them
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
 <li>
 <code>nbdev_new</code>. It is creating the structure and files such as settings.ini.</li>
 <li>from base environment we can start <code>jupyter notebook</code>. It is advised to install nb_extensions (<code>pip install jupyter_contrib_nbextensions</code>), and activate TOC2. Open <code>00_core.ipynb</code> with <code>dataset_tools</code> kernel. Rename <code>00_core.ipynb</code> --&gt; <code>00_container.ipynb</code>
 </li>
 </ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Jeremy explains then what are <code>#|</code> used by quarto and nbdev.</p>
+<p>And for example <code>#| hide</code> will allow to be executed but hide in your documentation.</p>
 
 </div>
 </div>
