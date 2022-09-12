@@ -133,6 +133,7 @@ window.onload = wrap_img;
 <li class="toc-entry toc-h3"><a href="#show_doc">show_doc </a></li>
 <li class="toc-entry toc-h3"><a href="#DataFrame">DataFrame </a></li>
 <li class="toc-entry toc-h3"><a href="#unit-testing">unit testing </a></li>
+<li class="toc-entry toc-h3"><a href="#@patch---define-method-out-of-its-class">@patch - define method out of its class </a></li>
 </ul>
 </li>
 </ul>
@@ -575,6 +576,38 @@ pandas data structure.</p>
 <h3 id="unit-testing">
 <a class="anchor" href="#unit-testing" aria-hidden="true"><span class="octicon octicon-link"></span></a>unit testing<a class="anchor-link" href="#unit-testing"> </a>
 </h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>There are some basic testing functionalty available by importing fastcore. <code>from fastcore.test import *</code></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="@patch---define-method-out-of-its-class">
+<a class="anchor" href="#@patch---define-method-out-of-its-class" aria-hidden="true"><span class="octicon octicon-link"></span></a>@patch - define method out of its class<a class="anchor-link" href="#@patch---define-method-out-of-its-class"> </a>
+</h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Just by adding this import</p>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">fastcore.utils</span> <span class="kn">import</span> <span class="o">*</span>
+</pre></div>
+<p>one can use</p>
+<div class="highlight"><pre><span></span><span class="nd">@patch</span>
+<span class="k">def</span> <span class="nf">new_method</span><span class="p">(</span><span class="bp">self</span><span class="p">:</span><span class="n">myclass</span><span class="p">):</span>
+    <span class="k">pass</span>
+</pre></div>
+
 </div>
 </div>
 </div>
