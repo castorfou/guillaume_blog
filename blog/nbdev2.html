@@ -363,6 +363,12 @@ conda activate dataset_tools
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Jeremy explains then what are <code>#|</code> used by quarto and nbdev.</p>
 <p>And for example <code>#| hide</code> will allow to be executed but hide in your documentation.</p>
+<p>Actually from a single notebook, you have 3 usages:</p>
+<ul>
+<li>the notebook by itself -  all cells are executed, whatever are the prefix <code>#|</code> that you display on cells</li>
+<li>the python file -  only the cells with <code>#| export</code> will be published in a python file referenced as <code>#| default_exp &lt;name of python file&gt;</code>. A new file is genreated when <code>nbdev_export</code> is called.</li>
+<li>the documentation - all cells are used, except the one started with <code>#| hide</code>. Seems to be dynamically generated (when <code>nbdev_preview</code> is running?)</li>
+</ul>
 
 </div>
 </div>
