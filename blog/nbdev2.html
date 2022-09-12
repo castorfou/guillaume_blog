@@ -122,7 +122,15 @@ window.onload = wrap_img;
   <div class="post-content e-content" itemprop="articleBody">
     <ul id="toc" class="section-nav">
 <li class="toc-entry toc-h1"><a href="#Support">Support </a></li>
-<li class="toc-entry toc-h1"><a href="#Walkthrough">Walkthrough </a></li>
+<li class="toc-entry toc-h1"><a href="#Walkthrough">Walkthrough </a>
+<ul>
+<li class="toc-entry toc-h2"><a href="#create-github-project">create github project </a></li>
+<li class="toc-entry toc-h2"><a href="#integrate-nbdev-in-your-python-environment">integrate nbdev in your python environment </a></li>
+<li class="toc-entry toc-h2"><a href="#clone-repo-and-turned-it-into-a-nbdev-repo">clone repo and turned it into a nbdev repo </a></li>
+<li class="toc-entry toc-h2"><a href="#nbdev_-commands-are-ready-to-be-used">nbdev_ commands are ready to be used </a></li>
+<li class="toc-entry toc-h2"><a href="#and-#|-prefix-in-notebooks-as-well">and #| prefix in notebooks as well </a></li>
+</ul>
+</li>
 <li class="toc-entry toc-h1"><a href="#Gitlab-integration">Gitlab integration </a></li>
 </ul><!--
 #################################################
@@ -177,8 +185,42 @@ window.onload = wrap_img;
 <p>There is a 90 min video: <a href="https://www.youtube.com/watch?v=l7zS8Ld4_iA&amp;ab_channel=JeremyHoward">nbdev tutorial</a> -- zero to published project in 90 minutes</p>
 <p>I follow here this tutorial.</p>
 <p>Here are the big steps:</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="create-github-project">
+<a class="anchor" href="#create-github-project" aria-hidden="true"><span class="octicon octicon-link"></span></a>create github project<a class="anchor-link" href="#create-github-project"> </a>
+</h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <ul>
 <li>create a new project with github: <a href="https://github.com/castorfou/dataset_tools">dataset_tools</a>. Give a description it will be reused by nbdev</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="integrate-nbdev-in-your-python-environment">
+<a class="anchor" href="#integrate-nbdev-in-your-python-environment" aria-hidden="true"><span class="octicon octicon-link"></span></a>integrate <code>nbdev</code> in your python environment<a class="anchor-link" href="#integrate-nbdev-in-your-python-environment"> </a>
+</h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
 <li>create a local conda env <code>dataset_tools</code> with what is required to develop this library</li>
 </ul>
 
@@ -257,6 +299,15 @@ pip install pandas
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="clone-repo-and-turned-it-into-a-nbdev-repo">
+<a class="anchor" href="#clone-repo-and-turned-it-into-a-nbdev-repo" aria-hidden="true"><span class="octicon octicon-link"></span></a>clone repo and turned it into a nbdev repo<a class="anchor-link" href="#clone-repo-and-turned-it-into-a-nbdev-repo"> </a>
+</h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <ul>
 <li>clone repo <code>dataset_tools</code> and turn it into a nbdev repo</li>
 </ul>
@@ -272,6 +323,15 @@ conda activate dataset_tools
 <span class="nb">cd</span> dataset_tools
 </pre></div>
 
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="nbdev_-commands-are-ready-to-be-used">
+<a class="anchor" href="#nbdev_-commands-are-ready-to-be-used" aria-hidden="true"><span class="octicon octicon-link"></span></a>nbdev_ commands are ready to be used<a class="anchor-link" href="#nbdev_-commands-are-ready-to-be-used"> </a>
+</h2>
 </div>
 </div>
 </div>
@@ -361,13 +421,22 @@ conda activate dataset_tools
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="and-#|-prefix-in-notebooks-as-well">
+<a class="anchor" href="#and-#%7C-prefix-in-notebooks-as-well" aria-hidden="true"><span class="octicon octicon-link"></span></a>and <code>#|</code> prefix in notebooks as well<a class="anchor-link" href="#and-#%7C-prefix-in-notebooks-as-well"> </a>
+</h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <p>Jeremy explains then what are <code>#|</code> used by quarto and nbdev.</p>
 <p>And for example <code>#| hide</code> will allow to be executed but hide in your documentation.</p>
 <p>Actually from a single notebook, you have 3 usages:</p>
 <ul>
 <li>the notebook by itself -  all cells are executed, whatever are the prefix <code>#|</code> that you display on cells</li>
 <li>the python file -  only the cells with <code>#| export</code> will be published in a python file referenced as <code>#| default_exp &lt;name of python file&gt;</code>. A new file is genreated when <code>nbdev_export</code> is called.</li>
-<li>the documentation - all cells are used, except the one started with <code>#| hide</code>. Seems to be dynamically generated (when <code>nbdev_preview</code> is running?)</li>
+<li>the documentation - all cells are used, except the one started with <code>#| hide</code>. Seems to be dynamically generated (when <code>nbdev_preview</code> is running?). <code>#| export</code> are handled specifically: if you have import, nothing is displayed. If you have code, definitions and docstrings are exported, and arguments as well.</li>
 </ul>
 
 </div>
