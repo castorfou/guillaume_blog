@@ -97,7 +97,7 @@ window.onload = wrap_img;
        • <span class="read-time" title="Estimated read time">
     
     
-      5 min read
+      6 min read
     
 </span></p>
 
@@ -133,7 +133,9 @@ window.onload = wrap_img;
 <li class="toc-entry toc-h3"><a href="#show_doc">show_doc </a></li>
 <li class="toc-entry toc-h3"><a href="#DataFrame">DataFrame </a></li>
 <li class="toc-entry toc-h3"><a href="#unit-testing">unit testing </a></li>
+<li class="toc-entry toc-h3"><a href="#test_ne">test_ne </a></li>
 <li class="toc-entry toc-h3"><a href="#@patch---define-method-out-of-its-class">@patch - define method out of its class </a></li>
+<li class="toc-entry toc-h3"><a href="#nbdev_export">nbdev_export </a></li>
 </ul>
 </li>
 </ul>
@@ -583,10 +585,42 @@ pandas data structure.</p>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>There are some basic testing functionalty available by importing fastcore. <code>from fastcore.test import *</code></p>
+<p>With <code>test_eq</code> very closed to <code>assert</code> and <code>test_ne</code> closed to <code>assert not</code></p>
 
 </div>
 </div>
 </div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_markdown rendered_html output_subarea output_execute_result">
+<hr>
+<p><a href="https://github.com/fastai/fastcore/blob/master/fastcore/test.py#LNone">source</a>{target="_blank" style="float:right; font-size:smaller"}</p>
+<h3 id="test_ne">
+<a class="anchor" href="#test_ne" aria-hidden="true"><span class="octicon octicon-link"></span></a>test_ne<a class="anchor-link" href="#test_ne"> </a>
+</h3>
+<blockquote>
+<pre><code> test_ne (a, b)</code></pre>
+</blockquote>
+<p><code>test</code> that <code>a!=b</code></p>
+
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -606,6 +640,27 @@ pandas data structure.</p>
 <div class="highlight"><pre><span></span><span class="nd">@patch</span>
 <span class="k">def</span> <span class="nf">new_method</span><span class="p">(</span><span class="bp">self</span><span class="p">:</span><span class="n">myclass</span><span class="p">):</span>
     <span class="k">pass</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="nbdev_export">
+<a class="anchor" href="#nbdev_export" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>nbdev_export</code><a class="anchor-link" href="#nbdev_export"> </a>
+</h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>from command line, one can run <code>nbdev_export</code></p>
+<p>or directly from jupyter, for example will be executing <code>Restart &amp; Run All</code></p>
+<div class="highlight"><pre><span></span><span class="c1">#| hide</span>
+<span class="kn">import</span> <span class="nn">nbdev</span><span class="p">;</span> <span class="n">nbdev</span><span class="o">.</span><span class="n">nbdev_export</span><span class="p">()</span>
 </pre></div>
 
 </div>
