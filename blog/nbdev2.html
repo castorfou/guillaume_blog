@@ -1,0 +1,1258 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="twitter:card" content="summary_large_image" /><!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>nbdev2 - first steps | Guillaume’s blog</title>
+<meta name="generator" content="Jekyll v4.1.1" />
+<meta property="og:title" content="nbdev2 - first steps" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="by Jeremy Howard and Hamel Hussain" />
+<meta property="og:description" content="by Jeremy Howard and Hamel Hussain" />
+<link rel="canonical" href="https://castorfou.github.io/guillaume_blog/blog/nbdev2.html" />
+<meta property="og:url" content="https://castorfou.github.io/guillaume_blog/blog/nbdev2.html" />
+<meta property="og:site_name" content="Guillaume’s blog" />
+<meta property="og:image" content="https://castorfou.github.io/guillaume_blog/images/icons/fastai.png" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2022-09-12T00:00:00-05:00" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="https://castorfou.github.io/guillaume_blog/images/icons/fastai.png" />
+<meta property="twitter:title" content="nbdev2 - first steps" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2022-09-12T00:00:00-05:00","datePublished":"2022-09-12T00:00:00-05:00","description":"by Jeremy Howard and Hamel Hussain","headline":"nbdev2 - first steps","image":"https://castorfou.github.io/guillaume_blog/images/icons/fastai.png","mainEntityOfPage":{"@type":"WebPage","@id":"https://castorfou.github.io/guillaume_blog/blog/nbdev2.html"},"url":"https://castorfou.github.io/guillaume_blog/blog/nbdev2.html"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/guillaume_blog/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="https://castorfou.github.io/guillaume_blog/feed.xml" title="Guillaume's blog" /><link rel="shortcut icon" type="image/x-icon" href="/guillaume_blog/images/favicon.ico"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Primer/15.2.0/primer.css" integrity="sha512-xTz2ys4coGAOz8vuV1NcQBkgVmKhsSEtjbqyMJbBHRplFuvKIUo6xhLHpAyPt9mfR6twHJgn9OgVLuqOvjeBhg==" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.12.0/katex.min.css" integrity="sha512-h7nl+xz8wgDlNM4NqKEM4F1NkIRS17M9+uJwIGwuo8vGqIl4BhuCKdxjWEINm+xyrUjNCnK5dCrhM0sj+wTIXw==" crossorigin="anonymous" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.12.0/katex.min.js" integrity="sha512-/CMIhXiDA3m2c9kzRyd97MTb3MC6OVnx4TElQ7fkkoRghwDf6gi41gaT1PwF270W6+J60uTmwgeRpNpJdRV6sg==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.12.0/contrib/auto-render.min.js" integrity="sha512-Do7uJAaHZm5OLrIv/yN4w0iG1dbu01kzdMNnFfu/mAqgUk6Nniv2JYHcwH+cNwjqgLcqcuBBk+JRvprLVI8azg==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha512-0doc9hKxR3PYwso42RD1p5ySZpzzuDiOwMrdCEh2WdJZCjcmFKc/wEnL+z8fBQrnHoiNWbo+3fiGkOYXBdQp4A==" crossorigin="anonymous"></script>
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        renderMathInElement( document.body, {
+        delimiters: [
+            {left: "$$", right: "$$", display: true},
+            {left: "[%", right: "%]", display: true},
+            {left: "$", right: "$", display: false}
+        ]}
+        );
+    });
+    </script>
+
+
+<script>
+function wrap_img(fn) {
+    if (document.attachEvent ? document.readyState === "complete" : document.readyState !== "loading") {
+        var elements = document.querySelectorAll(".post img");
+        Array.prototype.forEach.call(elements, function(el, i) {
+            if (el.getAttribute("title") && (el.className != "emoji")) {
+                const caption = document.createElement('figcaption');
+                var node = document.createTextNode(el.getAttribute("title"));
+                caption.appendChild(node);
+                const wrapper = document.createElement('figure');
+                wrapper.className = 'image';
+                el.parentNode.insertBefore(wrapper, el);
+                el.parentNode.removeChild(el);
+                wrapper.appendChild(el);
+                wrapper.appendChild(caption);
+            }
+        });
+    } else { document.addEventListener('DOMContentLoaded', fn); }
+}
+window.onload = wrap_img;
+</script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function(){
+    // add link icon to anchor tags
+    var elem = document.querySelectorAll(".anchor-link")
+    elem.forEach(e => (e.innerHTML = '<i class="fas fa-link fa-xs"></i>'));
+    });
+</script>
+</head>
+<body><header class="site-header">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/guillaume_blog/">Guillaume&#39;s blog</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/guillaume_blog/about/">About Me</a><a class="page-link" href="/guillaume_blog/search/">Search</a><a class="page-link" href="/guillaume_blog/categories/">Tags</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">nbdev2 - first steps</h1><p class="page-description">by Jeremy Howard and Hamel Hussain</p><p class="post-meta post-meta-title"><time class="dt-published" datetime="2022-09-12T00:00:00-05:00" itemprop="datePublished">
+        Sep 12, 2022
+      </time>
+       • <span class="read-time" title="Estimated read time">
+    
+    
+      11 min read
+    
+</span></p>
+
+    
+      <p class="category-tags"><i class="fas fa-tags category-tags-icon"></i></i> 
+      
+        <a class="category-tags-link" href="/guillaume_blog/categories/#nbdev">nbdev</a>
+        &nbsp;
+      
+        <a class="category-tags-link" href="/guillaume_blog/categories/#fastai">fastai</a>
+        &nbsp;
+      
+        <a class="category-tags-link" href="/guillaume_blog/categories/#jupyter">jupyter</a>
+        
+      
+      </p>
+    
+
+    
+      </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <ul id="toc" class="section-nav">
+<li class="toc-entry toc-h1"><a href="#Support">Support </a></li>
+<li class="toc-entry toc-h1"><a href="#Walkthrough">Walkthrough </a>
+<ul>
+<li class="toc-entry toc-h2"><a href="#create-github-project">create github project </a></li>
+<li class="toc-entry toc-h2"><a href="#integrate-nbdev-in-your-python-environment">integrate nbdev in your python environment </a></li>
+<li class="toc-entry toc-h2"><a href="#clone-repo-and-turned-it-into-a-nbdev-repo">clone repo and turned it into a nbdev repo </a></li>
+<li class="toc-entry toc-h2"><a href="#nbdev_-commands-are-ready-to-be-used">nbdev_ commands are ready to be used </a></li>
+<li class="toc-entry toc-h2"><a href="#and-#|-prefix-in-notebooks-as-well">and #| prefix in notebooks as well </a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#show_doc">show_doc </a></li>
+<li class="toc-entry toc-h3"><a href="#DataFrame">DataFrame </a></li>
+<li class="toc-entry toc-h3"><a href="#unit-testing">unit testing </a></li>
+<li class="toc-entry toc-h3"><a href="#test_ne">test_ne </a></li>
+<li class="toc-entry toc-h3"><a href="#@patch---define-method-out-of-its-class">@patch - define method out of its class </a></li>
+<li class="toc-entry toc-h3"><a href="#nbdev_export">nbdev_export </a></li>
+<li class="toc-entry toc-h3"><a href="#index.ipynb">index.ipynb </a></li>
+<li class="toc-entry toc-h3"><a href="#nbdev_preview">nbdev_preview </a></li>
+<li class="toc-entry toc-h3"><a href="#nbdev_test">nbdev_test </a></li>
+<li class="toc-entry toc-h3"><a href="#Golden-rule:-don't-mix-imports-and-code">Golden rule: don&#39;t mix imports and code </a></li>
+<li class="toc-entry toc-h3"><a href="#nbdev_clean">nbdev_clean </a></li>
+<li class="toc-entry toc-h3"><a href="#push-to-github">push to github </a></li>
+<li class="toc-entry toc-h3"><a href="#define-dep">define dep </a></li>
+<li class="toc-entry toc-h3"><a href="#publish-to-Pypi,-conda,-...">publish to Pypi, conda, ... </a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-entry toc-h1"><a href="#Gitlab-integration">Gitlab integration </a>
+<ul>
+<li class="toc-entry toc-h2"><a href="#my-tests-with-our-internal-gitlab">my tests with our internal gitlab </a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#create-project-in-gitlab">create project in gitlab </a></li>
+<li class="toc-entry toc-h3"><a href="#clone-it">clone it </a></li>
+<li class="toc-entry toc-h3"><a href="#nbdev_new">nbdev_new </a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul><!--
+#################################################
+### THIS FILE WAS AUTOGENERATED! DO NOT EDIT! ###
+#################################################
+# file to edit: _notebooks/2022-09-12-nbdev2.ipynb
+-->
+
+<div class="container" id="notebook-container">
+        
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>fastai has just released <a href="https://nbdev.fast.ai/">nbdev2</a>.</p>
+<p>This is a complete rewrite with quarto. I like how they displayed features in that card</p>
+<p><img src="https://nbdev.fast.ai/images/card.png" alt=""></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Support">
+<a class="anchor" href="#Support" aria-hidden="true"><span class="octicon octicon-link"></span></a>Support<a class="anchor-link" href="#Support"> </a>
+</h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>There is a <a href="https://forums.fast.ai/c/nbdev/48">nbdev section</a> in fastai forum.</p>
+<p>There is a channel #nbdev-help at fastai discord. Never posted there.</p>
+<p>And <a href="https://github.com/fastai/nbdev/issues">issues page</a> in github fastai/nbdev repo.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Walkthrough">
+<a class="anchor" href="#Walkthrough" aria-hidden="true"><span class="octicon octicon-link"></span></a>Walkthrough<a class="anchor-link" href="#Walkthrough"> </a>
+</h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>There is a 90 min video: <a href="https://www.youtube.com/watch?v=l7zS8Ld4_iA&amp;ab_channel=JeremyHoward">nbdev tutorial</a> -- zero to published project in 90 minutes</p>
+<p>I follow here this tutorial.</p>
+<p>Here are the big steps:</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="create-github-project">
+<a class="anchor" href="#create-github-project" aria-hidden="true"><span class="octicon octicon-link"></span></a>create github project<a class="anchor-link" href="#create-github-project"> </a>
+</h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>create a new project with github: <a href="https://github.com/castorfou/dataset_tools">dataset_tools</a>. Give a description it will be reused by nbdev</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="integrate-nbdev-in-your-python-environment">
+<a class="anchor" href="#integrate-nbdev-in-your-python-environment" aria-hidden="true"><span class="octicon octicon-link"></span></a>integrate <code>nbdev</code> in your python environment<a class="anchor-link" href="#integrate-nbdev-in-your-python-environment"> </a>
+</h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>create a local conda env <code>dataset_tools</code> with what is required to develop this library</li>
+</ul>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>cat /home/guillaume/_conda_env/dataset_tools.txt
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>conda remove --name dataset_tools --all
+conda create --name dataset_tools python=3.9
+conda activate dataset_tools
+conda install ipykernel
+python -m ipykernel install --user --name=dataset_tools
+pip install nbdev -U
+pip install pandas
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
+<span class="o">!{</span>sys.prefix<span class="o">}</span>/bin/pip list<span class="p">|</span>grep nbdev
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>nbdev              2.2.10
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="clone-repo-and-turned-it-into-a-nbdev-repo">
+<a class="anchor" href="#clone-repo-and-turned-it-into-a-nbdev-repo" aria-hidden="true"><span class="octicon octicon-link"></span></a>clone repo and turned it into a nbdev repo<a class="anchor-link" href="#clone-repo-and-turned-it-into-a-nbdev-repo"> </a>
+</h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>clone repo <code>dataset_tools</code> and turn it into a nbdev repo</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<div class="highlight"><pre><span></span>git clone git@github.com:castorfou/dataset_tools.git
+conda activate dataset_tools
+<span class="nb">cd</span> dataset_tools
+</pre></div>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="nbdev_-commands-are-ready-to-be-used">
+<a class="anchor" href="#nbdev_-commands-are-ready-to-be-used" aria-hidden="true"><span class="octicon octicon-link"></span></a>nbdev_ commands are ready to be used<a class="anchor-link" href="#nbdev_-commands-are-ready-to-be-used"> </a>
+</h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>nbdev can be used from here. For example <code>nbdev_help</code>  to display all nbdev_ commands and what it does. And more detail can be got with <code>-h</code>: <code>nbdev_new -h</code>
+</li>
+</ul>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!{</span>sys.prefix<span class="o">}</span>/bin/nbdev_help
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre><span class="ansi-blue-intense-fg ansi-bold">nbdev_bump_version</span>              Increment version in settings.ini by one
+<span class="ansi-blue-intense-fg ansi-bold">nbdev_changelog</span>                 Create a CHANGELOG.md file from closed and labeled GitHub issues
+<span class="ansi-blue-intense-fg ansi-bold">nbdev_clean</span>                     Clean all notebooks in `fname` to avoid merge conflicts
+<span class="ansi-blue-intense-fg ansi-bold">nbdev_conda</span>                     Create a `meta.yaml` file ready to be built into a package, and optionally build and upload it
+<span class="ansi-blue-intense-fg ansi-bold">nbdev_create_config</span>             Create a config file.
+<span class="ansi-blue-intense-fg ansi-bold">nbdev_deploy</span>                    Deploy docs to GitHub Pages
+<span class="ansi-blue-intense-fg ansi-bold">nbdev_docs</span>                      Create Quarto docs and README.md
+<span class="ansi-blue-intense-fg ansi-bold">nbdev_export</span>                    Export notebooks in `path` to Python modules
+<span class="ansi-blue-intense-fg ansi-bold">nbdev_filter</span>                    A notebook filter for Quarto
+<span class="ansi-blue-intense-fg ansi-bold">nbdev_fix</span>                       Create working notebook from conflicted notebook `nbname`
+<span class="ansi-blue-intense-fg ansi-bold">nbdev_help</span>                      Show help for all console scripts
+<span class="ansi-blue-intense-fg ansi-bold">nbdev_install</span>                   Install Quarto and the current library
+<span class="ansi-blue-intense-fg ansi-bold">nbdev_install_hooks</span>             Install Jupyter and git hooks to automatically clean, trust, and fix merge conflicts in notebooks
+<span class="ansi-blue-intense-fg ansi-bold">nbdev_install_quarto</span>            Install latest Quarto on macOS or Linux, prints instructions for Windows
+<span class="ansi-blue-intense-fg ansi-bold">nbdev_merge</span>                     Git merge driver for notebooks
+<span class="ansi-blue-intense-fg ansi-bold">nbdev_migrate</span>                   Convert all directives and callouts in `fname` from v1 to v2
+<span class="ansi-blue-intense-fg ansi-bold">nbdev_new</span>                       Create an nbdev project.
+<span class="ansi-blue-intense-fg ansi-bold">nbdev_prepare</span>                   Export, test, and clean notebooks, and render README if needed
+<span class="ansi-blue-intense-fg ansi-bold">nbdev_preview</span>                   Preview docs locally
+<span class="ansi-blue-intense-fg ansi-bold">nbdev_pypi</span>                      Create and upload Python package to PyPI
+<span class="ansi-blue-intense-fg ansi-bold">nbdev_quarto</span>                    Create Quarto docs and README.md
+<span class="ansi-blue-intense-fg ansi-bold">nbdev_readme</span>                    Render README.md from index.ipynb
+<span class="ansi-blue-intense-fg ansi-bold">nbdev_release_both</span>              Release both conda and PyPI packages
+<span class="ansi-blue-intense-fg ansi-bold">nbdev_release_gh</span>                Calls `nbdev_changelog`, lets you edit the result, then pushes to git and calls `nbdev_release_git`
+<span class="ansi-blue-intense-fg ansi-bold">nbdev_release_git</span>               Tag and create a release in GitHub for the current version
+<span class="ansi-blue-intense-fg ansi-bold">nbdev_sidebar</span>                   Create sidebar.yml
+<span class="ansi-blue-intense-fg ansi-bold">nbdev_test</span>                      Test in parallel notebooks matching `path`, passing along `flags`
+<span class="ansi-blue-intense-fg ansi-bold">nbdev_trust</span>                     Trust notebooks matching `fname`
+<span class="ansi-blue-intense-fg ansi-bold">nbdev_update</span>                    Propagate change in modules matching `fname` to notebooks that created them
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>
+<code>nbdev_new</code>. It is creating the structure and files such as settings.ini.</li>
+<li>from base environment we can start <code>jupyter notebook</code>. It is advised to install nb_extensions (<code>pip install jupyter_contrib_nbextensions</code>), and activate TOC2. Open <code>00_core.ipynb</code> with <code>dataset_tools</code> kernel. Rename <code>00_core.ipynb</code> --&gt; <code>00_container.ipynb</code>
+</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="and-#|-prefix-in-notebooks-as-well">
+<a class="anchor" href="#and-#%7C-prefix-in-notebooks-as-well" aria-hidden="true"><span class="octicon octicon-link"></span></a>and <code>#|</code> prefix in notebooks as well<a class="anchor-link" href="#and-#%7C-prefix-in-notebooks-as-well"> </a>
+</h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Jeremy explains then what are <code>#|</code> used by quarto and nbdev.</p>
+<p>And for example <code>#| hide</code> will allow to be executed but hide in your documentation.</p>
+<p>Actually from a single notebook, you have 3 usages:</p>
+<ul>
+<li>the notebook by itself -  all cells are executed, whatever are the prefix <code>#|</code> that you display on cells</li>
+<li>the python file -  only the cells with <code>#| export</code> will be published in a python file referenced as <code>#| default_exp &lt;name of python file&gt;</code>. A new file is genreated when <code>nbdev_export</code> is called.</li>
+<li>the documentation - all cells are used, except the one started with <code>#| hide</code>. Seems to be dynamically generated (when <code>nbdev_preview</code> is running?). <code>#| export</code> are handled specifically: if you have import, nothing is displayed. If you have code, definitions and docstrings are exported, and arguments as well.</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>There is an easy way to describe arguments of a function.</p>
+<p>Just make some indentation with comments such as in</p>
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> 
+                 <span class="n">cle</span> <span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="c1"># la clé du container</span>
+                 <span class="n">dataset</span> <span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="c1"># le dataset</span>
+                 <span class="n">colonnes_a_masquer</span> <span class="p">:</span> <span class="nb">list</span> <span class="o">=</span> <span class="p">[],</span> <span class="c1"># les colonnes à masquer</span>
+                 <span class="n">colonnes_a_conserver</span> <span class="p">:</span> <span class="nb">list</span> <span class="o">=</span> <span class="p">[]</span> <span class="c1"># les colonnes qui ne seront pas transformées</span>
+                <span class="p">):</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="show_doc">
+<a class="anchor" href="#show_doc" aria-hidden="true"><span class="octicon octicon-link"></span></a>show_doc<a class="anchor-link" href="#show_doc"> </a>
+</h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>and we can directly see the effect of it by calling <code>show_doc</code> (<code>show_doc(Container)</code>). You can even call show_doc on code not written with nbdev, or not even written by you.</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>/home/guillaume/miniconda/envs/dataset_tools/lib/python3.9/site-packages/fastcore/docscrape.py:225: UserWarning: Unknown section See Also
+  else: warn(msg)
+/home/guillaume/miniconda/envs/dataset_tools/lib/python3.9/site-packages/fastcore/docscrape.py:225: UserWarning: Unknown section Examples
+  else: warn(msg)
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+
+<div class="output_markdown rendered_html output_subarea output_execute_result">
+<hr>
+<h3 id="DataFrame">
+<a class="anchor" href="#DataFrame" aria-hidden="true"><span class="octicon octicon-link"></span></a>DataFrame<a class="anchor-link" href="#DataFrame"> </a>
+</h3>
+<blockquote>
+<pre><code> DataFrame (data=None, index:Axes|None=None, columns:Axes|None=None,
+            dtype:Dtype|None=None, copy:bool|None=None)</code></pre>
+</blockquote>
+<p>Two-dimensional, size-mutable, potentially heterogeneous tabular data.</p>
+<p>Data structure also contains labeled axes (rows and columns).
+Arithmetic operations align on both row and column labels. Can be
+thought of as a dict-like container for Series objects. The primary
+pandas data structure.</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th><strong>Type</strong></th>
+<th><strong>Default</strong></th>
+<th><strong>Details</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>data</td>
+<td>NoneType</td>
+<td>None</td>
+<td>Dict can contain Series, arrays, constants, dataclass or list-like objects. If<br>data is a dict, column order follows insertion-order. If a dict contains Series<br>which have an index defined, it is aligned by its index.<br><br>.. versionchanged:: 0.25.0<br>   If data is a list of dicts, column order follows insertion-order.</td>
+</tr>
+<tr>
+<td>index</td>
+<td>Axes | None</td>
+<td>None</td>
+<td>Index to use for resulting frame. Will default to RangeIndex if<br>no indexing information part of input data and no index provided.</td>
+</tr>
+<tr>
+<td>columns</td>
+<td>Axes | None</td>
+<td>None</td>
+<td>Column labels to use for resulting frame when data does not have them,<br>defaulting to RangeIndex(0, 1, 2, ..., n). If data contains column labels,<br>will perform column selection instead.</td>
+</tr>
+<tr>
+<td>dtype</td>
+<td>Dtype | None</td>
+<td>None</td>
+<td>Data type to force. Only a single dtype is allowed. If None, infer.</td>
+</tr>
+<tr>
+<td>copy</td>
+<td>bool | None</td>
+<td>None</td>
+<td>Copy data from inputs.<br>For dict data, the default of None behaves like <code>copy=True</code>.  For DataFrame<br>or 2d ndarray input, the default of None behaves like <code>copy=False</code>.<br><br>.. versionchanged:: 1.3.0</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="unit-testing">
+<a class="anchor" href="#unit-testing" aria-hidden="true"><span class="octicon octicon-link"></span></a>unit testing<a class="anchor-link" href="#unit-testing"> </a>
+</h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>There are some basic testing functionalty available by importing fastcore. <code>from fastcore.test import *</code></p>
+<p>With <code>test_eq</code> very closed to <code>assert</code> and <code>test_ne</code> closed to <code>assert not</code></p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_markdown rendered_html output_subarea output_execute_result">
+<hr>
+<p><a href="https://github.com/fastai/fastcore/blob/master/fastcore/test.py#LNone">source</a>{target="_blank" style="float:right; font-size:smaller"}</p>
+<h3 id="test_ne">
+<a class="anchor" href="#test_ne" aria-hidden="true"><span class="octicon octicon-link"></span></a>test_ne<a class="anchor-link" href="#test_ne"> </a>
+</h3>
+<blockquote>
+<pre><code> test_ne (a, b)</code></pre>
+</blockquote>
+<p><code>test</code> that <code>a!=b</code></p>
+
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>This is convenient to integrate all the unit tests that way. When you will export by running <code>Restart &amp; Run All</code>, if an error is met, export won't be done.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>And one can run <code>nbdev_test</code> from the command line.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="@patch---define-method-out-of-its-class">
+<a class="anchor" href="#@patch---define-method-out-of-its-class" aria-hidden="true"><span class="octicon octicon-link"></span></a>@patch - define method out of its class<a class="anchor-link" href="#@patch---define-method-out-of-its-class"> </a>
+</h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Just by adding this import</p>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">fastcore.utils</span> <span class="kn">import</span> <span class="o">*</span>
+</pre></div>
+<p>one can use</p>
+<div class="highlight"><pre><span></span><span class="nd">@patch</span>
+<span class="k">def</span> <span class="nf">new_method</span><span class="p">(</span><span class="bp">self</span><span class="p">:</span><span class="n">myclass</span><span class="p">):</span>
+    <span class="k">pass</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="nbdev_export">
+<a class="anchor" href="#nbdev_export" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>nbdev_export</code><a class="anchor-link" href="#nbdev_export"> </a>
+</h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>from command line, one can run <code>nbdev_export</code></p>
+<p>or directly from jupyter, for example will be executing <code>Restart &amp; Run All</code></p>
+<div class="highlight"><pre><span></span><span class="c1">#| hide</span>
+<span class="kn">import</span> <span class="nn">nbdev</span><span class="p">;</span> <span class="n">nbdev</span><span class="o">.</span><span class="n">nbdev_export</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>And we can install it to be used directly by running <code>pip install -e .</code></p>
+<p>It means that you can now import your project with</p>
+<p><code>from dataset_tools.container import *</code></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>When it will be published (pypi or conda), it will be installable by calling</p>
+<p><code>pip install dataset-tools</code></p>
+<p>or</p>
+<p><code>conda install -c fastai dataset-tools</code></p>
+<p>NB: see how <code>_</code> has been turned into <code>-</code>, and for that to happen we have to update <code>lib_name</code> and <code>lib_path</code> in <code>settings.ini</code> by replacing <code>_</code>with <code>-</code></p>
+<p>NB2: it is still confusing for me. It looks like modifying <code>lib_path</code> is not a good optiom.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="index.ipynb">
+<a class="anchor" href="#index.ipynb" aria-hidden="true"><span class="octicon octicon-link"></span></a>index.ipynb<a class="anchor-link" href="#index.ipynb"> </a>
+</h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Here it is a good idea to give overview about how to use it.</p>
+<p>By importing your library and start using it.</p>
+<p>And it will be exported as the homepage of your lib.</p>
+<p>Just have to decide what should land in index and what should land in module page.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="nbdev_preview">
+<a class="anchor" href="#nbdev_preview" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>nbdev_preview</code><a class="anchor-link" href="#nbdev_preview"> </a>
+</h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Just run it from command line</p>
+<div class="highlight"><pre><span></span>nbdev_preview
+</pre></div>
+<p>and it is accessible from <a href="http://localhost:3000">http://localhost:3000</a>.</p>
+<p>This is a quarto webserver. The 1st time you launch it it will install quarto for you. On ubuntu this is a standard package so it will be updated regularly.</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">getpass</span> <span class="kn">import</span> <span class="n">getpass</span>
+<span class="o">!</span><span class="nb">echo</span> <span class="o">{</span>getpass<span class="o">()}</span> <span class="p">|</span> sudo -S apt-cache show quarto
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>········
+[sudo] password for guillaume: Package: quarto
+Status: install ok installed
+Priority: optional
+Section: user/text
+Installed-Size: 242759
+Maintainer: RStudio, PBC &lt;quarto@rstudio.org&gt;
+Architecture: amd64
+Version: 1.1.189
+Description: Quarto is an academic, scientific, and technical publishing system built on Pandoc.
+Description-md5: 516c872f9c3577457bbd01eac38f8130
+Homepage: https://github.com/quarto-dev/quarto-cli
+
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="nbdev_test">
+<a class="anchor" href="#nbdev_test" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>nbdev_test</code><a class="anchor-link" href="#nbdev_test"> </a>
+</h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>As mentionned earlier, one can run <code>nbdev_test</code> to execute all tests in all notebooks.</p>
+<p>If it fails, Hamel has shared his dev workflow. He runs <code>Restart kernel &amp; run All</code>, and use <code>%debug</code> magic command to enter debug mode.</p>
+<p>You then have access to all <code>ipdb</code> commands such as h for help, p <code>var</code> to print content of <code>var</code>, w for stacktraces</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%</span><span class="k">debug</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>&gt; <span class="ansi-green-fg">/tmp/ipykernel_2453/349085080.py</span>(1)<span class="ansi-cyan-fg">&lt;cell line: 1&gt;</span><span class="ansi-blue-fg">()</span>
+<span class="ansi-green-fg">----&gt; 1 </span>show_doc<span class="ansi-blue-fg">(</span>test_eq<span class="ansi-blue-fg">)</span>
+
+ipdb&gt; h
+
+Documented commands (type help &lt;topic&gt;):
+========================================
+EOF    commands   enable    ll        pp       s                until 
+a      condition  exit      longlist  psource  skip_hidden      up    
+alias  cont       h         n         q        skip_predicates  w     
+args   context    help      next      quit     source           whatis
+b      continue   ignore    p         r        step             where 
+break  d          interact  pdef      restart  tbreak         
+bt     debug      j         pdoc      return   u              
+c      disable    jump      pfile     retval   unalias        
+cl     display    l         pinfo     run      undisplay      
+clear  down       list      pinfo2    rv       unt            
+
+Miscellaneous help topics:
+==========================
+exec  pdb
+
+ipdb&gt; q
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Golden-rule:-don't-mix-imports-and-code">
+<a class="anchor" href="#Golden-rule:-don't-mix-imports-and-code" aria-hidden="true"><span class="octicon octicon-link"></span></a>Golden rule: don't mix imports and code<a class="anchor-link" href="#Golden-rule:-don't-mix-imports-and-code"> </a>
+</h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>For a reason it is asked not to mix cells with imports and code.</p>
+<p>I am not sure what is the core reason for that. Something due to show_doc or doc generation?</p>
+<p>During my tests, I have seen something complaining about it after running <code>nbdev_export</code> or <code>nbdev_test</code> but cannot reproduce that. Hmmm</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="nbdev_clean">
+<a class="anchor" href="#nbdev_clean" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>nbdev_clean</code><a class="anchor-link" href="#nbdev_clean"> </a>
+</h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Just to remove unnecessary metadata in ipynb files.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Will open an issue, because it fails to run here</p>
+<div class="highlight"><pre><span></span><span class="o">(</span>dataset_tools<span class="o">)</span> guillaume@LK06LPF2LTSSL:~/git/dataset_tools$ nbdev_clean
+/home/guillaume/miniconda/envs/dataset_tools/lib/python3.9/site-packages/nbdev/clean.py:110: UserWarning: Failed to clean notebook
+  warn<span class="o">(</span>f<span class="s1">'{warn_msg}'</span><span class="o">)</span>
+/home/guillaume/miniconda/envs/dataset_tools/lib/python3.9/site-packages/nbdev/clean.py:111: UserWarning: clean_ids
+  warn<span class="o">(</span>e<span class="o">)</span>
+/home/guillaume/miniconda/envs/dataset_tools/lib/python3.9/site-packages/nbdev/clean.py:111: UserWarning: clean_ids
+  warn<span class="o">(</span>e<span class="o">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="push-to-github">
+<a class="anchor" href="#push-to-github" aria-hidden="true"><span class="octicon octicon-link"></span></a>push to github<a class="anchor-link" href="#push-to-github"> </a>
+</h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Not a bad thing to run all these stuff</p>
+<div class="highlight"><pre><span></span>nbdev_clean
+git diff
+git status
+git add -A
+nbdev_export
+nbdev_test
+nbdev_docs
+git commit -am<span class="s1">'init version'</span>
+git push
+</pre></div>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Note that for a reason nbdev_clean is failing</p>
+<div class="highlight"><pre><span></span>/home/guillaume/miniconda/envs/dataset_tools/lib/python3.9/site-packages/nbdev/clean.py:110: UserWarning: Failed to clean notebook
+  warn<span class="o">(</span>f<span class="s1">'{warn_msg}'</span><span class="o">)</span>
+/home/guillaume/miniconda/envs/dataset_tools/lib/python3.9/site-packages/nbdev/clean.py:111: UserWarning: clean_ids
+  warn<span class="o">(</span>e<span class="o">)</span>
+/home/guillaume/miniconda/envs/dataset_tools/lib/python3.9/site-packages/nbdev/clean.py:111: UserWarning: clean_ids
+  warn<span class="o">(</span>e<span class="o">)</span>
+</pre></div>
+<p>And Hamel suggests to add <code>clean_ids = True</code> in settings.ini</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><code>nbdev_docs</code>is pushing the content of index.ipynb to README.md</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="define-dep">
+<a class="anchor" href="#define-dep" aria-hidden="true"><span class="octicon octicon-link"></span></a>define dep<a class="anchor-link" href="#define-dep"> </a>
+</h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Just modify <code>settings.ini</code>to add dependancies (here pandas)</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<div class="highlight"><pre><span></span><span class="c1"># end of settings.ini</span>
+<span class="o">[</span>..<span class="o">]</span>
+<span class="c1">### Optional ###</span>
+<span class="nv">requirements</span> <span class="o">=</span> fastcore pandas
+<span class="c1"># dev_requirements =</span>
+<span class="c1"># console_scripts =</span>
+<span class="nv">clean_ids</span> <span class="o">=</span> True
+</pre></div>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Et voila!, doc is available at <a href="https://castorfou.github.io/dataset_tools/">https://castorfou.github.io/dataset_tools/</a> and you can push that address to your repo settings</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="publish-to-Pypi,-conda,-...">
+<a class="anchor" href="#publish-to-Pypi,-conda,-..." aria-hidden="true"><span class="octicon octicon-link"></span></a>publish to Pypi, conda, ...<a class="anchor-link" href="#publish-to-Pypi,-conda,-..."> </a>
+</h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>This is done by calling <code>nbdev_pypi</code>or <code>nbdev_conda</code>.
+And it is modifying settings.ini to increment version number. (very much as <code>nbdev_bump_version</code> does)</p>
+<p>There are other commands such as <code>nbdev_release_xxx</code> the seems to do quite the same for git.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Gitlab-integration">
+<a class="anchor" href="#Gitlab-integration" aria-hidden="true"><span class="octicon octicon-link"></span></a>Gitlab integration<a class="anchor-link" href="#Gitlab-integration"> </a>
+</h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>because this is the platform we use at Michelin, I will need to make it work with our internal gitlab instance.</p>
+<p>There is on-going work to make it happen:</p>
+<ul>
+<li>from Hamel Husain - enhancement request <a href="https://github.com/fastai/nbdev/issues/945">Support gitlab</a>
+</li>
+<li>and from fastai community in forum: <a href="https://forums.fast.ai/t/nbdev-and-gitlab-source-links/98867">Nbdev and Gitlab (source links)</a>, <a href="https://forums.fast.ai/t/example-nbdev-on-gitlab/98890">Example: nbdev on Gitlab</a>
+</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="my-tests-with-our-internal-gitlab">
+<a class="anchor" href="#my-tests-with-our-internal-gitlab" aria-hidden="true"><span class="octicon octicon-link"></span></a>my tests with our internal gitlab<a class="anchor-link" href="#my-tests-with-our-internal-gitlab"> </a>
+</h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="create-project-in-gitlab">
+<a class="anchor" href="#create-project-in-gitlab" aria-hidden="true"><span class="octicon octicon-link"></span></a>create project in gitlab<a class="anchor-link" href="#create-project-in-gitlab"> </a>
+</h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Project name : <code>nbdev_gitlab</code></p>
+<p>Project URL : <code>https://gitlab.michelin.com</code> <code>janus</code> <code>nbdev_gitlab</code></p>
+<p>Project description : <code>This is the smallest project to make nbdev working with gitlab</code></p>
+<blockquote>
+<p>Create project</p>
+</blockquote>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="clone-it">
+<a class="anchor" href="#clone-it" aria-hidden="true"><span class="octicon octicon-link"></span></a>clone it<a class="anchor-link" href="#clone-it"> </a>
+</h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<div class="highlight"><pre><span></span>conda activate dataset_tools
+<span class="nb">cd</span> ~/git
+git clone git@gitlab.michelin.com:janus/nbdev_gitlab.git
+</pre></div>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="nbdev_new">
+<a class="anchor" href="#nbdev_new" aria-hidden="true"><span class="octicon octicon-link"></span></a>nbdev_new<a class="anchor-link" href="#nbdev_new"> </a>
+</h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<div class="highlight"><pre><span></span><span class="nb">export</span> <span class="nv">SSL_CERT_FILE</span><span class="o">=</span><span class="s1">'/home/guillaume/miniconda/envs/dataset_tools/lib/python3.9/site-packages/certifi/cacert.pem'</span>
+nbdev_new
+</pre></div>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<div class="highlight"><pre><span></span>/home/guillaume/miniconda/envs/dataset_tools/lib/python3.9/site-packages/ghapi/core.py:99: UserWarning: Neither GITHUB_TOKEN nor GITHUB_JWT_TOKEN found: running as unauthenticated
+  <span class="k">else</span>: warn<span class="o">(</span><span class="s1">'Neither GITHUB_TOKEN nor GITHUB_JWT_TOKEN found: running as unauthenticated'</span><span class="o">)</span>
+Could not access repo: janus/nbdev_gitlab to find your default branch - <span class="sb">`</span>main<span class="sb">`</span> assumed.
+Edit <span class="sb">`</span>settings.ini<span class="sb">`</span> <span class="k">if</span> this is incorrect.
+In the future, you can allow nbdev to see private repos by setting the environment variable GITHUB_TOKEN as described here:
+https://nbdev.fast.ai/cli.html#Using-nbdev_new-with-private-repos
+<span class="nv">repo</span> <span class="o">=</span> nbdev_gitlab <span class="c1"># Automatically inferred from git</span>
+<span class="nv">user</span> <span class="o">=</span> janus <span class="c1"># Automatically inferred from git</span>
+<span class="nv">author</span> <span class="o">=</span> guillaume <span class="c1"># Automatically inferred from git</span>
+<span class="nv">author_email</span> <span class="o">=</span> guillaume.ramelet@michelin.com <span class="c1"># Automatically inferred from git</span>
+<span class="c1"># Please enter a value for description</span>
+<span class="nv">description</span> <span class="o">=</span> This is the smallest project to make nbdev working with gitlab
+settings.ini created.
+/home/guillaume/miniconda/envs/dataset_tools/lib/python3.9/site-packages/ghapi/core.py:99: UserWarning: Neither GITHUB_TOKEN nor GITHUB_JWT_TOKEN found: running as unauthenticated
+  <span class="k">else</span>: warn<span class="o">(</span><span class="s1">'Neither GITHUB_TOKEN nor GITHUB_JWT_TOKEN found: running as unauthenticated'</span><span class="o">)</span>
+pandoc -o README.md
+  to: gfm+footnotes+tex_math_dollars-yaml_metadata_block
+  standalone: <span class="nb">true</span>
+  default-image-extension: png
+
+metadata
+  description: This is the smallest project to make nbdev working with gitlab
+  title: nbdev_gitlab
+
+Output created: _docs/README.md
+</pre></div>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>ls -l ~/git/nbdev_gitlab
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>total 36
+-rwxrwxrwx 1 guillaume guillaume   978 Sep  5 18:31 00_core.ipynb
+-rwxrwxrwx 1 guillaume guillaume 11337 Sep  5 18:31 LICENSE
+-rwxrwxrwx 1 guillaume guillaume   111 Sep  5 18:31 MANIFEST.in
+-rwxrwxrwx 1 guillaume guillaume   309 Sep 13 14:02 README.md
+drwxrwxrwx 1 guillaume guillaume  4096 Sep 13 14:02 _docs
+-rwxrwxrwx 1 guillaume guillaume   728 Sep 13 14:02 _quarto.yml
+-rwxrwxrwx 1 guillaume guillaume  1561 Sep 13 14:02 index.ipynb
+drwxrwxrwx 1 guillaume guillaume  4096 Sep 13 14:02 nbdev_gitlab
+-rwxrwxrwx 1 guillaume guillaume   945 Sep 13 14:02 settings.ini
+-rwxrwxrwx 1 guillaume guillaume  2541 Sep  5 18:31 setup.py
+-rwxrwxrwx 1 guillaume guillaume   600 Sep  5 18:31 styles.css
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+</div>
+
+
+
+  </div><!-- from https://github.com/utterance/utterances -->
+<script src="https://utteranc.es/client.js"
+        repo="castorfou/guillaume_blog"
+        issue-term="title"
+        label="blogpost-comment"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script><a class="u-url" href="/guillaume_blog/blog/nbdev2.html" hidden></a>
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/guillaume_blog/"></data>
+
+  <div class="wrapper">
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col">
+        <p class="feed-subscribe">
+          <a href="/guillaume_blog/feed.xml">
+            <svg class="svg-icon orange">
+              <use xlink:href="/guillaume_blog/assets/minima-social-icons.svg#rss"></use>
+            </svg><span>Subscribe</span>
+          </a>
+        </p>
+      </div>
+      <div class="footer-col">
+        <p>Journey for a datascientist</p>
+      </div>
+    </div>
+
+    <div class="social-links"><ul class="social-media-list"><li><a rel="me" href="https://github.com/castorfou" target="_blank" title="castorfou"><svg class="svg-icon grey"><use xlink:href="/guillaume_blog/assets/minima-social-icons.svg#github"></use></svg></a></li><li><a rel="me" href="https://twitter.com/GuillaumeRamel1" target="_blank" title="GuillaumeRamel1"><svg class="svg-icon grey"><use xlink:href="/guillaume_blog/assets/minima-social-icons.svg#twitter"></use></svg></a></li></ul>
+</div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>
