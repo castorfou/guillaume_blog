@@ -97,7 +97,7 @@ window.onload = wrap_img;
        • <span class="read-time" title="Estimated read time">
     
     
-      1 min read
+      2 min read
     
 </span></p>
 
@@ -483,17 +483,54 @@ nbdev_new
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
 <div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<div class="highlight"><pre><span></span><span class="c1">#from base envt</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="nb">print</span><span class="p">(</span><span class="n">certifi</span><span class="o">.</span><span class="n">where</span><span class="p">())</span>
-<span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">guillaume</span><span class="o">/</span><span class="n">miniconda</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="o">.</span><span class="mi">9</span><span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">certifi</span><span class="o">/</span><span class="n">cacert</span><span class="o">.</span><span class="n">pem</span>
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>cat ../files/setup_wsl_02_install_python_conda_part3.sh
 </pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>echo "configure SSL cert v1"
+
+export SSL_CERT_FILE=`python -c 'import certifi;print(certifi.where())'`
+
+tee -a ~/.bashrc &lt;&lt; EOF
+export SSL_CERT_FILE=$SSL_CERT_FILE
+EOF
+
+export TMPDIR=`mktemp -d`
+git clone git@gitlab.michelin.com:DEV/bib-certificates.git $TMPDIR
+cd $TMPDIR
+cat *trust-ca.pem &gt;&gt; $SSL_CERT_FILE
+
+if [ -e "/.cfg" ]; then
+		config='/usr/bin/git --git-dir=/.cfg/ --work-tree=/'
+		$config add ~/.bashrc
+		$config commit -m'export certificates for commandline'
+		$config push		
+fi</pre>
+</div>
+</div>
 
 </div>
 </div>
+
 </div>
+    
+
 </div>
 
 
