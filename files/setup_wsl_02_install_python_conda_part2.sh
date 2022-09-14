@@ -1,4 +1,4 @@
-echo "configure base v4"
+echo "configure base v5"
 conda install -y mamba -n base -c conda-forge
 mamba init
 mamba install -y nb_conda_kernels
@@ -20,7 +20,7 @@ sudo apt install -y nodejs npm
 jupyter notebook --generate-config
 echo 'c.NotebookApp.use_redirect_file = False' >> ~/.jupyter/jupyter_notebook_config.py
 tee -a ~/.bashrc << EOF
-export PATH="/mnt/c/Program Files (x86)/Google/Chrome/Application:$PATH"
+export PATH="/mnt/c/Program Files/Google/Chrome/Application:$PATH"
 export BROWSER='chrome.exe'
 EOF
 
