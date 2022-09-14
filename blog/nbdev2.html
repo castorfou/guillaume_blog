@@ -97,7 +97,7 @@ window.onload = wrap_img;
        • <span class="read-time" title="Estimated read time">
     
     
-      12 min read
+      13 min read
     
 </span></p>
 
@@ -1302,13 +1302,25 @@ before_script:
   - wget <span class="s2">"https://github.com/quarto-dev/quarto-cli/releases/download/v1.1.189/quarto-1.1.189-linux-amd64.deb"</span>
   - dpkg -i quarto-1.1.189-linux-amd64.deb
   - apt -y install python3-pip
-  - pip3 install pipenv
-  - pipenv install --dev
-  - pipenv run pip install nbdev
-pages:
+  - wget --no-check-certificate --content-disposition -O - https://raw.githubusercontent.com/castorfou/guillaume_blog/master/files/setup_wsl_08_pip.sh <span class="p">|</span> bash
+  - pip3 install nbdev
+  - nbdev_install
+
+stages:
+  - <span class="nb">test</span>
+  - build_doc
+  - build
+  - deploy_artifactory
+
+tests:
+  stage: <span class="nb">test</span>
   script:
-    - pipenv run nbdev_install
-    - pipenv run nbdev_docs
+    - nbdev_test
+
+pages:
+  stage: build_doc
+  script:
+    - nbdev_docs
   artifacts:
     paths:
       <span class="c1"># The folder that contains the files to be exposed at the Page URL</span>
@@ -1317,6 +1329,49 @@ pages:
     <span class="c1"># This ensures that only pushes to the default branch will trigger</span>
     <span class="c1"># a pages deploy</span>
     - <span class="k">if</span>: <span class="nv">$CI_COMMIT_REF_NAME</span> <span class="o">==</span> <span class="nv">$CI_DEFAULT_BRANCH</span>
+
+wheel:
+  stage: build
+  script:
+    - mkdir -p public
+    - <span class="nb">echo</span> <span class="s2">"Build wheel with python version </span><span class="si">${</span><span class="nv">PYTHON_VERSION</span><span class="si">}</span><span class="s2">:"</span>
+    - pip install -U setuptools wheel pydnx_packaging
+    - pip install -e .
+    - python3 setup.py bdist_wheel
+    - mkdir -p packages <span class="o">&amp;&amp;</span> mv dist/* packages/
+  artifacts:
+    when: always
+    paths:
+      - packages/
+
+variables:
+  <span class="c1"># (by default: $GLOBAL_REGISTRY_USER, but can be overriden if needed)</span>
+  PIP_REGISTRY_USER: <span class="si">${</span><span class="nv">GLOBAL_REGISTRY_USER</span><span class="si">}</span>
+  PIP_REGISTRY_TOKEN: <span class="si">${</span><span class="nv">GLOBAL_REGISTRY_TOKEN</span><span class="si">}</span>
+
+publish:
+  stage: deploy_artifactory
+  dependencies:
+    - wheel
+  only:
+    - tags
+  script:
+    <span class="c1"># create credential config file</span>
+    - &gt;
+      <span class="k">if</span> <span class="o">[</span> -f <span class="s1">'.pypirc'</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
+        <span class="nb">echo</span> <span class="s2">"Information: .pypirc file is not mandatory anymore."</span> <span class="o">&amp;&amp;</span> cp .pypirc ~/
+      <span class="k">else</span>
+        <span class="nb">echo</span> <span class="s2">"[distutils]</span>
+<span class="s2">        index-servers = local</span>
+<span class="s2">        [local]</span>
+<span class="s2">        repository: https://artifactory.michelin.com/api/pypi/pypi</span>
+<span class="s2">        username: fm00884</span>
+<span class="s2">        password: &lt;don't even think about it&gt;"</span> &gt; ~/.pypirc
+      <span class="k">fi</span>
+    - pip install -U twine
+    - pip index versions nbdev_gitlab <span class="o">||</span> <span class="nb">true</span>
+    - <span class="nb">echo</span> <span class="s1">'If the "twine upload" command below failed with a 403 status code, please check that the version is not already uploaded on artifactory (see versions of nbdev_git above).'</span>
+    - twine upload --verbose -r <span class="nb">local</span> packages/*
 </pre></div>
 
 </div>
