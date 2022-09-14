@@ -1344,11 +1344,6 @@ wheel:
     paths:
       - packages/
 
-variables:
-  <span class="c1"># (by default: $GLOBAL_REGISTRY_USER, but can be overriden if needed)</span>
-  PIP_REGISTRY_USER: <span class="si">${</span><span class="nv">GLOBAL_REGISTRY_USER</span><span class="si">}</span>
-  PIP_REGISTRY_TOKEN: <span class="si">${</span><span class="nv">GLOBAL_REGISTRY_TOKEN</span><span class="si">}</span>
-
 publish:
   stage: deploy_artifactory
   dependencies:
