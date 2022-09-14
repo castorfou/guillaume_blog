@@ -4,7 +4,7 @@ description: even if not available in Windows Store
 toc: true
 comments: true
 layout: post
-categories: [wsl]
+categories: [wsl, wsl_last]
 image: images/icons/wsl2.jpeg
 ---
 
@@ -251,6 +251,9 @@ wget --no-check-certificate --content-disposition -O - https://raw.githubusercon
 cd 
 source .bashrc
 wget --no-check-certificate --content-disposition -O - https://raw.githubusercontent.com/castorfou/guillaume_blog/master/files/setup_wsl_02_install_python_conda_part2.sh | bash
+source .bashrc
+wget --no-check-certificate --content-disposition -O - https://raw.githubusercontent.com/castorfou/guillaume_blog/master/files/setup_wsl_02_install_python_conda_part3.sh | bash
+source .bashrc
 ```
 
 ### 03 - bat cat
@@ -274,7 +277,7 @@ if you have access to [Windows Store](https://apps.microsoft.com/store/detail/gw
 
 Or alternate download are possible.
 
-![](..\images\GWSL_Dashboard.jpg)
+![](../images/GWSL_Dashboard.jpg)
 
 
 
