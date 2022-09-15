@@ -157,7 +157,7 @@ window.onload = wrap_img;
 <li class="toc-entry toc-h3"><a href="#nbdev_new">nbdev_new </a></li>
 <li class="toc-entry toc-h3"><a href="#change-in-settings.ini">change in settings.ini </a></li>
 <li class="toc-entry toc-h3"><a href="#change-in-_quarto.yml">change in _quarto.yml </a></li>
-<li class="toc-entry toc-h3"><a href="#create-.gitlab-ci.yml">create .gitlab-ci.yml </a></li>
+<li class="toc-entry toc-h3"><a href="#create-.gitlab-ci.yml--->-build/publish-documentation,-push-to-artifactory">create .gitlab-ci.yml --&gt; build/publish documentation, push to artifactory </a></li>
 <li class="toc-entry toc-h3"><a href="#commit-to-gitlab">commit to gitlab </a></li>
 <li class="toc-entry toc-h3"><a href="#setup-online-documentation-badge">setup online-documentation badge </a></li>
 </ul>
@@ -1267,8 +1267,8 @@ drwxrwxrwx 1 guillaume guillaume  4096 Sep 13 14:02 nbdev_gitlab
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="create-.gitlab-ci.yml">
-<a class="anchor" href="#create-.gitlab-ci.yml" aria-hidden="true"><span class="octicon octicon-link"></span></a>create <code>.gitlab-ci.yml</code><a class="anchor-link" href="#create-.gitlab-ci.yml"> </a>
+<h3 id="create-.gitlab-ci.yml---&gt;-build/publish-documentation,-push-to-artifactory">
+<a class="anchor" href="#create-.gitlab-ci.yml---&gt;-build/publish-documentation,-push-to-artifactory" aria-hidden="true"><span class="octicon octicon-link"></span></a>create <code>.gitlab-ci.yml</code> --&gt; build/publish documentation, push to artifactory<a class="anchor-link" href="#create-.gitlab-ci.yml---&gt;-build/publish-documentation,-push-to-artifactory"> </a>
 </h3>
 </div>
 </div>
@@ -1335,7 +1335,7 @@ wheel:
   stage: build
   script:
     - mkdir -p public
-    - <span class="nb">echo</span> <span class="s2">"Build wheel with python version </span><span class="si">${</span><span class="nv">PYTHON_VERSION</span><span class="si">}</span><span class="s2">:"</span>
+    - <span class="nb">echo</span> <span class="s2">"Build wheel with python version `python3 --version`:"</span>
     - pip install -U setuptools wheel pydnx_packaging
     - pip install -e .
     - python3 setup.py bdist_wheel
