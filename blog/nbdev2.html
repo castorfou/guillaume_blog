@@ -97,7 +97,7 @@ window.onload = wrap_img;
        • <span class="read-time" title="Estimated read time">
     
     
-      13 min read
+      14 min read
     
 </span></p>
 
@@ -1068,6 +1068,7 @@ And it is modifying settings.ini to increment version number. (very much as <cod
 <li>and from fastai community in forum: <a href="https://forums.fast.ai/t/nbdev-and-gitlab-source-links/98867">Nbdev and Gitlab (source links)</a>, <a href="https://forums.fast.ai/t/example-nbdev-on-gitlab/98890">Example: nbdev on Gitlab</a>
 </li>
 </ul>
+<p>I have published this version to <a href="https://forums.fast.ai/t/example-nbdev-on-gitlab/98890/2">nbdev forum</a></p>
 
 </div>
 </div>
@@ -1443,8 +1444,9 @@ git push
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>To migrate:</p>
 <div class="highlight"><pre><span></span>pip install -U nbdev
-mv _quarto.yml _quarto.yml.old
+rm _quarto.yml
 nbdev_new
+<span class="c1"># reintegrate entries in settings.ini that could have been changed such as requirements, dev_requirements, clean_ids</span>
 </pre></div>
 
 </div>
