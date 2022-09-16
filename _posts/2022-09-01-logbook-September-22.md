@@ -74,3 +74,12 @@ Restore backups on this new PC and without administrator rights.
 
 Install of wsl2 following [corporate instructions](https://dev.michelin.com/wsl2/fundamentals)
 
+
+## Week 37 - September 22
+
+**Thursday 9/15**    
+Played a lot with [nbdev2](/guillaume_blog/blog/nbdev2.html). Most thinks work now with gitlab. That's great
+    
+**Friday 9/16**
+Hamel just announced that [fastpages will be discontinued](https://forums.fast.ai/t/fastpages-deprecating-fastpages-in-favor-of-quarto/99095) as nbdev+quarto is now a valid option to provide a blogging platform.
+He has written a [migration guide](https://nbdev.fast.ai/tutorials/blogging.html) for that. Will have to follow that.
