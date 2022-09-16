@@ -1464,14 +1464,12 @@ index 1e8adc9..1da37f1 <span class="m">100644</span>
 +version <span class="o">=</span> <span class="m">0</span>.0.3
 </pre></div>
 <p>then one can tag 0.0.3 and push it</p>
-<div class="highlight"><pre><span></span>git tag -a <span class="m">0</span>.0.3 -m <span class="s2">"test tag with git locally"</span>
-git add -A
+<div class="highlight"><pre><span></span>git add -A
 git commit -am<span class="s1">'test tag from git locally'</span>
-
-git push --tags <span class="c1">#non recommanded way to do it</span>
-
+git tag -a <span class="m">0</span>.0.3 -m <span class="s2">"test tag with git locally"</span>
 git push origin <span class="m">0</span>.0.3 <span class="c1">#recommanded way: $git push origin &lt;tag_name&gt;</span>
 </pre></div>
+<p>would be nice to automatically get tag name from settings.ini</p>
 
 </div>
 </div>
