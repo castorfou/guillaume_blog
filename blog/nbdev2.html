@@ -160,6 +160,7 @@ window.onload = wrap_img;
 <li class="toc-entry toc-h3"><a href="#create-.gitlab-ci.yml--->-build/publish-documentation,-push-to-artifactory">create .gitlab-ci.yml --&gt; build/publish documentation, push to artifactory </a></li>
 <li class="toc-entry toc-h3"><a href="#commit-to-gitlab">commit to gitlab </a></li>
 <li class="toc-entry toc-h3"><a href="#setup-online-documentation-badge">setup online-documentation badge </a></li>
+<li class="toc-entry toc-h3"><a href="#create-a-new-version,-tag,-publication-to-artifactory">create a new version, tag, publication to artifactory </a></li>
 </ul>
 </li>
 </ul>
@@ -1422,6 +1423,55 @@ git push
 <p>create a new entry <code>doc</code></p>
 <p>Link: <code>https://janus.si-pages.michelin.com/nbdev_gitlab/</code></p>
 <p>Badge image URL: <code>https://img.shields.io/badge/-online_documentation-grey.svg</code></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="create-a-new-version,-tag,-publication-to-artifactory">
+<a class="anchor" href="#create-a-new-version,-tag,-publication-to-artifactory" aria-hidden="true"><span class="octicon octicon-link"></span></a>create a new version, tag, publication to artifactory<a class="anchor-link" href="#create-a-new-version,-tag,-publication-to-artifactory"> </a>
+</h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>using <code>nbdev_bump_version</code>, nbdev will automatically increase version number</p>
+<div class="highlight"><pre><span></span>$ nbdev_bump_version
+Old version: <span class="m">0</span>.0.2
+New version: <span class="m">0</span>.0.3
+</pre></div>
+<p>which is modifying 2 files:</p>
+<div class="highlight"><pre><span></span>$ git diff
+diff --git a/nbdev_gitlab/__init__.py b/nbdev_gitlab/__init__.py
+--- a/nbdev_gitlab/__init__.py
++++ b/nbdev_gitlab/__init__.py
+@@ -1 +1 @@
+-__version__ <span class="o">=</span> <span class="s2">"0.0.2"</span>
++__version__ <span class="o">=</span> <span class="s2">"0.0.3"</span>
+diff --git a/settings.ini b/settings.ini
+index 1e8adc9..1da37f1 <span class="m">100644</span>
+--- a/settings.ini
++++ b/settings.ini
+@@ -1,7 +1,7 @@
+ <span class="o">[</span>DEFAULT<span class="o">]</span>
+ <span class="nv">repo</span> <span class="o">=</span> nbdev_gitlab
+ <span class="nv">lib_name</span> <span class="o">=</span> nbdev_gitlab
+-version <span class="o">=</span> <span class="m">0</span>.0.2
++version <span class="o">=</span> <span class="m">0</span>.0.3
+</pre></div>
+<p>then one can tag 0.0.3 and push it</p>
+<div class="highlight"><pre><span></span>git tag -a <span class="m">0</span>.0.3 -m <span class="s2">"test tag with git locally"</span>
+git add -A
+git commit -am<span class="s1">'test tag from git locally'</span>
+
+git push --tags <span class="c1">#non recommanded way to do it</span>
+
+git push origin <span class="m">0</span>.0.3 <span class="c1">#recommanded way: $git push origin &lt;tag_name&gt;</span>
+</pre></div>
 
 </div>
 </div>
