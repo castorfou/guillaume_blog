@@ -1,6 +1,6 @@
 ---
 title: "Fix pythoncom37.dll popup when launching Jupyter Notebook"
-description: the procedure entry point ... could not be located in the dynamic library <my_env>\pythoncom37.dll
+description: the procedure entry point ... could not be located in the dynamic library <my_env>/pythoncom37.dll
 toc: true
 comments: true
 layout: post

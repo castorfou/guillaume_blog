@@ -1,6 +1,6 @@
 ---
 title: "Learning: Collège de France - Représentations parcimonieuses"
-description: My notes/thoughts about the lecture in French
+description: "My notes/thoughts about the lecture in French"
 toc: true
 comments: true
 layout: post
