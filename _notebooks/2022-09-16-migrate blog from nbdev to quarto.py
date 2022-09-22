@@ -146,7 +146,7 @@ get_ipython().system('cat ~/git/blog/.gitignore')
 # * delete the 2 examples (welcome and post-with-code)
 # 
 # Will have to browse through all the site to see if all is properly rendered. 
-# > fix for broken links or Jekyll shortcodes (things with {% ... %}) that need to be converted to Quarto. Search the the Quarto documentation if you need help locating specific Quarto features.
+# > fix for broken links or Jekyll shortcodes (things with (I won't display liquid tags here because it will break nbdev)) that need to be converted to Quarto. Search the the Quarto documentation if you need help locating specific Quarto features.
 # 
 # 
 
