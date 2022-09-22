@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="twitter:card" content="summary_large_image" /><!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Blog - migrate to quarto | Guillaume’s blog</title>
+<meta name="generator" content="Jekyll v4.1.1" />
+<meta property="og:title" content="Blog - migrate to quarto" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="following migration guide from Hamel Hussain" />
+<meta property="og:description" content="following migration guide from Hamel Hussain" />
+<link rel="canonical" href="https://castorfou.github.io/guillaume_blog/blog/migrate-blog-from-nbdev-to-quarto.html" />
+<meta property="og:url" content="https://castorfou.github.io/guillaume_blog/blog/migrate-blog-from-nbdev-to-quarto.html" />
+<meta property="og:site_name" content="Guillaume’s blog" />
+<meta property="og:image" content="https://castorfou.github.io/guillaume_blog/images/icons/fastai.png" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2022-09-16T00:00:00-05:00" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="https://castorfou.github.io/guillaume_blog/images/icons/fastai.png" />
+<meta property="twitter:title" content="Blog - migrate to quarto" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2022-09-16T00:00:00-05:00","datePublished":"2022-09-16T00:00:00-05:00","description":"following migration guide from Hamel Hussain","headline":"Blog - migrate to quarto","image":"https://castorfou.github.io/guillaume_blog/images/icons/fastai.png","mainEntityOfPage":{"@type":"WebPage","@id":"https://castorfou.github.io/guillaume_blog/blog/migrate-blog-from-nbdev-to-quarto.html"},"url":"https://castorfou.github.io/guillaume_blog/blog/migrate-blog-from-nbdev-to-quarto.html"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/guillaume_blog/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="https://castorfou.github.io/guillaume_blog/feed.xml" title="Guillaume's blog" /><link rel="shortcut icon" type="image/x-icon" href="/guillaume_blog/images/favicon.ico"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Primer/15.2.0/primer.css" integrity="sha512-xTz2ys4coGAOz8vuV1NcQBkgVmKhsSEtjbqyMJbBHRplFuvKIUo6xhLHpAyPt9mfR6twHJgn9OgVLuqOvjeBhg==" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.12.0/katex.min.css" integrity="sha512-h7nl+xz8wgDlNM4NqKEM4F1NkIRS17M9+uJwIGwuo8vGqIl4BhuCKdxjWEINm+xyrUjNCnK5dCrhM0sj+wTIXw==" crossorigin="anonymous" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.12.0/katex.min.js" integrity="sha512-/CMIhXiDA3m2c9kzRyd97MTb3MC6OVnx4TElQ7fkkoRghwDf6gi41gaT1PwF270W6+J60uTmwgeRpNpJdRV6sg==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.12.0/contrib/auto-render.min.js" integrity="sha512-Do7uJAaHZm5OLrIv/yN4w0iG1dbu01kzdMNnFfu/mAqgUk6Nniv2JYHcwH+cNwjqgLcqcuBBk+JRvprLVI8azg==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha512-0doc9hKxR3PYwso42RD1p5ySZpzzuDiOwMrdCEh2WdJZCjcmFKc/wEnL+z8fBQrnHoiNWbo+3fiGkOYXBdQp4A==" crossorigin="anonymous"></script>
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        renderMathInElement( document.body, {
+        delimiters: [
+            {left: "$$", right: "$$", display: true},
+            {left: "[%", right: "%]", display: true},
+            {left: "$", right: "$", display: false}
+        ]}
+        );
+    });
+    </script>
+
+
+<script>
+function wrap_img(fn) {
+    if (document.attachEvent ? document.readyState === "complete" : document.readyState !== "loading") {
+        var elements = document.querySelectorAll(".post img");
+        Array.prototype.forEach.call(elements, function(el, i) {
+            if (el.getAttribute("title") && (el.className != "emoji")) {
+                const caption = document.createElement('figcaption');
+                var node = document.createTextNode(el.getAttribute("title"));
+                caption.appendChild(node);
+                const wrapper = document.createElement('figure');
+                wrapper.className = 'image';
+                el.parentNode.insertBefore(wrapper, el);
+                el.parentNode.removeChild(el);
+                wrapper.appendChild(el);
+                wrapper.appendChild(caption);
+            }
+        });
+    } else { document.addEventListener('DOMContentLoaded', fn); }
+}
+window.onload = wrap_img;
+</script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function(){
+    // add link icon to anchor tags
+    var elem = document.querySelectorAll(".anchor-link")
+    elem.forEach(e => (e.innerHTML = '<i class="fas fa-link fa-xs"></i>'));
+    });
+</script>
+</head>
+<body><header class="site-header">
+
+  <div class="wrapper">
+<a class="site-title" rel="author" href="/guillaume_blog/">Guillaume's blog</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger">
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewbox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"></path>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger">
+<a class="page-link" href="/guillaume_blog/about/">About Me</a><a class="page-link" href="/guillaume_blog/search/">Search</a><a class="page-link" href="/guillaume_blog/categories/">Tags</a>
+</div>
+      </nav>
+</div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">Blog - migrate to quarto</h1>
+<p class="page-description">following migration guide from Hamel Hussain</p>
+<p class="post-meta post-meta-title"><time class="dt-published" datetime="2022-09-16T00:00:00-05:00" itemprop="datePublished">
+        Sep 16, 2022
+      </time>
+       • <span class="read-time" title="Estimated read time">
+    
+    
+      5 min read
+    
+</span></p>
+
+    
+      <p class="category-tags"><i class="fas fa-tags category-tags-icon"></i> 
+      
+        <a class="category-tags-link" href="/guillaume_blog/categories/#nbdev">nbdev</a>
+         
+      
+        <a class="category-tags-link" href="/guillaume_blog/categories/#quarto">quarto</a>
+         
+      
+        <a class="category-tags-link" href="/guillaume_blog/categories/#fastpages">fastpages</a>
+        
+      
+      </p>
+    
+
+    
+      </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <ul id="toc" class="section-nav">
+<li class="toc-entry toc-h1"><a href="#Inspiration">Inspiration </a></li>
+<li class="toc-entry toc-h1">
+<a href="#Walkthrough">Walkthrough </a>
+<ul>
+<li class="toc-entry toc-h2"><a href="#install-quarto">install quarto </a></li>
+<li class="toc-entry toc-h2"><a href="#create-repo-blog">create repo blog </a></li>
+<li class="toc-entry toc-h2"><a href="#create-a-quarto-blog">create a quarto blog </a></li>
+<li class="toc-entry toc-h2"><a href="#copy-former-blog-content---notebooks-and-markdown-files">copy former blog content - notebooks and markdown files </a></li>
+<li class="toc-entry toc-h2"><a href="#copy-former-blog-content---images">copy former blog content - images </a></li>
+<li class="toc-entry toc-h2"><a href="#migrate-posts-to-quarto">migrate posts to quarto </a></li>
+<li class="toc-entry toc-h2"><a href="#update-some-files">update some files </a></li>
+<li class="toc-entry toc-h2"><a href="#preview">preview </a></li>
+<li class="toc-entry toc-h2">
+<a href="#publication">publication </a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#quarto-publish">quarto publish </a></li>
+<li class="toc-entry toc-h3">
+<a href="#github-actions">github actions </a>
+<ul>
+<li class="toc-entry toc-h4"><a href="#_publish.yml">_publish.yml </a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-entry toc-h1">
+<a href="#Issues-/-improvments">Issues / improvments </a>
+<ul>
+<li class="toc-entry toc-h2"><a href="#quarto-publishing-issue-behind-firewall">quarto publishing issue behind firewall </a></li>
+<li class="toc-entry toc-h2"><a href="#inline-images-are-not-properly-rendered">inline images are not properly rendered </a></li>
+<li class="toc-entry toc-h2"><a href="#Albert-Rapp-as-an-example">Albert Rapp as an example </a></li>
+<li class="toc-entry toc-h2"><a href="#links-are-not-rendered-as-links">links are not rendered as links </a></li>
+</ul>
+</li>
+</ul>
+<!--
+#################################################
+### THIS FILE WAS AUTOGENERATED! DO NOT EDIT! ###
+#################################################
+# file to edit: _notebooks/2022-09-16-migrate blog from nbdev to quarto.ipynb
+-->
+
+<div class="container" id="notebook-container">
+        
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Inspiration">
+<a class="anchor" href="#Inspiration" aria-hidden="true"><span class="octicon octicon-link"></span></a>Inspiration<a class="anchor-link" href="#Inspiration"> </a>
+</h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Hamel just announced that <a href="https://forums.fast.ai/t/fastpages-deprecating-fastpages-in-favor-of-quarto/99095">fastpages will be discontinued</a> as nbdev+quarto is now a valid option to provide a blogging platform.
+He has written a <a href="https://nbdev.fast.ai/tutorials/blogging.html">migration guide</a> for that.</p>
+<p>This is my walkthrough.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Walkthrough">
+<a class="anchor" href="#Walkthrough" aria-hidden="true"><span class="octicon octicon-link"></span></a>Walkthrough<a class="anchor-link" href="#Walkthrough"> </a>
+</h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="install-quarto">
+<a class="anchor" href="#install-quarto" aria-hidden="true"><span class="octicon octicon-link"></span></a>install quarto<a class="anchor-link" href="#install-quarto"> </a>
+</h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<div class="highlight"><pre><span></span>$ sudo apt install quarto
+<span class="o">[</span>sudo<span class="o">]</span> password <span class="k">for</span> guillaume:
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+quarto is already the newest version <span class="o">(</span><span class="m">1</span>.1.189<span class="o">)</span>.
+<span class="m">0</span> upgraded, <span class="m">0</span> newly installed, <span class="m">0</span> to remove and <span class="m">0</span> not upgraded.
+</pre></div>
+<p>will have to see what will happen on platforms where I don't have admin rights.</p>
+<p>Here Quarto is already present because I use it for nbdev2.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="create-repo-blog">
+<a class="anchor" href="#create-repo-blog" aria-hidden="true"><span class="octicon octicon-link"></span></a>create repo <code>blog</code><a class="anchor-link" href="#create-repo-blog"> </a>
+</h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>I create <code>blog</code> repo on github.</p>
+<p>And I can now get it locally: <code>git clone https://github.com/castorfou/blog.git</code> (I am from office, only https is accepted)</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="create-a-quarto-blog">
+<a class="anchor" href="#create-a-quarto-blog" aria-hidden="true"><span class="octicon octicon-link"></span></a>create a quarto blog<a class="anchor-link" href="#create-a-quarto-blog"> </a>
+</h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<div class="highlight"><pre><span></span><span class="nb">cd</span> ~/git/blog
+quarto create-project --type website:blog .
+quarto install extension quarto-ext/video
+</pre></div>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Issue here with <code>quarto install</code> when running from a corporate pc</p>
+<div class="highlight"><pre><span></span>$ quarto install extension quarto-ext/video
+Sending fatal alert BadCertificate
+ERROR: TypeError: error sending request <span class="k">for</span> url <span class="o">(</span>https://github.com/quarto-ext/video/archive/refs/heads/main.tar.gz<span class="o">)</span>: error trying to connect: invalid peer certificate contents: invalid peer certificate: UnknownIssuer
+</pre></div>
+<p>I have opened an issue at <a href="https://github.com/quarto-ext/video/issues/27">https://github.com/quarto-ext/video/issues/27</a></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="copy-former-blog-content---notebooks-and-markdown-files">
+<a class="anchor" href="#copy-former-blog-content---notebooks-and-markdown-files" aria-hidden="true"><span class="octicon octicon-link"></span></a>copy former blog content - notebooks and markdown files<a class="anchor-link" href="#copy-former-blog-content---notebooks-and-markdown-files"> </a>
+</h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Your new repo will have a <code>posts/</code> directory.</p>
+<p>This is where you will copy all of your notebook and markdown posts from fastpages.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<div class="highlight"><pre><span></span>cp -r ../guillaume_blog/_notebooks/* posts/
+cp -r ../guillaume_blog/_posts/* posts/
+</pre></div>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>I have to fix some stuff here,</p>
+<p>some markdown posts have empty description which is not allowed by the migration process.</p>
+<p>To fix that I will run <code>sed -i -- 's/^description:[[:space:]*]$/description:\ \"\"/' ~/git/blog/posts/*.md</code></p>
+<p>Globally to identify culprit, I executed this:</p>
+<div class="highlight"><pre><span></span><span class="nv">chemin</span><span class="o">=</span><span class="sb">`</span><span class="nb">pwd</span><span class="sb">`</span>
+<span class="k">for</span> FILE in ../guillaume_blog/_posts/*<span class="p">;</span> <span class="se">\</span>
+<span class="k">do</span> <span class="nb">echo</span> <span class="nv">$FILE</span><span class="p">;</span> <span class="se">\</span>
+cp <span class="s2">"</span><span class="nv">$FILE</span><span class="s2">"</span> posts/<span class="p">;</span> <span class="se">\</span>
+sed -i -- <span class="s1">'s/^description:[[:space:]*]$/description:\ \"\"/'</span> <span class="nv">$chemin</span>/posts/*.md<span class="p">;</span> <span class="se">\</span>
+nbdev_migrate --path posts<span class="p">;</span> <span class="se">\</span>
+rm -f posts/* <span class="m">2</span>&gt; /dev/null<span class="p">;</span> <span class="se">\</span>
+<span class="k">done</span><span class="p">;</span>
+</pre></div>
+<p>but now that I know the migration issues, I can just execute:</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<div class="highlight"><pre><span></span><span class="c1"># handle empty description in markdown files</span>
+<span class="nv">chemin</span><span class="o">=</span><span class="sb">`</span><span class="nb">pwd</span><span class="sb">`</span>
+sed -i -- <span class="s1">'s/^description:[[:space:]*]$/description:\ \"\"/'</span> <span class="nv">$chemin</span>/posts/*.md
+<span class="c1"># code should not be here</span>
+rm posts/notebook2script.py 
+rm -rf posts/exp
+</pre></div>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>What was wrong with <code>2021-02-10-college-de-france-representations-parcimonieuses.md</code> was accents in title. Removing é with e fixed it.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="copy-former-blog-content---images">
+<a class="anchor" href="#copy-former-blog-content---images" aria-hidden="true"><span class="octicon octicon-link"></span></a>copy former blog content - images<a class="anchor-link" href="#copy-former-blog-content---images"> </a>
+</h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<div class="highlight"><pre><span></span>mkdir images
+cp -r ../guillaume_blog/images/* images
+cp -r ../guillaume_blog/images/copied_from_nb/* images
+</pre></div>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="migrate-posts-to-quarto">
+<a class="anchor" href="#migrate-posts-to-quarto" aria-hidden="true"><span class="octicon octicon-link"></span></a>migrate posts to quarto<a class="anchor-link" href="#migrate-posts-to-quarto"> </a>
+</h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<div class="highlight"><pre><span></span>conda activate dataset_tools <span class="c1">#this is an env with nbdev installed</span>
+<span class="c1">#install last version of nbdev</span>
+pip install -U nbdev
+nbdev_migrate --path posts
+</pre></div>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="update-some-files">
+<a class="anchor" href="#update-some-files" aria-hidden="true"><span class="octicon octicon-link"></span></a>update some files<a class="anchor-link" href="#update-some-files"> </a>
+</h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>
+<code>.gitignore</code>: we suggest adding <code>_site/</code> as well as dot files <code>.*</code>
+</li>
+<li>
+<code>about.qmd</code>: I reuse my former <code>_pages/about.md</code>
+</li>
+<li>
+<code>profile.jpg</code>: and use my profile picture</li>
+</ul>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>cat ~/git/blog/.gitignore
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>/.quarto/
+_site/
+.*
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="preview">
+<a class="anchor" href="#preview" aria-hidden="true"><span class="octicon octicon-link"></span></a>preview<a class="anchor-link" href="#preview"> </a>
+</h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<div class="highlight"><pre><span></span>quarto preview
+</pre></div>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Here we can fix many thinks, and auto update rendered pages is just excellent!</p>
+<ul>
+<li>move images from posts to posts/images (have to restart quarto preview after that)</li>
+<li>delete the 2 examples (welcome and post-with-code)</li>
+</ul>
+<p>Will have to browse through all the site to see if all is properly rendered.</p>
+<blockquote>
+<p>fix for broken links or Jekyll shortcodes (things with (I won't display liquid tags here because it will break nbdev)) that need to be converted to Quarto. Search the the Quarto documentation if you need help locating specific Quarto features.</p>
+</blockquote>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="publication">
+<a class="anchor" href="#publication" aria-hidden="true"><span class="octicon octicon-link"></span></a>publication<a class="anchor-link" href="#publication"> </a>
+</h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>There are 2 ways to publish. A straightforword one by calling <code>quarto publish</code>. And a more advanced one with github actions.</p>
+<p>Using my corporate PC, <code>quarto publish</code> fails so I will give github actions a try.</p>
+<h3 id="quarto-publish">
+<a class="anchor" href="#quarto-publish" aria-hidden="true"><span class="octicon octicon-link"></span></a>quarto publish<a class="anchor-link" href="#quarto-publish"> </a>
+</h3>
+<div class="highlight"><pre><span></span>quarto publish
+</pre></div>
+<p><img class="emoji" title=":heavy_check_mark:" alt=":heavy_check_mark:" src="https://github.githubassets.com/images/icons/emoji/unicode/2714.png" height="20" width="20"> This is ok when publishing with home PC.</p>
+<p><img class="emoji" title=":x:" alt=":x:" src="https://github.githubassets.com/images/icons/emoji/unicode/274c.png" height="20" width="20"> But fails when publishing with corporate PC.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>shared it with community at discord:
+<a href="https://discord.com/channels/689892369998676007/1020178609605984267/1020631703653462038">https://discord.com/channels/689892369998676007/1020178609605984267/1020631703653462038</a></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="github-actions">
+<a class="anchor" href="#github-actions" aria-hidden="true"><span class="octicon octicon-link"></span></a>github actions<a class="anchor-link" href="#github-actions"> </a>
+</h3>
+<p>as explained in <a href="https://quarto.org/docs/publishing/quarto-pub.html#github-action">https://quarto.org/docs/publishing/quarto-pub.html#github-action</a></p>
+<h4 id="_publish.yml">
+<a class="anchor" href="#_publish.yml" aria-hidden="true"><span class="octicon octicon-link"></span></a>_publish.yml<a class="anchor-link" href="#_publish.yml"> </a>
+</h4>
+<p>First step is to set <code>_publish.yml</code></p>
+<div class="highlight"><pre><span></span>- source: project
+  quarto-pub:
+    - id: <span class="s2">"5f3abafe-68f9-4c1d-835b-9d668b892001"</span>
+      url: <span class="s2">"https://castorfou.github.io/blog/"</span>
+</pre></div>
+<p>but what is this id?</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Issues-/-improvments">
+<a class="anchor" href="#Issues-/-improvments" aria-hidden="true"><span class="octicon octicon-link"></span></a>Issues / improvments<a class="anchor-link" href="#Issues-/-improvments"> </a>
+</h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="quarto-publishing-issue-behind-firewall">
+<a class="anchor" href="#quarto-publishing-issue-behind-firewall" aria-hidden="true"><span class="octicon octicon-link"></span></a>quarto publishing issue behind firewall<a class="anchor-link" href="#quarto-publishing-issue-behind-firewall"> </a>
+</h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Identical to error happening when installing quarto extension</p>
+<p><a href="https://github.com/quarto-ext/video/issues/27">https://github.com/quarto-ext/video/issues/27</a></p>
+<div class="highlight"><pre><span></span>$ quarto publish
+? Publish update to: › https://castorfou.github.io/blog/ <span class="o">(</span>GitHub Pages<span class="o">)</span>
+From https://github.com/castorfou/blog
+ * branch            gh-pages   -&gt; FETCH_HEAD
+
+origin  https://github.com/castorfou/blog.git <span class="o">(</span>fetch<span class="o">)</span>
+origin  https://github.com/castorfou/blog.git <span class="o">(</span>push<span class="o">)</span>
+To https://github.com/castorfou/blog.git
+ + 0a3710d...1aeaf23 HEAD -&gt; gh-pages <span class="o">(</span>forced update<span class="o">)</span>
+fatal: <span class="s1">'fadc274b'</span> is not a working tree
+
+NOTE: GitHub Pages sites use caching so you might need to click the refresh
+button within your web browser to see changes after deployment.
+
+<span class="o">(</span><span class="se">\)</span> Deploying gh-pages branch to website <span class="o">(</span>this may take a few minutes<span class="o">)</span>Sending fatal alert BadCertificate
+<span class="o">[</span>✓<span class="o">]</span> Deploying gh-pages branch to website <span class="o">(</span>this may take a few minutes<span class="o">)</span>
+ERROR: TypeError: error sending request <span class="k">for</span> url <span class="o">(</span>https://castorfou.github.io/blog/.nojekyll<span class="o">)</span>: error trying to connect: invalid peer certificate contents: invalid peer certificate: UnknownIssuer
+</pre></div>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>For context, I use quarto as a replacement of fastai/fastpages and followed a migration guide from Hamel Hussain asking for this installation.</p>
+<p>And I'm in a corporate environment with transparent proxies and self signed certificates. 
+My system has updated CERT in /usr/local/share/ca-certificates/, and SSL_CERT_FILE environment variable pointing to updated corporate pem.</p>
+
+<pre><code>$ quarto install extension quarto-ext/lightbox
+Sending fatal alert BadCertificate
+ERROR: TypeError: error sending request for url (https://github.com/quarto-ext/lightbox/archive/refs/heads/main.tar.gz): error trying to connect: invalid peer certificate contents: invalid peer certificate: UnknownIssuer</code></pre>
+<p>It fails with the same message. 
+When I run <code>quarto publish</code> I have the same issue.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>One option is to use github actions. Need to find what is this id used in _publish.yml</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="inline-images-are-not-properly-rendered">
+<a class="anchor" href="#inline-images-are-not-properly-rendered" aria-hidden="true"><span class="octicon octicon-link"></span></a>inline images are not properly rendered<a class="anchor-link" href="#inline-images-are-not-properly-rendered"> </a>
+</h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>if I have 2 images in 2 cells, it works in jupyter notebook but it is not rendered properly when published.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Albert-Rapp-as-an-example">
+<a class="anchor" href="#Albert-Rapp-as-an-example" aria-hidden="true"><span class="octicon octicon-link"></span></a>Albert Rapp as an example<a class="anchor-link" href="#Albert-Rapp-as-an-example"> </a>
+</h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><a href="https://albert-rapp.de/posts/13_quarto_blog_writing_guide/13_quarto_blog_writing_guide.html">https://albert-rapp.de/posts/13_quarto_blog_writing_guide/13_quarto_blog_writing_guide.html</a></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="links-are-not-rendered-as-links">
+<a class="anchor" href="#links-are-not-rendered-as-links" aria-hidden="true"><span class="octicon octicon-link"></span></a>links are not rendered as links<a class="anchor-link" href="#links-are-not-rendered-as-links"> </a>
+</h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>in jupyter, just typing url turns it into a link. Not with quarto.</p>
+<p>anyway to do it ?</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>--test--</p>
+
+</div>
+</div>
+</div>
+</div>
+
+
+
+  </div>
+<!-- from https://github.com/utterance/utterances -->
+<script src="https://utteranc.es/client.js" repo="castorfou/guillaume_blog" issue-term="title" label="blogpost-comment" theme="github-light" crossorigin="anonymous" async>
+</script><a class="u-url" href="/guillaume_blog/blog/migrate-blog-from-nbdev-to-quarto.html" hidden></a>
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/guillaume_blog/"></data>
+
+  <div class="wrapper">
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col">
+        <p class="feed-subscribe">
+          <a href="/guillaume_blog/feed.xml">
+            <svg class="svg-icon orange">
+              <use xlink:href="/guillaume_blog/assets/minima-social-icons.svg#rss"></use>
+            </svg><span>Subscribe</span>
+          </a>
+        </p>
+      </div>
+      <div class="footer-col">
+        <p>Journey for a datascientist</p>
+      </div>
+    </div>
+
+    <div class="social-links">
+<ul class="social-media-list">
+<li><a rel="me" href="https://github.com/castorfou" target="_blank" title="castorfou"><svg class="svg-icon grey"><use xlink:href="/guillaume_blog/assets/minima-social-icons.svg#github"></use></svg></a></li>
+<li><a rel="me" href="https://twitter.com/GuillaumeRamel1" target="_blank" title="GuillaumeRamel1"><svg class="svg-icon grey"><use xlink:href="/guillaume_blog/assets/minima-social-icons.svg#twitter"></use></svg></a></li>
+</ul>
+</div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>
